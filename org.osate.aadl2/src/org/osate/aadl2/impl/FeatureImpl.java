@@ -1,12 +1,12 @@
 /**
  * <copyright>
  * Copyright  2011 by Carnegie Mellon University, all rights reserved.
- * 
+ *
  * Use of the Open Source AADL Tool Environment (OSATE) is subject to the terms of the license set forth
  * at http://www.eclipse.org/org/documents/epl-v10.html.
- * 
+ *
  * NO WARRANTY
- * 
+ *
  * ANY INFORMATION, MATERIALS, SERVICES, INTELLECTUAL PROPERTY OR OTHER PROPERTY OR RIGHTS GRANTED OR PROVIDED BY
  * CARNEGIE MELLON UNIVERSITY PURSUANT TO THIS LICENSE (HEREINAFTER THE ''DELIVERABLES'') ARE ON AN ''AS-IS'' BASIS.
  * CARNEGIE MELLON UNIVERSITY MAKES NO WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED AS TO ANY MATTER INCLUDING,
@@ -16,21 +16,21 @@
  * REGARDLESS OF WHETHER SUCH PARTY WAS AWARE OF THE POSSIBILITY OF SUCH DAMAGES. LICENSEE AGREES THAT IT WILL NOT
  * MAKE ANY WARRANTY ON BEHALF OF CARNEGIE MELLON UNIVERSITY, EXPRESS OR IMPLIED, TO ANY PERSON CONCERNING THE
  * APPLICATION OF OR THE RESULTS TO BE OBTAINED WITH THE DELIVERABLES UNDER THIS LICENSE.
- * 
+ *
  * Licensee hereby agrees to defend, indemnify, and hold harmless Carnegie Mellon University, its trustees, officers,
  * employees, and agents from all claims or demands made against them (and any related losses, expenses, or
  * attorney's fees) arising out of, or relating to Licensee's and/or its sub licensees' negligent use or willful
  * misuse of or negligent conduct or willful misconduct regarding the Software, facilities, or other rights or
  * assistance granted by Carnegie Mellon University under this License, including, but not limited to, any claims of
  * product liability, personal injury, death, damage to property, or violation of any laws or regulations.
- * 
+ *
  * Carnegie Mellon University Software Engineering Institute authored documents are sponsored by the U.S. Department
  * of Defense under Contract F19628-00-C-0003. Carnegie Mellon University retains copyrights in all material produced
  * under this contract. The U.S. Government retains a non-exclusive, royalty-free license to publish or reproduce these
  * documents, or allow others to do so, for U.S. Government purposes only pursuant to the copyright license
  * under the contract clause at 252.227.7013.
  * </copyright>
- * 
+ *
  */
 package org.osate.aadl2.impl;
 
@@ -67,6 +67,7 @@ import org.osate.aadl2.properties.PropertyAcc;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.osate.aadl2.impl.FeatureImpl#getArrayDimensions <em>Array Dimension</em>}</li>
  *   <li>{@link org.osate.aadl2.impl.FeatureImpl#getFeatureClassifier <em>Feature Classifier</em>}</li>
@@ -75,12 +76,10 @@ import org.osate.aadl2.properties.PropertyAcc;
  *   <li>{@link org.osate.aadl2.impl.FeatureImpl#getRefined <em>Refined</em>}</li>
  *   <li>{@link org.osate.aadl2.impl.FeatureImpl#getClassifier <em>Classifier</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
-public abstract class FeatureImpl extends StructuralFeatureImpl implements
-		Feature {
+public abstract class FeatureImpl extends StructuralFeatureImpl implements Feature {
 	/**
 	 * The cached value of the '{@link #getArrayDimensions() <em>Array Dimension</em>}' containment reference list.
 	 * <!-- begin-user-doc -->
@@ -125,10 +124,10 @@ public abstract class FeatureImpl extends StructuralFeatureImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<ArrayDimension> getArrayDimensions() {
 		if (arrayDimensions == null) {
-			arrayDimensions = new EObjectContainmentEList<ArrayDimension>(
-					ArrayDimension.class, this,
+			arrayDimensions = new EObjectContainmentEList<ArrayDimension>(ArrayDimension.class, this,
 					Aadl2Package.FEATURE__ARRAY_DIMENSION);
 		}
 		return arrayDimensions;
@@ -139,9 +138,9 @@ public abstract class FeatureImpl extends StructuralFeatureImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ArrayDimension createArrayDimension() {
-		ArrayDimension newArrayDimension = (ArrayDimension) create(Aadl2Package.eINSTANCE
-				.getArrayDimension());
+		ArrayDimension newArrayDimension = (ArrayDimension) create(Aadl2Package.eINSTANCE.getArrayDimension());
 		getArrayDimensions().add(newArrayDimension);
 		return newArrayDimension;
 	}
@@ -152,11 +151,11 @@ public abstract class FeatureImpl extends StructuralFeatureImpl implements
 	 * @generated NOT
 	 */
 	// TODO-LW: Why did emf generate @Override here?
+	@Override
 	public FeatureClassifier getFeatureClassifier() {
 		FeatureClassifier featureClassifier = basicGetFeatureClassifier();
-		return featureClassifier != null
-				&& ((EObject) featureClassifier).eIsProxy() ? (FeatureClassifier) eResolveProxy((InternalEObject) featureClassifier)
-				: featureClassifier;
+		return featureClassifier != null && ((EObject) featureClassifier).eIsProxy()
+				? (FeatureClassifier) eResolveProxy((InternalEObject) featureClassifier) : featureClassifier;
 	}
 
 	/**
@@ -173,10 +172,11 @@ public abstract class FeatureImpl extends StructuralFeatureImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
+	@Override
 	public Classifier getClassifier() {
 		EObject classifier = getFeatureClassifier();
-		return (ComponentClassifier) (classifier instanceof ComponentClassifier
-				&& !classifier.eIsProxy() ? classifier : null);
+		return (ComponentClassifier) (classifier instanceof ComponentClassifier && !classifier.eIsProxy() ? classifier
+				: null);
 	}
 
 	/**
@@ -186,8 +186,8 @@ public abstract class FeatureImpl extends StructuralFeatureImpl implements
 	 */
 	public ComponentClassifier basicGetClassifier() {
 		// DONE: implement this method to return the 'Classifier' reference
-		return (basicGetFeatureClassifier() instanceof ComponentClassifier) ? (ComponentClassifier) basicGetFeatureClassifier()
-				: null;
+		return (basicGetFeatureClassifier() instanceof ComponentClassifier)
+				? (ComponentClassifier) basicGetFeatureClassifier() : null;
 	}
 
 	/**
@@ -195,10 +195,11 @@ public abstract class FeatureImpl extends StructuralFeatureImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
+	@Override
 	public ComponentPrototype getPrototype() {
 		EObject prototype = getFeatureClassifier();
-		return (ComponentPrototype) (prototype instanceof ComponentPrototype
-				&& !prototype.eIsProxy() ? prototype : null);
+		return (ComponentPrototype) (prototype instanceof ComponentPrototype && !prototype.eIsProxy() ? prototype
+				: null);
 	}
 
 	/**
@@ -208,8 +209,8 @@ public abstract class FeatureImpl extends StructuralFeatureImpl implements
 	 */
 	public ComponentPrototype basicGetPrototype() {
 		// DONE: implement this method to return the 'Prototype' reference
-		return (basicGetFeatureClassifier() instanceof ComponentPrototype) ? (ComponentPrototype) basicGetFeatureClassifier()
-				: null;
+		return (basicGetFeatureClassifier() instanceof ComponentPrototype)
+				? (ComponentPrototype) basicGetFeatureClassifier() : null;
 	}
 
 	/**
@@ -217,14 +218,16 @@ public abstract class FeatureImpl extends StructuralFeatureImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Feature getRefined() {
 		if (refined != null && ((EObject) refined).eIsProxy()) {
 			InternalEObject oldRefined = (InternalEObject) refined;
 			refined = (Feature) eResolveProxy(oldRefined);
 			if (refined != oldRefined) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-							Aadl2Package.FEATURE__REFINED, oldRefined, refined));
+				if (eNotificationRequired()) {
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, Aadl2Package.FEATURE__REFINED, oldRefined,
+							refined));
+				}
 			}
 		}
 		return refined;
@@ -244,12 +247,13 @@ public abstract class FeatureImpl extends StructuralFeatureImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setRefined(Feature newRefined) {
 		Feature oldRefined = refined;
 		refined = newRefined;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					Aadl2Package.FEATURE__REFINED, oldRefined, refined));
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, Notification.SET, Aadl2Package.FEATURE__REFINED, oldRefined, refined));
+		}
 	}
 
 	/**
@@ -258,12 +262,10 @@ public abstract class FeatureImpl extends StructuralFeatureImpl implements
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case Aadl2Package.FEATURE__ARRAY_DIMENSION:
-			return ((InternalEList<?>) getArrayDimensions()).basicRemove(
-					otherEnd, msgs);
+			return ((InternalEList<?>) getArrayDimensions()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -279,20 +281,24 @@ public abstract class FeatureImpl extends StructuralFeatureImpl implements
 		case Aadl2Package.FEATURE__ARRAY_DIMENSION:
 			return getArrayDimensions();
 		case Aadl2Package.FEATURE__FEATURE_CLASSIFIER:
-			if (resolve)
+			if (resolve) {
 				return getFeatureClassifier();
+			}
 			return basicGetFeatureClassifier();
 		case Aadl2Package.FEATURE__PROTOTYPE:
-			if (resolve)
+			if (resolve) {
 				return getPrototype();
+			}
 			return basicGetPrototype();
 		case Aadl2Package.FEATURE__REFINED:
-			if (resolve)
+			if (resolve) {
 				return getRefined();
+			}
 			return basicGetRefined();
 		case Aadl2Package.FEATURE__CLASSIFIER:
-			if (resolve)
+			if (resolve) {
 				return getClassifier();
+			}
 			return basicGetClassifier();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -309,8 +315,7 @@ public abstract class FeatureImpl extends StructuralFeatureImpl implements
 		switch (featureID) {
 		case Aadl2Package.FEATURE__ARRAY_DIMENSION:
 			getArrayDimensions().clear();
-			getArrayDimensions().addAll(
-					(Collection<? extends ArrayDimension>) newValue);
+			getArrayDimensions().addAll((Collection<? extends ArrayDimension>) newValue);
 			return;
 		case Aadl2Package.FEATURE__REFINED:
 			setRefined((Feature) newValue);
@@ -349,6 +354,8 @@ public abstract class FeatureImpl extends StructuralFeatureImpl implements
 			return arrayDimensions != null && !arrayDimensions.isEmpty();
 		case Aadl2Package.FEATURE__FEATURE_CLASSIFIER:
 			return isSetFeatureClassifier();
+		case Aadl2Package.FEATURE__REFINED_ELEMENT:
+			return isSetRefinedElement();
 		case Aadl2Package.FEATURE__PROTOTYPE:
 			return basicGetPrototype() != null;
 		case Aadl2Package.FEATURE__REFINED:
@@ -426,8 +433,7 @@ public abstract class FeatureImpl extends StructuralFeatureImpl implements
 	 */
 	// TODO-LW: Why did emf generate @Override here?
 	public boolean isSetFeatureClassifier() {
-		return eIsSet(Aadl2Package.FEATURE__PROTOTYPE)
-				|| eIsSet(Aadl2Package.FEATURE__CLASSIFIER);
+		return eIsSet(Aadl2Package.FEATURE__PROTOTYPE) || eIsSet(Aadl2Package.FEATURE__CLASSIFIER);
 	}
 
 	/**
@@ -438,8 +444,8 @@ public abstract class FeatureImpl extends StructuralFeatureImpl implements
 	@Override
 	public RefinableElement getRefinedElement() {
 		RefinableElement refinedElement = basicGetRefinedElement();
-		return refinedElement != null && ((EObject) refinedElement).eIsProxy() ? (RefinableElement) eResolveProxy((InternalEObject) refinedElement)
-				: refinedElement;
+		return refinedElement != null && ((EObject) refinedElement).eIsProxy()
+				? (RefinableElement) eResolveProxy((InternalEObject) refinedElement) : refinedElement;
 	}
 
 	/**
@@ -462,17 +468,17 @@ public abstract class FeatureImpl extends StructuralFeatureImpl implements
 	 */
 	@Override
 	public boolean isSetRefinedElement() {
-		return super.isSetRefinedElement()
-				|| eIsSet(Aadl2Package.FEATURE__REFINED);
+		return super.isSetRefinedElement() || eIsSet(Aadl2Package.FEATURE__REFINED);
 	}
 
 	/*
 	 * Return the feature and any of the features it refines
-	 * 
+	 *
 	 * @return EList of feature
 	 */
 	// XXX: [AADL 1 -> AADL 2] Added to make instantiation and property lookup
 	// work.
+	@Override
 	public EList<Feature> getAllFeatureRefinements() {
 		BasicEList<Feature> returnlist = new BasicEList<Feature>();
 		Feature more = this;
@@ -486,10 +492,11 @@ public abstract class FeatureImpl extends StructuralFeatureImpl implements
 	/*
 	 * Get the classifier of given feature or its refinement ancestor, if it has
 	 * one, otherwise null.
-	 * 
+	 *
 	 * @return The classifier, or <code>null</code> if no classifier.
 	 */
 	// XXX: [AADL 1 -> AADL 2] Added to make instantiation work.
+	@Override
 	public Classifier getAllClassifier() {
 		Classifier cc = getClassifier();
 		Feature f = this;
@@ -500,10 +507,9 @@ public abstract class FeatureImpl extends StructuralFeatureImpl implements
 		return cc;
 	}
 
-	// XXX: [AADL 1 -> AADL 2] Added to make property lookup work.
-	public void getPropertyValueInternal(final Property prop,
-			final PropertyAcc pas, final boolean fromInstanceSlaveCall)
-			throws InvalidModelException {
+	@Override
+	public void getPropertyValueInternal(final Property prop, final PropertyAcc pas,
+			final boolean fromInstanceSlaveCall) throws InvalidModelException {
 		Classifier owner = getContainingClassifier();
 
 		if (pas.addLocalContained(this, owner) || pas.addLocal(this)) {
@@ -513,6 +519,9 @@ public abstract class FeatureImpl extends StructuralFeatureImpl implements
 		// values from refined features
 		Feature refined = getRefined();
 		while (refined != null) {
+			if (pas.addLocalContained(refined, refined.getContainingClassifier())) {
+				return;
+			}
 			if (pas.addLocal(refined)) {
 				return;
 			}
@@ -528,16 +537,14 @@ public abstract class FeatureImpl extends StructuralFeatureImpl implements
 			if (owner != null) {
 				owner.getPropertyValueInternal(prop, pas, fromInstanceSlaveCall);
 			} else {
-				throw new InvalidModelException(this,
-						"Feature is not contained in a component type");
+				throw new InvalidModelException(this, "Feature is not contained in a component type");
 			}
 		}
 	}
 
 	// XXX: [AADL 1 -> AADL 2] Added to make property lookup work.
-	public void getPropertyValueInternalHelper(final Property prop,
-			final PropertyAcc pas, final boolean fromInstanceSlaveCall)
-			throws InvalidModelException {
+	public void getPropertyValueInternalHelper(final Property prop, final PropertyAcc pas,
+			final boolean fromInstanceSlaveCall) throws InvalidModelException {
 		// values from classifier
 		Classifier c = getClassifier();
 		// TODO: Check if the property applies to the classifier? (->
@@ -573,14 +580,13 @@ public abstract class FeatureImpl extends StructuralFeatureImpl implements
 			if (owner != null) {
 				owner.getPropertyValueInternal(prop, pas, true);
 			} else {
-				throw new InvalidModelException(this,
-						"Feature is not contained in a component type");
+				throw new InvalidModelException(this, "Feature is not contained in a component type");
 			}
 		}
 	}
 
-	public void getPropertyValueHelper(final Property prop,
-			final PropertyAcc pas, Classifier cl) throws InvalidModelException {
+	public void getPropertyValueHelper(final Property prop, final PropertyAcc pas, Classifier cl)
+			throws InvalidModelException {
 		// values from classifier
 		Classifier c = getClassifier();
 		// TODO: Check if the property applies to the classifier? (->

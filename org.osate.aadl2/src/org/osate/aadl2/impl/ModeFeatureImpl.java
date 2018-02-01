@@ -43,13 +43,10 @@ import org.osate.aadl2.ModeFeature;
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Mode Feature</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */
-public abstract class ModeFeatureImpl extends ClassifierFeatureImpl implements
-		ModeFeature {
+public abstract class ModeFeatureImpl extends ClassifierFeatureImpl implements ModeFeature {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

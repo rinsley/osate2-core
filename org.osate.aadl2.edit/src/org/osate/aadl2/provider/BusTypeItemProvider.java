@@ -41,12 +41,7 @@ import java.util.List;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
-import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
-import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.osate.aadl2.Aadl2Factory;
 import org.osate.aadl2.Aadl2Package;
@@ -58,9 +53,7 @@ import org.osate.aadl2.BusType;
  * <!-- end-user-doc -->
  * @generated
  */
-public class BusTypeItemProvider extends ComponentTypeItemProvider implements
-		IEditingDomainItemProvider, IStructuredItemContentProvider,
-		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class BusTypeItemProvider extends ComponentTypeItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -95,16 +88,13 @@ public class BusTypeItemProvider extends ComponentTypeItemProvider implements
 	 * @generated
 	 */
 	@Override
-	public Collection<? extends EStructuralFeature> getChildrenFeatures(
-			Object object) {
+	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(Aadl2Package.eINSTANCE
-					.getBusType_OwnedDataPort());
-			childrenFeatures.add(Aadl2Package.eINSTANCE
-					.getBusType_OwnedEventDataPort());
-			childrenFeatures.add(Aadl2Package.eINSTANCE
-					.getBusType_OwnedEventPort());
+			childrenFeatures.add(Aadl2Package.eINSTANCE.getBusType_OwnedBusAccess());
+			childrenFeatures.add(Aadl2Package.eINSTANCE.getBusType_OwnedDataPort());
+			childrenFeatures.add(Aadl2Package.eINSTANCE.getBusType_OwnedEventDataPort());
+			childrenFeatures.add(Aadl2Package.eINSTANCE.getBusType_OwnedEventPort());
 		}
 		return childrenFeatures;
 	}
@@ -130,8 +120,7 @@ public class BusTypeItemProvider extends ComponentTypeItemProvider implements
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object,
-				getResourceLocator().getImage("full/obj16/BusType"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/BusType"));
 	}
 
 	/**
@@ -159,11 +148,11 @@ public class BusTypeItemProvider extends ComponentTypeItemProvider implements
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(BusType.class)) {
+		case Aadl2Package.BUS_TYPE__OWNED_BUS_ACCESS:
 		case Aadl2Package.BUS_TYPE__OWNED_DATA_PORT:
 		case Aadl2Package.BUS_TYPE__OWNED_EVENT_DATA_PORT:
 		case Aadl2Package.BUS_TYPE__OWNED_EVENT_PORT:
-			fireNotifyChanged(new ViewerNotification(notification,
-					notification.getNotifier(), true, false));
+			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 			return;
 		}
 		super.notifyChanged(notification);
@@ -177,20 +166,19 @@ public class BusTypeItemProvider extends ComponentTypeItemProvider implements
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(
-			Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(
-				Aadl2Package.eINSTANCE.getBusType_OwnedDataPort(),
+		newChildDescriptors.add(createChildParameter(Aadl2Package.eINSTANCE.getBusType_OwnedBusAccess(),
+				Aadl2Factory.eINSTANCE.createBusAccess()));
+
+		newChildDescriptors.add(createChildParameter(Aadl2Package.eINSTANCE.getBusType_OwnedDataPort(),
 				Aadl2Factory.eINSTANCE.createDataPort()));
 
-		newChildDescriptors.add(createChildParameter(
-				Aadl2Package.eINSTANCE.getBusType_OwnedEventDataPort(),
+		newChildDescriptors.add(createChildParameter(Aadl2Package.eINSTANCE.getBusType_OwnedEventDataPort(),
 				Aadl2Factory.eINSTANCE.createEventDataPort()));
 
-		newChildDescriptors.add(createChildParameter(
-				Aadl2Package.eINSTANCE.getBusType_OwnedEventPort(),
+		newChildDescriptors.add(createChildParameter(Aadl2Package.eINSTANCE.getBusType_OwnedEventPort(),
 				Aadl2Factory.eINSTANCE.createEventPort()));
 	}
 

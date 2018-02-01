@@ -34,5 +34,4 @@
             type="aail2"
             class="org.osate.aadl2.instance.util.InstanceResourceFactoryImpl"/>
    </extension>
-
 </plugin>

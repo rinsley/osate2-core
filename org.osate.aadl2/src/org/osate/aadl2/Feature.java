@@ -42,36 +42,43 @@ import org.eclipse.emf.common.util.EList;
  * A representation of the model object '<em><b>Feature</b></em>'.
  * <!-- end-user-doc -->
  *
+ * <!-- begin-model-doc -->
+ * <p>From package AADLDetails::Connections.</p>
+ * <p>From package AADLConstructs::Features.</p>
+ * <!-- end-model-doc -->
+ *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.osate.aadl2.Feature#getPrototype <em>Prototype</em>}</li>
  *   <li>{@link org.osate.aadl2.Feature#getFeatureClassifier <em>Feature Classifier</em>}</li>
  *   <li>{@link org.osate.aadl2.Feature#getRefined <em>Refined</em>}</li>
  *   <li>{@link org.osate.aadl2.Feature#getClassifier <em>Classifier</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.osate.aadl2.Aadl2Package#getFeature()
  * @model abstract="true"
  * @generated
  */
-public interface Feature extends StructuralFeature, FeatureConnectionEnd,
-		ArrayableElement {
+public interface Feature extends StructuralFeature, FeatureConnectionEnd, ArrayableElement {
 	/**
 	 * Returns the value of the '<em><b>Prototype</b></em>' reference.
 	 * <p>
 	 * This feature subsets the following features:
+	 * </p>
 	 * <ul>
 	 *   <li>'{@link org.osate.aadl2.Feature#getFeatureClassifier() <em>Feature Classifier</em>}'</li>
 	 * </ul>
-	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Prototype</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * <p>From package AADLConstructs::Features.</p>
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Prototype</em>' reference.
 	 * @see org.osate.aadl2.Aadl2Package#getFeature_Prototype()
 	 * @model transient="true" changeable="false" volatile="true" derived="true" ordered="false"
@@ -88,6 +95,9 @@ public interface Feature extends StructuralFeature, FeatureConnectionEnd,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * <p>From package AADLConstructs::Features.</p>
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Feature Classifier</em>' reference.
 	 * @see org.osate.aadl2.Aadl2Package#getFeature_FeatureClassifier()
 	 * @model transient="true" changeable="false" volatile="true" derived="true" ordered="false"
@@ -99,16 +109,19 @@ public interface Feature extends StructuralFeature, FeatureConnectionEnd,
 	 * Returns the value of the '<em><b>Classifier</b></em>' reference.
 	 * <p>
 	 * This feature subsets the following features:
+	 * </p>
 	 * <ul>
 	 *   <li>'{@link org.osate.aadl2.Feature#getFeatureClassifier() <em>Feature Classifier</em>}'</li>
 	 * </ul>
-	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Classifier</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * <p>From package AADLConstructs::Features.</p>
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Classifier</em>' reference.
 	 * @see org.osate.aadl2.Aadl2Package#getFeature_Classifier()
 	 * @model transient="true" changeable="false" volatile="true" derived="true" ordered="false"
@@ -120,16 +133,19 @@ public interface Feature extends StructuralFeature, FeatureConnectionEnd,
 	 * Returns the value of the '<em><b>Refined</b></em>' reference.
 	 * <p>
 	 * This feature subsets the following features:
+	 * </p>
 	 * <ul>
 	 *   <li>'{@link org.osate.aadl2.RefinableElement#getRefinedElement() <em>Refined Element</em>}'</li>
 	 * </ul>
-	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Refined</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * <p>From package AADLConstructs::Features.</p>
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Refined</em>' reference.
 	 * @see #setRefined(Feature)
 	 * @see org.osate.aadl2.Aadl2Package#getFeature_Refined()

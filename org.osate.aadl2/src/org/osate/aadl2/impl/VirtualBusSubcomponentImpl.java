@@ -44,7 +44,7 @@ import org.osate.aadl2.Aadl2Package;
 import org.osate.aadl2.ComponentCategory;
 import org.osate.aadl2.SubcomponentType;
 import org.osate.aadl2.VirtualBusSubcomponent;
-import org.osate.aadl2.VitualBusSubcomponentType;
+import org.osate.aadl2.VirtualBusSubcomponentType;
 
 /**
  * <!-- begin-user-doc -->
@@ -52,16 +52,15 @@ import org.osate.aadl2.VitualBusSubcomponentType;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.osate.aadl2.impl.VirtualBusSubcomponentImpl#getSubcomponentType <em>Subcomponent Type</em>}</li>
  *   <li>{@link org.osate.aadl2.impl.VirtualBusSubcomponentImpl#getVirtualBusSubcomponentType <em>Virtual Bus Subcomponent Type</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
-public class VirtualBusSubcomponentImpl extends SubcomponentImpl implements
-		VirtualBusSubcomponent {
+public class VirtualBusSubcomponentImpl extends SubcomponentImpl implements VirtualBusSubcomponent {
 	/**
 	 * The cached value of the '{@link #getVirtualBusSubcomponentType() <em>Virtual Bus Subcomponent Type</em>}' reference.
 	 * <!-- begin-user-doc -->
@@ -70,7 +69,7 @@ public class VirtualBusSubcomponentImpl extends SubcomponentImpl implements
 	 * @generated
 	 * @ordered
 	 */
-	protected VitualBusSubcomponentType virtualBusSubcomponentType;
+	protected VirtualBusSubcomponentType virtualBusSubcomponentType;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -99,9 +98,8 @@ public class VirtualBusSubcomponentImpl extends SubcomponentImpl implements
 	@Override
 	public SubcomponentType getSubcomponentType() {
 		SubcomponentType subcomponentType = basicGetSubcomponentType();
-		return subcomponentType != null
-				&& ((EObject) subcomponentType).eIsProxy() ? (SubcomponentType) eResolveProxy((InternalEObject) subcomponentType)
-				: subcomponentType;
+		return subcomponentType != null && ((EObject) subcomponentType).eIsProxy()
+				? (SubcomponentType) eResolveProxy((InternalEObject) subcomponentType) : subcomponentType;
 	}
 
 	/**
@@ -122,19 +120,17 @@ public class VirtualBusSubcomponentImpl extends SubcomponentImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public VitualBusSubcomponentType getVirtualBusSubcomponentType() {
-		if (virtualBusSubcomponentType != null
-				&& ((EObject) virtualBusSubcomponentType).eIsProxy()) {
+	@Override
+	public VirtualBusSubcomponentType getVirtualBusSubcomponentType() {
+		if (virtualBusSubcomponentType != null && ((EObject) virtualBusSubcomponentType).eIsProxy()) {
 			InternalEObject oldVirtualBusSubcomponentType = (InternalEObject) virtualBusSubcomponentType;
-			virtualBusSubcomponentType = (VitualBusSubcomponentType) eResolveProxy(oldVirtualBusSubcomponentType);
+			virtualBusSubcomponentType = (VirtualBusSubcomponentType) eResolveProxy(oldVirtualBusSubcomponentType);
 			if (virtualBusSubcomponentType != oldVirtualBusSubcomponentType) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(
-							this,
-							Notification.RESOLVE,
+				if (eNotificationRequired()) {
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 							Aadl2Package.VIRTUAL_BUS_SUBCOMPONENT__VIRTUAL_BUS_SUBCOMPONENT_TYPE,
-							oldVirtualBusSubcomponentType,
-							virtualBusSubcomponentType));
+							oldVirtualBusSubcomponentType, virtualBusSubcomponentType));
+				}
 			}
 		}
 		return virtualBusSubcomponentType;
@@ -145,7 +141,7 @@ public class VirtualBusSubcomponentImpl extends SubcomponentImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public VitualBusSubcomponentType basicGetVirtualBusSubcomponentType() {
+	public VirtualBusSubcomponentType basicGetVirtualBusSubcomponentType() {
 		return virtualBusSubcomponentType;
 	}
 
@@ -154,16 +150,15 @@ public class VirtualBusSubcomponentImpl extends SubcomponentImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setVirtualBusSubcomponentType(
-			VitualBusSubcomponentType newVirtualBusSubcomponentType) {
-		VitualBusSubcomponentType oldVirtualBusSubcomponentType = virtualBusSubcomponentType;
+	@Override
+	public void setVirtualBusSubcomponentType(VirtualBusSubcomponentType newVirtualBusSubcomponentType) {
+		VirtualBusSubcomponentType oldVirtualBusSubcomponentType = virtualBusSubcomponentType;
 		virtualBusSubcomponentType = newVirtualBusSubcomponentType;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(
-					this,
-					Notification.SET,
-					Aadl2Package.VIRTUAL_BUS_SUBCOMPONENT__VIRTUAL_BUS_SUBCOMPONENT_TYPE,
-					oldVirtualBusSubcomponentType, virtualBusSubcomponentType));
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					Aadl2Package.VIRTUAL_BUS_SUBCOMPONENT__VIRTUAL_BUS_SUBCOMPONENT_TYPE, oldVirtualBusSubcomponentType,
+					virtualBusSubcomponentType));
+		}
 	}
 
 	/**
@@ -175,8 +170,9 @@ public class VirtualBusSubcomponentImpl extends SubcomponentImpl implements
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 		case Aadl2Package.VIRTUAL_BUS_SUBCOMPONENT__VIRTUAL_BUS_SUBCOMPONENT_TYPE:
-			if (resolve)
+			if (resolve) {
 				return getVirtualBusSubcomponentType();
+			}
 			return basicGetVirtualBusSubcomponentType();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -191,7 +187,7 @@ public class VirtualBusSubcomponentImpl extends SubcomponentImpl implements
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 		case Aadl2Package.VIRTUAL_BUS_SUBCOMPONENT__VIRTUAL_BUS_SUBCOMPONENT_TYPE:
-			setVirtualBusSubcomponentType((VitualBusSubcomponentType) newValue);
+			setVirtualBusSubcomponentType((VirtualBusSubcomponentType) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -206,7 +202,7 @@ public class VirtualBusSubcomponentImpl extends SubcomponentImpl implements
 	public void eUnset(int featureID) {
 		switch (featureID) {
 		case Aadl2Package.VIRTUAL_BUS_SUBCOMPONENT__VIRTUAL_BUS_SUBCOMPONENT_TYPE:
-			setVirtualBusSubcomponentType((VitualBusSubcomponentType) null);
+			setVirtualBusSubcomponentType((VirtualBusSubcomponentType) null);
 			return;
 		}
 		super.eUnset(featureID);
@@ -220,6 +216,8 @@ public class VirtualBusSubcomponentImpl extends SubcomponentImpl implements
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+		case Aadl2Package.VIRTUAL_BUS_SUBCOMPONENT__SUBCOMPONENT_TYPE:
+			return isSetSubcomponentType();
 		case Aadl2Package.VIRTUAL_BUS_SUBCOMPONENT__VIRTUAL_BUS_SUBCOMPONENT_TYPE:
 			return virtualBusSubcomponentType != null;
 		}
@@ -237,6 +235,7 @@ public class VirtualBusSubcomponentImpl extends SubcomponentImpl implements
 				|| eIsSet(Aadl2Package.VIRTUAL_BUS_SUBCOMPONENT__VIRTUAL_BUS_SUBCOMPONENT_TYPE);
 	}
 
+	@Override
 	public ComponentCategory getCategory() {
 		return ComponentCategory.VIRTUAL_BUS;
 	}

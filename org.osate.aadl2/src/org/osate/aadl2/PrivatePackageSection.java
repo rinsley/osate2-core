@@ -40,12 +40,16 @@ package org.osate.aadl2;
  * A representation of the model object '<em><b>Private Package Section</b></em>'.
  * <!-- end-user-doc -->
  *
+ * <!-- begin-model-doc -->
+ * <p>From package AADLConstructs::Packaging.</p>
+ * <!-- end-model-doc -->
+ *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.osate.aadl2.PrivatePackageSection#getPublicSection <em>Public Section</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.osate.aadl2.Aadl2Package#getPrivatePackageSection()
  * @model
@@ -61,6 +65,9 @@ public interface PrivatePackageSection extends PackageSection {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * <p>From package AADLConstructs::Packaging.</p>
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Public Section</em>' reference.
 	 * @see org.osate.aadl2.Aadl2Package#getPrivatePackageSection_PublicSection()
 	 * @see org.osate.aadl2.PublicPackageSection#getPrivateSection

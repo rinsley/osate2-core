@@ -43,13 +43,10 @@ import org.osate.aadl2.VirtualBus;
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Virtual Bus</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */
-public abstract class VirtualBusImpl extends NamedElementImpl implements
-		VirtualBus {
+public abstract class VirtualBusImpl extends NamedElementImpl implements VirtualBus {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

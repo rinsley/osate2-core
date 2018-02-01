@@ -53,18 +53,17 @@ import org.osate.aadl2.Generalization;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.osate.aadl2.impl.GeneralizationImpl#getGeneral <em>General</em>}</li>
  *   <li>{@link org.osate.aadl2.impl.GeneralizationImpl#getTargets <em>Target</em>}</li>
  *   <li>{@link org.osate.aadl2.impl.GeneralizationImpl#getSources <em>Source</em>}</li>
  *   <li>{@link org.osate.aadl2.impl.GeneralizationImpl#getSpecific <em>Specific</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
-public abstract class GeneralizationImpl extends DirectedRelationshipImpl
-		implements Generalization {
+public abstract class GeneralizationImpl extends DirectedRelationshipImpl implements Generalization {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -95,21 +94,17 @@ public abstract class GeneralizationImpl extends DirectedRelationshipImpl
 		if (cache != null) {
 			Resource eResource = eResource();
 			@SuppressWarnings("unchecked")
-			EList<Element> targets = (EList<Element>) cache.get(eResource,
-					this,
+			EList<Element> targets = (EList<Element>) cache.get(eResource, this,
 					Aadl2Package.eINSTANCE.getDirectedRelationship_Target());
 			if (targets == null) {
-				cache.put(eResource, this, Aadl2Package.eINSTANCE
-						.getDirectedRelationship_Target(),
-						targets = new DerivedUnionEObjectEList<Element>(
-								Element.class, this,
-								Aadl2Package.GENERALIZATION__TARGET,
-								TARGET_ESUBSETS));
+				cache.put(eResource, this, Aadl2Package.eINSTANCE.getDirectedRelationship_Target(),
+						targets = new DerivedUnionEObjectEList<Element>(Element.class, this,
+								Aadl2Package.GENERALIZATION__TARGET, TARGET_ESUBSETS));
 			}
 			return targets;
 		}
-		return new DerivedUnionEObjectEList<Element>(Element.class, this,
-				Aadl2Package.GENERALIZATION__TARGET, TARGET_ESUBSETS);
+		return new DerivedUnionEObjectEList<Element>(Element.class, this, Aadl2Package.GENERALIZATION__TARGET,
+				TARGET_ESUBSETS);
 	}
 
 	/**
@@ -133,21 +128,17 @@ public abstract class GeneralizationImpl extends DirectedRelationshipImpl
 		if (cache != null) {
 			Resource eResource = eResource();
 			@SuppressWarnings("unchecked")
-			EList<Element> sources = (EList<Element>) cache.get(eResource,
-					this,
+			EList<Element> sources = (EList<Element>) cache.get(eResource, this,
 					Aadl2Package.eINSTANCE.getDirectedRelationship_Source());
 			if (sources == null) {
-				cache.put(eResource, this, Aadl2Package.eINSTANCE
-						.getDirectedRelationship_Source(),
-						sources = new DerivedUnionEObjectEList<Element>(
-								Element.class, this,
-								Aadl2Package.GENERALIZATION__SOURCE,
-								SOURCE_ESUBSETS));
+				cache.put(eResource, this, Aadl2Package.eINSTANCE.getDirectedRelationship_Source(),
+						sources = new DerivedUnionEObjectEList<Element>(Element.class, this,
+								Aadl2Package.GENERALIZATION__SOURCE, SOURCE_ESUBSETS));
 			}
 			return sources;
 		}
-		return new DerivedUnionEObjectEList<Element>(Element.class, this,
-				Aadl2Package.GENERALIZATION__SOURCE, SOURCE_ESUBSETS);
+		return new DerivedUnionEObjectEList<Element>(Element.class, this, Aadl2Package.GENERALIZATION__SOURCE,
+				SOURCE_ESUBSETS);
 	}
 
 	/**
@@ -165,6 +156,7 @@ public abstract class GeneralizationImpl extends DirectedRelationshipImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Classifier getGeneral() {
 		Classifier general = basicGetGeneral();
 		return general != null && ((EObject) general).eIsProxy() ? (Classifier) eResolveProxy((InternalEObject) general)
@@ -185,6 +177,7 @@ public abstract class GeneralizationImpl extends DirectedRelationshipImpl
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
+	@Override
 	public Classifier getSpecific() {
 		// DONE: implement this method to return the 'Specific' container
 		// reference
@@ -206,6 +199,7 @@ public abstract class GeneralizationImpl extends DirectedRelationshipImpl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setSpecific(Classifier newSpecific) {
 		// TODO: implement this method to set the 'Specific' reference
 		// Ensure that you remove @generated or mark it @generated NOT
@@ -221,12 +215,14 @@ public abstract class GeneralizationImpl extends DirectedRelationshipImpl
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 		case Aadl2Package.GENERALIZATION__GENERAL:
-			if (resolve)
+			if (resolve) {
 				return getGeneral();
+			}
 			return basicGetGeneral();
 		case Aadl2Package.GENERALIZATION__SPECIFIC:
-			if (resolve)
+			if (resolve) {
 				return getSpecific();
+			}
 			return basicGetSpecific();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -272,6 +268,10 @@ public abstract class GeneralizationImpl extends DirectedRelationshipImpl
 		switch (featureID) {
 		case Aadl2Package.GENERALIZATION__GENERAL:
 			return isSetGeneral();
+		case Aadl2Package.GENERALIZATION__TARGET:
+			return isSetTargets();
+		case Aadl2Package.GENERALIZATION__SOURCE:
+			return isSetSources();
 		case Aadl2Package.GENERALIZATION__SPECIFIC:
 			return basicGetSpecific() != null;
 		}
@@ -304,8 +304,7 @@ public abstract class GeneralizationImpl extends DirectedRelationshipImpl
 	 */
 	@Override
 	public boolean isSetSources() {
-		return super.isSetSources()
-				|| eIsSet(Aadl2Package.GENERALIZATION__SPECIFIC);
+		return super.isSetSources() || eIsSet(Aadl2Package.GENERALIZATION__SPECIFIC);
 	}
 
 } // GeneralizationImpl

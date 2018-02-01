@@ -48,6 +48,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import org.eclipse.uml2.common.util.CacheAdapter;
 import org.eclipse.uml2.common.util.DerivedUnionEObjectEList;
 import org.osate.aadl2.Aadl2Package;
+import org.osate.aadl2.AnnexSubclause;
 import org.osate.aadl2.ModelUnit;
 import org.osate.aadl2.NamedElement;
 import org.osate.aadl2.Property;
@@ -61,14 +62,15 @@ import org.osate.aadl2.PropertyType;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.osate.aadl2.impl.PropertySetImpl#getOwnedMembers <em>Owned Member</em>}</li>
  *   <li>{@link org.osate.aadl2.impl.PropertySetImpl#getOwnedPropertyTypes <em>Owned Property Type</em>}</li>
  *   <li>{@link org.osate.aadl2.impl.PropertySetImpl#getOwnedProperties <em>Owned Property</em>}</li>
  *   <li>{@link org.osate.aadl2.impl.PropertySetImpl#getOwnedPropertyConstants <em>Owned Property Constant</em>}</li>
  *   <li>{@link org.osate.aadl2.impl.PropertySetImpl#getImportedUnits <em>Imported Unit</em>}</li>
+ *   <li>{@link org.osate.aadl2.impl.PropertySetImpl#getOwnedAnnexSubclauses <em>Owned Annex Subclause</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -114,6 +116,16 @@ public class PropertySetImpl extends NamespaceImpl implements PropertySet {
 	protected EList<ModelUnit> importedUnits;
 
 	/**
+	 * The cached value of the '{@link #getOwnedAnnexSubclauses() <em>Owned Annex Subclause</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOwnedAnnexSubclauses()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<AnnexSubclause> ownedAnnexSubclauses;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -143,24 +155,17 @@ public class PropertySetImpl extends NamespaceImpl implements PropertySet {
 		if (cache != null) {
 			Resource eResource = eResource();
 			@SuppressWarnings("unchecked")
-			EList<NamedElement> ownedMembers = (EList<NamedElement>) cache.get(
-					eResource, this,
+			EList<NamedElement> ownedMembers = (EList<NamedElement>) cache.get(eResource, this,
 					Aadl2Package.eINSTANCE.getNamespace_OwnedMember());
 			if (ownedMembers == null) {
-				cache.put(
-						eResource,
-						this,
-						Aadl2Package.eINSTANCE.getNamespace_OwnedMember(),
-						ownedMembers = new DerivedUnionEObjectEList<NamedElement>(
-								NamedElement.class, this,
-								Aadl2Package.PROPERTY_SET__OWNED_MEMBER,
-								OWNED_MEMBER_ESUBSETS));
+				cache.put(eResource, this, Aadl2Package.eINSTANCE.getNamespace_OwnedMember(),
+						ownedMembers = new DerivedUnionEObjectEList<NamedElement>(NamedElement.class, this,
+								Aadl2Package.PROPERTY_SET__OWNED_MEMBER, OWNED_MEMBER_ESUBSETS));
 			}
 			return ownedMembers;
 		}
-		return new DerivedUnionEObjectEList<NamedElement>(NamedElement.class,
-				this, Aadl2Package.PROPERTY_SET__OWNED_MEMBER,
-				OWNED_MEMBER_ESUBSETS);
+		return new DerivedUnionEObjectEList<NamedElement>(NamedElement.class, this,
+				Aadl2Package.PROPERTY_SET__OWNED_MEMBER, OWNED_MEMBER_ESUBSETS);
 	}
 
 	/**
@@ -171,20 +176,18 @@ public class PropertySetImpl extends NamespaceImpl implements PropertySet {
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int[] OWNED_MEMBER_ESUBSETS = new int[] {
-			Aadl2Package.PROPERTY_SET__OWNED_PROPERTY_TYPE,
-			Aadl2Package.PROPERTY_SET__OWNED_PROPERTY,
-			Aadl2Package.PROPERTY_SET__OWNED_PROPERTY_CONSTANT };
+	protected static final int[] OWNED_MEMBER_ESUBSETS = new int[] { Aadl2Package.PROPERTY_SET__OWNED_PROPERTY_TYPE,
+			Aadl2Package.PROPERTY_SET__OWNED_PROPERTY, Aadl2Package.PROPERTY_SET__OWNED_PROPERTY_CONSTANT };
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<PropertyType> getOwnedPropertyTypes() {
 		if (ownedPropertyTypes == null) {
-			ownedPropertyTypes = new EObjectContainmentEList<PropertyType>(
-					PropertyType.class, this,
+			ownedPropertyTypes = new EObjectContainmentEList<PropertyType>(PropertyType.class, this,
 					Aadl2Package.PROPERTY_SET__OWNED_PROPERTY_TYPE);
 		}
 		return ownedPropertyTypes;
@@ -195,6 +198,7 @@ public class PropertySetImpl extends NamespaceImpl implements PropertySet {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public PropertyType createOwnedPropertyType(EClass eClass) {
 		PropertyType newOwnedPropertyType = (PropertyType) create(eClass);
 		getOwnedPropertyTypes().add(newOwnedPropertyType);
@@ -206,10 +210,10 @@ public class PropertySetImpl extends NamespaceImpl implements PropertySet {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Property> getOwnedProperties() {
 		if (ownedProperties == null) {
-			ownedProperties = new EObjectContainmentEList<Property>(
-					Property.class, this,
+			ownedProperties = new EObjectContainmentEList<Property>(Property.class, this,
 					Aadl2Package.PROPERTY_SET__OWNED_PROPERTY);
 		}
 		return ownedProperties;
@@ -220,9 +224,9 @@ public class PropertySetImpl extends NamespaceImpl implements PropertySet {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Property createOwnedProperty() {
-		Property newOwnedProperty = (Property) create(Aadl2Package.eINSTANCE
-				.getProperty());
+		Property newOwnedProperty = (Property) create(Aadl2Package.eINSTANCE.getProperty());
 		getOwnedProperties().add(newOwnedProperty);
 		return newOwnedProperty;
 	}
@@ -232,10 +236,10 @@ public class PropertySetImpl extends NamespaceImpl implements PropertySet {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<PropertyConstant> getOwnedPropertyConstants() {
 		if (ownedPropertyConstants == null) {
-			ownedPropertyConstants = new EObjectContainmentEList<PropertyConstant>(
-					PropertyConstant.class, this,
+			ownedPropertyConstants = new EObjectContainmentEList<PropertyConstant>(PropertyConstant.class, this,
 					Aadl2Package.PROPERTY_SET__OWNED_PROPERTY_CONSTANT);
 		}
 		return ownedPropertyConstants;
@@ -246,9 +250,10 @@ public class PropertySetImpl extends NamespaceImpl implements PropertySet {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public PropertyConstant createOwnedPropertyConstant() {
-		PropertyConstant newOwnedPropertyConstant = (PropertyConstant) create(Aadl2Package.eINSTANCE
-				.getPropertyConstant());
+		PropertyConstant newOwnedPropertyConstant = (PropertyConstant) create(
+				Aadl2Package.eINSTANCE.getPropertyConstant());
 		getOwnedPropertyConstants().add(newOwnedPropertyConstant);
 		return newOwnedPropertyConstant;
 	}
@@ -258,10 +263,10 @@ public class PropertySetImpl extends NamespaceImpl implements PropertySet {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<ModelUnit> getImportedUnits() {
 		if (importedUnits == null) {
-			importedUnits = new EObjectResolvingEList<ModelUnit>(
-					ModelUnit.class, this,
+			importedUnits = new EObjectResolvingEList<ModelUnit>(ModelUnit.class, this,
 					Aadl2Package.PROPERTY_SET__IMPORTED_UNIT);
 		}
 		return importedUnits;
@@ -273,18 +278,52 @@ public class PropertySetImpl extends NamespaceImpl implements PropertySet {
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public EList<AnnexSubclause> getOwnedAnnexSubclauses() {
+		if (ownedAnnexSubclauses == null) {
+			ownedAnnexSubclauses = new EObjectContainmentEList<AnnexSubclause>(AnnexSubclause.class, this,
+					Aadl2Package.PROPERTY_SET__OWNED_ANNEX_SUBCLAUSE);
+		}
+		return ownedAnnexSubclauses;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public AnnexSubclause createOwnedAnnexSubclause(EClass eClass) {
+		AnnexSubclause newOwnedAnnexSubclause = (AnnexSubclause) create(eClass);
+		getOwnedAnnexSubclauses().add(newOwnedAnnexSubclause);
+		return newOwnedAnnexSubclause;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public AnnexSubclause createOwnedAnnexSubclause() {
+		return createOwnedAnnexSubclause(Aadl2Package.eINSTANCE.getAnnexSubclause());
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case Aadl2Package.PROPERTY_SET__OWNED_PROPERTY_TYPE:
-			return ((InternalEList<?>) getOwnedPropertyTypes()).basicRemove(
-					otherEnd, msgs);
+			return ((InternalEList<?>) getOwnedPropertyTypes()).basicRemove(otherEnd, msgs);
 		case Aadl2Package.PROPERTY_SET__OWNED_PROPERTY:
-			return ((InternalEList<?>) getOwnedProperties()).basicRemove(
-					otherEnd, msgs);
+			return ((InternalEList<?>) getOwnedProperties()).basicRemove(otherEnd, msgs);
 		case Aadl2Package.PROPERTY_SET__OWNED_PROPERTY_CONSTANT:
-			return ((InternalEList<?>) getOwnedPropertyConstants())
-					.basicRemove(otherEnd, msgs);
+			return ((InternalEList<?>) getOwnedPropertyConstants()).basicRemove(otherEnd, msgs);
+		case Aadl2Package.PROPERTY_SET__OWNED_ANNEX_SUBCLAUSE:
+			return ((InternalEList<?>) getOwnedAnnexSubclauses()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -305,6 +344,8 @@ public class PropertySetImpl extends NamespaceImpl implements PropertySet {
 			return getOwnedPropertyConstants();
 		case Aadl2Package.PROPERTY_SET__IMPORTED_UNIT:
 			return getImportedUnits();
+		case Aadl2Package.PROPERTY_SET__OWNED_ANNEX_SUBCLAUSE:
+			return getOwnedAnnexSubclauses();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -320,23 +361,23 @@ public class PropertySetImpl extends NamespaceImpl implements PropertySet {
 		switch (featureID) {
 		case Aadl2Package.PROPERTY_SET__OWNED_PROPERTY_TYPE:
 			getOwnedPropertyTypes().clear();
-			getOwnedPropertyTypes().addAll(
-					(Collection<? extends PropertyType>) newValue);
+			getOwnedPropertyTypes().addAll((Collection<? extends PropertyType>) newValue);
 			return;
 		case Aadl2Package.PROPERTY_SET__OWNED_PROPERTY:
 			getOwnedProperties().clear();
-			getOwnedProperties().addAll(
-					(Collection<? extends Property>) newValue);
+			getOwnedProperties().addAll((Collection<? extends Property>) newValue);
 			return;
 		case Aadl2Package.PROPERTY_SET__OWNED_PROPERTY_CONSTANT:
 			getOwnedPropertyConstants().clear();
-			getOwnedPropertyConstants().addAll(
-					(Collection<? extends PropertyConstant>) newValue);
+			getOwnedPropertyConstants().addAll((Collection<? extends PropertyConstant>) newValue);
 			return;
 		case Aadl2Package.PROPERTY_SET__IMPORTED_UNIT:
 			getImportedUnits().clear();
-			getImportedUnits().addAll(
-					(Collection<? extends ModelUnit>) newValue);
+			getImportedUnits().addAll((Collection<? extends ModelUnit>) newValue);
+			return;
+		case Aadl2Package.PROPERTY_SET__OWNED_ANNEX_SUBCLAUSE:
+			getOwnedAnnexSubclauses().clear();
+			getOwnedAnnexSubclauses().addAll((Collection<? extends AnnexSubclause>) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -362,6 +403,9 @@ public class PropertySetImpl extends NamespaceImpl implements PropertySet {
 		case Aadl2Package.PROPERTY_SET__IMPORTED_UNIT:
 			getImportedUnits().clear();
 			return;
+		case Aadl2Package.PROPERTY_SET__OWNED_ANNEX_SUBCLAUSE:
+			getOwnedAnnexSubclauses().clear();
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -374,15 +418,18 @@ public class PropertySetImpl extends NamespaceImpl implements PropertySet {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+		case Aadl2Package.PROPERTY_SET__OWNED_MEMBER:
+			return isSetOwnedMembers();
 		case Aadl2Package.PROPERTY_SET__OWNED_PROPERTY_TYPE:
 			return ownedPropertyTypes != null && !ownedPropertyTypes.isEmpty();
 		case Aadl2Package.PROPERTY_SET__OWNED_PROPERTY:
 			return ownedProperties != null && !ownedProperties.isEmpty();
 		case Aadl2Package.PROPERTY_SET__OWNED_PROPERTY_CONSTANT:
-			return ownedPropertyConstants != null
-					&& !ownedPropertyConstants.isEmpty();
+			return ownedPropertyConstants != null && !ownedPropertyConstants.isEmpty();
 		case Aadl2Package.PROPERTY_SET__IMPORTED_UNIT:
 			return importedUnits != null && !importedUnits.isEmpty();
+		case Aadl2Package.PROPERTY_SET__OWNED_ANNEX_SUBCLAUSE:
+			return ownedAnnexSubclauses != null && !ownedAnnexSubclauses.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
@@ -394,8 +441,7 @@ public class PropertySetImpl extends NamespaceImpl implements PropertySet {
 	 */
 	@Override
 	public boolean isSetOwnedMembers() {
-		return super.isSetOwnedMembers()
-				|| eIsSet(Aadl2Package.PROPERTY_SET__OWNED_PROPERTY_TYPE)
+		return super.isSetOwnedMembers() || eIsSet(Aadl2Package.PROPERTY_SET__OWNED_PROPERTY_TYPE)
 				|| eIsSet(Aadl2Package.PROPERTY_SET__OWNED_PROPERTY)
 				|| eIsSet(Aadl2Package.PROPERTY_SET__OWNED_PROPERTY_CONSTANT);
 	}

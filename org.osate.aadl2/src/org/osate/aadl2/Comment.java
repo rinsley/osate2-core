@@ -42,14 +42,15 @@ package org.osate.aadl2;
  *
  * <!-- begin-model-doc -->
  * A comment is a textual annotation that can be attached to a set of elements.
+ * <p>From package AADLInfrastructure.</p>
  * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.osate.aadl2.Comment#getBody <em>Body</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.osate.aadl2.Aadl2Package#getComment()
  * @model
@@ -62,12 +63,12 @@ public interface Comment extends Element {
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Specifies a string that is the comment
+	 * <p>From package AADLInfrastructure.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Body</em>' attribute.
 	 * @see #setBody(String)
 	 * @see org.osate.aadl2.Aadl2Package#getComment_Body()
 	 * @model dataType="org.osate.aadl2.String" ordered="false"
-	 *        annotation="http://www.topcased.org/documentation documentation='Specifies a string that is the comment'"
 	 * @generated
 	 */
 	String getBody();

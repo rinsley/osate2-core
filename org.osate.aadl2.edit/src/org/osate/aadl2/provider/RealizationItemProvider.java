@@ -41,12 +41,7 @@ import java.util.List;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
-import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
-import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
-import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.osate.aadl2.Aadl2Package;
 
 /**
@@ -55,9 +50,7 @@ import org.osate.aadl2.Aadl2Package;
  * <!-- end-user-doc -->
  * @generated
  */
-public class RealizationItemProvider extends GeneralizationItemProvider
-		implements IEditingDomainItemProvider, IStructuredItemContentProvider,
-		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class RealizationItemProvider extends GeneralizationItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -91,16 +84,12 @@ public class RealizationItemProvider extends GeneralizationItemProvider
 	 * @generated
 	 */
 	protected void addImplementedPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-						.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_Realization_implemented_feature"),
-				getString("_UI_PropertyDescriptor_description",
-						"_UI_Realization_implemented_feature",
-						"_UI_Realization_type"), Aadl2Package.eINSTANCE
-						.getRealization_Implemented(), true, false, true, null,
-				null, null));
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_Realization_implemented_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_Realization_implemented_feature",
+								"_UI_Realization_type"),
+						Aadl2Package.eINSTANCE.getRealization_Implemented(), true, false, true, null, null, null));
 	}
 
 	/**
@@ -111,8 +100,7 @@ public class RealizationItemProvider extends GeneralizationItemProvider
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object,
-				getResourceLocator().getImage("full/obj16/Realization"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/Realization"));
 	}
 
 	/**
@@ -147,8 +135,7 @@ public class RealizationItemProvider extends GeneralizationItemProvider
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(
-			Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 

@@ -40,34 +40,41 @@ package org.osate.aadl2;
  * A representation of the model object '<em><b>Data Subcomponent</b></em>'.
  * <!-- end-user-doc -->
  *
+ * <!-- begin-model-doc -->
+ * <p>From package AADLDetails::Components::Data.</p>
+ * <!-- end-model-doc -->
+ *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.osate.aadl2.DataSubcomponent#getDataSubcomponentType <em>Data Subcomponent Type</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.osate.aadl2.Aadl2Package#getDataSubcomponent()
  * @model
  * @generated
  */
-public interface DataSubcomponent extends Subcomponent, AccessConnectionEnd,
-		Data, ParameterConnectionEnd, PortConnectionEnd {
+public interface DataSubcomponent
+		extends Subcomponent, AccessConnectionEnd, Data, ParameterConnectionEnd, PortConnectionEnd {
 
 	/**
 	 * Returns the value of the '<em><b>Data Subcomponent Type</b></em>' reference.
 	 * <p>
 	 * This feature subsets the following features:
+	 * </p>
 	 * <ul>
 	 *   <li>'{@link org.osate.aadl2.Subcomponent#getSubcomponentType() <em>Subcomponent Type</em>}'</li>
 	 * </ul>
-	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Data Subcomponent Type</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * <p>From package AADLDetails::Components::Data.</p>
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Data Subcomponent Type</em>' reference.
 	 * @see #setDataSubcomponentType(DataSubcomponentType)
 	 * @see org.osate.aadl2.Aadl2Package#getDataSubcomponent_DataSubcomponentType()

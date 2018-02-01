@@ -43,12 +43,16 @@ import org.eclipse.emf.ecore.EClass;
  * A representation of the model object '<em><b>Record Type</b></em>'.
  * <!-- end-user-doc -->
  *
+ * <!-- begin-model-doc -->
+ * <p>From package AADLProperties::Types.</p>
+ * <!-- end-model-doc -->
+ *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.osate.aadl2.RecordType#getOwnedFields <em>Owned Field</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.osate.aadl2.Aadl2Package#getRecordType()
  * @model
@@ -60,16 +64,19 @@ public interface RecordType extends Namespace, NonListType {
 	 * The list contents are of type {@link org.osate.aadl2.BasicProperty}.
 	 * <p>
 	 * This feature subsets the following features:
+	 * </p>
 	 * <ul>
 	 *   <li>'{@link org.osate.aadl2.Namespace#getOwnedMembers() <em>Owned Member</em>}'</li>
 	 * </ul>
-	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Field</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * <p>From package AADLProperties::Types.</p>
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Field</em>' containment reference list.
 	 * @see org.osate.aadl2.Aadl2Package#getRecordType_OwnedField()
 	 * @model containment="true" ordered="false"

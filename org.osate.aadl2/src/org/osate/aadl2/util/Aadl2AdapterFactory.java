@@ -39,263 +39,6 @@ import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 import org.eclipse.emf.ecore.EObject;
-import org.osate.aadl2.Aadl2Package;
-import org.osate.aadl2.AadlBoolean;
-import org.osate.aadl2.AadlInteger;
-import org.osate.aadl2.AadlPackage;
-import org.osate.aadl2.AadlReal;
-import org.osate.aadl2.AadlString;
-import org.osate.aadl2.Abstract;
-import org.osate.aadl2.AbstractClassifier;
-import org.osate.aadl2.AbstractConnectionEnd;
-import org.osate.aadl2.AbstractFeature;
-import org.osate.aadl2.AbstractImplementation;
-import org.osate.aadl2.AbstractNamedValue;
-import org.osate.aadl2.AbstractPrototype;
-import org.osate.aadl2.AbstractSubcomponent;
-import org.osate.aadl2.AbstractSubcomponentType;
-import org.osate.aadl2.AbstractType;
-import org.osate.aadl2.Access;
-import org.osate.aadl2.AccessConnection;
-import org.osate.aadl2.AccessConnectionEnd;
-import org.osate.aadl2.AccessSpecification;
-import org.osate.aadl2.AnnexLibrary;
-import org.osate.aadl2.AnnexSubclause;
-import org.osate.aadl2.ArrayDimension;
-import org.osate.aadl2.ArrayRange;
-import org.osate.aadl2.ArraySize;
-import org.osate.aadl2.ArraySizeProperty;
-import org.osate.aadl2.ArrayableElement;
-import org.osate.aadl2.BasicProperty;
-import org.osate.aadl2.BasicPropertyAssociation;
-import org.osate.aadl2.BehavioralFeature;
-import org.osate.aadl2.BehavioredImplementation;
-import org.osate.aadl2.BooleanLiteral;
-import org.osate.aadl2.Bus;
-import org.osate.aadl2.BusAccess;
-import org.osate.aadl2.BusClassifier;
-import org.osate.aadl2.BusImplementation;
-import org.osate.aadl2.BusPrototype;
-import org.osate.aadl2.BusSubcomponent;
-import org.osate.aadl2.BusSubcomponentType;
-import org.osate.aadl2.BusType;
-import org.osate.aadl2.CallContext;
-import org.osate.aadl2.CallSpecification;
-import org.osate.aadl2.CalledSubprogram;
-import org.osate.aadl2.Classifier;
-import org.osate.aadl2.ClassifierFeature;
-import org.osate.aadl2.ClassifierType;
-import org.osate.aadl2.ClassifierValue;
-import org.osate.aadl2.Comment;
-import org.osate.aadl2.ComponentClassifier;
-import org.osate.aadl2.ComponentImplementation;
-import org.osate.aadl2.ComponentImplementationReference;
-import org.osate.aadl2.ComponentPrototype;
-import org.osate.aadl2.ComponentPrototypeActual;
-import org.osate.aadl2.ComponentPrototypeBinding;
-import org.osate.aadl2.ComponentType;
-import org.osate.aadl2.ComponentTypeRename;
-import org.osate.aadl2.ComputedValue;
-import org.osate.aadl2.ConnectedElement;
-import org.osate.aadl2.Connection;
-import org.osate.aadl2.ConnectionEnd;
-import org.osate.aadl2.ContainedNamedElement;
-import org.osate.aadl2.ContainmentPathElement;
-import org.osate.aadl2.Context;
-import org.osate.aadl2.Data;
-import org.osate.aadl2.DataAccess;
-import org.osate.aadl2.DataClassifier;
-import org.osate.aadl2.DataImplementation;
-import org.osate.aadl2.DataPort;
-import org.osate.aadl2.DataPrototype;
-import org.osate.aadl2.DataSubcomponent;
-import org.osate.aadl2.DataSubcomponentType;
-import org.osate.aadl2.DataType;
-import org.osate.aadl2.DefaultAnnexLibrary;
-import org.osate.aadl2.DefaultAnnexSubclause;
-import org.osate.aadl2.Device;
-import org.osate.aadl2.DeviceClassifier;
-import org.osate.aadl2.DeviceImplementation;
-import org.osate.aadl2.DevicePrototype;
-import org.osate.aadl2.DeviceSubcomponent;
-import org.osate.aadl2.DeviceSubcomponentType;
-import org.osate.aadl2.DeviceType;
-import org.osate.aadl2.DirectedFeature;
-import org.osate.aadl2.DirectedRelationship;
-import org.osate.aadl2.Element;
-import org.osate.aadl2.ElementName;
-import org.osate.aadl2.EndToEndFlow;
-import org.osate.aadl2.EndToEndFlowElement;
-import org.osate.aadl2.EndToEndFlowSegment;
-import org.osate.aadl2.EnumerationLiteral;
-import org.osate.aadl2.EnumerationType;
-import org.osate.aadl2.EventDataPort;
-import org.osate.aadl2.EventPort;
-import org.osate.aadl2.Feature;
-import org.osate.aadl2.FeatureClassifier;
-import org.osate.aadl2.FeatureConnection;
-import org.osate.aadl2.FeatureConnectionEnd;
-import org.osate.aadl2.FeatureGroup;
-import org.osate.aadl2.FeatureGroupConnection;
-import org.osate.aadl2.FeatureGroupConnectionEnd;
-import org.osate.aadl2.FeatureGroupPrototype;
-import org.osate.aadl2.FeatureGroupPrototypeActual;
-import org.osate.aadl2.FeatureGroupPrototypeBinding;
-import org.osate.aadl2.FeatureGroupType;
-import org.osate.aadl2.FeatureGroupTypeRename;
-import org.osate.aadl2.FeaturePrototype;
-import org.osate.aadl2.FeaturePrototypeActual;
-import org.osate.aadl2.FeaturePrototypeBinding;
-import org.osate.aadl2.FeaturePrototypeReference;
-import org.osate.aadl2.FeatureType;
-import org.osate.aadl2.Flow;
-import org.osate.aadl2.FlowElement;
-import org.osate.aadl2.FlowEnd;
-import org.osate.aadl2.FlowFeature;
-import org.osate.aadl2.FlowImplementation;
-import org.osate.aadl2.FlowSegment;
-import org.osate.aadl2.FlowSpecification;
-import org.osate.aadl2.Generalization;
-import org.osate.aadl2.GlobalNamespace;
-import org.osate.aadl2.GroupExtension;
-import org.osate.aadl2.ImplementationExtension;
-import org.osate.aadl2.IntegerLiteral;
-import org.osate.aadl2.InternalEvent;
-import org.osate.aadl2.ListType;
-import org.osate.aadl2.ListValue;
-import org.osate.aadl2.Memory;
-import org.osate.aadl2.MemoryClassifier;
-import org.osate.aadl2.MemoryImplementation;
-import org.osate.aadl2.MemoryPrototype;
-import org.osate.aadl2.MemorySubcomponent;
-import org.osate.aadl2.MemorySubcomponentType;
-import org.osate.aadl2.MemoryType;
-import org.osate.aadl2.MetaclassReference;
-import org.osate.aadl2.ModalElement;
-import org.osate.aadl2.ModalPath;
-import org.osate.aadl2.ModalPropertyValue;
-import org.osate.aadl2.Mode;
-import org.osate.aadl2.ModeBinding;
-import org.osate.aadl2.ModeFeature;
-import org.osate.aadl2.ModeTransition;
-import org.osate.aadl2.ModeTransitionTrigger;
-import org.osate.aadl2.ModelUnit;
-import org.osate.aadl2.NamedElement;
-import org.osate.aadl2.NamedValue;
-import org.osate.aadl2.Namespace;
-import org.osate.aadl2.NonListType;
-import org.osate.aadl2.NumberType;
-import org.osate.aadl2.NumberValue;
-import org.osate.aadl2.NumericRange;
-import org.osate.aadl2.Operation;
-import org.osate.aadl2.PackageRename;
-import org.osate.aadl2.PackageSection;
-import org.osate.aadl2.Parameter;
-import org.osate.aadl2.ParameterConnection;
-import org.osate.aadl2.ParameterConnectionEnd;
-import org.osate.aadl2.Port;
-import org.osate.aadl2.PortConnection;
-import org.osate.aadl2.PortConnectionEnd;
-import org.osate.aadl2.PortSpecification;
-import org.osate.aadl2.PrivatePackageSection;
-import org.osate.aadl2.ProcessClassifier;
-import org.osate.aadl2.ProcessImplementation;
-import org.osate.aadl2.ProcessPrototype;
-import org.osate.aadl2.ProcessSubcomponent;
-import org.osate.aadl2.ProcessSubcomponentType;
-import org.osate.aadl2.ProcessType;
-import org.osate.aadl2.Processor;
-import org.osate.aadl2.ProcessorCall;
-import org.osate.aadl2.ProcessorClassifier;
-import org.osate.aadl2.ProcessorImplementation;
-import org.osate.aadl2.ProcessorPort;
-import org.osate.aadl2.ProcessorPrototype;
-import org.osate.aadl2.ProcessorSubcomponent;
-import org.osate.aadl2.ProcessorSubcomponentType;
-import org.osate.aadl2.ProcessorSubprogram;
-import org.osate.aadl2.ProcessorType;
-import org.osate.aadl2.Property;
-import org.osate.aadl2.PropertyAssociation;
-import org.osate.aadl2.PropertyConstant;
-import org.osate.aadl2.PropertyExpression;
-import org.osate.aadl2.PropertyOwner;
-import org.osate.aadl2.PropertySet;
-import org.osate.aadl2.PropertyType;
-import org.osate.aadl2.PropertyValue;
-import org.osate.aadl2.Prototype;
-import org.osate.aadl2.PrototypeBinding;
-import org.osate.aadl2.PublicPackageSection;
-import org.osate.aadl2.RangeType;
-import org.osate.aadl2.RangeValue;
-import org.osate.aadl2.RealLiteral;
-import org.osate.aadl2.Realization;
-import org.osate.aadl2.RecordField;
-import org.osate.aadl2.RecordType;
-import org.osate.aadl2.RecordValue;
-import org.osate.aadl2.ReferenceType;
-import org.osate.aadl2.ReferenceValue;
-import org.osate.aadl2.RefinableElement;
-import org.osate.aadl2.Relationship;
-import org.osate.aadl2.StringLiteral;
-import org.osate.aadl2.StructuralFeature;
-import org.osate.aadl2.Subcomponent;
-import org.osate.aadl2.SubcomponentType;
-import org.osate.aadl2.Subprogram;
-import org.osate.aadl2.SubprogramAccess;
-import org.osate.aadl2.SubprogramCall;
-import org.osate.aadl2.SubprogramCallSequence;
-import org.osate.aadl2.SubprogramClassifier;
-import org.osate.aadl2.SubprogramGroup;
-import org.osate.aadl2.SubprogramGroupAccess;
-import org.osate.aadl2.SubprogramGroupClassifier;
-import org.osate.aadl2.SubprogramGroupImplementation;
-import org.osate.aadl2.SubprogramGroupPrototype;
-import org.osate.aadl2.SubprogramGroupSubcomponent;
-import org.osate.aadl2.SubprogramGroupSubcomponentType;
-import org.osate.aadl2.SubprogramGroupType;
-import org.osate.aadl2.SubprogramImplementation;
-import org.osate.aadl2.SubprogramPrototype;
-import org.osate.aadl2.SubprogramSubcomponent;
-import org.osate.aadl2.SubprogramSubcomponentType;
-import org.osate.aadl2.SubprogramType;
-import org.osate.aadl2.SystemClassifier;
-import org.osate.aadl2.SystemImplementation;
-import org.osate.aadl2.SystemPrototype;
-import org.osate.aadl2.SystemSubcomponent;
-import org.osate.aadl2.SystemSubcomponentType;
-import org.osate.aadl2.SystemType;
-import org.osate.aadl2.ThreadClassifier;
-import org.osate.aadl2.ThreadGroupClassifier;
-import org.osate.aadl2.ThreadGroupImplementation;
-import org.osate.aadl2.ThreadGroupPrototype;
-import org.osate.aadl2.ThreadGroupSubcomponent;
-import org.osate.aadl2.ThreadGroupSubcomponentType;
-import org.osate.aadl2.ThreadGroupType;
-import org.osate.aadl2.ThreadImplementation;
-import org.osate.aadl2.ThreadPrototype;
-import org.osate.aadl2.ThreadSubcomponent;
-import org.osate.aadl2.ThreadSubcomponentType;
-import org.osate.aadl2.ThreadType;
-import org.osate.aadl2.TriggerPort;
-import org.osate.aadl2.Type;
-import org.osate.aadl2.TypeExtension;
-import org.osate.aadl2.TypedElement;
-import org.osate.aadl2.UnitLiteral;
-import org.osate.aadl2.UnitsType;
-import org.osate.aadl2.VirtualBus;
-import org.osate.aadl2.VirtualBusClassifier;
-import org.osate.aadl2.VirtualBusImplementation;
-import org.osate.aadl2.VirtualBusPrototype;
-import org.osate.aadl2.VirtualBusSubcomponent;
-import org.osate.aadl2.VirtualBusType;
-import org.osate.aadl2.VirtualProcessor;
-import org.osate.aadl2.VirtualProcessorClassifier;
-import org.osate.aadl2.VirtualProcessorImplementation;
-import org.osate.aadl2.VirtualProcessorPrototype;
-import org.osate.aadl2.VirtualProcessorSubcomponent;
-import org.osate.aadl2.VirtualProcessorSubcomponentType;
-import org.osate.aadl2.VirtualProcessorType;
-import org.osate.aadl2.VitualBusSubcomponentType;
 import org.osate.aadl2.*;
 
 /**
@@ -401,11 +144,6 @@ public class Aadl2AdapterFactory extends AdapterFactoryImpl {
 		@Override
 		public Adapter caseAbstractNamedValue(AbstractNamedValue object) {
 			return createAbstractNamedValueAdapter();
-		}
-
-		@Override
-		public Adapter caseArraySizeProperty(ArraySizeProperty object) {
-			return createArraySizePropertyAdapter();
 		}
 
 		@Override
@@ -534,19 +272,22 @@ public class Aadl2AdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
+		public Adapter caseArraySizeProperty(ArraySizeProperty object) {
+			return createArraySizePropertyAdapter();
+		}
+
+		@Override
 		public Adapter caseArrayableElement(ArrayableElement object) {
 			return createArrayableElementAdapter();
 		}
 
 		@Override
-		public Adapter caseComponentImplementationReference(
-				ComponentImplementationReference object) {
+		public Adapter caseComponentImplementationReference(ComponentImplementationReference object) {
 			return createComponentImplementationReferenceAdapter();
 		}
 
 		@Override
-		public Adapter caseComponentImplementation(
-				ComponentImplementation object) {
+		public Adapter caseComponentImplementation(ComponentImplementation object) {
 			return createComponentImplementationAdapter();
 		}
 
@@ -573,6 +314,16 @@ public class Aadl2AdapterFactory extends AdapterFactoryImpl {
 		@Override
 		public Adapter caseModeTransitionTrigger(ModeTransitionTrigger object) {
 			return createModeTransitionTriggerAdapter();
+		}
+
+		@Override
+		public Adapter caseContext(Context object) {
+			return createContextAdapter();
+		}
+
+		@Override
+		public Adapter caseTriggerPort(TriggerPort object) {
+			return createTriggerPortAdapter();
 		}
 
 		@Override
@@ -636,11 +387,6 @@ public class Aadl2AdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
-		public Adapter caseContext(Context object) {
-			return createContextAdapter();
-		}
-
-		@Override
 		public Adapter caseTypeExtension(TypeExtension object) {
 			return createTypeExtensionAdapter();
 		}
@@ -661,8 +407,7 @@ public class Aadl2AdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
-		public Adapter caseFeatureGroupConnectionEnd(
-				FeatureGroupConnectionEnd object) {
+		public Adapter caseFeatureGroupConnectionEnd(FeatureGroupConnectionEnd object) {
 			return createFeatureGroupConnectionEndAdapter();
 		}
 
@@ -697,13 +442,8 @@ public class Aadl2AdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
-		public Adapter caseBus(Bus object) {
-			return createBusAdapter();
-		}
-
-		@Override
-		public Adapter caseBusSubcomponentType(BusSubcomponentType object) {
-			return createBusSubcomponentTypeAdapter();
+		public Adapter caseBusFeatureClassifier(BusFeatureClassifier object) {
+			return createBusFeatureClassifierAdapter();
 		}
 
 		@Override
@@ -719,11 +459,6 @@ public class Aadl2AdapterFactory extends AdapterFactoryImpl {
 		@Override
 		public Adapter casePortConnectionEnd(PortConnectionEnd object) {
 			return createPortConnectionEndAdapter();
-		}
-
-		@Override
-		public Adapter caseData(Data object) {
-			return createDataAdapter();
 		}
 
 		@Override
@@ -762,13 +497,7 @@ public class Aadl2AdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
-		public Adapter caseSubprogram(Subprogram object) {
-			return createSubprogramAdapter();
-		}
-
-		@Override
-		public Adapter caseSubprogramSubcomponentType(
-				SubprogramSubcomponentType object) {
+		public Adapter caseSubprogramSubcomponentType(SubprogramSubcomponentType object) {
 			return createSubprogramSubcomponentTypeAdapter();
 		}
 
@@ -778,13 +507,7 @@ public class Aadl2AdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
-		public Adapter caseSubprogramGroup(SubprogramGroup object) {
-			return createSubprogramGroupAdapter();
-		}
-
-		@Override
-		public Adapter caseSubprogramGroupSubcomponentType(
-				SubprogramGroupSubcomponentType object) {
+		public Adapter caseSubprogramGroupSubcomponentType(SubprogramGroupSubcomponentType object) {
 			return createSubprogramGroupSubcomponentTypeAdapter();
 		}
 
@@ -829,13 +552,12 @@ public class Aadl2AdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
-		public Adapter caseAbstractConnectionEnd(AbstractConnectionEnd object) {
-			return createAbstractConnectionEndAdapter();
+		public Adapter caseConnectedElement(ConnectedElement object) {
+			return createConnectedElementAdapter();
 		}
 
 		@Override
-		public Adapter caseImplementationExtension(
-				ImplementationExtension object) {
+		public Adapter caseImplementationExtension(ImplementationExtension object) {
 			return createImplementationExtensionAdapter();
 		}
 
@@ -865,8 +587,7 @@ public class Aadl2AdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
-		public Adapter caseAbstractSubcomponentType(
-				AbstractSubcomponentType object) {
+		public Adapter caseAbstractSubcomponentType(AbstractSubcomponentType object) {
 			return createAbstractSubcomponentTypeAdapter();
 		}
 
@@ -896,13 +617,53 @@ public class Aadl2AdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
-		public Adapter caseConnectedElement(ConnectedElement object) {
-			return createConnectedElementAdapter();
+		public Adapter caseProcessorFeature(ProcessorFeature object) {
+			return createProcessorFeatureAdapter();
 		}
 
 		@Override
-		public Adapter caseElementName(ElementName object) {
-			return createElementNameAdapter();
+		public Adapter caseInternalFeature(InternalFeature object) {
+			return createInternalFeatureAdapter();
+		}
+
+		@Override
+		public Adapter caseEventSource(EventSource object) {
+			return createEventSourceAdapter();
+		}
+
+		@Override
+		public Adapter caseEventDataSource(EventDataSource object) {
+			return createEventDataSourceAdapter();
+		}
+
+		@Override
+		public Adapter caseDataClassifier(DataClassifier object) {
+			return createDataClassifierAdapter();
+		}
+
+		@Override
+		public Adapter caseData(Data object) {
+			return createDataAdapter();
+		}
+
+		@Override
+		public Adapter casePortProxy(PortProxy object) {
+			return createPortProxyAdapter();
+		}
+
+		@Override
+		public Adapter caseSubprogramProxy(SubprogramProxy object) {
+			return createSubprogramProxyAdapter();
+		}
+
+		@Override
+		public Adapter caseSubprogramClassifier(SubprogramClassifier object) {
+			return createSubprogramClassifierAdapter();
+		}
+
+		@Override
+		public Adapter caseSubprogram(Subprogram object) {
+			return createSubprogramAdapter();
 		}
 
 		@Override
@@ -918,11 +679,6 @@ public class Aadl2AdapterFactory extends AdapterFactoryImpl {
 		@Override
 		public Adapter caseDefaultAnnexSubclause(DefaultAnnexSubclause object) {
 			return createDefaultAnnexSubclauseAdapter();
-		}
-
-		@Override
-		public Adapter caseTriggerPort(TriggerPort object) {
-			return createTriggerPortAdapter();
 		}
 
 		@Override
@@ -966,26 +722,22 @@ public class Aadl2AdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
-		public Adapter caseComponentPrototypeBinding(
-				ComponentPrototypeBinding object) {
+		public Adapter caseComponentPrototypeBinding(ComponentPrototypeBinding object) {
 			return createComponentPrototypeBindingAdapter();
 		}
 
 		@Override
-		public Adapter caseComponentPrototypeActual(
-				ComponentPrototypeActual object) {
+		public Adapter caseComponentPrototypeActual(ComponentPrototypeActual object) {
 			return createComponentPrototypeActualAdapter();
 		}
 
 		@Override
-		public Adapter caseFeatureGroupPrototypeBinding(
-				FeatureGroupPrototypeBinding object) {
+		public Adapter caseFeatureGroupPrototypeBinding(FeatureGroupPrototypeBinding object) {
 			return createFeatureGroupPrototypeBindingAdapter();
 		}
 
 		@Override
-		public Adapter caseFeatureGroupPrototypeActual(
-				FeatureGroupPrototypeActual object) {
+		public Adapter caseFeatureGroupPrototypeActual(FeatureGroupPrototypeActual object) {
 			return createFeatureGroupPrototypeActualAdapter();
 		}
 
@@ -995,8 +747,7 @@ public class Aadl2AdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
-		public Adapter caseFeaturePrototypeBinding(
-				FeaturePrototypeBinding object) {
+		public Adapter caseFeaturePrototypeBinding(FeaturePrototypeBinding object) {
 			return createFeaturePrototypeBindingAdapter();
 		}
 
@@ -1011,8 +762,7 @@ public class Aadl2AdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
-		public Adapter caseFeaturePrototypeReference(
-				FeaturePrototypeReference object) {
+		public Adapter caseFeaturePrototypeReference(FeaturePrototypeReference object) {
 			return createFeaturePrototypeReferenceAdapter();
 		}
 
@@ -1022,24 +772,13 @@ public class Aadl2AdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
-		public Adapter caseCallSpecification(CallSpecification object) {
-			return createCallSpecificationAdapter();
-		}
-
-		@Override
-		public Adapter caseProcessorCall(ProcessorCall object) {
-			return createProcessorCallAdapter();
-		}
-
-		@Override
-		public Adapter caseBehavioredImplementation(
-				BehavioredImplementation object) {
-			return createBehavioredImplementationAdapter();
-		}
-
-		@Override
 		public Adapter caseSubprogramCall(SubprogramCall object) {
 			return createSubprogramCallAdapter();
+		}
+
+		@Override
+		public Adapter caseBehavioredImplementation(BehavioredImplementation object) {
+			return createBehavioredImplementationAdapter();
 		}
 
 		@Override
@@ -1053,36 +792,18 @@ public class Aadl2AdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
-		public Adapter caseVirtualProcessorSubcomponentType(
-				VirtualProcessorSubcomponentType object) {
+		public Adapter caseVirtualProcessorSubcomponentType(VirtualProcessorSubcomponentType object) {
 			return createVirtualProcessorSubcomponentTypeAdapter();
 		}
 
 		@Override
-		public Adapter caseVirtualProcessor(VirtualProcessor object) {
-			return createVirtualProcessorAdapter();
+		public Adapter caseVirtualBusSubcomponentType(VirtualBusSubcomponentType object) {
+			return createVirtualBusSubcomponentTypeAdapter();
 		}
 
 		@Override
-		public Adapter caseVitualBusSubcomponentType(
-				VitualBusSubcomponentType object) {
-			return createVitualBusSubcomponentTypeAdapter();
-		}
-
-		@Override
-		public Adapter caseVirtualBus(VirtualBus object) {
-			return createVirtualBusAdapter();
-		}
-
-		@Override
-		public Adapter caseThreadGroupSubcomponentType(
-				ThreadGroupSubcomponentType object) {
+		public Adapter caseThreadGroupSubcomponentType(ThreadGroupSubcomponentType object) {
 			return createThreadGroupSubcomponentTypeAdapter();
-		}
-
-		@Override
-		public Adapter caseThreadGroup(org.osate.aadl2.ThreadGroup object) {
-			return createThreadGroupAdapter();
 		}
 
 		@Override
@@ -1091,29 +812,13 @@ public class Aadl2AdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
-		public Adapter caseThread(org.osate.aadl2.Thread object) {
-			return createThreadAdapter();
-		}
-
-		@Override
 		public Adapter caseSystemSubcomponentType(SystemSubcomponentType object) {
 			return createSystemSubcomponentTypeAdapter();
 		}
 
 		@Override
-		public Adapter caseSystem(org.osate.aadl2.System object) {
-			return createSystemAdapter();
-		}
-
-		@Override
-		public Adapter caseProcessSubcomponentType(
-				ProcessSubcomponentType object) {
+		public Adapter caseProcessSubcomponentType(ProcessSubcomponentType object) {
 			return createProcessSubcomponentTypeAdapter();
-		}
-
-		@Override
-		public Adapter caseProcess(org.osate.aadl2.Process object) {
-			return createProcessAdapter();
 		}
 
 		@Override
@@ -1122,29 +827,18 @@ public class Aadl2AdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
-		public Adapter caseMemory(Memory object) {
-			return createMemoryAdapter();
-		}
-
-		@Override
 		public Adapter caseDeviceSubcomponentType(DeviceSubcomponentType object) {
 			return createDeviceSubcomponentTypeAdapter();
 		}
 
 		@Override
-		public Adapter caseDevice(Device object) {
-			return createDeviceAdapter();
+		public Adapter caseBusSubcomponentType(BusSubcomponentType object) {
+			return createBusSubcomponentTypeAdapter();
 		}
 
 		@Override
-		public Adapter caseProcessorSubcomponentType(
-				ProcessorSubcomponentType object) {
+		public Adapter caseProcessorSubcomponentType(ProcessorSubcomponentType object) {
 			return createProcessorSubcomponentTypeAdapter();
-		}
-
-		@Override
-		public Adapter caseProcessor(Processor object) {
-			return createProcessorAdapter();
 		}
 
 		@Override
@@ -1158,6 +852,11 @@ public class Aadl2AdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
+		public Adapter caseBus(Bus object) {
+			return createBusAdapter();
+		}
+
+		@Override
 		public Adapter caseDataSubcomponent(DataSubcomponent object) {
 			return createDataSubcomponentAdapter();
 		}
@@ -1168,8 +867,18 @@ public class Aadl2AdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
+		public Adapter caseDevice(Device object) {
+			return createDeviceAdapter();
+		}
+
+		@Override
 		public Adapter caseMemorySubcomponent(MemorySubcomponent object) {
 			return createMemorySubcomponentAdapter();
+		}
+
+		@Override
+		public Adapter caseMemory(Memory object) {
+			return createMemoryAdapter();
 		}
 
 		@Override
@@ -1178,8 +887,18 @@ public class Aadl2AdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
+		public Adapter caseProcess(org.osate.aadl2.Process object) {
+			return createProcessAdapter();
+		}
+
+		@Override
 		public Adapter caseProcessorSubcomponent(ProcessorSubcomponent object) {
 			return createProcessorSubcomponentAdapter();
+		}
+
+		@Override
+		public Adapter caseProcessor(Processor object) {
+			return createProcessorAdapter();
 		}
 
 		@Override
@@ -1188,14 +907,23 @@ public class Aadl2AdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
+		public Adapter caseSystem(org.osate.aadl2.System object) {
+			return createSystemAdapter();
+		}
+
+		@Override
 		public Adapter caseSubprogramSubcomponent(SubprogramSubcomponent object) {
 			return createSubprogramSubcomponentAdapter();
 		}
 
 		@Override
-		public Adapter caseSubprogramGroupSubcomponent(
-				SubprogramGroupSubcomponent object) {
+		public Adapter caseSubprogramGroupSubcomponent(SubprogramGroupSubcomponent object) {
 			return createSubprogramGroupSubcomponentAdapter();
+		}
+
+		@Override
+		public Adapter caseSubprogramGroup(SubprogramGroup object) {
+			return createSubprogramGroupAdapter();
 		}
 
 		@Override
@@ -1204,9 +932,18 @@ public class Aadl2AdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
-		public Adapter caseThreadGroupSubcomponent(
-				ThreadGroupSubcomponent object) {
+		public Adapter caseThread(org.osate.aadl2.Thread object) {
+			return createThreadAdapter();
+		}
+
+		@Override
+		public Adapter caseThreadGroupSubcomponent(ThreadGroupSubcomponent object) {
 			return createThreadGroupSubcomponentAdapter();
+		}
+
+		@Override
+		public Adapter caseThreadGroup(org.osate.aadl2.ThreadGroup object) {
+			return createThreadGroupAdapter();
 		}
 
 		@Override
@@ -1215,9 +952,18 @@ public class Aadl2AdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
-		public Adapter caseVirtualProcessorSubcomponent(
-				VirtualProcessorSubcomponent object) {
+		public Adapter caseVirtualBus(VirtualBus object) {
+			return createVirtualBusAdapter();
+		}
+
+		@Override
+		public Adapter caseVirtualProcessorSubcomponent(VirtualProcessorSubcomponent object) {
 			return createVirtualProcessorSubcomponentAdapter();
+		}
+
+		@Override
+		public Adapter caseVirtualProcessor(VirtualProcessor object) {
+			return createVirtualProcessorAdapter();
 		}
 
 		@Override
@@ -1243,11 +989,6 @@ public class Aadl2AdapterFactory extends AdapterFactoryImpl {
 		@Override
 		public Adapter caseBusPrototype(BusPrototype object) {
 			return createBusPrototypeAdapter();
-		}
-
-		@Override
-		public Adapter caseDataClassifier(DataClassifier object) {
-			return createDataClassifierAdapter();
 		}
 
 		@Override
@@ -1306,18 +1047,12 @@ public class Aadl2AdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
-		public Adapter caseSubprogramClassifier(SubprogramClassifier object) {
-			return createSubprogramClassifierAdapter();
-		}
-
-		@Override
 		public Adapter caseSubprogramType(SubprogramType object) {
 			return createSubprogramTypeAdapter();
 		}
 
 		@Override
-		public Adapter caseSubprogramImplementation(
-				SubprogramImplementation object) {
+		public Adapter caseSubprogramImplementation(SubprogramImplementation object) {
 			return createSubprogramImplementationAdapter();
 		}
 
@@ -1327,8 +1062,7 @@ public class Aadl2AdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
-		public Adapter caseSubprogramGroupClassifier(
-				SubprogramGroupClassifier object) {
+		public Adapter caseSubprogramGroupClassifier(SubprogramGroupClassifier object) {
 			return createSubprogramGroupClassifierAdapter();
 		}
 
@@ -1338,14 +1072,12 @@ public class Aadl2AdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
-		public Adapter caseSubprogramGroupImplementation(
-				SubprogramGroupImplementation object) {
+		public Adapter caseSubprogramGroupImplementation(SubprogramGroupImplementation object) {
 			return createSubprogramGroupImplementationAdapter();
 		}
 
 		@Override
-		public Adapter caseSubprogramGroupPrototype(
-				SubprogramGroupPrototype object) {
+		public Adapter caseSubprogramGroupPrototype(SubprogramGroupPrototype object) {
 			return createSubprogramGroupPrototypeAdapter();
 		}
 
@@ -1380,8 +1112,7 @@ public class Aadl2AdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
-		public Adapter caseProcessorImplementation(
-				ProcessorImplementation object) {
+		public Adapter caseProcessorImplementation(ProcessorImplementation object) {
 			return createProcessorImplementationAdapter();
 		}
 
@@ -1441,8 +1172,7 @@ public class Aadl2AdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
-		public Adapter caseThreadGroupImplementation(
-				ThreadGroupImplementation object) {
+		public Adapter caseThreadGroupImplementation(ThreadGroupImplementation object) {
 			return createThreadGroupImplementationAdapter();
 		}
 
@@ -1462,8 +1192,7 @@ public class Aadl2AdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
-		public Adapter caseVirtualBusImplementation(
-				VirtualBusImplementation object) {
+		public Adapter caseVirtualBusImplementation(VirtualBusImplementation object) {
 			return createVirtualBusImplementationAdapter();
 		}
 
@@ -1473,8 +1202,7 @@ public class Aadl2AdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
-		public Adapter caseVirtualProcessorClassifier(
-				VirtualProcessorClassifier object) {
+		public Adapter caseVirtualProcessorClassifier(VirtualProcessorClassifier object) {
 			return createVirtualProcessorClassifierAdapter();
 		}
 
@@ -1484,20 +1212,17 @@ public class Aadl2AdapterFactory extends AdapterFactoryImpl {
 		}
 
 		@Override
-		public Adapter caseVirtualProcessorImplementation(
-				VirtualProcessorImplementation object) {
+		public Adapter caseVirtualProcessorImplementation(VirtualProcessorImplementation object) {
 			return createVirtualProcessorImplementationAdapter();
 		}
 
 		@Override
-		public Adapter caseVirtualProcessorPrototype(
-				VirtualProcessorPrototype object) {
+		public Adapter caseVirtualProcessorPrototype(VirtualProcessorPrototype object) {
 			return createVirtualProcessorPrototypeAdapter();
 		}
 
 		@Override
-		public Adapter caseBasicPropertyAssociation(
-				BasicPropertyAssociation object) {
+		public Adapter caseBasicPropertyAssociation(BasicPropertyAssociation object) {
 			return createBasicPropertyAssociationAdapter();
 		}
 
@@ -1669,21 +1394,6 @@ public class Aadl2AdapterFactory extends AdapterFactoryImpl {
 		@Override
 		public Adapter caseListType(ListType object) {
 			return createListTypeAdapter();
-		}
-
-		@Override
-		public Adapter caseProcessorPort(ProcessorPort object) {
-			return createProcessorPortAdapter();
-		}
-
-		@Override
-		public Adapter caseInternalEvent(InternalEvent object) {
-			return createInternalEventAdapter();
-		}
-
-		@Override
-		public Adapter caseProcessorSubprogram(ProcessorSubprogram object) {
-			return createProcessorSubprogramAdapter();
 		}
 
 		@Override
@@ -2504,20 +2214,6 @@ public class Aadl2AdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.osate.aadl2.AbstractConnectionEnd <em>Abstract Connection End</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.osate.aadl2.AbstractConnectionEnd
-	 * @generated
-	 */
-	public Adapter createAbstractConnectionEndAdapter() {
-		return null;
-	}
-
-	/**
 	 * Creates a new adapter for an object of class '{@link org.osate.aadl2.ConnectedElement <em>Connected Element</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -2570,20 +2266,6 @@ public class Aadl2AdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createAbstractSubcomponentAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.osate.aadl2.ElementName <em>Element Name</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.osate.aadl2.ElementName
-	 * @generated
-	 */
-	public Adapter createElementNameAdapter() {
 		return null;
 	}
 
@@ -3274,6 +2956,20 @@ public class Aadl2AdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link org.osate.aadl2.BusFeatureClassifier <em>Bus Feature Classifier</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.osate.aadl2.BusFeatureClassifier
+	 * @generated
+	 */
+	public Adapter createBusFeatureClassifierAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link org.osate.aadl2.FeatureGroupConnection <em>Feature Group Connection</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -3288,16 +2984,86 @@ public class Aadl2AdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.osate.aadl2.ProcessorSubprogram <em>Processor Subprogram</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.osate.aadl2.ProcessorFeature <em>Processor Feature</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.osate.aadl2.ProcessorSubprogram
+	 * @see org.osate.aadl2.ProcessorFeature
 	 * @generated
 	 */
-	public Adapter createProcessorSubprogramAdapter() {
+	public Adapter createProcessorFeatureAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.osate.aadl2.InternalFeature <em>Internal Feature</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.osate.aadl2.InternalFeature
+	 * @generated
+	 */
+	public Adapter createInternalFeatureAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.osate.aadl2.EventSource <em>Event Source</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.osate.aadl2.EventSource
+	 * @generated
+	 */
+	public Adapter createEventSourceAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.osate.aadl2.EventDataSource <em>Event Data Source</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.osate.aadl2.EventDataSource
+	 * @generated
+	 */
+	public Adapter createEventDataSourceAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.osate.aadl2.PortProxy <em>Port Proxy</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.osate.aadl2.PortProxy
+	 * @generated
+	 */
+	public Adapter createPortProxyAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.osate.aadl2.SubprogramProxy <em>Subprogram Proxy</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.osate.aadl2.SubprogramProxy
+	 * @generated
+	 */
+	public Adapter createSubprogramProxyAdapter() {
 		return null;
 	}
 
@@ -3778,20 +3544,6 @@ public class Aadl2AdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.osate.aadl2.CallSpecification <em>Call Specification</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.osate.aadl2.CallSpecification
-	 * @generated
-	 */
-	public Adapter createCallSpecificationAdapter() {
-		return null;
-	}
-
-	/**
 	 * Creates a new adapter for an object of class '{@link org.osate.aadl2.DataSubcomponent <em>Data Subcomponent</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -4198,20 +3950,6 @@ public class Aadl2AdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.osate.aadl2.VitualBusSubcomponentType <em>Vitual Bus Subcomponent Type</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.osate.aadl2.VitualBusSubcomponentType
-	 * @generated
-	 */
-	public Adapter createVitualBusSubcomponentTypeAdapter() {
-		return null;
-	}
-
-	/**
 	 * Creates a new adapter for an object of class '{@link org.osate.aadl2.VirtualBusClassifier <em>Virtual Bus Classifier</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -4250,6 +3988,20 @@ public class Aadl2AdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createVirtualProcessorAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.osate.aadl2.VirtualBusSubcomponentType <em>Virtual Bus Subcomponent Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.osate.aadl2.VirtualBusSubcomponentType
+	 * @generated
+	 */
+	public Adapter createVirtualBusSubcomponentTypeAdapter() {
 		return null;
 	}
 
@@ -4320,34 +4072,6 @@ public class Aadl2AdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createSubprogramCallAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.osate.aadl2.ProcessorPort <em>Processor Port</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.osate.aadl2.ProcessorPort
-	 * @generated
-	 */
-	public Adapter createProcessorPortAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.osate.aadl2.InternalEvent <em>Internal Event</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.osate.aadl2.InternalEvent
-	 * @generated
-	 */
-	public Adapter createInternalEventAdapter() {
 		return null;
 	}
 
@@ -4852,20 +4576,6 @@ public class Aadl2AdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createSubprogramPrototypeAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.osate.aadl2.ProcessorCall <em>Processor Call</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.osate.aadl2.ProcessorCall
-	 * @generated
-	 */
-	public Adapter createProcessorCallAdapter() {
 		return null;
 	}
 

@@ -43,13 +43,10 @@ import org.osate.aadl2.SystemClassifier;
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>System Classifier</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */
-public abstract class SystemClassifierImpl extends ComponentClassifierImpl
-		implements SystemClassifier {
+public abstract class SystemClassifierImpl extends ComponentClassifierImpl implements SystemClassifier {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

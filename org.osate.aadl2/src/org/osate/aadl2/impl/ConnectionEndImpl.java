@@ -43,13 +43,10 @@ import org.osate.aadl2.ConnectionEnd;
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Connection End</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */
-public abstract class ConnectionEndImpl extends NamedElementImpl implements
-		ConnectionEnd {
+public abstract class ConnectionEndImpl extends NamedElementImpl implements ConnectionEnd {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

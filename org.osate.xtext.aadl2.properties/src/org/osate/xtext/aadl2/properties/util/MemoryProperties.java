@@ -33,8 +33,6 @@
  */
 package org.osate.xtext.aadl2.properties.util;
 
-import org.osate.aadl2.DirectionType;
-
 public final class MemoryProperties {
 	private MemoryProperties() {
 	}
@@ -45,11 +43,26 @@ public final class MemoryProperties {
 	public static final String WRITE_ONLY = "write_only";
 	public static final String READ_WRITE = "read_write";
 	public static final String BY_METHOD = "by_method";
+
+	public static final String DATA_SIZE = "Data_Size";
+	public static final String CODE_SIZE = "Code_Size";
+	public static final String STACK_SIZE = "Stack_Size";
+	public static final String HEAP_SIZE = "Heap_Size";
+	public static final String MEMORY_SIZE = "Memory_Size";
+	public static final String BASE_ADDRESS = "Base_Address";
+
+	/**
+	 * Backward compatibility. The Source_* were removed.
+	 * So, the Source_Data_Size is now Data_Size. To ensure
+	 * plugin compatibility, we keep the following definitions.
+	 * The change has been discussed and approved during the
+	 * April 14 AADL committee meeting.
+	 */
 	public static final String SOURCE_DATA_SIZE = "Source_Data_Size";
 	public static final String SOURCE_CODE_SIZE = "Source_Code_Size";
 	public static final String SOURCE_STACK_SIZE = "Source_Stack_Size";
+	public static final String SOURCE_HEAP_SIZE = "Source_Heap_Size";
 	public static final String BYTE_COUNT = "Byte_Count";
-	
 
 	/**
 	 * access is read/write or write
@@ -69,17 +82,18 @@ public final class MemoryProperties {
 		return READ_WRITE.equalsIgnoreCase(access) || READ_ONLY.equalsIgnoreCase(access);
 	}
 
-	/** 
+	/**
 	 * changes the access right direction
 	 *
 	 */
 	public static String getInverseDirection(String access) {
-		if (READ_WRITE.equalsIgnoreCase(access))
+		if (READ_WRITE.equalsIgnoreCase(access)) {
 			return access;
-		else if (READ_ONLY.equalsIgnoreCase(access))
+		} else if (READ_ONLY.equalsIgnoreCase(access)) {
 			return WRITE_ONLY;
-		else
+		} else {
 			return READ_ONLY;
+		}
 	}
 
 }

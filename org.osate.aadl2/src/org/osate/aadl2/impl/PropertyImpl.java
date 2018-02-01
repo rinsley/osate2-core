@@ -49,6 +49,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 import org.osate.aadl2.Aadl2Package;
+import org.osate.aadl2.AbstractNamedValue;
 import org.osate.aadl2.Classifier;
 import org.osate.aadl2.Feature;
 import org.osate.aadl2.FeatureGroup;
@@ -68,7 +69,7 @@ import org.osate.aadl2.properties.EvaluationContext;
 import org.osate.aadl2.properties.InvalidModelException;
 import org.osate.aadl2.properties.PropertyAcc;
 import org.osate.aadl2.properties.PropertyDoesNotApplyToHolderException;
-import org.osate.aadl2.util.OsateDebug;
+import org.osate.aadl2.properties.PropertyEvaluationResult;
 
 /**
  * <!-- begin-user-doc -->
@@ -76,6 +77,7 @@ import org.osate.aadl2.util.OsateDebug;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.osate.aadl2.impl.PropertyImpl#isInherit <em>Inherit</em>}</li>
  *   <li>{@link org.osate.aadl2.impl.PropertyImpl#getDefaultValue <em>Default Value</em>}</li>
@@ -84,7 +86,6 @@ import org.osate.aadl2.util.OsateDebug;
  *   <li>{@link org.osate.aadl2.impl.PropertyImpl#getAppliesTos <em>Applies To</em>}</li>
  *   <li>{@link org.osate.aadl2.impl.PropertyImpl#isEmptyListDefault <em>Empty List Default</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -157,6 +158,7 @@ public class PropertyImpl extends BasicPropertyImpl implements Property {
 	 * {@link Property} objects.
 	 */
 	private transient static ThreadLocal<LinkedList<Property>> lookupStack = new ThreadLocal<LinkedList<Property>>() {
+		@Override
 		protected LinkedList<Property> initialValue() {
 			return new LinkedList<Property>();
 		}
@@ -186,6 +188,7 @@ public class PropertyImpl extends BasicPropertyImpl implements Property {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isInherit() {
 		return inherit;
 	}
@@ -195,12 +198,13 @@ public class PropertyImpl extends BasicPropertyImpl implements Property {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setInherit(boolean newInherit) {
 		boolean oldInherit = inherit;
 		inherit = newInherit;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					Aadl2Package.PROPERTY__INHERIT, oldInherit, inherit));
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, Notification.SET, Aadl2Package.PROPERTY__INHERIT, oldInherit, inherit));
+		}
 	}
 
 	/**
@@ -208,6 +212,7 @@ public class PropertyImpl extends BasicPropertyImpl implements Property {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public PropertyExpression getDefaultValue() {
 		return defaultValue;
 	}
@@ -217,18 +222,17 @@ public class PropertyImpl extends BasicPropertyImpl implements Property {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public NotificationChain basicSetDefaultValue(
-			PropertyExpression newDefaultValue, NotificationChain msgs) {
+	public NotificationChain basicSetDefaultValue(PropertyExpression newDefaultValue, NotificationChain msgs) {
 		PropertyExpression oldDefaultValue = defaultValue;
 		defaultValue = newDefaultValue;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this,
-					Notification.SET, Aadl2Package.PROPERTY__DEFAULT_VALUE,
-					oldDefaultValue, newDefaultValue);
-			if (msgs == null)
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+					Aadl2Package.PROPERTY__DEFAULT_VALUE, oldDefaultValue, newDefaultValue);
+			if (msgs == null) {
 				msgs = notification;
-			else
+			} else {
 				msgs.add(notification);
+			}
 		}
 		return msgs;
 	}
@@ -238,26 +242,26 @@ public class PropertyImpl extends BasicPropertyImpl implements Property {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setDefaultValue(PropertyExpression newDefaultValue) {
 		if (newDefaultValue != defaultValue) {
 			NotificationChain msgs = null;
-			if (defaultValue != null)
+			if (defaultValue != null) {
 				msgs = ((InternalEObject) defaultValue).eInverseRemove(this,
-						EOPPOSITE_FEATURE_BASE
-								- Aadl2Package.PROPERTY__DEFAULT_VALUE, null,
-						msgs);
-			if (newDefaultValue != null)
+						EOPPOSITE_FEATURE_BASE - Aadl2Package.PROPERTY__DEFAULT_VALUE, null, msgs);
+			}
+			if (newDefaultValue != null) {
 				msgs = ((InternalEObject) newDefaultValue).eInverseAdd(this,
-						EOPPOSITE_FEATURE_BASE
-								- Aadl2Package.PROPERTY__DEFAULT_VALUE, null,
-						msgs);
+						EOPPOSITE_FEATURE_BASE - Aadl2Package.PROPERTY__DEFAULT_VALUE, null, msgs);
+			}
 			msgs = basicSetDefaultValue(newDefaultValue, msgs);
-			if (msgs != null)
+			if (msgs != null) {
 				msgs.dispatch();
-		} else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					Aadl2Package.PROPERTY__DEFAULT_VALUE, newDefaultValue,
+			}
+		} else if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, Notification.SET, Aadl2Package.PROPERTY__DEFAULT_VALUE, newDefaultValue,
 					newDefaultValue));
+		}
 	}
 
 	/**
@@ -265,10 +269,10 @@ public class PropertyImpl extends BasicPropertyImpl implements Property {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<PropertyOwner> getAppliesTos() {
 		if (appliesTos == null) {
-			appliesTos = new EObjectContainmentEList<PropertyOwner>(
-					PropertyOwner.class, this,
+			appliesTos = new EObjectContainmentEList<PropertyOwner>(PropertyOwner.class, this,
 					Aadl2Package.PROPERTY__APPLIES_TO);
 		}
 		return appliesTos;
@@ -279,6 +283,7 @@ public class PropertyImpl extends BasicPropertyImpl implements Property {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public PropertyOwner createAppliesTo(EClass eClass) {
 		PropertyOwner newAppliesTo = (PropertyOwner) create(eClass);
 		getAppliesTos().add(newAppliesTo);
@@ -290,6 +295,7 @@ public class PropertyImpl extends BasicPropertyImpl implements Property {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isEmptyListDefault() {
 		return emptyListDefault;
 	}
@@ -299,13 +305,14 @@ public class PropertyImpl extends BasicPropertyImpl implements Property {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setEmptyListDefault(boolean newEmptyListDefault) {
 		boolean oldEmptyListDefault = emptyListDefault;
 		emptyListDefault = newEmptyListDefault;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					Aadl2Package.PROPERTY__EMPTY_LIST_DEFAULT,
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, Notification.SET, Aadl2Package.PROPERTY__EMPTY_LIST_DEFAULT,
 					oldEmptyListDefault, emptyListDefault));
+		}
 	}
 
 	/**
@@ -313,6 +320,7 @@ public class PropertyImpl extends BasicPropertyImpl implements Property {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public PropertyExpression createDefaultValue(EClass eClass) {
 		PropertyExpression newDefaultValue = (PropertyExpression) create(eClass);
 		setDefaultValue(newDefaultValue);
@@ -324,6 +332,7 @@ public class PropertyImpl extends BasicPropertyImpl implements Property {
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
+	@Override
 	public EList<MetaclassReference> getAppliesToMetaclasses() {
 		// DONE: implement this method to return the 'Applies To Metaclass'
 		// reference list
@@ -342,6 +351,7 @@ public class PropertyImpl extends BasicPropertyImpl implements Property {
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
+	@Override
 	public EList<Classifier> getAppliesToClassifiers() {
 		// DONE: implement this method to return the 'Applies To Classifier'
 		// reference list
@@ -361,14 +371,12 @@ public class PropertyImpl extends BasicPropertyImpl implements Property {
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case Aadl2Package.PROPERTY__DEFAULT_VALUE:
 			return basicSetDefaultValue(null, msgs);
 		case Aadl2Package.PROPERTY__APPLIES_TO:
-			return ((InternalEList<?>) getAppliesTos()).basicRemove(otherEnd,
-					msgs);
+			return ((InternalEList<?>) getAppliesTos()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -414,18 +422,15 @@ public class PropertyImpl extends BasicPropertyImpl implements Property {
 			return;
 		case Aadl2Package.PROPERTY__APPLIES_TO_METACLASS:
 			getAppliesToMetaclasses().clear();
-			getAppliesToMetaclasses().addAll(
-					(Collection<? extends MetaclassReference>) newValue);
+			getAppliesToMetaclasses().addAll((Collection<? extends MetaclassReference>) newValue);
 			return;
 		case Aadl2Package.PROPERTY__APPLIES_TO_CLASSIFIER:
 			getAppliesToClassifiers().clear();
-			getAppliesToClassifiers().addAll(
-					(Collection<? extends Classifier>) newValue);
+			getAppliesToClassifiers().addAll((Collection<? extends Classifier>) newValue);
 			return;
 		case Aadl2Package.PROPERTY__APPLIES_TO:
 			getAppliesTos().clear();
-			getAppliesTos().addAll(
-					(Collection<? extends PropertyOwner>) newValue);
+			getAppliesTos().addAll((Collection<? extends PropertyOwner>) newValue);
 			return;
 		case Aadl2Package.PROPERTY__EMPTY_LIST_DEFAULT:
 			setEmptyListDefault((Boolean) newValue);
@@ -495,8 +500,9 @@ public class PropertyImpl extends BasicPropertyImpl implements Property {
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy())
+		if (eIsProxy()) {
 			return super.toString();
+		}
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (inherit: ");
@@ -507,24 +513,23 @@ public class PropertyImpl extends BasicPropertyImpl implements Property {
 		return result.toString();
 	}
 
-	public List<EvaluatedProperty> evaluate(EvaluationContext ctx) {
+	@Override
+	public PropertyEvaluationResult evaluate(EvaluationContext ctx, int depth) {
 		List<PropertyAssociation> pas = getPropertyValue(ctx).getAssociations();
 		List<EvaluatedProperty> vals = new LinkedList<EvaluatedProperty>();
 
 		for (PropertyAssociation pa : pas) {
-			//			OsateDebug.osateDebug("pa" + pa);
-			vals.add(pa.evaluate(ctx));
+			// OsateDebug.osateDebug("pa" + pa);
+			vals.add(pa.evaluate(ctx, depth));
 
-			if ((!(ctx.getInstanceObject() instanceof ConnectionReference))
-					&& (!pa.isAppend())) {
+			if ((!(ctx.getInstanceObject() instanceof ConnectionReference)) && (!pa.isAppend())) {
 				break;
 			}
 		}
-		return vals;
+		return new PropertyEvaluationResult(pas.isEmpty() ? null : pas.get(0), vals);
 	}
 
-	private PropertyAcc getPropertyValue(EvaluationContext ctx)
-			throws IllegalStateException, InvalidModelException,
+	private PropertyAcc getPropertyValue(EvaluationContext ctx) throws IllegalStateException, InvalidModelException,
 			PropertyDoesNotApplyToHolderException, IllegalArgumentException {
 		// Error if the property is not acceptable
 		final PropertyAcc pas = new PropertyAcc(this);
@@ -532,10 +537,10 @@ public class PropertyImpl extends BasicPropertyImpl implements Property {
 		return pas;
 	}
 
-	public final void getPropertyValueInternal(EvaluationContext ctx,
-			final PropertyAcc paa) throws InvalidModelException {
+	public final void getPropertyValueInternal(EvaluationContext ctx, final PropertyAcc paa)
+			throws InvalidModelException {
 		InstanceObject io = ctx.getInstanceObject();
-		//		OsateDebug.osateDebug("here1 " + io + paa);
+		// OsateDebug.osateDebug("here1 " + io + paa);
 
 		/*
 		 * Only relevant for connection instances
@@ -565,7 +570,7 @@ public class PropertyImpl extends BasicPropertyImpl implements Property {
 		 * during instantiation doesn't catch contained property values that may
 		 * be attached to an ancestor instance and that might be inherited by
 		 * this instance.
-		 * 
+		 *
 		 * However, we avoid to call it for connection reference because in that
 		 * case, for a connection reference, we call that method on the contained
 		 * ConnectionInstance that returns the value of the potential other
@@ -574,19 +579,17 @@ public class PropertyImpl extends BasicPropertyImpl implements Property {
 		if (isInherit() && (!(io instanceof ConnectionReference))) {
 			io = (InstanceObject) io.eContainer();
 			if (io != null) {
-				getPropertyValueInternal(
-						new EvaluationContext(io, ctx.getClassifierCache()),
-						paa);
+				getPropertyValueInternal(new EvaluationContext(io, ctx.getClassifierCache()), paa);
 			}
 		}
 	}
 
-	protected void getPropertyValueFromDeclarativeModel(EvaluationContext ctx,
-			PropertyAcc pas) throws InvalidModelException {
+	protected void getPropertyValueFromDeclarativeModel(EvaluationContext ctx, PropertyAcc pas)
+			throws InvalidModelException {
 		InstanceObject io = ctx.getInstanceObject();
 		List<? extends NamedElement> compDecls = io.getInstantiatedObjects();
 		// FIXME: compDecls == null for connection instances
-		//OsateDebug.osateDebug("[PropertyImpl] getPropertyValueFromDeclarativeModel" + compDecls);
+		// OsateDebug.osateDebug("[PropertyImpl] getPropertyValueFromDeclarativeModel" + compDecls);
 
 		if (compDecls == null) {
 		}
@@ -598,7 +601,7 @@ public class PropertyImpl extends BasicPropertyImpl implements Property {
 			}
 			InstantiatedClassifier ic = ctx.getClassifierCache().get(io);
 			Classifier cl = (ic == null) ? null : ic.classifier;
-			//			OsateDebug.osateDebug("compDecls" + compDecl);
+			// OsateDebug.osateDebug("compDecls" + compDecl);
 
 			if (compDecl instanceof Subcomponent) {
 				((SubcomponentImpl) compDecl).getPropertyValue(this, pas, cl);
@@ -614,6 +617,7 @@ public class PropertyImpl extends BasicPropertyImpl implements Property {
 		}
 	}
 
+	@Override
 	public EvaluatedProperty evaluateDefault(EvaluationContext ctx) {
 		// TODO Auto-generated method stub
 		return null;
@@ -660,20 +664,31 @@ public class PropertyImpl extends BasicPropertyImpl implements Property {
 	@Override
 	public boolean equals(Object p) {
 		if (p instanceof Property) {
-			String p1Name = this.getQualifiedName();
+			String p1Name = getQualifiedName();
 			String p2Name = ((Property) p).getQualifiedName();
-			if (p1Name != null)
+			if (p1Name != null) {
 				return p1Name.equalsIgnoreCase(p2Name);
+			}
 		}
-		return false;
+		return this == p;
 	}
 
 	@Override
 	public int hashCode() {
 		if (eIsProxy()) {
-			return this.eProxyURI().toString().hashCode();
+			return eProxyURI().toString().hashCode();
 		}
-		return this.getQualifiedName().hashCode();
+		return getQualifiedName() != null ? getQualifiedName().hashCode() : super.hashCode();
+	}
+
+	/*
+	 * (non-Javadoc)
+	 *
+	 * @see org.osate.aadl2.AbstractNamedValue#sameAs(org.osate.aadl2.AbstractNamedValue)
+	 */
+	@Override
+	public boolean sameAs(AbstractNamedValue namedValue) {
+		return this == namedValue;
 	}
 
 } // PropertyImpl

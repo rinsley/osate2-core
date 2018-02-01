@@ -42,13 +42,18 @@ import org.eclipse.emf.common.util.EList;
  * A representation of the model object '<em><b>Global Namespace</b></em>'.
  * <!-- end-user-doc -->
  *
+ * <!-- begin-model-doc -->
+ * <p>From package AADLProperties::PropertySets.</p>
+ * <p>From package AADLConstructs::Packaging.</p>
+ * <!-- end-model-doc -->
+ *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.osate.aadl2.GlobalNamespace#getPackages <em>Package</em>}</li>
  *   <li>{@link org.osate.aadl2.GlobalNamespace#getPropertySets <em>Property Set</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.osate.aadl2.Aadl2Package#getGlobalNamespace()
  * @model
@@ -60,16 +65,19 @@ public interface GlobalNamespace extends Namespace {
 	 * The list contents are of type {@link org.osate.aadl2.PublicPackageSection}.
 	 * <p>
 	 * This feature subsets the following features:
+	 * </p>
 	 * <ul>
 	 *   <li>'{@link org.osate.aadl2.Namespace#getMembers() <em>Member</em>}'</li>
 	 * </ul>
-	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Package</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * <p>From package AADLConstructs::Packaging.</p>
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Package</em>' reference list.
 	 * @see org.osate.aadl2.Aadl2Package#getGlobalNamespace_Package()
 	 * @model transient="true" volatile="true" ordered="false"
@@ -82,16 +90,19 @@ public interface GlobalNamespace extends Namespace {
 	 * The list contents are of type {@link org.osate.aadl2.PropertySet}.
 	 * <p>
 	 * This feature subsets the following features:
+	 * </p>
 	 * <ul>
 	 *   <li>'{@link org.osate.aadl2.Namespace#getMembers() <em>Member</em>}'</li>
 	 * </ul>
-	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Property Set</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * <p>From package AADLProperties::PropertySets.</p>
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Property Set</em>' reference list.
 	 * @see org.osate.aadl2.Aadl2Package#getGlobalNamespace_PropertySet()
 	 * @model transient="true" volatile="true" ordered="false"

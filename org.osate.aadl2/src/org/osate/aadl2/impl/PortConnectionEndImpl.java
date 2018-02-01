@@ -43,13 +43,10 @@ import org.osate.aadl2.PortConnectionEnd;
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Port Connection End</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */
-public abstract class PortConnectionEndImpl extends ConnectionEndImpl implements
-		PortConnectionEnd {
+public abstract class PortConnectionEndImpl extends ConnectionEndImpl implements PortConnectionEnd {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

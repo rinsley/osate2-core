@@ -52,16 +52,15 @@ import org.osate.aadl2.ThreadGroupSubcomponentType;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.osate.aadl2.impl.ThreadGroupSubcomponentImpl#getSubcomponentType <em>Subcomponent Type</em>}</li>
  *   <li>{@link org.osate.aadl2.impl.ThreadGroupSubcomponentImpl#getThreadGroupSubcomponentType <em>Thread Group Subcomponent Type</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
-public class ThreadGroupSubcomponentImpl extends SubcomponentImpl implements
-		ThreadGroupSubcomponent {
+public class ThreadGroupSubcomponentImpl extends SubcomponentImpl implements ThreadGroupSubcomponent {
 	/**
 	 * The cached value of the '{@link #getThreadGroupSubcomponentType() <em>Thread Group Subcomponent Type</em>}' reference.
 	 * <!-- begin-user-doc -->
@@ -99,9 +98,8 @@ public class ThreadGroupSubcomponentImpl extends SubcomponentImpl implements
 	@Override
 	public SubcomponentType getSubcomponentType() {
 		SubcomponentType subcomponentType = basicGetSubcomponentType();
-		return subcomponentType != null
-				&& ((EObject) subcomponentType).eIsProxy() ? (SubcomponentType) eResolveProxy((InternalEObject) subcomponentType)
-				: subcomponentType;
+		return subcomponentType != null && ((EObject) subcomponentType).eIsProxy()
+				? (SubcomponentType) eResolveProxy((InternalEObject) subcomponentType) : subcomponentType;
 	}
 
 	/**
@@ -122,19 +120,17 @@ public class ThreadGroupSubcomponentImpl extends SubcomponentImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ThreadGroupSubcomponentType getThreadGroupSubcomponentType() {
-		if (threadGroupSubcomponentType != null
-				&& ((EObject) threadGroupSubcomponentType).eIsProxy()) {
+		if (threadGroupSubcomponentType != null && ((EObject) threadGroupSubcomponentType).eIsProxy()) {
 			InternalEObject oldThreadGroupSubcomponentType = (InternalEObject) threadGroupSubcomponentType;
 			threadGroupSubcomponentType = (ThreadGroupSubcomponentType) eResolveProxy(oldThreadGroupSubcomponentType);
 			if (threadGroupSubcomponentType != oldThreadGroupSubcomponentType) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(
-							this,
-							Notification.RESOLVE,
+				if (eNotificationRequired()) {
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 							Aadl2Package.THREAD_GROUP_SUBCOMPONENT__THREAD_GROUP_SUBCOMPONENT_TYPE,
-							oldThreadGroupSubcomponentType,
-							threadGroupSubcomponentType));
+							oldThreadGroupSubcomponentType, threadGroupSubcomponentType));
+				}
 			}
 		}
 		return threadGroupSubcomponentType;
@@ -154,16 +150,15 @@ public class ThreadGroupSubcomponentImpl extends SubcomponentImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setThreadGroupSubcomponentType(
-			ThreadGroupSubcomponentType newThreadGroupSubcomponentType) {
+	@Override
+	public void setThreadGroupSubcomponentType(ThreadGroupSubcomponentType newThreadGroupSubcomponentType) {
 		ThreadGroupSubcomponentType oldThreadGroupSubcomponentType = threadGroupSubcomponentType;
 		threadGroupSubcomponentType = newThreadGroupSubcomponentType;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(
-					this,
-					Notification.SET,
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, Notification.SET,
 					Aadl2Package.THREAD_GROUP_SUBCOMPONENT__THREAD_GROUP_SUBCOMPONENT_TYPE,
 					oldThreadGroupSubcomponentType, threadGroupSubcomponentType));
+		}
 	}
 
 	/**
@@ -175,8 +170,9 @@ public class ThreadGroupSubcomponentImpl extends SubcomponentImpl implements
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 		case Aadl2Package.THREAD_GROUP_SUBCOMPONENT__THREAD_GROUP_SUBCOMPONENT_TYPE:
-			if (resolve)
+			if (resolve) {
 				return getThreadGroupSubcomponentType();
+			}
 			return basicGetThreadGroupSubcomponentType();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -220,6 +216,8 @@ public class ThreadGroupSubcomponentImpl extends SubcomponentImpl implements
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+		case Aadl2Package.THREAD_GROUP_SUBCOMPONENT__SUBCOMPONENT_TYPE:
+			return isSetSubcomponentType();
 		case Aadl2Package.THREAD_GROUP_SUBCOMPONENT__THREAD_GROUP_SUBCOMPONENT_TYPE:
 			return threadGroupSubcomponentType != null;
 		}
@@ -237,6 +235,7 @@ public class ThreadGroupSubcomponentImpl extends SubcomponentImpl implements
 				|| eIsSet(Aadl2Package.THREAD_GROUP_SUBCOMPONENT__THREAD_GROUP_SUBCOMPONENT_TYPE);
 	}
 
+	@Override
 	public ComponentCategory getCategory() {
 		return ComponentCategory.THREAD_GROUP;
 	}

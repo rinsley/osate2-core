@@ -41,8 +41,17 @@ import org.eclipse.emf.common.util.EList;
  * <!-- begin-user-doc --> A representation of the model object '
  * <em><b>Component Implementation</b></em>'. <!-- end-user-doc -->
  *
+ * <!-- begin-model-doc -->
+ * <p>From package AADLDetails::NoneSupport.</p>
+ * <p>From package AADLConstructs::Components.</p>
+ * <p>From package AADLDetails::Components::Abstract.</p>
+ * <p>From package AADLDetails::Connections.</p>
+ * <p>From package AADLDetails::Special Features.</p>
+ * <!-- end-model-doc -->
+ *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.osate.aadl2.ComponentImplementation#getType <em>Type</em>}</li>
  *   <li>{@link org.osate.aadl2.ComponentImplementation#getOwnedSubcomponents <em>Owned Subcomponent</em>}</li>
@@ -61,8 +70,13 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.osate.aadl2.ComponentImplementation#isNoSubcomponents <em>No Subcomponents</em>}</li>
  *   <li>{@link org.osate.aadl2.ComponentImplementation#isNoConnections <em>No Connections</em>}</li>
  *   <li>{@link org.osate.aadl2.ComponentImplementation#isNoCalls <em>No Calls</em>}</li>
+ *   <li>{@link org.osate.aadl2.ComponentImplementation#getOwnedProcessorFeatures <em>Owned Processor Feature</em>}</li>
+ *   <li>{@link org.osate.aadl2.ComponentImplementation#getOwnedInternalFeatures <em>Owned Internal Feature</em>}</li>
+ *   <li>{@link org.osate.aadl2.ComponentImplementation#getOwnedEventSources <em>Owned Event Source</em>}</li>
+ *   <li>{@link org.osate.aadl2.ComponentImplementation#getOwnedEventDataSources <em>Owned Event Data Source</em>}</li>
+ *   <li>{@link org.osate.aadl2.ComponentImplementation#getOwnedPortProxies <em>Owned Port Proxy</em>}</li>
+ *   <li>{@link org.osate.aadl2.ComponentImplementation#getOwnedSubprogramProxies <em>Owned Subprogram Proxy</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.osate.aadl2.Aadl2Package#getComponentImplementation()
  * @model abstract="true"
@@ -73,16 +87,19 @@ public interface ComponentImplementation extends ComponentClassifier {
 	 * Returns the value of the '<em><b>Type</b></em>' reference.
 	 * <p>
 	 * This feature subsets the following features:
+	 * </p>
 	 * <ul>
 	 *   <li>'{@link org.osate.aadl2.Classifier#getGenerals() <em>General</em>}'</li>
 	 * </ul>
-	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Type</em>' reference isn't clear, there really
 	 * should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * <p>From package AADLConstructs::Components.</p>
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Type</em>' reference.
 	 * @see #setType(ComponentType)
 	 * @see org.osate.aadl2.Aadl2Package#getComponentImplementation_Type()
@@ -108,6 +125,9 @@ public interface ComponentImplementation extends ComponentClassifier {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * <p>From package AADLDetails::NoneSupport.</p>
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>No Subcomponents</em>' attribute.
 	 * @see #setNoSubcomponents(boolean)
 	 * @see org.osate.aadl2.Aadl2Package#getComponentImplementation_NoSubcomponents()
@@ -134,7 +154,7 @@ public interface ComponentImplementation extends ComponentClassifier {
 	 * really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>No Calls</em>' attribute.
 	 * @see #setNoCalls(boolean)
 	 * @see org.osate.aadl2.Aadl2Package#getComponentImplementation_NoCalls()
@@ -149,12 +169,206 @@ public interface ComponentImplementation extends ComponentClassifier {
 	 * {@link org.osate.aadl2.ComponentImplementation#isNoCalls
 	 * <em>No Calls</em>}' attribute. <!-- begin-user-doc --> <!-- end-user-doc
 	 * -->
-	 * 
+	 *
 	 * @param value the new value of the '<em>No Calls</em>' attribute.
 	 * @see #isNoCalls()
 	 * @generated
 	 */
 	void setNoCalls(boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Owned Processor Feature</b></em>' reference list.
+	 * The list contents are of type {@link org.osate.aadl2.ProcessorFeature}.
+	 * <p>
+	 * This feature subsets the following features:
+	 * </p>
+	 * <ul>
+	 *   <li>'{@link org.osate.aadl2.Namespace#getOwnedMembers() <em>Owned Member</em>}'</li>
+	 *   <li>'{@link org.osate.aadl2.Classifier#getClassifierFeatures() <em>Classifier Feature</em>}'</li>
+	 * </ul>
+	 * This feature is a derived union.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Owned Processor Feature</em>' reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * <p>From package AADLDetails::Special Features.</p>
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Owned Processor Feature</em>' reference list.
+	 * @see org.osate.aadl2.Aadl2Package#getComponentImplementation_OwnedProcessorFeature()
+	 * @model transient="true" changeable="false" volatile="true" derived="true" ordered="false"
+	 * @generated
+	 */
+	EList<ProcessorFeature> getOwnedProcessorFeatures();
+
+	/**
+	 * Returns the value of the '<em><b>Owned Internal Feature</b></em>' reference list.
+	 * The list contents are of type {@link org.osate.aadl2.InternalFeature}.
+	 * <p>
+	 * This feature subsets the following features:
+	 * </p>
+	 * <ul>
+	 *   <li>'{@link org.osate.aadl2.Namespace#getOwnedMembers() <em>Owned Member</em>}'</li>
+	 *   <li>'{@link org.osate.aadl2.Classifier#getClassifierFeatures() <em>Classifier Feature</em>}'</li>
+	 * </ul>
+	 * This feature is a derived union.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Owned Internal Feature</em>' reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * <p>From package AADLDetails::Special Features.</p>
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Owned Internal Feature</em>' reference list.
+	 * @see org.osate.aadl2.Aadl2Package#getComponentImplementation_OwnedInternalFeature()
+	 * @model transient="true" changeable="false" volatile="true" derived="true" ordered="false"
+	 * @generated
+	 */
+	EList<InternalFeature> getOwnedInternalFeatures();
+
+	/**
+	 * Returns the value of the '<em><b>Owned Event Source</b></em>' containment reference list.
+	 * The list contents are of type {@link org.osate.aadl2.EventSource}.
+	 * <p>
+	 * This feature subsets the following features:
+	 * </p>
+	 * <ul>
+	 *   <li>'{@link org.osate.aadl2.ComponentImplementation#getOwnedInternalFeatures() <em>Owned Internal Feature</em>}'</li>
+	 * </ul>
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Owned Event Source</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * <p>From package AADLDetails::Special Features.</p>
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Owned Event Source</em>' containment reference list.
+	 * @see org.osate.aadl2.Aadl2Package#getComponentImplementation_OwnedEventSource()
+	 * @model containment="true" ordered="false"
+	 * @generated
+	 */
+	EList<EventSource> getOwnedEventSources();
+
+	/**
+	 * Creates a new {@link org.osate.aadl2.EventSource} and appends it to the '<em><b>Owned Event Source</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return The new {@link org.osate.aadl2.EventSource}.
+	 * @see #getOwnedEventSources()
+	 * @generated
+	 */
+	EventSource createOwnedEventSource();
+
+	/**
+	 * Returns the value of the '<em><b>Owned Event Data Source</b></em>' containment reference list.
+	 * The list contents are of type {@link org.osate.aadl2.EventDataSource}.
+	 * <p>
+	 * This feature subsets the following features:
+	 * </p>
+	 * <ul>
+	 *   <li>'{@link org.osate.aadl2.ComponentImplementation#getOwnedInternalFeatures() <em>Owned Internal Feature</em>}'</li>
+	 * </ul>
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Owned Event Data Source</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * <p>From package AADLDetails::Special Features.</p>
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Owned Event Data Source</em>' containment reference list.
+	 * @see org.osate.aadl2.Aadl2Package#getComponentImplementation_OwnedEventDataSource()
+	 * @model containment="true" ordered="false"
+	 * @generated
+	 */
+	EList<EventDataSource> getOwnedEventDataSources();
+
+	/**
+	 * Creates a new {@link org.osate.aadl2.EventDataSource} and appends it to the '<em><b>Owned Event Data Source</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return The new {@link org.osate.aadl2.EventDataSource}.
+	 * @see #getOwnedEventDataSources()
+	 * @generated
+	 */
+	EventDataSource createOwnedEventDataSource();
+
+	/**
+	 * Returns the value of the '<em><b>Owned Port Proxy</b></em>' containment reference list.
+	 * The list contents are of type {@link org.osate.aadl2.PortProxy}.
+	 * <p>
+	 * This feature subsets the following features:
+	 * </p>
+	 * <ul>
+	 *   <li>'{@link org.osate.aadl2.ComponentImplementation#getOwnedProcessorFeatures() <em>Owned Processor Feature</em>}'</li>
+	 * </ul>
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Owned Port Proxy</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * <p>From package AADLDetails::Special Features.</p>
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Owned Port Proxy</em>' containment reference list.
+	 * @see org.osate.aadl2.Aadl2Package#getComponentImplementation_OwnedPortProxy()
+	 * @model containment="true" ordered="false"
+	 * @generated
+	 */
+	EList<PortProxy> getOwnedPortProxies();
+
+	/**
+	 * Creates a new {@link org.osate.aadl2.PortProxy} and appends it to the '<em><b>Owned Port Proxy</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return The new {@link org.osate.aadl2.PortProxy}.
+	 * @see #getOwnedPortProxies()
+	 * @generated
+	 */
+	PortProxy createOwnedPortProxy();
+
+	/**
+	 * Returns the value of the '<em><b>Owned Subprogram Proxy</b></em>' containment reference list.
+	 * The list contents are of type {@link org.osate.aadl2.SubprogramProxy}.
+	 * <p>
+	 * This feature subsets the following features:
+	 * </p>
+	 * <ul>
+	 *   <li>'{@link org.osate.aadl2.ComponentImplementation#getOwnedProcessorFeatures() <em>Owned Processor Feature</em>}'</li>
+	 * </ul>
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Owned Subprogram Proxy</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * <p>From package AADLDetails::Special Features.</p>
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Owned Subprogram Proxy</em>' containment reference list.
+	 * @see org.osate.aadl2.Aadl2Package#getComponentImplementation_OwnedSubprogramProxy()
+	 * @model containment="true" ordered="false"
+	 * @generated
+	 */
+	EList<SubprogramProxy> getOwnedSubprogramProxies();
+
+	/**
+	 * Creates a new {@link org.osate.aadl2.SubprogramProxy} and appends it to the '<em><b>Owned Subprogram Proxy</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return The new {@link org.osate.aadl2.SubprogramProxy}.
+	 * @see #getOwnedSubprogramProxies()
+	 * @generated
+	 */
+	SubprogramProxy createOwnedSubprogramProxy();
 
 	/**
 	 * Returns the value of the '<em><b>No Connections</b></em>' attribute. <!--
@@ -164,7 +378,7 @@ public interface ComponentImplementation extends ComponentClassifier {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>No Connections</em>' attribute.
 	 * @see #setNoConnections(boolean)
 	 * @see org.osate.aadl2.Aadl2Package#getComponentImplementation_NoConnections()
@@ -189,11 +403,11 @@ public interface ComponentImplementation extends ComponentClassifier {
 	 * The list contents are of type {@link org.osate.aadl2.Subcomponent}.
 	 * <p>
 	 * This feature subsets the following features:
+	 * </p>
 	 * <ul>
 	 *   <li>'{@link org.osate.aadl2.Classifier#getClassifierFeatures() <em>Classifier Feature</em>}'</li>
 	 *   <li>'{@link org.osate.aadl2.Namespace#getOwnedMembers() <em>Owned Member</em>}'</li>
 	 * </ul>
-	 * </p>
 	 * This feature is a derived union.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -201,6 +415,9 @@ public interface ComponentImplementation extends ComponentClassifier {
 	 * clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * <p>From package AADLConstructs::Components.</p>
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Subcomponent</em>' reference list.
 	 * @see org.osate.aadl2.Aadl2Package#getComponentImplementation_OwnedSubcomponent()
 	 * @model transient="true" changeable="false" volatile="true" derived="true" ordered="false"
@@ -212,22 +429,26 @@ public interface ComponentImplementation extends ComponentClassifier {
 	 * Returns the value of the '<em><b>Extended</b></em>' reference.
 	 * <p>
 	 * This feature subsets the following features:
+	 * </p>
 	 * <ul>
 	 *   <li>'{@link org.osate.aadl2.Classifier#getGenerals() <em>General</em>}'</li>
 	 * </ul>
-	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Extended</em>' reference isn't clear, there
 	 * really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * <p>From package AADLConstructs::Components.</p>
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Extended</em>' reference.
 	 * @see #setExtended(ComponentImplementation)
 	 * @see org.osate.aadl2.Aadl2Package#getComponentImplementation_Extended()
 	 * @model transient="true" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
+	@Override
 	ComponentImplementation getExtended();
 
 	/**
@@ -235,7 +456,7 @@ public interface ComponentImplementation extends ComponentClassifier {
 	 * {@link org.osate.aadl2.ComponentImplementation#getExtended
 	 * <em>Extended</em>}' reference. <!-- begin-user-doc --> <!-- end-user-doc
 	 * -->
-	 * 
+	 *
 	 * @param value the new value of the '<em>Extended</em>' reference.
 	 * @see #getExtended()
 	 * @generated
@@ -247,10 +468,10 @@ public interface ComponentImplementation extends ComponentClassifier {
 	 * The list contents are of type {@link org.osate.aadl2.FlowImplementation}.
 	 * <p>
 	 * This feature subsets the following features:
+	 * </p>
 	 * <ul>
 	 *   <li>'{@link org.osate.aadl2.Classifier#getClassifierFeatures() <em>Classifier Feature</em>}'</li>
 	 * </ul>
-	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Flow Implementation</em>' containment
@@ -258,6 +479,9 @@ public interface ComponentImplementation extends ComponentClassifier {
 	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * <p>From package AADLConstructs::Components.</p>
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Flow Implementation</em>' containment reference list.
 	 * @see org.osate.aadl2.Aadl2Package#getComponentImplementation_OwnedFlowImplementation()
 	 * @model containment="true"
@@ -279,11 +503,11 @@ public interface ComponentImplementation extends ComponentClassifier {
 	 * The list contents are of type {@link org.osate.aadl2.Connection}.
 	 * <p>
 	 * This feature subsets the following features:
+	 * </p>
 	 * <ul>
 	 *   <li>'{@link org.osate.aadl2.Classifier#getClassifierFeatures() <em>Classifier Feature</em>}'</li>
 	 *   <li>'{@link org.osate.aadl2.Namespace#getOwnedMembers() <em>Owned Member</em>}'</li>
 	 * </ul>
-	 * </p>
 	 * This feature is a derived union.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -291,6 +515,9 @@ public interface ComponentImplementation extends ComponentClassifier {
 	 * list isn't clear, there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * <p>From package AADLConstructs::Components.</p>
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Connection</em>' reference list.
 	 * @see org.osate.aadl2.Aadl2Package#getComponentImplementation_OwnedConnection()
 	 * @model transient="true" changeable="false" volatile="true" derived="true" ordered="false"
@@ -302,16 +529,19 @@ public interface ComponentImplementation extends ComponentClassifier {
 	 * Returns the value of the '<em><b>Owned Extension</b></em>' containment reference.
 	 * <p>
 	 * This feature subsets the following features:
+	 * </p>
 	 * <ul>
 	 *   <li>'{@link org.osate.aadl2.Classifier#getGeneralizations() <em>Generalization</em>}'</li>
 	 * </ul>
-	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Extension</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * <p>From package AADLConstructs::Components.</p>
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Extension</em>' containment reference.
 	 * @see #setOwnedExtension(ImplementationExtension)
 	 * @see org.osate.aadl2.Aadl2Package#getComponentImplementation_OwnedExtension()
@@ -344,16 +574,19 @@ public interface ComponentImplementation extends ComponentClassifier {
 	 * Returns the value of the '<em><b>Owned Realization</b></em>' containment reference.
 	 * <p>
 	 * This feature subsets the following features:
+	 * </p>
 	 * <ul>
 	 *   <li>'{@link org.osate.aadl2.Classifier#getGeneralizations() <em>Generalization</em>}'</li>
 	 * </ul>
-	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Realization</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * <p>From package AADLConstructs::Components.</p>
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Realization</em>' containment reference.
 	 * @see #setOwnedRealization(Realization)
 	 * @see org.osate.aadl2.Aadl2Package#getComponentImplementation_OwnedRealization()
@@ -387,10 +620,10 @@ public interface ComponentImplementation extends ComponentClassifier {
 	 * The list contents are of type {@link org.osate.aadl2.AbstractSubcomponent}.
 	 * <p>
 	 * This feature subsets the following features:
+	 * </p>
 	 * <ul>
 	 *   <li>'{@link org.osate.aadl2.ComponentImplementation#getOwnedSubcomponents() <em>Owned Subcomponent</em>}'</li>
 	 * </ul>
-	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Abstract Subcomponent</em>' containment
@@ -398,6 +631,9 @@ public interface ComponentImplementation extends ComponentClassifier {
 	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * <p>From package AADLDetails::Components::Abstract.</p>
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Abstract Subcomponent</em>' containment reference list.
 	 * @see org.osate.aadl2.Aadl2Package#getComponentImplementation_OwnedAbstractSubcomponent()
 	 * @model containment="true" ordered="false"
@@ -419,16 +655,19 @@ public interface ComponentImplementation extends ComponentClassifier {
 	 * The list contents are of type {@link org.osate.aadl2.AccessConnection}.
 	 * <p>
 	 * This feature subsets the following features:
+	 * </p>
 	 * <ul>
 	 *   <li>'{@link org.osate.aadl2.ComponentImplementation#getOwnedConnections() <em>Owned Connection</em>}'</li>
 	 * </ul>
-	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Access Connection</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * <p>From package AADLDetails::Connections.</p>
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Access Connection</em>' containment reference list.
 	 * @see org.osate.aadl2.Aadl2Package#getComponentImplementation_OwnedAccessConnection()
 	 * @model containment="true" ordered="false"
@@ -451,16 +690,19 @@ public interface ComponentImplementation extends ComponentClassifier {
 	 * The list contents are of type {@link org.osate.aadl2.ParameterConnection}.
 	 * <p>
 	 * This feature subsets the following features:
+	 * </p>
 	 * <ul>
 	 *   <li>'{@link org.osate.aadl2.ComponentImplementation#getOwnedConnections() <em>Owned Connection</em>}'</li>
 	 * </ul>
-	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Parameter Connection</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * <p>From package AADLDetails::Connections.</p>
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Parameter Connection</em>' containment reference list.
 	 * @see org.osate.aadl2.Aadl2Package#getComponentImplementation_OwnedParameterConnection()
 	 * @model containment="true" ordered="false"
@@ -483,16 +725,19 @@ public interface ComponentImplementation extends ComponentClassifier {
 	 * The list contents are of type {@link org.osate.aadl2.PortConnection}.
 	 * <p>
 	 * This feature subsets the following features:
+	 * </p>
 	 * <ul>
 	 *   <li>'{@link org.osate.aadl2.ComponentImplementation#getOwnedConnections() <em>Owned Connection</em>}'</li>
 	 * </ul>
-	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Port Connection</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * <p>From package AADLDetails::Connections.</p>
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Port Connection</em>' containment reference list.
 	 * @see org.osate.aadl2.Aadl2Package#getComponentImplementation_OwnedPortConnection()
 	 * @model containment="true" ordered="false"
@@ -515,16 +760,19 @@ public interface ComponentImplementation extends ComponentClassifier {
 	 * The list contents are of type {@link org.osate.aadl2.FeatureConnection}.
 	 * <p>
 	 * This feature subsets the following features:
+	 * </p>
 	 * <ul>
 	 *   <li>'{@link org.osate.aadl2.ComponentImplementation#getOwnedConnections() <em>Owned Connection</em>}'</li>
 	 * </ul>
-	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Feature Connection</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * <p>From package AADLDetails::Connections.</p>
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Feature Connection</em>' containment reference list.
 	 * @see org.osate.aadl2.Aadl2Package#getComponentImplementation_OwnedFeatureConnection()
 	 * @model containment="true" ordered="false"
@@ -547,16 +795,19 @@ public interface ComponentImplementation extends ComponentClassifier {
 	 * The list contents are of type {@link org.osate.aadl2.FeatureGroupConnection}.
 	 * <p>
 	 * This feature subsets the following features:
+	 * </p>
 	 * <ul>
 	 *   <li>'{@link org.osate.aadl2.ComponentImplementation#getOwnedConnections() <em>Owned Connection</em>}'</li>
 	 * </ul>
-	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Feature Group Connection</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * <p>From package AADLDetails::Connections.</p>
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Feature Group Connection</em>' containment reference list.
 	 * @see org.osate.aadl2.Aadl2Package#getComponentImplementation_OwnedFeatureGroupConnection()
 	 * @model containment="true" ordered="false"
@@ -579,11 +830,11 @@ public interface ComponentImplementation extends ComponentClassifier {
 	 * The list contents are of type {@link org.osate.aadl2.EndToEndFlow}.
 	 * <p>
 	 * This feature subsets the following features:
+	 * </p>
 	 * <ul>
 	 *   <li>'{@link org.osate.aadl2.Classifier#getClassifierFeatures() <em>Classifier Feature</em>}'</li>
 	 *   <li>'{@link org.osate.aadl2.Namespace#getOwnedMembers() <em>Owned Member</em>}'</li>
 	 * </ul>
-	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned End To End Flow</em>' containment
@@ -591,6 +842,9 @@ public interface ComponentImplementation extends ComponentClassifier {
 	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * <p>From package AADLConstructs::Components.</p>
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned End To End Flow</em>' containment reference list.
 	 * @see org.osate.aadl2.Aadl2Package#getComponentImplementation_OwnedEndToEndFlow()
 	 * @model containment="true" ordered="false"
@@ -628,7 +882,7 @@ public interface ComponentImplementation extends ComponentClassifier {
 	 * get list of all connection objects of a component implementation,
 	 * including ancestor features In case of refined connections the refined
 	 * connection is returned in the list.
-	 * 
+	 *
 	 * @return List of connection objects
 	 */
 	EList<Connection> getAllConnections();
@@ -636,7 +890,7 @@ public interface ComponentImplementation extends ComponentClassifier {
 	/**
 	 * get ingoing connections to subcomponents from a specified feature of the
 	 * component impl
-	 * 
+	 *
 	 * @param feature component impl feature that is the source of a connection
 	 * @return EList connections with feature as source
 	 */
@@ -646,7 +900,7 @@ public interface ComponentImplementation extends ComponentClassifier {
 	 * get list of all subcomponents of a component impl, including ancestor
 	 * features In case of refined connections the refined connection is
 	 * returned in the list.
-	 * 
+	 *
 	 * @return List of connections
 	 */
 	EList<Subcomponent> getAllSubcomponents();
@@ -654,21 +908,21 @@ public interface ComponentImplementation extends ComponentClassifier {
 	/**
 	 * Get all end to end flows, including inherited. In case of refined
 	 * end to end flows the refined end to end flow is returned in the list.
-	 * 
+	 *
 	 * @return the list of end to end flows
 	 */
 	EList<EndToEndFlow> getAllEndToEndFlows();
 
 	/**
 	 * Get all flow implementations, including inherited.
-	 * 
-	 * @return Lis of end to end flows
+	 *
+	 * @return List of end to end flows
 	 */
 	EList<FlowImplementation> getAllFlowImplementations();
 
 	/**
 	 * Returns the connection objects of a given implementation for a given mode.
-	 * 
+	 *
 	 * @param mode Mode for which connections are retrieved.
 	 * @return EList of connection objects (possibly empty).
 	 */
@@ -677,10 +931,52 @@ public interface ComponentImplementation extends ComponentClassifier {
 	/**
 	 * Get list of all connections of a component implementation in a given mode, including ancestor
 	 * implementations.  In case of refined connections the refined connection is returned in the list.
-	 * 
+	 *
 	 * @param mode Mode for which connections are to be retrieved.
 	 * @return List of connections
 	 */
 	EList<Connection> getAllConnections(Mode mode);
+
+	/**
+	 * Get all internal features, including inherited.
+	 *
+	 * @return List of internal features in this component implementation
+	 */
+	EList<InternalFeature> getAllInternalFeatures();
+
+	/**
+	 * Get all event sources, including inherited.
+	 *
+	 * @return List of event sources in this component implementation
+	 */
+	EList<EventSource> getAllEventSources();
+
+	/**
+	 * Get all event data sources, including inherited.
+	 *
+	 * @return List of event data sources in this component implementation
+	 */
+	EList<EventDataSource> getAllEventDataSources();
+
+	/**
+	 * Get all processor features, including inherited.
+	 *
+	 * @return List of processor features in this component implementation
+	 */
+	EList<ProcessorFeature> getAllProcessorFeatures();
+
+	/**
+	 * Get all processor port proxies, including inherited.
+	 *
+	 * @return List of port proxies in this component implementation
+	 */
+	EList<PortProxy> getAllPortProxies();
+
+	/**
+	 * Get all processor subprogram proxies, including inherited.
+	 *
+	 * @return List of subprogram proxies in this component implementation
+	 */
+	EList<SubprogramProxy> getAllSubprogramProxies();
 
 } // ComponentImplementation

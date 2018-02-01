@@ -41,12 +41,7 @@ import java.util.List;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
-import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
-import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.osate.aadl2.Aadl2Factory;
 import org.osate.aadl2.Aadl2Package;
@@ -58,9 +53,7 @@ import org.osate.aadl2.VirtualBusType;
  * <!-- end-user-doc -->
  * @generated
  */
-public class VirtualBusTypeItemProvider extends ComponentTypeItemProvider
-		implements IEditingDomainItemProvider, IStructuredItemContentProvider,
-		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class VirtualBusTypeItemProvider extends ComponentTypeItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -95,16 +88,13 @@ public class VirtualBusTypeItemProvider extends ComponentTypeItemProvider
 	 * @generated
 	 */
 	@Override
-	public Collection<? extends EStructuralFeature> getChildrenFeatures(
-			Object object) {
+	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(Aadl2Package.eINSTANCE
-					.getVirtualBusType_OwnedDataPort());
-			childrenFeatures.add(Aadl2Package.eINSTANCE
-					.getVirtualBusType_OwnedEventDataPort());
-			childrenFeatures.add(Aadl2Package.eINSTANCE
-					.getVirtualBusType_OwnedEventPort());
+			childrenFeatures.add(Aadl2Package.eINSTANCE.getVirtualBusType_OwnedDataPort());
+			childrenFeatures.add(Aadl2Package.eINSTANCE.getVirtualBusType_OwnedEventDataPort());
+			childrenFeatures.add(Aadl2Package.eINSTANCE.getVirtualBusType_OwnedEventPort());
+			childrenFeatures.add(Aadl2Package.eINSTANCE.getVirtualBusType_OwnedBusAccess());
 		}
 		return childrenFeatures;
 	}
@@ -130,8 +120,7 @@ public class VirtualBusTypeItemProvider extends ComponentTypeItemProvider
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object,
-				getResourceLocator().getImage("full/obj16/VirtualBusType"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/VirtualBusType"));
 	}
 
 	/**
@@ -162,8 +151,8 @@ public class VirtualBusTypeItemProvider extends ComponentTypeItemProvider
 		case Aadl2Package.VIRTUAL_BUS_TYPE__OWNED_DATA_PORT:
 		case Aadl2Package.VIRTUAL_BUS_TYPE__OWNED_EVENT_DATA_PORT:
 		case Aadl2Package.VIRTUAL_BUS_TYPE__OWNED_EVENT_PORT:
-			fireNotifyChanged(new ViewerNotification(notification,
-					notification.getNotifier(), true, false));
+		case Aadl2Package.VIRTUAL_BUS_TYPE__OWNED_BUS_ACCESS:
+			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 			return;
 		}
 		super.notifyChanged(notification);
@@ -177,21 +166,20 @@ public class VirtualBusTypeItemProvider extends ComponentTypeItemProvider
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(
-			Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(
-				Aadl2Package.eINSTANCE.getVirtualBusType_OwnedDataPort(),
+		newChildDescriptors.add(createChildParameter(Aadl2Package.eINSTANCE.getVirtualBusType_OwnedDataPort(),
 				Aadl2Factory.eINSTANCE.createDataPort()));
 
-		newChildDescriptors.add(createChildParameter(
-				Aadl2Package.eINSTANCE.getVirtualBusType_OwnedEventDataPort(),
+		newChildDescriptors.add(createChildParameter(Aadl2Package.eINSTANCE.getVirtualBusType_OwnedEventDataPort(),
 				Aadl2Factory.eINSTANCE.createEventDataPort()));
 
-		newChildDescriptors.add(createChildParameter(
-				Aadl2Package.eINSTANCE.getVirtualBusType_OwnedEventPort(),
+		newChildDescriptors.add(createChildParameter(Aadl2Package.eINSTANCE.getVirtualBusType_OwnedEventPort(),
 				Aadl2Factory.eINSTANCE.createEventPort()));
+
+		newChildDescriptors.add(createChildParameter(Aadl2Package.eINSTANCE.getVirtualBusType_OwnedBusAccess(),
+				Aadl2Factory.eINSTANCE.createBusAccess()));
 	}
 
 }

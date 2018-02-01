@@ -1,12 +1,12 @@
 /**
  * <copyright>
  * Copyright  2011 by Carnegie Mellon University, all rights reserved.
- * 
+ *
  * Use of the Open Source AADL Tool Environment (OSATE) is subject to the terms of the license set forth
  * at http://www.eclipse.org/org/documents/epl-v10.html.
- * 
+ *
  * NO WARRANTY
- * 
+ *
  * ANY INFORMATION, MATERIALS, SERVICES, INTELLECTUAL PROPERTY OR OTHER PROPERTY OR RIGHTS GRANTED OR PROVIDED BY
  * CARNEGIE MELLON UNIVERSITY PURSUANT TO THIS LICENSE (HEREINAFTER THE ''DELIVERABLES'') ARE ON AN ''AS-IS'' BASIS.
  * CARNEGIE MELLON UNIVERSITY MAKES NO WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED AS TO ANY MATTER INCLUDING,
@@ -16,21 +16,21 @@
  * REGARDLESS OF WHETHER SUCH PARTY WAS AWARE OF THE POSSIBILITY OF SUCH DAMAGES. LICENSEE AGREES THAT IT WILL NOT
  * MAKE ANY WARRANTY ON BEHALF OF CARNEGIE MELLON UNIVERSITY, EXPRESS OR IMPLIED, TO ANY PERSON CONCERNING THE
  * APPLICATION OF OR THE RESULTS TO BE OBTAINED WITH THE DELIVERABLES UNDER THIS LICENSE.
- * 
+ *
  * Licensee hereby agrees to defend, indemnify, and hold harmless Carnegie Mellon University, its trustees, officers,
  * employees, and agents from all claims or demands made against them (and any related losses, expenses, or
  * attorney's fees) arising out of, or relating to Licensee's and/or its sub licensees' negligent use or willful
  * misuse of or negligent conduct or willful misconduct regarding the Software, facilities, or other rights or
  * assistance granted by Carnegie Mellon University under this License, including, but not limited to, any claims of
  * product liability, personal injury, death, damage to property, or violation of any laws or regulations.
- * 
+ *
  * Carnegie Mellon University Software Engineering Institute authored documents are sponsored by the U.S. Department
  * of Defense under Contract F19628-00-C-0003. Carnegie Mellon University retains copyrights in all material produced
  * under this contract. The U.S. Government retains a non-exclusive, royalty-free license to publish or reproduce these
  * documents, or allow others to do so, for U.S. Government purposes only pursuant to the copyright license
  * under the contract clause at 252.227.7013.
  * </copyright>
- * 
+ *
  */
 package org.osate.aadl2.impl;
 
@@ -57,16 +57,15 @@ import org.osate.aadl2.properties.PropertyAcc;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.osate.aadl2.impl.SubprogramCallImpl#getCalledSubprogram <em>Called Subprogram</em>}</li>
  *   <li>{@link org.osate.aadl2.impl.SubprogramCallImpl#getContext <em>Context</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
-public class SubprogramCallImpl extends CallSpecificationImpl implements
-		SubprogramCall {
+public class SubprogramCallImpl extends BehavioralFeatureImpl implements SubprogramCall {
 	/**
 	 * The cached value of the '{@link #getCalledSubprogram() <em>Called Subprogram</em>}' reference.
 	 * <!-- begin-user-doc -->
@@ -111,15 +110,16 @@ public class SubprogramCallImpl extends CallSpecificationImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public CalledSubprogram getCalledSubprogram() {
 		if (calledSubprogram != null && ((EObject) calledSubprogram).eIsProxy()) {
 			InternalEObject oldCalledSubprogram = (InternalEObject) calledSubprogram;
 			calledSubprogram = (CalledSubprogram) eResolveProxy(oldCalledSubprogram);
 			if (calledSubprogram != oldCalledSubprogram) {
-				if (eNotificationRequired())
+				if (eNotificationRequired()) {
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-							Aadl2Package.SUBPROGRAM_CALL__CALLED_SUBPROGRAM,
-							oldCalledSubprogram, calledSubprogram));
+							Aadl2Package.SUBPROGRAM_CALL__CALLED_SUBPROGRAM, oldCalledSubprogram, calledSubprogram));
+				}
 			}
 		}
 		return calledSubprogram;
@@ -139,13 +139,14 @@ public class SubprogramCallImpl extends CallSpecificationImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setCalledSubprogram(CalledSubprogram newCalledSubprogram) {
 		CalledSubprogram oldCalledSubprogram = calledSubprogram;
 		calledSubprogram = newCalledSubprogram;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					Aadl2Package.SUBPROGRAM_CALL__CALLED_SUBPROGRAM,
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, Notification.SET, Aadl2Package.SUBPROGRAM_CALL__CALLED_SUBPROGRAM,
 					oldCalledSubprogram, calledSubprogram));
+		}
 	}
 
 	/**
@@ -153,15 +154,16 @@ public class SubprogramCallImpl extends CallSpecificationImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public CallContext getContext() {
 		if (context != null && ((EObject) context).eIsProxy()) {
 			InternalEObject oldContext = (InternalEObject) context;
 			context = (CallContext) eResolveProxy(oldContext);
 			if (context != oldContext) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-							Aadl2Package.SUBPROGRAM_CALL__CONTEXT, oldContext,
-							context));
+				if (eNotificationRequired()) {
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, Aadl2Package.SUBPROGRAM_CALL__CONTEXT,
+							oldContext, context));
+				}
 			}
 		}
 		return context;
@@ -181,12 +183,14 @@ public class SubprogramCallImpl extends CallSpecificationImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setContext(CallContext newContext) {
 		CallContext oldContext = context;
 		context = newContext;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					Aadl2Package.SUBPROGRAM_CALL__CONTEXT, oldContext, context));
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, Notification.SET, Aadl2Package.SUBPROGRAM_CALL__CONTEXT, oldContext,
+					context));
+		}
 	}
 
 	/**
@@ -198,12 +202,14 @@ public class SubprogramCallImpl extends CallSpecificationImpl implements
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 		case Aadl2Package.SUBPROGRAM_CALL__CALLED_SUBPROGRAM:
-			if (resolve)
+			if (resolve) {
 				return getCalledSubprogram();
+			}
 			return basicGetCalledSubprogram();
 		case Aadl2Package.SUBPROGRAM_CALL__CONTEXT:
-			if (resolve)
+			if (resolve) {
 				return getContext();
+			}
 			return basicGetContext();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -263,7 +269,7 @@ public class SubprogramCallImpl extends CallSpecificationImpl implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see org.osate.aadl2.impl.NamedElementImpl#getNamespace()
 	 */
 	@Override
@@ -274,15 +280,15 @@ public class SubprogramCallImpl extends CallSpecificationImpl implements
 	// XXX: [AADL 1 -> AADL 2] Added to make property lookup work.
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see
 	 * org.osate.aadl2.impl.NamedElementImpl#getPropertyValueInternal
 	 * (org.osate.aadl2.Property,
 	 * org.osate.aadl2.properties.AadlPropertyValue, boolean)
 	 */
-	public final void getPropertyValueInternal(final Property prop,
-			final PropertyAcc pas, final boolean fromInstanceSlaveCall)
-			throws InvalidModelException {
+	@Override
+	public final void getPropertyValueInternal(final Property prop, final PropertyAcc pas,
+			final boolean fromInstanceSlaveCall) throws InvalidModelException {
 		final ComponentImplementation owner = (ComponentImplementation) getContainingClassifier();
 
 		// local contained value
@@ -296,12 +302,10 @@ public class SubprogramCallImpl extends CallSpecificationImpl implements
 		}
 
 		// get values from called subprogram
-		if (calledSubprogram instanceof Classifier) {
-			((Classifier) calledSubprogram).getPropertyValueInternal(prop, pas,
-					fromInstanceSlaveCall);
-		} else if (calledSubprogram instanceof Feature) {
-			((Feature) calledSubprogram).getPropertyValueInternal(prop, pas,
-					fromInstanceSlaveCall);
+		if (getCalledSubprogram() instanceof Classifier) {
+			((Classifier) getCalledSubprogram()).getPropertyValueInternal(prop, pas, fromInstanceSlaveCall);
+		} else if (getCalledSubprogram() instanceof Feature) {
+			((Feature) getCalledSubprogram()).getPropertyValueInternal(prop, pas, fromInstanceSlaveCall);
 		}
 
 		// get values from container

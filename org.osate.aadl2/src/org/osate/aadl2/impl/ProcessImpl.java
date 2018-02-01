@@ -42,13 +42,10 @@ import org.osate.aadl2.Aadl2Package;
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Process</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */
-public abstract class ProcessImpl extends NamedElementImpl implements
-		org.osate.aadl2.Process {
+public abstract class ProcessImpl extends NamedElementImpl implements org.osate.aadl2.Process {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

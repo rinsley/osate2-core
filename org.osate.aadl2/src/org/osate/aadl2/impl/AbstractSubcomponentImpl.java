@@ -52,16 +52,15 @@ import org.osate.aadl2.SubcomponentType;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.osate.aadl2.impl.AbstractSubcomponentImpl#getSubcomponentType <em>Subcomponent Type</em>}</li>
  *   <li>{@link org.osate.aadl2.impl.AbstractSubcomponentImpl#getAbstractSubcomponentType <em>Abstract Subcomponent Type</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
-public class AbstractSubcomponentImpl extends SubcomponentImpl implements
-		AbstractSubcomponent {
+public class AbstractSubcomponentImpl extends SubcomponentImpl implements AbstractSubcomponent {
 	/**
 	 * The cached value of the '{@link #getAbstractSubcomponentType() <em>Abstract Subcomponent Type</em>}' reference.
 	 * <!-- begin-user-doc -->
@@ -99,9 +98,8 @@ public class AbstractSubcomponentImpl extends SubcomponentImpl implements
 	@Override
 	public SubcomponentType getSubcomponentType() {
 		SubcomponentType subcomponentType = basicGetSubcomponentType();
-		return subcomponentType != null
-				&& ((EObject) subcomponentType).eIsProxy() ? (SubcomponentType) eResolveProxy((InternalEObject) subcomponentType)
-				: subcomponentType;
+		return subcomponentType != null && ((EObject) subcomponentType).eIsProxy()
+				? (SubcomponentType) eResolveProxy((InternalEObject) subcomponentType) : subcomponentType;
 	}
 
 	/**
@@ -122,19 +120,17 @@ public class AbstractSubcomponentImpl extends SubcomponentImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public AbstractSubcomponentType getAbstractSubcomponentType() {
-		if (abstractSubcomponentType != null
-				&& ((EObject) abstractSubcomponentType).eIsProxy()) {
+		if (abstractSubcomponentType != null && ((EObject) abstractSubcomponentType).eIsProxy()) {
 			InternalEObject oldAbstractSubcomponentType = (InternalEObject) abstractSubcomponentType;
 			abstractSubcomponentType = (AbstractSubcomponentType) eResolveProxy(oldAbstractSubcomponentType);
 			if (abstractSubcomponentType != oldAbstractSubcomponentType) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(
-							this,
-							Notification.RESOLVE,
-							Aadl2Package.ABSTRACT_SUBCOMPONENT__ABSTRACT_SUBCOMPONENT_TYPE,
-							oldAbstractSubcomponentType,
+				if (eNotificationRequired()) {
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+							Aadl2Package.ABSTRACT_SUBCOMPONENT__ABSTRACT_SUBCOMPONENT_TYPE, oldAbstractSubcomponentType,
 							abstractSubcomponentType));
+				}
 			}
 		}
 		return abstractSubcomponentType;
@@ -154,16 +150,15 @@ public class AbstractSubcomponentImpl extends SubcomponentImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setAbstractSubcomponentType(
-			AbstractSubcomponentType newAbstractSubcomponentType) {
+	@Override
+	public void setAbstractSubcomponentType(AbstractSubcomponentType newAbstractSubcomponentType) {
 		AbstractSubcomponentType oldAbstractSubcomponentType = abstractSubcomponentType;
 		abstractSubcomponentType = newAbstractSubcomponentType;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(
-					this,
-					Notification.SET,
-					Aadl2Package.ABSTRACT_SUBCOMPONENT__ABSTRACT_SUBCOMPONENT_TYPE,
-					oldAbstractSubcomponentType, abstractSubcomponentType));
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					Aadl2Package.ABSTRACT_SUBCOMPONENT__ABSTRACT_SUBCOMPONENT_TYPE, oldAbstractSubcomponentType,
+					abstractSubcomponentType));
+		}
 	}
 
 	/**
@@ -175,8 +170,9 @@ public class AbstractSubcomponentImpl extends SubcomponentImpl implements
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 		case Aadl2Package.ABSTRACT_SUBCOMPONENT__ABSTRACT_SUBCOMPONENT_TYPE:
-			if (resolve)
+			if (resolve) {
 				return getAbstractSubcomponentType();
+			}
 			return basicGetAbstractSubcomponentType();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -220,6 +216,8 @@ public class AbstractSubcomponentImpl extends SubcomponentImpl implements
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+		case Aadl2Package.ABSTRACT_SUBCOMPONENT__SUBCOMPONENT_TYPE:
+			return isSetSubcomponentType();
 		case Aadl2Package.ABSTRACT_SUBCOMPONENT__ABSTRACT_SUBCOMPONENT_TYPE:
 			return abstractSubcomponentType != null;
 		}
@@ -233,10 +231,10 @@ public class AbstractSubcomponentImpl extends SubcomponentImpl implements
 	 */
 	@Override
 	public boolean isSetSubcomponentType() {
-		return super.isSetSubcomponentType()
-				|| eIsSet(Aadl2Package.ABSTRACT_SUBCOMPONENT__ABSTRACT_SUBCOMPONENT_TYPE);
+		return super.isSetSubcomponentType() || eIsSet(Aadl2Package.ABSTRACT_SUBCOMPONENT__ABSTRACT_SUBCOMPONENT_TYPE);
 	}
 
+	@Override
 	public ComponentCategory getCategory() {
 		return ComponentCategory.ABSTRACT;
 	}

@@ -50,8 +50,6 @@ import org.osate.aadl2.Aadl2Package;
 import org.osate.aadl2.BasicProperty;
 import org.osate.aadl2.NamedElement;
 import org.osate.aadl2.RecordType;
-import org.osate.aadl2.Type;
-import org.osate.aadl2.operations.TypeOperations;
 
 /**
  * <!-- begin-user-doc -->
@@ -59,11 +57,11 @@ import org.osate.aadl2.operations.TypeOperations;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.osate.aadl2.impl.RecordTypeImpl#getOwnedMembers <em>Owned Member</em>}</li>
  *   <li>{@link org.osate.aadl2.impl.RecordTypeImpl#getOwnedFields <em>Owned Field</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -108,24 +106,17 @@ public class RecordTypeImpl extends NamespaceImpl implements RecordType {
 		if (cache != null) {
 			Resource eResource = eResource();
 			@SuppressWarnings("unchecked")
-			EList<NamedElement> ownedMembers = (EList<NamedElement>) cache.get(
-					eResource, this,
+			EList<NamedElement> ownedMembers = (EList<NamedElement>) cache.get(eResource, this,
 					Aadl2Package.eINSTANCE.getNamespace_OwnedMember());
 			if (ownedMembers == null) {
-				cache.put(
-						eResource,
-						this,
-						Aadl2Package.eINSTANCE.getNamespace_OwnedMember(),
-						ownedMembers = new DerivedUnionEObjectEList<NamedElement>(
-								NamedElement.class, this,
-								Aadl2Package.RECORD_TYPE__OWNED_MEMBER,
-								OWNED_MEMBER_ESUBSETS));
+				cache.put(eResource, this, Aadl2Package.eINSTANCE.getNamespace_OwnedMember(),
+						ownedMembers = new DerivedUnionEObjectEList<NamedElement>(NamedElement.class, this,
+								Aadl2Package.RECORD_TYPE__OWNED_MEMBER, OWNED_MEMBER_ESUBSETS));
 			}
 			return ownedMembers;
 		}
-		return new DerivedUnionEObjectEList<NamedElement>(NamedElement.class,
-				this, Aadl2Package.RECORD_TYPE__OWNED_MEMBER,
-				OWNED_MEMBER_ESUBSETS);
+		return new DerivedUnionEObjectEList<NamedElement>(NamedElement.class, this,
+				Aadl2Package.RECORD_TYPE__OWNED_MEMBER, OWNED_MEMBER_ESUBSETS);
 	}
 
 	/**
@@ -143,10 +134,10 @@ public class RecordTypeImpl extends NamespaceImpl implements RecordType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<BasicProperty> getOwnedFields() {
 		if (ownedFields == null) {
-			ownedFields = new EObjectContainmentEList<BasicProperty>(
-					BasicProperty.class, this,
+			ownedFields = new EObjectContainmentEList<BasicProperty>(BasicProperty.class, this,
 					Aadl2Package.RECORD_TYPE__OWNED_FIELD);
 		}
 		return ownedFields;
@@ -157,6 +148,7 @@ public class RecordTypeImpl extends NamespaceImpl implements RecordType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public BasicProperty createOwnedField(EClass eClass) {
 		BasicProperty newOwnedField = (BasicProperty) create(eClass);
 		getOwnedFields().add(newOwnedField);
@@ -168,6 +160,7 @@ public class RecordTypeImpl extends NamespaceImpl implements RecordType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public BasicProperty createOwnedField() {
 		return createOwnedField(Aadl2Package.eINSTANCE.getBasicProperty());
 	}
@@ -177,22 +170,11 @@ public class RecordTypeImpl extends NamespaceImpl implements RecordType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean conformsTo(Type other) {
-		return TypeOperations.conformsTo(this, other);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case Aadl2Package.RECORD_TYPE__OWNED_FIELD:
-			return ((InternalEList<?>) getOwnedFields()).basicRemove(otherEnd,
-					msgs);
+			return ((InternalEList<?>) getOwnedFields()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -222,8 +204,7 @@ public class RecordTypeImpl extends NamespaceImpl implements RecordType {
 		switch (featureID) {
 		case Aadl2Package.RECORD_TYPE__OWNED_FIELD:
 			getOwnedFields().clear();
-			getOwnedFields().addAll(
-					(Collection<? extends BasicProperty>) newValue);
+			getOwnedFields().addAll((Collection<? extends BasicProperty>) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -252,6 +233,8 @@ public class RecordTypeImpl extends NamespaceImpl implements RecordType {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+		case Aadl2Package.RECORD_TYPE__OWNED_MEMBER:
+			return isSetOwnedMembers();
 		case Aadl2Package.RECORD_TYPE__OWNED_FIELD:
 			return ownedFields != null && !ownedFields.isEmpty();
 		}
@@ -265,8 +248,7 @@ public class RecordTypeImpl extends NamespaceImpl implements RecordType {
 	 */
 	@Override
 	public boolean isSetOwnedMembers() {
-		return super.isSetOwnedMembers()
-				|| eIsSet(Aadl2Package.RECORD_TYPE__OWNED_FIELD);
+		return super.isSetOwnedMembers() || eIsSet(Aadl2Package.RECORD_TYPE__OWNED_FIELD);
 	}
 
 } // RecordTypeImpl

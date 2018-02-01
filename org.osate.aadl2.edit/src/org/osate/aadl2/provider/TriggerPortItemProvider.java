@@ -41,14 +41,8 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
-import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
-import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
-import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-import org.osate.aadl2.Aadl2Package;
+import org.osate.aadl2.TriggerPort;
 
 /**
  * This is the item provider adapter for a {@link org.osate.aadl2.TriggerPort} object.
@@ -56,9 +50,7 @@ import org.osate.aadl2.Aadl2Package;
  * <!-- end-user-doc -->
  * @generated
  */
-public class TriggerPortItemProvider extends ModeTransitionTriggerItemProvider
-		implements IEditingDomainItemProvider, IStructuredItemContentProvider,
-		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class TriggerPortItemProvider extends NamedElementItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -80,49 +72,8 @@ public class TriggerPortItemProvider extends ModeTransitionTriggerItemProvider
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
-			addContextPropertyDescriptor(object);
-			addPortPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
-	}
-
-	/**
-	 * This adds a property descriptor for the Context feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addContextPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-						.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_TriggerPort_context_feature"),
-				getString("_UI_PropertyDescriptor_description",
-						"_UI_TriggerPort_context_feature",
-						"_UI_TriggerPort_type"), Aadl2Package.eINSTANCE
-						.getTriggerPort_Context(), true, false, true, null,
-				null, null));
-	}
-
-	/**
-	 * This adds a property descriptor for the Port feature.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected void addPortPropertyDescriptor(Object object) {
-		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(
-						((ComposeableAdapterFactory) adapterFactory)
-								.getRootAdapterFactory(),
-						getResourceLocator(),
-						getString("_UI_TriggerPort_port_feature"),
-						getString("_UI_PropertyDescriptor_description",
-								"_UI_TriggerPort_port_feature",
-								"_UI_TriggerPort_type"), Aadl2Package.eINSTANCE
-								.getTriggerPort_Port(), true, false, true,
-						null, null, null));
 	}
 
 	/**
@@ -133,8 +84,7 @@ public class TriggerPortItemProvider extends ModeTransitionTriggerItemProvider
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object,
-				getResourceLocator().getImage("full/obj16/TriggerPort"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/TriggerPort"));
 	}
 
 	/**
@@ -145,7 +95,9 @@ public class TriggerPortItemProvider extends ModeTransitionTriggerItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		return getString("_UI_TriggerPort_type");
+		String label = ((TriggerPort) object).getName();
+		return label == null || label.length() == 0 ? getString("_UI_TriggerPort_type")
+				: getString("_UI_TriggerPort_type") + " " + label;
 	}
 
 	/**
@@ -169,8 +121,7 @@ public class TriggerPortItemProvider extends ModeTransitionTriggerItemProvider
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(
-			Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 

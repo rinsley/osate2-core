@@ -43,8 +43,8 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.osate.aadl2.Aadl2Package;
 import org.osate.aadl2.NumberValue;
 import org.osate.aadl2.UnitLiteral;
-import org.osate.aadl2.operations.NumberValueOperations;
 import org.osate.aadl2.UnitsType;
+import org.osate.aadl2.operations.NumberValueOperations;
 
 /**
  * <!-- begin-user-doc -->
@@ -52,15 +52,14 @@ import org.osate.aadl2.UnitsType;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.osate.aadl2.impl.NumberValueImpl#getUnit <em>Unit</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
-public abstract class NumberValueImpl extends PropertyValueImpl implements
-		NumberValue {
+public abstract class NumberValueImpl extends PropertyValueImpl implements NumberValue {
 	/**
 	 * The cached value of the '{@link #getUnit() <em>Unit</em>}' reference.
 	 * <!-- begin-user-doc -->
@@ -95,14 +94,16 @@ public abstract class NumberValueImpl extends PropertyValueImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public UnitLiteral getUnit() {
 		if (unit != null && ((EObject) unit).eIsProxy()) {
 			InternalEObject oldUnit = (InternalEObject) unit;
 			unit = (UnitLiteral) eResolveProxy(oldUnit);
 			if (unit != oldUnit) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-							Aadl2Package.NUMBER_VALUE__UNIT, oldUnit, unit));
+				if (eNotificationRequired()) {
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, Aadl2Package.NUMBER_VALUE__UNIT, oldUnit,
+							unit));
+				}
 			}
 		}
 		return unit;
@@ -122,12 +123,13 @@ public abstract class NumberValueImpl extends PropertyValueImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setUnit(UnitLiteral newUnit) {
 		UnitLiteral oldUnit = unit;
 		unit = newUnit;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					Aadl2Package.NUMBER_VALUE__UNIT, oldUnit, unit));
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, Notification.SET, Aadl2Package.NUMBER_VALUE__UNIT, oldUnit, unit));
+		}
 	}
 
 	/**
@@ -135,6 +137,7 @@ public abstract class NumberValueImpl extends PropertyValueImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public double getScaledValue(UnitLiteral target) {
 		return NumberValueOperations.getScaledValue(this, target);
 	}
@@ -144,6 +147,7 @@ public abstract class NumberValueImpl extends PropertyValueImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public double getScaledValue() {
 		return NumberValueOperations.getScaledValue(this);
 	}
@@ -157,8 +161,9 @@ public abstract class NumberValueImpl extends PropertyValueImpl implements
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 		case Aadl2Package.NUMBER_VALUE__UNIT:
-			if (resolve)
+			if (resolve) {
 				return getUnit();
+			}
 			return basicGetUnit();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -208,25 +213,10 @@ public abstract class NumberValueImpl extends PropertyValueImpl implements
 		return super.eIsSet(featureID);
 	}
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		NumberValueImpl other = (NumberValueImpl) obj;
-		if (unit == null) {
-			if (other.unit != null)
-				return false;
-		} else if (!unit.equals(other.unit))
-			return false;
-		return true;
-	}
-
-	/* DB Added for OCL
+	/*
+	 * DB Added for OCL
 	 * (non-Javadoc)
+	 *
 	 * @see org.osate.aadl2.NumberValue#getScaledValue(java.lang.String)
 	 */
 	@Override
@@ -237,8 +227,7 @@ public abstract class NumberValueImpl extends PropertyValueImpl implements
 		if (currentUnit == null) {
 			targetUnit = null;
 		} else {
-			targetUnit = ((UnitsType) currentUnit.eContainer())
-					.findLiteral(target);
+			targetUnit = ((UnitsType) currentUnit.eContainer()).findLiteral(target);
 		}
 
 		return getScaledValue(targetUnit);

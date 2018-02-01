@@ -52,16 +52,15 @@ import org.osate.aadl2.ThreadSubcomponentType;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.osate.aadl2.impl.ThreadSubcomponentImpl#getSubcomponentType <em>Subcomponent Type</em>}</li>
  *   <li>{@link org.osate.aadl2.impl.ThreadSubcomponentImpl#getThreadSubcomponentType <em>Thread Subcomponent Type</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
-public class ThreadSubcomponentImpl extends SubcomponentImpl implements
-		ThreadSubcomponent {
+public class ThreadSubcomponentImpl extends SubcomponentImpl implements ThreadSubcomponent {
 	/**
 	 * The cached value of the '{@link #getThreadSubcomponentType() <em>Thread Subcomponent Type</em>}' reference.
 	 * <!-- begin-user-doc -->
@@ -99,9 +98,8 @@ public class ThreadSubcomponentImpl extends SubcomponentImpl implements
 	@Override
 	public SubcomponentType getSubcomponentType() {
 		SubcomponentType subcomponentType = basicGetSubcomponentType();
-		return subcomponentType != null
-				&& ((EObject) subcomponentType).eIsProxy() ? (SubcomponentType) eResolveProxy((InternalEObject) subcomponentType)
-				: subcomponentType;
+		return subcomponentType != null && ((EObject) subcomponentType).eIsProxy()
+				? (SubcomponentType) eResolveProxy((InternalEObject) subcomponentType) : subcomponentType;
 	}
 
 	/**
@@ -122,18 +120,17 @@ public class ThreadSubcomponentImpl extends SubcomponentImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ThreadSubcomponentType getThreadSubcomponentType() {
-		if (threadSubcomponentType != null
-				&& ((EObject) threadSubcomponentType).eIsProxy()) {
+		if (threadSubcomponentType != null && ((EObject) threadSubcomponentType).eIsProxy()) {
 			InternalEObject oldThreadSubcomponentType = (InternalEObject) threadSubcomponentType;
 			threadSubcomponentType = (ThreadSubcomponentType) eResolveProxy(oldThreadSubcomponentType);
 			if (threadSubcomponentType != oldThreadSubcomponentType) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(
-							this,
-							Notification.RESOLVE,
-							Aadl2Package.THREAD_SUBCOMPONENT__THREAD_SUBCOMPONENT_TYPE,
-							oldThreadSubcomponentType, threadSubcomponentType));
+				if (eNotificationRequired()) {
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+							Aadl2Package.THREAD_SUBCOMPONENT__THREAD_SUBCOMPONENT_TYPE, oldThreadSubcomponentType,
+							threadSubcomponentType));
+				}
 			}
 		}
 		return threadSubcomponentType;
@@ -153,14 +150,15 @@ public class ThreadSubcomponentImpl extends SubcomponentImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setThreadSubcomponentType(
-			ThreadSubcomponentType newThreadSubcomponentType) {
+	@Override
+	public void setThreadSubcomponentType(ThreadSubcomponentType newThreadSubcomponentType) {
 		ThreadSubcomponentType oldThreadSubcomponentType = threadSubcomponentType;
 		threadSubcomponentType = newThreadSubcomponentType;
-		if (eNotificationRequired())
+		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					Aadl2Package.THREAD_SUBCOMPONENT__THREAD_SUBCOMPONENT_TYPE,
-					oldThreadSubcomponentType, threadSubcomponentType));
+					Aadl2Package.THREAD_SUBCOMPONENT__THREAD_SUBCOMPONENT_TYPE, oldThreadSubcomponentType,
+					threadSubcomponentType));
+		}
 	}
 
 	/**
@@ -172,8 +170,9 @@ public class ThreadSubcomponentImpl extends SubcomponentImpl implements
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 		case Aadl2Package.THREAD_SUBCOMPONENT__THREAD_SUBCOMPONENT_TYPE:
-			if (resolve)
+			if (resolve) {
 				return getThreadSubcomponentType();
+			}
 			return basicGetThreadSubcomponentType();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -217,6 +216,8 @@ public class ThreadSubcomponentImpl extends SubcomponentImpl implements
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+		case Aadl2Package.THREAD_SUBCOMPONENT__SUBCOMPONENT_TYPE:
+			return isSetSubcomponentType();
 		case Aadl2Package.THREAD_SUBCOMPONENT__THREAD_SUBCOMPONENT_TYPE:
 			return threadSubcomponentType != null;
 		}
@@ -230,10 +231,10 @@ public class ThreadSubcomponentImpl extends SubcomponentImpl implements
 	 */
 	@Override
 	public boolean isSetSubcomponentType() {
-		return super.isSetSubcomponentType()
-				|| eIsSet(Aadl2Package.THREAD_SUBCOMPONENT__THREAD_SUBCOMPONENT_TYPE);
+		return super.isSetSubcomponentType() || eIsSet(Aadl2Package.THREAD_SUBCOMPONENT__THREAD_SUBCOMPONENT_TYPE);
 	}
 
+	@Override
 	public ComponentCategory getCategory() {
 		return ComponentCategory.THREAD;
 	}

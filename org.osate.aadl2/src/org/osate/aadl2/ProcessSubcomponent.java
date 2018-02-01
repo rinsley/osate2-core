@@ -40,34 +40,40 @@ package org.osate.aadl2;
  * A representation of the model object '<em><b>Process Subcomponent</b></em>'.
  * <!-- end-user-doc -->
  *
+ * <!-- begin-model-doc -->
+ * <p>From package AADLDetails::Components::Process.</p>
+ * <!-- end-model-doc -->
+ *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.osate.aadl2.ProcessSubcomponent#getProcessSubcomponentType <em>Process Subcomponent Type</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.osate.aadl2.Aadl2Package#getProcessSubcomponent()
  * @model
  * @generated
  */
-public interface ProcessSubcomponent extends Subcomponent,
-		org.osate.aadl2.Process {
+public interface ProcessSubcomponent extends Subcomponent, org.osate.aadl2.Process {
 
 	/**
 	 * Returns the value of the '<em><b>Process Subcomponent Type</b></em>' reference.
 	 * <p>
 	 * This feature subsets the following features:
+	 * </p>
 	 * <ul>
 	 *   <li>'{@link org.osate.aadl2.Subcomponent#getSubcomponentType() <em>Subcomponent Type</em>}'</li>
 	 * </ul>
-	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Process Subcomponent Type</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * <p>From package AADLDetails::Components::Process.</p>
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Process Subcomponent Type</em>' reference.
 	 * @see #setProcessSubcomponentType(ProcessSubcomponentType)
 	 * @see org.osate.aadl2.Aadl2Package#getProcessSubcomponent_ProcessSubcomponentType()

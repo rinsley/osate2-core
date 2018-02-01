@@ -40,6 +40,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.osate.aadl2.Aadl2Package;
 import org.osate.aadl2.BooleanLiteral;
+import org.osate.aadl2.PropertyExpression;
 
 /**
  * <!-- begin-user-doc -->
@@ -47,15 +48,14 @@ import org.osate.aadl2.BooleanLiteral;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.osate.aadl2.impl.BooleanLiteralImpl#isValue <em>Value</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
-public class BooleanLiteralImpl extends PropertyValueImpl implements
-		BooleanLiteral {
+public class BooleanLiteralImpl extends PropertyValueImpl implements BooleanLiteral {
 	/**
 	 * The default value of the '{@link #isValue() <em>Value</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -100,10 +100,12 @@ public class BooleanLiteralImpl extends PropertyValueImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public boolean isValue() {
 		return value;
 	}
 
+	@Override
 	public boolean getValue() {
 		return isValue();
 	}
@@ -113,12 +115,14 @@ public class BooleanLiteralImpl extends PropertyValueImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setValue(boolean newValue) {
 		boolean oldValue = value;
 		value = newValue;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					Aadl2Package.BOOLEAN_LITERAL__VALUE, oldValue, value));
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, Notification.SET, Aadl2Package.BOOLEAN_LITERAL__VALUE, oldValue,
+					value));
+		}
 	}
 
 	/**
@@ -182,40 +186,29 @@ public class BooleanLiteralImpl extends PropertyValueImpl implements
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy())
+		if (eIsProxy()) {
 			return super.toString();
+		}
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (value: ");
 		result.append(value);
-		result.append(')');
 		return result.toString();
 	}
 
 	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + (value ? 1231 : 1237);
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
+	public boolean sameAs(PropertyExpression pe) {
+		if (this == pe) {
 			return true;
-		if (obj == null)
+		}
+		if (pe == null || getClass() != pe.getClass()) {
 			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		BooleanLiteralImpl other = (BooleanLiteralImpl) obj;
-		if (value != other.value)
-			return false;
-		return true;
+		}
+		BooleanLiteralImpl other = (BooleanLiteralImpl) pe;
+		return value == other.value;
 	}
 
 } // BooleanLiteralImpl

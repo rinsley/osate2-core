@@ -52,16 +52,15 @@ import org.osate.aadl2.SubcomponentType;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.osate.aadl2.impl.ProcessorSubcomponentImpl#getSubcomponentType <em>Subcomponent Type</em>}</li>
  *   <li>{@link org.osate.aadl2.impl.ProcessorSubcomponentImpl#getProcessorSubcomponentType <em>Processor Subcomponent Type</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
-public class ProcessorSubcomponentImpl extends SubcomponentImpl implements
-		ProcessorSubcomponent {
+public class ProcessorSubcomponentImpl extends SubcomponentImpl implements ProcessorSubcomponent {
 	/**
 	 * The cached value of the '{@link #getProcessorSubcomponentType() <em>Processor Subcomponent Type</em>}' reference.
 	 * <!-- begin-user-doc -->
@@ -99,9 +98,8 @@ public class ProcessorSubcomponentImpl extends SubcomponentImpl implements
 	@Override
 	public SubcomponentType getSubcomponentType() {
 		SubcomponentType subcomponentType = basicGetSubcomponentType();
-		return subcomponentType != null
-				&& ((EObject) subcomponentType).eIsProxy() ? (SubcomponentType) eResolveProxy((InternalEObject) subcomponentType)
-				: subcomponentType;
+		return subcomponentType != null && ((EObject) subcomponentType).eIsProxy()
+				? (SubcomponentType) eResolveProxy((InternalEObject) subcomponentType) : subcomponentType;
 	}
 
 	/**
@@ -122,19 +120,17 @@ public class ProcessorSubcomponentImpl extends SubcomponentImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ProcessorSubcomponentType getProcessorSubcomponentType() {
-		if (processorSubcomponentType != null
-				&& ((EObject) processorSubcomponentType).eIsProxy()) {
+		if (processorSubcomponentType != null && ((EObject) processorSubcomponentType).eIsProxy()) {
 			InternalEObject oldProcessorSubcomponentType = (InternalEObject) processorSubcomponentType;
 			processorSubcomponentType = (ProcessorSubcomponentType) eResolveProxy(oldProcessorSubcomponentType);
 			if (processorSubcomponentType != oldProcessorSubcomponentType) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(
-							this,
-							Notification.RESOLVE,
+				if (eNotificationRequired()) {
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 							Aadl2Package.PROCESSOR_SUBCOMPONENT__PROCESSOR_SUBCOMPONENT_TYPE,
-							oldProcessorSubcomponentType,
-							processorSubcomponentType));
+							oldProcessorSubcomponentType, processorSubcomponentType));
+				}
 			}
 		}
 		return processorSubcomponentType;
@@ -154,16 +150,15 @@ public class ProcessorSubcomponentImpl extends SubcomponentImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setProcessorSubcomponentType(
-			ProcessorSubcomponentType newProcessorSubcomponentType) {
+	@Override
+	public void setProcessorSubcomponentType(ProcessorSubcomponentType newProcessorSubcomponentType) {
 		ProcessorSubcomponentType oldProcessorSubcomponentType = processorSubcomponentType;
 		processorSubcomponentType = newProcessorSubcomponentType;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(
-					this,
-					Notification.SET,
-					Aadl2Package.PROCESSOR_SUBCOMPONENT__PROCESSOR_SUBCOMPONENT_TYPE,
-					oldProcessorSubcomponentType, processorSubcomponentType));
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					Aadl2Package.PROCESSOR_SUBCOMPONENT__PROCESSOR_SUBCOMPONENT_TYPE, oldProcessorSubcomponentType,
+					processorSubcomponentType));
+		}
 	}
 
 	/**
@@ -175,8 +170,9 @@ public class ProcessorSubcomponentImpl extends SubcomponentImpl implements
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 		case Aadl2Package.PROCESSOR_SUBCOMPONENT__PROCESSOR_SUBCOMPONENT_TYPE:
-			if (resolve)
+			if (resolve) {
 				return getProcessorSubcomponentType();
+			}
 			return basicGetProcessorSubcomponentType();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -220,6 +216,8 @@ public class ProcessorSubcomponentImpl extends SubcomponentImpl implements
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+		case Aadl2Package.PROCESSOR_SUBCOMPONENT__SUBCOMPONENT_TYPE:
+			return isSetSubcomponentType();
 		case Aadl2Package.PROCESSOR_SUBCOMPONENT__PROCESSOR_SUBCOMPONENT_TYPE:
 			return processorSubcomponentType != null;
 		}
@@ -237,6 +235,7 @@ public class ProcessorSubcomponentImpl extends SubcomponentImpl implements
 				|| eIsSet(Aadl2Package.PROCESSOR_SUBCOMPONENT__PROCESSOR_SUBCOMPONENT_TYPE);
 	}
 
+	@Override
 	public ComponentCategory getCategory() {
 		return ComponentCategory.PROCESSOR;
 	}

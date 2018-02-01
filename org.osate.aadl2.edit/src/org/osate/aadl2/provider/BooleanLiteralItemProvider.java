@@ -41,12 +41,7 @@ import java.util.List;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
-import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
-import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
-import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.osate.aadl2.Aadl2Package;
@@ -58,9 +53,7 @@ import org.osate.aadl2.BooleanLiteral;
  * <!-- end-user-doc -->
  * @generated
  */
-public class BooleanLiteralItemProvider extends PropertyValueItemProvider
-		implements IEditingDomainItemProvider, IStructuredItemContentProvider,
-		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class BooleanLiteralItemProvider extends PropertyValueItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -94,16 +87,13 @@ public class BooleanLiteralItemProvider extends PropertyValueItemProvider
 	 * @generated
 	 */
 	protected void addValuePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-						.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_BooleanLiteral_value_feature"),
-				getString("_UI_PropertyDescriptor_description",
-						"_UI_BooleanLiteral_value_feature",
-						"_UI_BooleanLiteral_type"), Aadl2Package.eINSTANCE
-						.getBooleanLiteral_Value(), true, false, false,
-				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_BooleanLiteral_value_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_BooleanLiteral_value_feature",
+								"_UI_BooleanLiteral_type"),
+						Aadl2Package.eINSTANCE.getBooleanLiteral_Value(), true, false, false,
+						ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -114,8 +104,7 @@ public class BooleanLiteralItemProvider extends PropertyValueItemProvider
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object,
-				getResourceLocator().getImage("full/obj16/BooleanLiteral"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/BooleanLiteral"));
 	}
 
 	/**
@@ -127,8 +116,7 @@ public class BooleanLiteralItemProvider extends PropertyValueItemProvider
 	@Override
 	public String getText(Object object) {
 		BooleanLiteral booleanLiteral = (BooleanLiteral) object;
-		return getString("_UI_BooleanLiteral_type") + " "
-				+ booleanLiteral.isValue();
+		return getString("_UI_BooleanLiteral_type") + " " + booleanLiteral.isValue();
 	}
 
 	/**
@@ -144,8 +132,7 @@ public class BooleanLiteralItemProvider extends PropertyValueItemProvider
 
 		switch (notification.getFeatureID(BooleanLiteral.class)) {
 		case Aadl2Package.BOOLEAN_LITERAL__VALUE:
-			fireNotifyChanged(new ViewerNotification(notification,
-					notification.getNotifier(), false, true));
+			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
 		}
 		super.notifyChanged(notification);
@@ -159,8 +146,7 @@ public class BooleanLiteralItemProvider extends PropertyValueItemProvider
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(
-			Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 

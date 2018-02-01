@@ -33,94 +33,135 @@
  */
 package org.osate.ui.navigator;
 
+import java.util.List;
+
 import org.eclipse.core.resources.IFile;
 import org.eclipse.core.resources.IMarker;
-import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.jface.viewers.DecoratingLabelProvider;
-import org.eclipse.jface.viewers.ILabelDecorator;
-import org.eclipse.jface.viewers.ILabelProvider;
+import org.eclipse.swt.SWT;
+import org.eclipse.swt.graphics.Color;
 import org.eclipse.swt.graphics.Image;
 import org.eclipse.swt.graphics.Point;
 import org.eclipse.swt.graphics.Rectangle;
-import org.osate.aadl2.modelsupport.resources.OsateResourceUtil;
+import org.eclipse.swt.widgets.Display;
+import org.eclipse.ui.ISharedImages;
+import org.eclipse.ui.PlatformUI;
+import org.eclipse.ui.model.WorkbenchLabelProvider;
+import org.osate.aadl2.NamedElement;
+import org.osate.aadl2.PrivatePackageSection;
+import org.osate.aadl2.PropertyType;
+import org.osate.aadl2.PublicPackageSection;
+import org.osate.aadl2.instance.InstanceObject;
+import org.osate.aadl2.modelsupport.resources.PredeclaredProperties;
 import org.osate.ui.OsateUiPlugin;
+import org.osate.ui.UiUtil;
 import org.osate.ui.navigator.AadlElementImageDescriptor.ModificationFlag;
+import org.osate.xtext.aadl2.ui.resource.ContributedAadlStorage;
 
-
-public class AadlNavigatorLabelProvider extends DecoratingLabelProvider
-{
-	public AadlNavigatorLabelProvider(ILabelProvider provider, ILabelDecorator decorator)
-	{
-		super(provider, decorator);
+public class AadlNavigatorLabelProvider extends DecoratingLabelProvider {
+	public AadlNavigatorLabelProvider() {
+		super(new WorkbenchLabelProvider(), null);
 	}
-	
-	public String getText(Object element)
-	{
+
+	@Override
+	public String getText(Object element) {
 		StringBuilder text = new StringBuilder(super.getText(element));
-		if (element instanceof IFile)
-		{
-			IFile file = (IFile)element;
-			if (file.getProject().getName().equals(OsateResourceUtil.PLUGIN_RESOURCES_DIRECTORY_NAME) &&
-					!file.getResourceAttributes().isReadOnly())
-			{
-				text.append(" (Modified)");
-			}
+		if (element instanceof VirtualPluginResources) {
+			text.append("Plugin_Contributions");
+		} else if (element instanceof ContributedDirectory) {
+			List<String> directoryPath = ((ContributedDirectory) element).getPath();
+			text.append(directoryPath.get(directoryPath.size() - 1));
+		} else if (element instanceof ContributedAadlStorage) {
+			text.append(((ContributedAadlStorage) element).getUri().lastSegment());
+		} else if (element instanceof PublicPackageSection) {
+			text.append("Public Package Section");
+		} else if (element instanceof PrivatePackageSection) {
+			text.append("Private Package Section");
+		} else if (element instanceof PropertyType) {
+			text.append(UiUtil.getModelElementLabelProvider().getText(element));
+		} else if (element instanceof InstanceObject) {
+			text.append(UiUtil.getModelElementLabelProvider().getText(element));
+		} else if (element instanceof NamedElement) {
+			text.append(UiUtil.getModelElementLabelProvider().getText(element));
 		}
 		return text.toString();
 	}
 
-	public Image getImage(Object element)
-	{
+	@Override
+	public Image getImage(Object element) {
 		Image image;
-		if (element instanceof IProject && ((IProject)element).getName().equals(OsateResourceUtil.PLUGIN_RESOURCES_DIRECTORY_NAME))
+		if (element instanceof VirtualPluginResources) {
 			image = OsateUiPlugin.getImageDescriptor("icons/library_obj.gif").createImage();
-		else
+		} else if (element instanceof ContributedDirectory) {
+			image = PlatformUI.getWorkbench().getSharedImages().getImage(ISharedImages.IMG_OBJ_FOLDER);
+		} else if (element instanceof ContributedAadlStorage) {
+			image = PlatformUI.getWorkbench().getSharedImages().getImage(ISharedImages.IMG_OBJ_FILE);
+		} else if (element instanceof PropertyType) {
+			image = UiUtil.getModelElementLabelProvider().getImage(element);
+		} else if (element instanceof InstanceObject) {
+			image = UiUtil.getModelElementLabelProvider().getImage(element);
+		} else if (element instanceof NamedElement) {
+			image = UiUtil.getModelElementLabelProvider().getImage(element);
+		} else {
 			image = super.getImage(element);
+		}
 		return decorateImage(image, element);
 	}
-	
-	private Image decorateImage(Image image, Object obj)
-	{
-		if (obj instanceof IResource)
-		{
-			ModificationFlag modification = getModification((IResource)obj);
-			if (!modification.equals(ModificationFlag.NO_MODIFICATION))
-			{
+
+	@Override
+	public Color getForeground(Object element) {
+		if (element instanceof IFile) {
+			IFile file = (IFile) element;
+			if (file.getName().contentEquals(PredeclaredProperties.AADL_PROJECT)
+					&& !file.getFullPath().toString().contentEquals(PredeclaredProperties.getAADLProjectPreference())) {
+				return Display.getCurrent().getSystemColor(SWT.COLOR_GRAY);
+			}
+		} else if (element instanceof ContributedAadlStorage) {
+			ContributedAadlStorage contributed = (ContributedAadlStorage) element;
+			if (contributed.getName().contentEquals(PredeclaredProperties.AADL_PROJECT) && !contributed.getUri()
+					.toString().contentEquals(PredeclaredProperties.getAADLProjectPreference())) {
+				return Display.getCurrent().getSystemColor(SWT.COLOR_GRAY);
+			}
+		}
+		return super.getForeground(element);
+	}
+
+	private Image decorateImage(Image image, Object obj) {
+		if (obj instanceof IResource) {
+			ModificationFlag modification = getModification((IResource) obj);
+			if (!modification.equals(ModificationFlag.NO_MODIFICATION)) {
 				ImageImageDescriptor baseImage = new ImageImageDescriptor(image);
 				Rectangle bounds = image.getBounds();
-				return new AadlElementImageDescriptor(baseImage, modification, new Point(bounds.width, bounds.height)).createImage();
-			}
-			else
+				return new AadlElementImageDescriptor(baseImage, modification, new Point(bounds.width, bounds.height))
+						.createImage();
+			} else {
 				return image;
-		}
-		else
+			}
+		} else {
 			return image;
+		}
 	}
-	
-	public static ModificationFlag getModification(IResource res)
-	{
-		if (res == null || !res.isAccessible())
+
+	public static ModificationFlag getModification(IResource res) {
+		if (res == null || !res.isAccessible()) {
 			return ModificationFlag.NO_MODIFICATION;
+		}
 		ModificationFlag modification = ModificationFlag.NO_MODIFICATION;
 		IMarker[] markers = null;
-		try
-		{
+		try {
 			markers = res.findMarkers(IMarker.PROBLEM, true, IResource.DEPTH_INFINITE);
-		}
-		catch (CoreException e)
-		{
+		} catch (CoreException e) {
 			OsateUiPlugin.log(e);
 		}
-		if (markers != null)
-		{
-			for (int i = 0; i < markers.length && !modification.equals(ModificationFlag.ADD_ERROR); i++)
-			{
-				if (markers[i].getAttribute(IMarker.SEVERITY, -1) == IMarker.SEVERITY_WARNING)
+		if (markers != null) {
+			for (int i = 0; i < markers.length && !modification.equals(ModificationFlag.ADD_ERROR); i++) {
+				if (markers[i].getAttribute(IMarker.SEVERITY, -1) == IMarker.SEVERITY_WARNING) {
 					modification = ModificationFlag.ADD_WARNING;
-				else if (markers[i].getAttribute(IMarker.SEVERITY, -1) == IMarker.SEVERITY_ERROR)
+				} else if (markers[i].getAttribute(IMarker.SEVERITY, -1) == IMarker.SEVERITY_ERROR) {
 					modification = ModificationFlag.ADD_ERROR;
+				}
 			}
 		}
 		return modification;

@@ -43,33 +43,52 @@ import org.osate.aadl2.AnnexSubclause;
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Annex Subclause</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */
-public class AnnexSubclauseImpl extends ModalElementImpl implements
-		AnnexSubclause {
+public abstract class AnnexSubclauseImpl extends ModalElementImpl implements AnnexSubclause {
 	private String annexContent;
+	private boolean bypassUnparser = false;
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected AnnexSubclauseImpl()
-	{
+	protected AnnexSubclauseImpl() {
 		super();
-		annexContent = "";
 	}
-	
-	public String getAnnexContent ()
-	{
-		return this.annexContent;
+
+	/**
+	 * @deprecated
+	 */
+	@Deprecated
+	public boolean bypassUnparser() {
+		return bypassUnparser;
 	}
-	
-	public void setAnnexContent (String s)
-	{
-		this.annexContent = s;
+
+	/**
+	 * @deprecated
+	 */
+	@Deprecated
+	public void bypassUnparser(boolean b) {
+		bypassUnparser = b;
+	}
+
+	/**
+	 * @deprecated
+	 */
+	@Deprecated
+	public String getAnnexContent() {
+		return annexContent;
+	}
+
+	/**
+	 * @deprecated
+	 */
+	@Deprecated
+	public void setAnnexContent(String s) {
+		annexContent = s;
 	}
 
 	/**

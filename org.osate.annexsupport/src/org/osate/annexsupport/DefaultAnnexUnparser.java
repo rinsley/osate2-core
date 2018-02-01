@@ -35,13 +35,11 @@ package org.osate.annexsupport;
 
 import org.osate.aadl2.AnnexLibrary;
 import org.osate.aadl2.AnnexSubclause;
-import org.osate.aadl2.DefaultAnnexLibrary;
-import org.osate.aadl2.DefaultAnnexSubclause;
 
 /**
  * This class is the default annex unparser. It processes objects of type
  * DefaultAnnexLibrary and DefaultAnnexSubclause.
- * 
+ *
  * @author lwrage
  * @version $Id: DefaultAnnexUnparser.java,v 1.4 2009-10-14 13:50:38 lwrage Exp $
  */
@@ -51,26 +49,22 @@ public class DefaultAnnexUnparser implements AnnexUnparser {
 	 * (non-Javadoc)
 	 * 
 	 * @see org.osate.annexsupport.AnnexUnparser#unparseAnnexLibrary(edu.cmu.sei.aadl.model.core.AnnexLibrary,
-	 *         java.lang.String)
+	 * java.lang.String)
 	 */
+	@Override
 	public String unparseAnnexLibrary(AnnexLibrary library, String indent) {
-		if (library instanceof DefaultAnnexLibrary) {
-			return ((DefaultAnnexLibrary) library).getSourceText();
-		}
-		return "";
+		return AnnexUtil.getSourceText(library);
 	}
 
 	/*
 	 * (non-Javadoc)
 	 * 
 	 * @see org.osate.annexsupport.AnnexUnparser#unparseAnnexSubclause(edu.cmu.sei.aadl.model.core.AnnexSubclause,
-	 *         java.lang.String)
+	 * java.lang.String)
 	 */
+	@Override
 	public String unparseAnnexSubclause(AnnexSubclause subclause, String indent) {
-		if (subclause instanceof DefaultAnnexSubclause) {
-			return ((DefaultAnnexSubclause) subclause).getSourceText();
-		}
-		return "";
+		return AnnexUtil.getSourceText(subclause);
 	}
 
 }

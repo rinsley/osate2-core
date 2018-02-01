@@ -41,12 +41,7 @@ import java.util.List;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
-import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
-import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
-import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.osate.aadl2.Aadl2Package;
 import org.osate.aadl2.ThreadSubcomponent;
 
@@ -56,9 +51,7 @@ import org.osate.aadl2.ThreadSubcomponent;
  * <!-- end-user-doc -->
  * @generated
  */
-public class ThreadSubcomponentItemProvider extends SubcomponentItemProvider
-		implements IEditingDomainItemProvider, IStructuredItemContentProvider,
-		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class ThreadSubcomponentItemProvider extends SubcomponentItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -93,18 +86,12 @@ public class ThreadSubcomponentItemProvider extends SubcomponentItemProvider
 	 */
 	protected void addThreadSubcomponentTypePropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(
-						((ComposeableAdapterFactory) adapterFactory)
-								.getRootAdapterFactory(),
-						getResourceLocator(),
-						getString("_UI_ThreadSubcomponent_threadSubcomponentType_feature"),
-						getString(
-								"_UI_PropertyDescriptor_description",
-								"_UI_ThreadSubcomponent_threadSubcomponentType_feature",
-								"_UI_ThreadSubcomponent_type"),
-						Aadl2Package.eINSTANCE
-								.getThreadSubcomponent_ThreadSubcomponentType(),
-						true, false, true, null, null, null));
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_ThreadSubcomponent_threadSubcomponentType_feature"),
+						getString("_UI_PropertyDescriptor_description",
+								"_UI_ThreadSubcomponent_threadSubcomponentType_feature", "_UI_ThreadSubcomponent_type"),
+						Aadl2Package.eINSTANCE.getThreadSubcomponent_ThreadSubcomponentType(), true, false, true, null,
+						null, null));
 	}
 
 	/**
@@ -115,8 +102,7 @@ public class ThreadSubcomponentItemProvider extends SubcomponentItemProvider
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object,
-				getResourceLocator().getImage("full/obj16/ThreadSubcomponent"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/ThreadSubcomponent"));
 	}
 
 	/**
@@ -153,8 +139,7 @@ public class ThreadSubcomponentItemProvider extends SubcomponentItemProvider
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(
-			Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 

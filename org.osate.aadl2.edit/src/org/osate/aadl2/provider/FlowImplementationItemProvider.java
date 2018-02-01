@@ -42,12 +42,7 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
-import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
-import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
-import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.osate.aadl2.Aadl2Factory;
@@ -60,9 +55,7 @@ import org.osate.aadl2.FlowImplementation;
  * <!-- end-user-doc -->
  * @generated
  */
-public class FlowImplementationItemProvider extends ModalPathItemProvider
-		implements IEditingDomainItemProvider, IStructuredItemContentProvider,
-		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class FlowImplementationItemProvider extends ModalPathItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -98,16 +91,13 @@ public class FlowImplementationItemProvider extends ModalPathItemProvider
 	 * @generated
 	 */
 	protected void addFeaturingClassifierPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-						.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_ClassifierFeature_featuringClassifier_feature"),
-				getString("_UI_PropertyDescriptor_description",
-						"_UI_ClassifierFeature_featuringClassifier_feature",
-						"_UI_ClassifierFeature_type"), Aadl2Package.eINSTANCE
-						.getClassifierFeature_FeaturingClassifier(), false,
-				false, false, null, null, null));
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_ClassifierFeature_featuringClassifier_feature"),
+						getString("_UI_PropertyDescriptor_description",
+								"_UI_ClassifierFeature_featuringClassifier_feature", "_UI_ClassifierFeature_type"),
+						Aadl2Package.eINSTANCE.getClassifierFeature_FeaturingClassifier(), false, false, false, null,
+						null, null));
 	}
 
 	/**
@@ -118,15 +108,11 @@ public class FlowImplementationItemProvider extends ModalPathItemProvider
 	 */
 	protected void addSpecificationPropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-						.getRootAdapterFactory(),
-				getResourceLocator(),
+				((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
 				getString("_UI_FlowImplementation_specification_feature"),
-				getString("_UI_PropertyDescriptor_description",
-						"_UI_FlowImplementation_specification_feature",
-						"_UI_FlowImplementation_type"), Aadl2Package.eINSTANCE
-						.getFlowImplementation_Specification(), true, false,
-				true, null, null, null));
+				getString("_UI_PropertyDescriptor_description", "_UI_FlowImplementation_specification_feature",
+						"_UI_FlowImplementation_type"),
+				Aadl2Package.eINSTANCE.getFlowImplementation_Specification(), true, false, true, null, null, null));
 	}
 
 	/**
@@ -138,12 +124,12 @@ public class FlowImplementationItemProvider extends ModalPathItemProvider
 	 * @generated
 	 */
 	@Override
-	public Collection<? extends EStructuralFeature> getChildrenFeatures(
-			Object object) {
+	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(Aadl2Package.eINSTANCE
-					.getFlowImplementation_OwnedFlowSegment());
+			childrenFeatures.add(Aadl2Package.eINSTANCE.getFlowImplementation_OwnedFlowSegment());
+			childrenFeatures.add(Aadl2Package.eINSTANCE.getFlowImplementation_InEnd());
+			childrenFeatures.add(Aadl2Package.eINSTANCE.getFlowImplementation_OutEnd());
 		}
 		return childrenFeatures;
 	}
@@ -169,8 +155,7 @@ public class FlowImplementationItemProvider extends ModalPathItemProvider
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object,
-				getResourceLocator().getImage("full/obj16/FlowImplementation"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/FlowImplementation"));
 	}
 
 	/**
@@ -180,16 +165,13 @@ public class FlowImplementationItemProvider extends ModalPathItemProvider
 	 * @generated
 	 */
 	protected void addKindPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-						.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_FlowImplementation_kind_feature"),
-				getString("_UI_PropertyDescriptor_description",
-						"_UI_FlowImplementation_kind_feature",
-						"_UI_FlowImplementation_type"), Aadl2Package.eINSTANCE
-						.getFlowImplementation_Kind(), true, false, false,
-				ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_FlowImplementation_kind_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_FlowImplementation_kind_feature",
+								"_UI_FlowImplementation_type"),
+						Aadl2Package.eINSTANCE.getFlowImplementation_Kind(), true, false, false,
+						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -218,12 +200,12 @@ public class FlowImplementationItemProvider extends ModalPathItemProvider
 
 		switch (notification.getFeatureID(FlowImplementation.class)) {
 		case Aadl2Package.FLOW_IMPLEMENTATION__KIND:
-			fireNotifyChanged(new ViewerNotification(notification,
-					notification.getNotifier(), false, true));
+			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
 		case Aadl2Package.FLOW_IMPLEMENTATION__OWNED_FLOW_SEGMENT:
-			fireNotifyChanged(new ViewerNotification(notification,
-					notification.getNotifier(), true, false));
+		case Aadl2Package.FLOW_IMPLEMENTATION__IN_END:
+		case Aadl2Package.FLOW_IMPLEMENTATION__OUT_END:
+			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 			return;
 		}
 		super.notifyChanged(notification);
@@ -237,14 +219,38 @@ public class FlowImplementationItemProvider extends ModalPathItemProvider
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(
-			Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors
-				.add(createChildParameter(Aadl2Package.eINSTANCE
-						.getFlowImplementation_OwnedFlowSegment(),
-						Aadl2Factory.eINSTANCE.createFlowSegment()));
+		newChildDescriptors.add(createChildParameter(Aadl2Package.eINSTANCE.getFlowImplementation_OwnedFlowSegment(),
+				Aadl2Factory.eINSTANCE.createFlowSegment()));
+
+		newChildDescriptors.add(createChildParameter(Aadl2Package.eINSTANCE.getFlowImplementation_InEnd(),
+				Aadl2Factory.eINSTANCE.createFlowEnd()));
+
+		newChildDescriptors.add(createChildParameter(Aadl2Package.eINSTANCE.getFlowImplementation_OutEnd(),
+				Aadl2Factory.eINSTANCE.createFlowEnd()));
+	}
+
+	/**
+	 * This returns the label text for {@link org.eclipse.emf.edit.command.CreateChildCommand}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String getCreateChildText(Object owner, Object feature, Object child, Collection<?> selection) {
+		Object childFeature = feature;
+		Object childObject = child;
+
+		boolean qualify = childFeature == Aadl2Package.eINSTANCE.getFlowImplementation_InEnd()
+				|| childFeature == Aadl2Package.eINSTANCE.getFlowImplementation_OutEnd();
+
+		if (qualify) {
+			return getString("_UI_CreateChild_text2",
+					new Object[] { getTypeText(childObject), getFeatureText(childFeature), getTypeText(owner) });
+		}
+		return super.getCreateChildText(owner, feature, child, selection);
 	}
 
 }

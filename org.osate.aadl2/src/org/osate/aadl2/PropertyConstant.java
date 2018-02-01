@@ -36,76 +36,106 @@
 package org.osate.aadl2;
 
 import org.eclipse.emf.ecore.EClass;
-import org.osate.aadl2.properties.EvaluatedProperty;
 import org.osate.aadl2.properties.EvaluationContext;
 import org.osate.aadl2.properties.InvalidModelException;
+import org.osate.aadl2.properties.PropertyEvaluationResult;
 
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Property Constant</b></em>'.
  * <!-- end-user-doc -->
  *
+ * <!-- begin-model-doc -->
+ * <p>From package AADLProperties::Constants.</p>
+ * <!-- end-model-doc -->
+ *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
- *   <li>{@link org.osate.aadl2.PropertyConstant#getPropertyType <em>Property Type</em>}</li>
+ *   <li>{@link org.osate.aadl2.PropertyConstant#getReferencedPropertyType <em>Referenced Property Type</em>}</li>
  *   <li>{@link org.osate.aadl2.PropertyConstant#getOwnedPropertyType <em>Owned Property Type</em>}</li>
  *   <li>{@link org.osate.aadl2.PropertyConstant#getConstantValue <em>Constant Value</em>}</li>
+ *   <li>{@link org.osate.aadl2.PropertyConstant#getPropertyType <em>Property Type</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.osate.aadl2.Aadl2Package#getPropertyConstant()
  * @model
  * @generated
  */
-public interface PropertyConstant extends TypedElement, AbstractNamedValue,
-		ArraySizeProperty {
+public interface PropertyConstant extends TypedElement, AbstractNamedValue, ArraySizeProperty {
+	/**
+	 * Returns the value of the '<em><b>Referenced Property Type</b></em>' reference.
+	 * <p>
+	 * This feature subsets the following features:
+	 * </p>
+	 * <ul>
+	 *   <li>'{@link org.osate.aadl2.PropertyConstant#getPropertyType() <em>Property Type</em>}'</li>
+	 * </ul>
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * <p>From package AADLProperties::Constants.</p>
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Referenced Property Type</em>' reference.
+	 * @see #setReferencedPropertyType(PropertyType)
+	 * @see org.osate.aadl2.Aadl2Package#getPropertyConstant_ReferencedPropertyType()
+	 * @model ordered="false"
+	 * @generated
+	 */
+	PropertyType getReferencedPropertyType();
+
+	/**
+	 * Sets the value of the '{@link org.osate.aadl2.PropertyConstant#getReferencedPropertyType <em>Referenced Property Type</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Referenced Property Type</em>' reference.
+	 * @see #getReferencedPropertyType()
+	 * @generated
+	 */
+	void setReferencedPropertyType(PropertyType value);
+
 	/**
 	 * Returns the value of the '<em><b>Property Type</b></em>' reference.
 	 * <p>
 	 * This feature redefines the following features:
+	 * </p>
 	 * <ul>
 	 *   <li>'{@link org.osate.aadl2.TypedElement#getType() <em>Type</em>}'</li>
 	 * </ul>
-	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Property Type</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * <p>From package AADLProperties::Constants.</p>
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Property Type</em>' reference.
-	 * @see #setPropertyType(PropertyType)
 	 * @see org.osate.aadl2.Aadl2Package#getPropertyConstant_PropertyType()
-	 * @model required="true" ordered="false"
+	 * @model required="true" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	PropertyType getPropertyType();
 
 	/**
-	 * Sets the value of the '{@link org.osate.aadl2.PropertyConstant#getPropertyType <em>Property Type</em>}' reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Property Type</em>' reference.
-	 * @see #getPropertyType()
-	 * @generated
-	 */
-	void setPropertyType(PropertyType value);
-
-	/**
 	 * Returns the value of the '<em><b>Owned Property Type</b></em>' containment reference.
 	 * <p>
 	 * This feature subsets the following features:
+	 * </p>
 	 * <ul>
 	 *   <li>'{@link org.osate.aadl2.PropertyConstant#getPropertyType() <em>Property Type</em>}'</li>
 	 * </ul>
-	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Property Type</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * <p>From package AADLProperties::Constants.</p>
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Property Type</em>' containment reference.
 	 * @see #setOwnedPropertyType(PropertyType)
 	 * @see org.osate.aadl2.Aadl2Package#getPropertyConstant_OwnedPropertyType()
@@ -143,6 +173,9 @@ public interface PropertyConstant extends TypedElement, AbstractNamedValue,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * <p>From package AADLProperties::Constants.</p>
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Constant Value</em>' containment reference.
 	 * @see #setConstantValue(PropertyExpression)
 	 * @see org.osate.aadl2.Aadl2Package#getPropertyConstant_ConstantValue()
@@ -174,7 +207,7 @@ public interface PropertyConstant extends TypedElement, AbstractNamedValue,
 
 	/**
 	 * Evaluate a referenced property.
-	 * 
+	 *
 	 * @param sign
 	 * 			  The <code>referenceSign</code> value from the containing
 	 * 			  Operation.
@@ -184,7 +217,7 @@ public interface PropertyConstant extends TypedElement, AbstractNamedValue,
 	 * @throws InvalidModelException Thrown if there is a problem with the
 	 * model that prevents the property value from being evaluated.
 	 */
-	EvaluatedProperty evaluate(EvaluationContext ctx)
-			throws InvalidModelException;
+	@Override
+	PropertyEvaluationResult evaluate(EvaluationContext ctx, int depth) throws InvalidModelException;
 
 } // PropertyConstant

@@ -1,5 +1,5 @@
 /*
-* /**
+ * /**
  * <copyright>
  * Copyright  2012 by Carnegie Mellon University, all rights reserved.
  *
@@ -31,22 +31,49 @@
  * documents, or allow others to do so, for U.S. Government purposes only pursuant to the copyright license
  * under the contract clause at 252.227.7013.
  * </copyright>
-*/
+ */
 package org.osate.xtext.aadl2.ui.outline;
 
-import org.eclipse.core.runtime.NullProgressMonitor;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.jface.viewers.DelegatingStyledCellLabelProvider.IStyledLabelProvider;
+import org.eclipse.jface.viewers.StyledString;
+import org.eclipse.xtext.Grammar;
+import org.eclipse.xtext.nodemodel.INode;
+import org.eclipse.xtext.parser.IParseResult;
 import org.eclipse.xtext.ui.editor.outline.IOutlineNode;
 import org.eclipse.xtext.ui.editor.outline.impl.DefaultOutlineTreeProvider;
 import org.eclipse.xtext.ui.editor.outline.impl.DocumentRootNode;
+import org.eclipse.xtext.ui.editor.outline.impl.IOutlineTreeStructureProvider;
+import org.eclipse.xtext.ui.label.StylerFactory;
 import org.osate.aadl2.AadlPackage;
+import org.osate.aadl2.BasicPropertyAssociation;
+import org.osate.aadl2.ContainedNamedElement;
+import org.osate.aadl2.ContainmentPathElement;
+import org.osate.aadl2.DefaultAnnexLibrary;
+import org.osate.aadl2.DefaultAnnexSubclause;
 import org.osate.aadl2.Element;
+import org.osate.aadl2.FlowImplementation;
+import org.osate.aadl2.FlowSpecification;
+import org.osate.aadl2.ImplementationExtension;
+import org.osate.aadl2.IntegerLiteral;
+import org.osate.aadl2.ListValue;
+import org.osate.aadl2.ModalPropertyValue;
 import org.osate.aadl2.ModelUnit;
+import org.osate.aadl2.PropertyAssociation;
+import org.osate.aadl2.RangeValue;
+import org.osate.aadl2.Realization;
+import org.osate.aadl2.RecordValue;
+import org.osate.aadl2.ReferenceValue;
+import org.osate.aadl2.impl.EndToEndFlowImpl;
 import org.osate.aadl2.instance.SystemInstance;
-import org.osate.aadl2.instantiation.InstantiateModel;
-import org.osate.aadl2.modelsupport.AadlConstants;
-import org.osate.aadl2.modelsupport.errorreporting.AnalysisErrorReporterManager;
-import org.osate.aadl2.modelsupport.errorreporting.MarkerAnalysisErrorReporter;
+import org.osate.annexsupport.AnnexParseUtil;
+import org.osate.annexsupport.AnnexUtil;
+import org.osate.core.OsateCorePlugin;
+
+import com.google.inject.ConfigurationException;
+import com.google.inject.Inject;
+import com.google.inject.Injector;
 
 /**
  * customization of the default outline structure
@@ -54,41 +81,150 @@ import org.osate.aadl2.modelsupport.errorreporting.MarkerAnalysisErrorReporter;
  */
 public class Aadl2OutlineTreeProvider extends DefaultOutlineTreeProvider {
 
-	protected void _createChildren(DocumentRootNode parentNode,	ModelUnit aadlModel) {
-		if (aadlModel instanceof AadlPackage) 
-		{
-			for (Element element : aadlModel.getChildren()) 
-			{
+	@Inject
+	private StylerFactory stylerFactory;
+
+	protected void _createChildren(DocumentRootNode parentNode, ModelUnit aadlModel) {
+		if (aadlModel instanceof AadlPackage) {
+			for (Element element : aadlModel.getChildren()) {
 				createNode(parentNode, element);
 			}
-		} 
-		else 
-		{
+		} else {
 			createNode(parentNode, aadlModel);
 		}
 	}
 
 	protected void _createChildren(IOutlineNode parentNode, Element modelElement) {
-		for (EObject childElement : modelElement.getChildren())
-			createNode(parentNode, childElement);
+		EObject annexRoot = AnnexUtil.getAnnexRoot(modelElement);
+
+		if (annexRoot != null) {
+			// delegate to annex specific outline tree provider
+			EObject annexElement = (modelElement instanceof DefaultAnnexLibrary
+					|| modelElement instanceof DefaultAnnexSubclause) ? annexRoot : modelElement;
+			IParseResult annexParseResult = AnnexParseUtil.getParseResult(annexElement);
+			if (annexParseResult != null) {
+				String grammarName = getGrammarName(annexParseResult.getRootNode());
+				Injector injector = OsateCorePlugin.getDefault().getInjector(grammarName);
+				if (injector != null) {
+					try {
+						injector.getInstance(IOutlineTreeStructureProvider.class).createChildren(parentNode,
+								modelElement);
+					} catch (ConfigurationException e) {
+						// ignore: no outline provider for this annex
+					}
+				}
+			}
+		} else {
+			for (EObject childElement : modelElement.getChildren()) {
+				if (childElement instanceof Realization || childElement instanceof ImplementationExtension
+						|| childElement instanceof ContainmentPathElement
+						|| childElement instanceof PropertyAssociation) {
+					continue;
+				}
+
+				createNode(parentNode, childElement);
+			}
+		}
+	}
+
+	private String getGrammarName(INode node) {
+		Resource grammarResource = node.getGrammarElement().eResource();
+		EObject grammar = grammarResource.getContents().get(0);
+
+		return (grammar instanceof Grammar) ? ((Grammar) grammar).getName() : null;
+	}
+
+	@Override
+	protected Object _text(Object modelElement) {
+		String initialText;
+
+		initialText = labelProvider.getText(modelElement);
+		if (labelProvider instanceof IStyledLabelProvider) {
+			StyledString styledString;
+
+			styledString = ((IStyledLabelProvider) labelProvider).getStyledText(modelElement);
+			return styledString;
+		} else {
+			return initialText;
+		}
 	}
 
 	protected void _createChildren(DocumentRootNode parentNode, SystemInstance aadlModel) {
 		createNode(parentNode, aadlModel);
 	}
+
+	protected boolean _isLeaf(ContainmentPathElement cpe) {
+		return true;
+	}
+
+	protected boolean _isLeaf(ContainedNamedElement cpe) {
+		return true;
+	}
+
 	protected boolean _isLeaf(SystemInstance feature) {
-	    return false;
+		return false;
+	}
+
+	protected boolean _isLeaf(FlowSpecification flowspec) {
+		return true;
+	}
+
+	protected boolean _isLeaf(FlowImplementation flowimpl) {
+		return true;
+	}
+
+	protected boolean _isLeaf(EndToEndFlowImpl flowimpl) {
+		return true;
+	}
+
+	protected boolean _isLeaf(RangeValue rv) {
+		return false;
+	}
+
+	protected boolean _isLeaf(ModalPropertyValue ml) {
+		if (ml.getInModes().isEmpty()) {
+			if (ml.getOwnedValue() instanceof RangeValue) {
+				return false;
+			}
+
+			if (ml.getOwnedValue() instanceof ListValue) {
+				return false;
+			}
+
+			if (ml.getOwnedValue() instanceof RecordValue) {
+				return false;
+			}
+
+			return true;
+		}
+		return false;
+	}
+
+	protected boolean _isLeaf(BasicPropertyAssociation bpa) {
+
+		if (bpa.eContainer() instanceof RecordValue) {
+			return true;
+		}
+		return false;
+	}
+
+	protected boolean _isLeaf(ReferenceValue bpa) {
+
+		if (bpa.eContainer() instanceof RecordValue) {
+			return true;
+		}
+		return false;
+	}
+
+	protected boolean _isLeaf(IntegerLiteral bpa) {
+
+		if (bpa.eContainer() instanceof RecordValue) {
+			return false;
+		}
+		return false;
 	}
 
 	protected void _createChildren(IOutlineNode parentNode, SystemInstance sysInstance) {
-		if (sysInstance.getOwnedElements().isEmpty()){
-			final InstantiateModel instantiateModel =
-			new InstantiateModel(new NullProgressMonitor(),
-					new AnalysisErrorReporterManager(
-							new MarkerAnalysisErrorReporter.Factory(
-									AadlConstants.INSTANTIATION_OBJECT_MARKER)));
-			instantiateModel.fillSystemInstance(sysInstance);
-		}
 		super._createChildren(parentNode, sysInstance);
 	}
 
@@ -113,7 +249,5 @@ public class Aadl2OutlineTreeProvider extends DefaultOutlineTreeProvider {
 //	protected boolean _isLeaf(PropertyType feature) {
 //	    return true;
 //	}
-
-
 
 }

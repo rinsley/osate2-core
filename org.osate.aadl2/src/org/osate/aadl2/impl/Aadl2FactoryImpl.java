@@ -1,12 +1,12 @@
 /**
  * <copyright>
  * Copyright  2011 by Carnegie Mellon University, all rights reserved.
- * 
+ *
  * Use of the Open Source AADL Tool Environment (OSATE) is subject to the terms of the license set forth
  * at http://www.eclipse.org/org/documents/epl-v10.html.
- * 
+ *
  * NO WARRANTY
- * 
+ *
  * ANY INFORMATION, MATERIALS, SERVICES, INTELLECTUAL PROPERTY OR OTHER PROPERTY OR RIGHTS GRANTED OR PROVIDED BY
  * CARNEGIE MELLON UNIVERSITY PURSUANT TO THIS LICENSE (HEREINAFTER THE ''DELIVERABLES'') ARE ON AN ''AS-IS'' BASIS.
  * CARNEGIE MELLON UNIVERSITY MAKES NO WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED AS TO ANY MATTER INCLUDING,
@@ -16,21 +16,21 @@
  * REGARDLESS OF WHETHER SUCH PARTY WAS AWARE OF THE POSSIBILITY OF SUCH DAMAGES. LICENSEE AGREES THAT IT WILL NOT
  * MAKE ANY WARRANTY ON BEHALF OF CARNEGIE MELLON UNIVERSITY, EXPRESS OR IMPLIED, TO ANY PERSON CONCERNING THE
  * APPLICATION OF OR THE RESULTS TO BE OBTAINED WITH THE DELIVERABLES UNDER THIS LICENSE.
- * 
+ *
  * Licensee hereby agrees to defend, indemnify, and hold harmless Carnegie Mellon University, its trustees, officers,
  * employees, and agents from all claims or demands made against them (and any related losses, expenses, or
  * attorney's fees) arising out of, or relating to Licensee's and/or its sub licensees' negligent use or willful
  * misuse of or negligent conduct or willful misconduct regarding the Software, facilities, or other rights or
  * assistance granted by Carnegie Mellon University under this License, including, but not limited to, any claims of
  * product liability, personal injury, death, damage to property, or violation of any laws or regulations.
- * 
+ *
  * Carnegie Mellon University Software Engineering Institute authored documents are sponsored by the U.S. Department
  * of Defense under Contract F19628-00-C-0003. Carnegie Mellon University retains copyrights in all material produced
  * under this contract. The U.S. Government retains a non-exclusive, royalty-free license to publish or reproduce these
  * documents, or allow others to do so, for U.S. Government purposes only pursuant to the copyright license
  * under the contract clause at 252.227.7013.
  * </copyright>
- * 
+ *
  */
 package org.osate.aadl2.impl;
 
@@ -57,8 +57,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 */
 	public static Aadl2Factory init() {
 		try {
-			Aadl2Factory theAadl2Factory = (Aadl2Factory) EPackage.Registry.INSTANCE
-					.getEFactory("http://aadl.info/AADL/2.0");
+			Aadl2Factory theAadl2Factory = (Aadl2Factory) EPackage.Registry.INSTANCE.getEFactory(Aadl2Package.eNS_URI);
 			if (theAadl2Factory != null) {
 				return theAadl2Factory;
 			}
@@ -87,322 +86,317 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 		case Aadl2Package.COMMENT:
-			return (EObject) createComment();
+			return createComment();
 		case Aadl2Package.PROPERTY_ASSOCIATION:
-			return (EObject) createPropertyAssociation();
+			return createPropertyAssociation();
 		case Aadl2Package.PROPERTY:
-			return (EObject) createProperty();
+			return createProperty();
 		case Aadl2Package.BASIC_PROPERTY:
-			return (EObject) createBasicProperty();
+			return createBasicProperty();
 		case Aadl2Package.METACLASS_REFERENCE:
-			return (EObject) createMetaclassReference();
+			return createMetaclassReference();
 		case Aadl2Package.MODAL_ELEMENT:
-			return (EObject) createModalElement();
+			return createModalElement();
 		case Aadl2Package.MODE:
-			return (EObject) createMode();
+			return createMode();
 		case Aadl2Package.CONTAINED_NAMED_ELEMENT:
-			return (EObject) createContainedNamedElement();
+			return createContainedNamedElement();
 		case Aadl2Package.CONTAINMENT_PATH_ELEMENT:
-			return (EObject) createContainmentPathElement();
+			return createContainmentPathElement();
 		case Aadl2Package.ARRAY_RANGE:
-			return (EObject) createArrayRange();
+			return createArrayRange();
 		case Aadl2Package.MODAL_PROPERTY_VALUE:
-			return (EObject) createModalPropertyValue();
+			return createModalPropertyValue();
 		case Aadl2Package.ARRAY_DIMENSION:
-			return (EObject) createArrayDimension();
+			return createArrayDimension();
 		case Aadl2Package.ARRAY_SIZE:
-			return (EObject) createArraySize();
+			return createArraySize();
 		case Aadl2Package.COMPONENT_IMPLEMENTATION_REFERENCE:
-			return (EObject) createComponentImplementationReference();
+			return createComponentImplementationReference();
 		case Aadl2Package.MODE_TRANSITION:
-			return (EObject) createModeTransition();
+			return createModeTransition();
+		case Aadl2Package.MODE_TRANSITION_TRIGGER:
+			return createModeTransitionTrigger();
 		case Aadl2Package.FLOW_SPECIFICATION:
-			return (EObject) createFlowSpecification();
+			return createFlowSpecification();
 		case Aadl2Package.FLOW_END:
-			return (EObject) createFlowEnd();
+			return createFlowEnd();
 		case Aadl2Package.TYPE_EXTENSION:
-			return (EObject) createTypeExtension();
+			return createTypeExtension();
 		case Aadl2Package.FEATURE_GROUP:
-			return (EObject) createFeatureGroup();
+			return createFeatureGroup();
 		case Aadl2Package.FEATURE_GROUP_TYPE:
-			return (EObject) createFeatureGroupType();
+			return createFeatureGroupType();
 		case Aadl2Package.GROUP_EXTENSION:
-			return (EObject) createGroupExtension();
+			return createGroupExtension();
 		case Aadl2Package.BUS_ACCESS:
-			return (EObject) createBusAccess();
+			return createBusAccess();
 		case Aadl2Package.DATA_ACCESS:
-			return (EObject) createDataAccess();
+			return createDataAccess();
 		case Aadl2Package.DATA_PORT:
-			return (EObject) createDataPort();
+			return createDataPort();
 		case Aadl2Package.EVENT_DATA_PORT:
-			return (EObject) createEventDataPort();
+			return createEventDataPort();
 		case Aadl2Package.EVENT_PORT:
-			return (EObject) createEventPort();
+			return createEventPort();
 		case Aadl2Package.PARAMETER:
-			return (EObject) createParameter();
+			return createParameter();
 		case Aadl2Package.SUBPROGRAM_ACCESS:
-			return (EObject) createSubprogramAccess();
+			return createSubprogramAccess();
 		case Aadl2Package.SUBPROGRAM_GROUP_ACCESS:
-			return (EObject) createSubprogramGroupAccess();
+			return createSubprogramGroupAccess();
 		case Aadl2Package.ABSTRACT_FEATURE:
-			return (EObject) createAbstractFeature();
+			return createAbstractFeature();
 		case Aadl2Package.FEATURE_PROTOTYPE:
-			return (EObject) createFeaturePrototype();
+			return createFeaturePrototype();
 		case Aadl2Package.FEATURE_GROUP_PROTOTYPE:
-			return (EObject) createFeatureGroupPrototype();
+			return createFeatureGroupPrototype();
 		case Aadl2Package.MODE_BINDING:
-			return (EObject) createModeBinding();
+			return createModeBinding();
 		case Aadl2Package.FLOW_IMPLEMENTATION:
-			return (EObject) createFlowImplementation();
+			return createFlowImplementation();
 		case Aadl2Package.FLOW_SEGMENT:
-			return (EObject) createFlowSegment();
-		case Aadl2Package.IMPLEMENTATION_EXTENSION:
-			return (EObject) createImplementationExtension();
-		case Aadl2Package.REALIZATION:
-			return (EObject) createRealization();
-		case Aadl2Package.END_TO_END_FLOW:
-			return (EObject) createEndToEndFlow();
-		case Aadl2Package.END_TO_END_FLOW_SEGMENT:
-			return (EObject) createEndToEndFlowSegment();
-		case Aadl2Package.ABSTRACT_SUBCOMPONENT:
-			return (EObject) createAbstractSubcomponent();
-		case Aadl2Package.ACCESS_CONNECTION:
-			return (EObject) createAccessConnection();
-		case Aadl2Package.PARAMETER_CONNECTION:
-			return (EObject) createParameterConnection();
-		case Aadl2Package.PORT_CONNECTION:
-			return (EObject) createPortConnection();
-		case Aadl2Package.FEATURE_CONNECTION:
-			return (EObject) createFeatureConnection();
-		case Aadl2Package.FEATURE_GROUP_CONNECTION:
-			return (EObject) createFeatureGroupConnection();
+			return createFlowSegment();
 		case Aadl2Package.CONNECTED_ELEMENT:
-			return (EObject) createConnectedElement();
-		case Aadl2Package.ELEMENT_NAME:
-			return (EObject) createElementName();
+			return createConnectedElement();
+		case Aadl2Package.IMPLEMENTATION_EXTENSION:
+			return createImplementationExtension();
+		case Aadl2Package.REALIZATION:
+			return createRealization();
+		case Aadl2Package.END_TO_END_FLOW:
+			return createEndToEndFlow();
+		case Aadl2Package.END_TO_END_FLOW_SEGMENT:
+			return createEndToEndFlowSegment();
+		case Aadl2Package.ABSTRACT_SUBCOMPONENT:
+			return createAbstractSubcomponent();
+		case Aadl2Package.ACCESS_CONNECTION:
+			return createAccessConnection();
+		case Aadl2Package.PARAMETER_CONNECTION:
+			return createParameterConnection();
+		case Aadl2Package.PORT_CONNECTION:
+			return createPortConnection();
+		case Aadl2Package.FEATURE_CONNECTION:
+			return createFeatureConnection();
+		case Aadl2Package.FEATURE_GROUP_CONNECTION:
+			return createFeatureGroupConnection();
+		case Aadl2Package.EVENT_SOURCE:
+			return createEventSource();
+		case Aadl2Package.EVENT_DATA_SOURCE:
+			return createEventDataSource();
+		case Aadl2Package.PORT_PROXY:
+			return createPortProxy();
+		case Aadl2Package.SUBPROGRAM_PROXY:
+			return createSubprogramProxy();
 		case Aadl2Package.DEFAULT_ANNEX_LIBRARY:
-			return (EObject) createDefaultAnnexLibrary();
+			return createDefaultAnnexLibrary();
 		case Aadl2Package.DEFAULT_ANNEX_SUBCLAUSE:
-			return (EObject) createDefaultAnnexSubclause();
-		case Aadl2Package.TRIGGER_PORT:
-			return (EObject) createTriggerPort();
+			return createDefaultAnnexSubclause();
 		case Aadl2Package.PUBLIC_PACKAGE_SECTION:
-			return (EObject) createPublicPackageSection();
+			return createPublicPackageSection();
 		case Aadl2Package.PACKAGE_RENAME:
-			return (EObject) createPackageRename();
+			return createPackageRename();
 		case Aadl2Package.AADL_PACKAGE:
-			return (EObject) createAadlPackage();
+			return createAadlPackage();
 		case Aadl2Package.PRIVATE_PACKAGE_SECTION:
-			return (EObject) createPrivatePackageSection();
+			return createPrivatePackageSection();
 		case Aadl2Package.COMPONENT_TYPE_RENAME:
-			return (EObject) createComponentTypeRename();
+			return createComponentTypeRename();
 		case Aadl2Package.FEATURE_GROUP_TYPE_RENAME:
-			return (EObject) createFeatureGroupTypeRename();
+			return createFeatureGroupTypeRename();
 		case Aadl2Package.COMPONENT_PROTOTYPE_BINDING:
-			return (EObject) createComponentPrototypeBinding();
+			return createComponentPrototypeBinding();
 		case Aadl2Package.COMPONENT_PROTOTYPE_ACTUAL:
-			return (EObject) createComponentPrototypeActual();
+			return createComponentPrototypeActual();
 		case Aadl2Package.FEATURE_GROUP_PROTOTYPE_BINDING:
-			return (EObject) createFeatureGroupPrototypeBinding();
+			return createFeatureGroupPrototypeBinding();
 		case Aadl2Package.FEATURE_GROUP_PROTOTYPE_ACTUAL:
-			return (EObject) createFeatureGroupPrototypeActual();
+			return createFeatureGroupPrototypeActual();
 		case Aadl2Package.FEATURE_PROTOTYPE_BINDING:
-			return (EObject) createFeaturePrototypeBinding();
+			return createFeaturePrototypeBinding();
 		case Aadl2Package.ACCESS_SPECIFICATION:
-			return (EObject) createAccessSpecification();
+			return createAccessSpecification();
 		case Aadl2Package.PORT_SPECIFICATION:
-			return (EObject) createPortSpecification();
+			return createPortSpecification();
 		case Aadl2Package.FEATURE_PROTOTYPE_REFERENCE:
-			return (EObject) createFeaturePrototypeReference();
+			return createFeaturePrototypeReference();
 		case Aadl2Package.SUBPROGRAM_CALL_SEQUENCE:
-			return (EObject) createSubprogramCallSequence();
-		case Aadl2Package.PROCESSOR_CALL:
-			return (EObject) createProcessorCall();
+			return createSubprogramCallSequence();
 		case Aadl2Package.SUBPROGRAM_CALL:
-			return (EObject) createSubprogramCall();
+			return createSubprogramCall();
 		case Aadl2Package.ABSTRACT_TYPE:
-			return (EObject) createAbstractType();
+			return createAbstractType();
 		case Aadl2Package.ABSTRACT_IMPLEMENTATION:
-			return (EObject) createAbstractImplementation();
+			return createAbstractImplementation();
 		case Aadl2Package.BUS_SUBCOMPONENT:
-			return (EObject) createBusSubcomponent();
+			return createBusSubcomponent();
 		case Aadl2Package.DATA_SUBCOMPONENT:
-			return (EObject) createDataSubcomponent();
+			return createDataSubcomponent();
 		case Aadl2Package.DEVICE_SUBCOMPONENT:
-			return (EObject) createDeviceSubcomponent();
+			return createDeviceSubcomponent();
 		case Aadl2Package.MEMORY_SUBCOMPONENT:
-			return (EObject) createMemorySubcomponent();
+			return createMemorySubcomponent();
 		case Aadl2Package.PROCESS_SUBCOMPONENT:
-			return (EObject) createProcessSubcomponent();
+			return createProcessSubcomponent();
 		case Aadl2Package.PROCESSOR_SUBCOMPONENT:
-			return (EObject) createProcessorSubcomponent();
+			return createProcessorSubcomponent();
 		case Aadl2Package.SYSTEM_SUBCOMPONENT:
-			return (EObject) createSystemSubcomponent();
+			return createSystemSubcomponent();
 		case Aadl2Package.SUBPROGRAM_SUBCOMPONENT:
-			return (EObject) createSubprogramSubcomponent();
+			return createSubprogramSubcomponent();
 		case Aadl2Package.SUBPROGRAM_GROUP_SUBCOMPONENT:
-			return (EObject) createSubprogramGroupSubcomponent();
+			return createSubprogramGroupSubcomponent();
 		case Aadl2Package.THREAD_SUBCOMPONENT:
-			return (EObject) createThreadSubcomponent();
+			return createThreadSubcomponent();
 		case Aadl2Package.THREAD_GROUP_SUBCOMPONENT:
-			return (EObject) createThreadGroupSubcomponent();
+			return createThreadGroupSubcomponent();
 		case Aadl2Package.VIRTUAL_BUS_SUBCOMPONENT:
-			return (EObject) createVirtualBusSubcomponent();
+			return createVirtualBusSubcomponent();
 		case Aadl2Package.VIRTUAL_PROCESSOR_SUBCOMPONENT:
-			return (EObject) createVirtualProcessorSubcomponent();
+			return createVirtualProcessorSubcomponent();
 		case Aadl2Package.ABSTRACT_PROTOTYPE:
-			return (EObject) createAbstractPrototype();
+			return createAbstractPrototype();
 		case Aadl2Package.BUS_TYPE:
-			return (EObject) createBusType();
+			return createBusType();
 		case Aadl2Package.BUS_IMPLEMENTATION:
-			return (EObject) createBusImplementation();
+			return createBusImplementation();
 		case Aadl2Package.BUS_PROTOTYPE:
-			return (EObject) createBusPrototype();
+			return createBusPrototype();
 		case Aadl2Package.DATA_TYPE:
-			return (EObject) createDataType();
+			return createDataType();
 		case Aadl2Package.DATA_IMPLEMENTATION:
-			return (EObject) createDataImplementation();
+			return createDataImplementation();
 		case Aadl2Package.DATA_PROTOTYPE:
-			return (EObject) createDataPrototype();
+			return createDataPrototype();
 		case Aadl2Package.DEVICE_TYPE:
-			return (EObject) createDeviceType();
+			return createDeviceType();
 		case Aadl2Package.DEVICE_IMPLEMENTATION:
-			return (EObject) createDeviceImplementation();
+			return createDeviceImplementation();
 		case Aadl2Package.DEVICE_PROTOTYPE:
-			return (EObject) createDevicePrototype();
+			return createDevicePrototype();
 		case Aadl2Package.MEMORY_TYPE:
-			return (EObject) createMemoryType();
+			return createMemoryType();
 		case Aadl2Package.MEMORY_IMPLEMENTATION:
-			return (EObject) createMemoryImplementation();
+			return createMemoryImplementation();
 		case Aadl2Package.MEMORY_PROTOTYPE:
-			return (EObject) createMemoryPrototype();
+			return createMemoryPrototype();
 		case Aadl2Package.SUBPROGRAM_TYPE:
-			return (EObject) createSubprogramType();
+			return createSubprogramType();
 		case Aadl2Package.SUBPROGRAM_IMPLEMENTATION:
-			return (EObject) createSubprogramImplementation();
+			return createSubprogramImplementation();
 		case Aadl2Package.SUBPROGRAM_PROTOTYPE:
-			return (EObject) createSubprogramPrototype();
+			return createSubprogramPrototype();
 		case Aadl2Package.SUBPROGRAM_GROUP_TYPE:
-			return (EObject) createSubprogramGroupType();
+			return createSubprogramGroupType();
 		case Aadl2Package.SUBPROGRAM_GROUP_IMPLEMENTATION:
-			return (EObject) createSubprogramGroupImplementation();
+			return createSubprogramGroupImplementation();
 		case Aadl2Package.SUBPROGRAM_GROUP_PROTOTYPE:
-			return (EObject) createSubprogramGroupPrototype();
+			return createSubprogramGroupPrototype();
 		case Aadl2Package.SYSTEM_TYPE:
-			return (EObject) createSystemType();
+			return createSystemType();
 		case Aadl2Package.SYSTEM_IMPLEMENTATION:
-			return (EObject) createSystemImplementation();
+			return createSystemImplementation();
 		case Aadl2Package.SYSTEM_PROTOTYPE:
-			return (EObject) createSystemPrototype();
+			return createSystemPrototype();
 		case Aadl2Package.PROCESSOR_TYPE:
-			return (EObject) createProcessorType();
+			return createProcessorType();
 		case Aadl2Package.PROCESSOR_IMPLEMENTATION:
-			return (EObject) createProcessorImplementation();
+			return createProcessorImplementation();
 		case Aadl2Package.PROCESSOR_PROTOTYPE:
-			return (EObject) createProcessorPrototype();
+			return createProcessorPrototype();
 		case Aadl2Package.PROCESS_TYPE:
-			return (EObject) createProcessType();
+			return createProcessType();
 		case Aadl2Package.PROCESS_IMPLEMENTATION:
-			return (EObject) createProcessImplementation();
+			return createProcessImplementation();
 		case Aadl2Package.PROCESS_PROTOTYPE:
-			return (EObject) createProcessPrototype();
+			return createProcessPrototype();
 		case Aadl2Package.THREAD_TYPE:
-			return (EObject) createThreadType();
+			return createThreadType();
 		case Aadl2Package.THREAD_IMPLEMENTATION:
-			return (EObject) createThreadImplementation();
+			return createThreadImplementation();
 		case Aadl2Package.THREAD_PROTOTYPE:
-			return (EObject) createThreadPrototype();
+			return createThreadPrototype();
 		case Aadl2Package.THREAD_GROUP_TYPE:
-			return (EObject) createThreadGroupType();
+			return createThreadGroupType();
 		case Aadl2Package.THREAD_GROUP_IMPLEMENTATION:
-			return (EObject) createThreadGroupImplementation();
+			return createThreadGroupImplementation();
 		case Aadl2Package.THREAD_GROUP_PROTOTYPE:
-			return (EObject) createThreadGroupPrototype();
+			return createThreadGroupPrototype();
 		case Aadl2Package.VIRTUAL_BUS_TYPE:
-			return (EObject) createVirtualBusType();
+			return createVirtualBusType();
 		case Aadl2Package.VIRTUAL_BUS_IMPLEMENTATION:
-			return (EObject) createVirtualBusImplementation();
+			return createVirtualBusImplementation();
 		case Aadl2Package.VIRTUAL_BUS_PROTOTYPE:
-			return (EObject) createVirtualBusPrototype();
+			return createVirtualBusPrototype();
 		case Aadl2Package.VIRTUAL_PROCESSOR_TYPE:
-			return (EObject) createVirtualProcessorType();
+			return createVirtualProcessorType();
 		case Aadl2Package.VIRTUAL_PROCESSOR_IMPLEMENTATION:
-			return (EObject) createVirtualProcessorImplementation();
+			return createVirtualProcessorImplementation();
 		case Aadl2Package.VIRTUAL_PROCESSOR_PROTOTYPE:
-			return (EObject) createVirtualProcessorPrototype();
+			return createVirtualProcessorPrototype();
 		case Aadl2Package.BASIC_PROPERTY_ASSOCIATION:
-			return (EObject) createBasicPropertyAssociation();
+			return createBasicPropertyAssociation();
 		case Aadl2Package.PROPERTY_CONSTANT:
-			return (EObject) createPropertyConstant();
+			return createPropertyConstant();
 		case Aadl2Package.STRING_LITERAL:
-			return (EObject) createStringLiteral();
+			return createStringLiteral();
 		case Aadl2Package.UNIT_LITERAL:
-			return (EObject) createUnitLiteral();
+			return createUnitLiteral();
 		case Aadl2Package.ENUMERATION_LITERAL:
-			return (EObject) createEnumerationLiteral();
+			return createEnumerationLiteral();
 		case Aadl2Package.CLASSIFIER_VALUE:
-			return (EObject) createClassifierValue();
+			return createClassifierValue();
 		case Aadl2Package.REFERENCE_VALUE:
-			return (EObject) createReferenceValue();
+			return createReferenceValue();
 		case Aadl2Package.BOOLEAN_LITERAL:
-			return (EObject) createBooleanLiteral();
+			return createBooleanLiteral();
 		case Aadl2Package.RANGE_VALUE:
-			return (EObject) createRangeValue();
+			return createRangeValue();
 		case Aadl2Package.INTEGER_LITERAL:
-			return (EObject) createIntegerLiteral();
+			return createIntegerLiteral();
 		case Aadl2Package.REAL_LITERAL:
-			return (EObject) createRealLiteral();
+			return createRealLiteral();
 		case Aadl2Package.OPERATION:
-			return (EObject) createOperation();
+			return createOperation();
 		case Aadl2Package.RECORD_VALUE:
-			return (EObject) createRecordValue();
+			return createRecordValue();
 		case Aadl2Package.COMPUTED_VALUE:
-			return (EObject) createComputedValue();
+			return createComputedValue();
 		case Aadl2Package.LIST_VALUE:
-			return (EObject) createListValue();
+			return createListValue();
 		case Aadl2Package.NAMED_VALUE:
-			return (EObject) createNamedValue();
+			return createNamedValue();
 		case Aadl2Package.PROPERTY_SET:
-			return (EObject) createPropertySet();
+			return createPropertySet();
 		case Aadl2Package.GLOBAL_NAMESPACE:
-			return (EObject) createGlobalNamespace();
+			return createGlobalNamespace();
 		case Aadl2Package.AADL_BOOLEAN:
-			return (EObject) createAadlBoolean();
+			return createAadlBoolean();
 		case Aadl2Package.AADL_STRING:
-			return (EObject) createAadlString();
+			return createAadlString();
 		case Aadl2Package.AADL_INTEGER:
-			return (EObject) createAadlInteger();
+			return createAadlInteger();
 		case Aadl2Package.UNITS_TYPE:
-			return (EObject) createUnitsType();
+			return createUnitsType();
 		case Aadl2Package.ENUMERATION_TYPE:
-			return (EObject) createEnumerationType();
+			return createEnumerationType();
 		case Aadl2Package.NUMERIC_RANGE:
-			return (EObject) createNumericRange();
+			return createNumericRange();
 		case Aadl2Package.AADL_REAL:
-			return (EObject) createAadlReal();
+			return createAadlReal();
 		case Aadl2Package.CLASSIFIER_TYPE:
-			return (EObject) createClassifierType();
+			return createClassifierType();
 		case Aadl2Package.RANGE_TYPE:
-			return (EObject) createRangeType();
+			return createRangeType();
 		case Aadl2Package.RECORD_TYPE:
-			return (EObject) createRecordType();
+			return createRecordType();
 		case Aadl2Package.RECORD_FIELD:
-			return (EObject) createRecordField();
+			return createRecordField();
 		case Aadl2Package.REFERENCE_TYPE:
-			return (EObject) createReferenceType();
+			return createReferenceType();
 		case Aadl2Package.LIST_TYPE:
-			return (EObject) createListType();
-		case Aadl2Package.PROCESSOR_PORT:
-			return (EObject) createProcessorPort();
-		case Aadl2Package.INTERNAL_EVENT:
-			return (EObject) createInternalEvent();
-		case Aadl2Package.PROCESSOR_SUBPROGRAM:
-			return (EObject) createProcessorSubprogram();
-		case Aadl2Package.ANNEX_SUBCLAUSE:
-			return (EObject) createAnnexSubclause();
+			return createListType();
 		default:
-			throw new IllegalArgumentException("The class '" + eClass.getName()
-					+ "' is not a valid classifier");
+			throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
 	}
 
@@ -426,8 +420,6 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 			return createPortCategoryFromString(eDataType, initialValue);
 		case Aadl2Package.COMPONENT_CATEGORY:
 			return createComponentCategoryFromString(eDataType, initialValue);
-		case Aadl2Package.ELEMENT_NAME_KIND:
-			return createElementNameKindFromString(eDataType, initialValue);
 		case Aadl2Package.OPERATION_KIND:
 			return createOperationKindFromString(eDataType, initialValue);
 		case Aadl2Package.STRING:
@@ -439,8 +431,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 		case Aadl2Package.REAL:
 			return createRealFromString(eDataType, initialValue);
 		default:
-			throw new IllegalArgumentException("The datatype '"
-					+ eDataType.getName() + "' is not a valid classifier");
+			throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
 	}
 
@@ -464,8 +455,6 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 			return convertPortCategoryToString(eDataType, instanceValue);
 		case Aadl2Package.COMPONENT_CATEGORY:
 			return convertComponentCategoryToString(eDataType, instanceValue);
-		case Aadl2Package.ELEMENT_NAME_KIND:
-			return convertElementNameKindToString(eDataType, instanceValue);
 		case Aadl2Package.OPERATION_KIND:
 			return convertOperationKindToString(eDataType, instanceValue);
 		case Aadl2Package.STRING:
@@ -477,8 +466,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 		case Aadl2Package.REAL:
 			return convertRealToString(eDataType, instanceValue);
 		default:
-			throw new IllegalArgumentException("The datatype '"
-					+ eDataType.getName() + "' is not a valid classifier");
+			throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
 	}
 
@@ -487,6 +475,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Comment createComment() {
 		CommentImpl comment = new CommentImpl();
 		return comment;
@@ -497,6 +486,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public PropertyAssociation createPropertyAssociation() {
 		PropertyAssociationImpl propertyAssociation = new PropertyAssociationImpl();
 		return propertyAssociation;
@@ -507,6 +497,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Property createProperty() {
 		PropertyImpl property = new PropertyImpl();
 		return property;
@@ -517,6 +508,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public BasicProperty createBasicProperty() {
 		BasicPropertyImpl basicProperty = new BasicPropertyImpl();
 		return basicProperty;
@@ -527,6 +519,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public MetaclassReference createMetaclassReference() {
 		MetaclassReferenceImpl metaclassReference = new MetaclassReferenceImpl();
 		return metaclassReference;
@@ -537,6 +530,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ModalElement createModalElement() {
 		ModalElementImpl modalElement = new ModalElementImpl();
 		return modalElement;
@@ -547,6 +541,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Mode createMode() {
 		ModeImpl mode = new ModeImpl();
 		return mode;
@@ -557,6 +552,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ContainedNamedElement createContainedNamedElement() {
 		ContainedNamedElementImpl containedNamedElement = new ContainedNamedElementImpl();
 		return containedNamedElement;
@@ -567,6 +563,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ContainmentPathElement createContainmentPathElement() {
 		ContainmentPathElementImpl containmentPathElement = new ContainmentPathElementImpl();
 		return containmentPathElement;
@@ -577,6 +574,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ArrayRange createArrayRange() {
 		ArrayRangeImpl arrayRange = new ArrayRangeImpl();
 		return arrayRange;
@@ -587,6 +585,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ModalPropertyValue createModalPropertyValue() {
 		ModalPropertyValueImpl modalPropertyValue = new ModalPropertyValueImpl();
 		return modalPropertyValue;
@@ -597,6 +596,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ArrayDimension createArrayDimension() {
 		ArrayDimensionImpl arrayDimension = new ArrayDimensionImpl();
 		return arrayDimension;
@@ -607,6 +607,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ArraySize createArraySize() {
 		ArraySizeImpl arraySize = new ArraySizeImpl();
 		return arraySize;
@@ -617,6 +618,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ComponentImplementationReference createComponentImplementationReference() {
 		ComponentImplementationReferenceImpl componentImplementationReference = new ComponentImplementationReferenceImpl();
 		return componentImplementationReference;
@@ -627,6 +629,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ModeTransition createModeTransition() {
 		ModeTransitionImpl modeTransition = new ModeTransitionImpl();
 		return modeTransition;
@@ -637,9 +640,10 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public TriggerPort createTriggerPort() {
-		TriggerPortImpl triggerPort = new TriggerPortImpl();
-		return triggerPort;
+	@Override
+	public ModeTransitionTrigger createModeTransitionTrigger() {
+		ModeTransitionTriggerImpl modeTransitionTrigger = new ModeTransitionTriggerImpl();
+		return modeTransitionTrigger;
 	}
 
 	/**
@@ -647,26 +651,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ProcessorPort createProcessorPort() {
-		ProcessorPortImpl processorPort = new ProcessorPortImpl();
-		return processorPort;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public InternalEvent createInternalEvent() {
-		InternalEventImpl internalEvent = new InternalEventImpl();
-		return internalEvent;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+	@Override
 	public FlowSpecification createFlowSpecification() {
 		FlowSpecificationImpl flowSpecification = new FlowSpecificationImpl();
 		return flowSpecification;
@@ -677,6 +662,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public FlowEnd createFlowEnd() {
 		FlowEndImpl flowEnd = new FlowEndImpl();
 		return flowEnd;
@@ -687,6 +673,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public TypeExtension createTypeExtension() {
 		TypeExtensionImpl typeExtension = new TypeExtensionImpl();
 		return typeExtension;
@@ -697,6 +684,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public FeatureGroup createFeatureGroup() {
 		FeatureGroupImpl featureGroup = new FeatureGroupImpl();
 		return featureGroup;
@@ -707,6 +695,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public FeatureGroupType createFeatureGroupType() {
 		FeatureGroupTypeImpl featureGroupType = new FeatureGroupTypeImpl();
 		return featureGroupType;
@@ -717,6 +706,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public GroupExtension createGroupExtension() {
 		GroupExtensionImpl groupExtension = new GroupExtensionImpl();
 		return groupExtension;
@@ -727,6 +717,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public BusAccess createBusAccess() {
 		BusAccessImpl busAccess = new BusAccessImpl();
 		return busAccess;
@@ -737,6 +728,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public DataAccess createDataAccess() {
 		DataAccessImpl dataAccess = new DataAccessImpl();
 		return dataAccess;
@@ -747,6 +739,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public DataPort createDataPort() {
 		DataPortImpl dataPort = new DataPortImpl();
 		return dataPort;
@@ -757,6 +750,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EventDataPort createEventDataPort() {
 		EventDataPortImpl eventDataPort = new EventDataPortImpl();
 		return eventDataPort;
@@ -767,6 +761,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EventPort createEventPort() {
 		EventPortImpl eventPort = new EventPortImpl();
 		return eventPort;
@@ -777,6 +772,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Parameter createParameter() {
 		ParameterImpl parameter = new ParameterImpl();
 		return parameter;
@@ -787,6 +783,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public SubprogramAccess createSubprogramAccess() {
 		SubprogramAccessImpl subprogramAccess = new SubprogramAccessImpl();
 		return subprogramAccess;
@@ -797,6 +794,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public SubprogramGroupAccess createSubprogramGroupAccess() {
 		SubprogramGroupAccessImpl subprogramGroupAccess = new SubprogramGroupAccessImpl();
 		return subprogramGroupAccess;
@@ -807,6 +805,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public AbstractFeature createAbstractFeature() {
 		AbstractFeatureImpl abstractFeature = new AbstractFeatureImpl();
 		return abstractFeature;
@@ -817,6 +816,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ModeBinding createModeBinding() {
 		ModeBindingImpl modeBinding = new ModeBindingImpl();
 		return modeBinding;
@@ -827,6 +827,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public FlowImplementation createFlowImplementation() {
 		FlowImplementationImpl flowImplementation = new FlowImplementationImpl();
 		return flowImplementation;
@@ -837,6 +838,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public FlowSegment createFlowSegment() {
 		FlowSegmentImpl flowSegment = new FlowSegmentImpl();
 		return flowSegment;
@@ -847,6 +849,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ConnectedElement createConnectedElement() {
 		ConnectedElementImpl connectedElement = new ConnectedElementImpl();
 		return connectedElement;
@@ -857,6 +860,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ImplementationExtension createImplementationExtension() {
 		ImplementationExtensionImpl implementationExtension = new ImplementationExtensionImpl();
 		return implementationExtension;
@@ -867,6 +871,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Realization createRealization() {
 		RealizationImpl realization = new RealizationImpl();
 		return realization;
@@ -877,6 +882,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EndToEndFlow createEndToEndFlow() {
 		EndToEndFlowImpl endToEndFlow = new EndToEndFlowImpl();
 		return endToEndFlow;
@@ -887,6 +893,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EndToEndFlowSegment createEndToEndFlowSegment() {
 		EndToEndFlowSegmentImpl endToEndFlowSegment = new EndToEndFlowSegmentImpl();
 		return endToEndFlowSegment;
@@ -897,6 +904,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public AbstractSubcomponent createAbstractSubcomponent() {
 		AbstractSubcomponentImpl abstractSubcomponent = new AbstractSubcomponentImpl();
 		return abstractSubcomponent;
@@ -907,16 +915,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ElementName createElementName() {
-		ElementNameImpl elementName = new ElementNameImpl();
-		return elementName;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+	@Override
 	public AccessConnection createAccessConnection() {
 		AccessConnectionImpl accessConnection = new AccessConnectionImpl();
 		return accessConnection;
@@ -927,6 +926,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ParameterConnection createParameterConnection() {
 		ParameterConnectionImpl parameterConnection = new ParameterConnectionImpl();
 		return parameterConnection;
@@ -937,6 +937,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public PortConnection createPortConnection() {
 		PortConnectionImpl portConnection = new PortConnectionImpl();
 		return portConnection;
@@ -947,6 +948,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public FeatureConnection createFeatureConnection() {
 		FeatureConnectionImpl featureConnection = new FeatureConnectionImpl();
 		return featureConnection;
@@ -957,6 +959,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public FeatureGroupConnection createFeatureGroupConnection() {
 		FeatureGroupConnectionImpl featureGroupConnection = new FeatureGroupConnectionImpl();
 		return featureGroupConnection;
@@ -967,21 +970,68 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ProcessorSubprogram createProcessorSubprogram() {
-		ProcessorSubprogramImpl processorSubprogram = new ProcessorSubprogramImpl();
-		return processorSubprogram;
+	@Override
+	public EventSource createEventSource() {
+		EventSourceImpl eventSource = new EventSourceImpl();
+		return eventSource;
 	}
 
-	public AnnexSubclause createAnnexSubclause() {
-		AnnexSubclauseImpl annex = new AnnexSubclauseImpl();
-		return annex;
-	}
-	
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
+	public EventDataSource createEventDataSource() {
+		EventDataSourceImpl eventDataSource = new EventDataSourceImpl();
+		return eventDataSource;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public PortProxy createPortProxy() {
+		PortProxyImpl portProxy = new PortProxyImpl();
+		return portProxy;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public SubprogramProxy createSubprogramProxy() {
+		SubprogramProxyImpl subprogramProxy = new SubprogramProxyImpl();
+		return subprogramProxy;
+	}
+
+	public AnnexSubclause createAnnexSubclause() {
+		AnnexSubclauseImpl annex = new AnnexSubclauseImpl() {
+			private String annexContent;
+
+			@Override
+			public String getAnnexContent() {
+				return annexContent;
+			}
+
+			@Override
+			public void setAnnexContent(String s) {
+				annexContent = s;
+			}
+		};
+		return annex;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public DefaultAnnexLibrary createDefaultAnnexLibrary() {
 		DefaultAnnexLibraryImpl defaultAnnexLibrary = new DefaultAnnexLibraryImpl();
 		return defaultAnnexLibrary;
@@ -992,6 +1042,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public DefaultAnnexSubclause createDefaultAnnexSubclause() {
 		DefaultAnnexSubclauseImpl defaultAnnexSubclause = new DefaultAnnexSubclauseImpl();
 		return defaultAnnexSubclause;
@@ -1002,6 +1053,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public PublicPackageSection createPublicPackageSection() {
 		PublicPackageSectionImpl publicPackageSection = new PublicPackageSectionImpl();
 		return publicPackageSection;
@@ -1012,6 +1064,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public PackageRename createPackageRename() {
 		PackageRenameImpl packageRename = new PackageRenameImpl();
 		return packageRename;
@@ -1022,6 +1075,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public AadlPackage createAadlPackage() {
 		AadlPackageImpl aadlPackage = new AadlPackageImpl();
 		return aadlPackage;
@@ -1032,6 +1086,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public PrivatePackageSection createPrivatePackageSection() {
 		PrivatePackageSectionImpl privatePackageSection = new PrivatePackageSectionImpl();
 		return privatePackageSection;
@@ -1042,6 +1097,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ComponentTypeRename createComponentTypeRename() {
 		ComponentTypeRenameImpl componentTypeRename = new ComponentTypeRenameImpl();
 		return componentTypeRename;
@@ -1052,6 +1108,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public FeatureGroupTypeRename createFeatureGroupTypeRename() {
 		FeatureGroupTypeRenameImpl featureGroupTypeRename = new FeatureGroupTypeRenameImpl();
 		return featureGroupTypeRename;
@@ -1062,6 +1119,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public AbstractType createAbstractType() {
 		AbstractTypeImpl abstractType = new AbstractTypeImpl();
 		return abstractType;
@@ -1072,6 +1130,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public AbstractImplementation createAbstractImplementation() {
 		AbstractImplementationImpl abstractImplementation = new AbstractImplementationImpl();
 		return abstractImplementation;
@@ -1082,6 +1141,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public SubprogramCallSequence createSubprogramCallSequence() {
 		SubprogramCallSequenceImpl subprogramCallSequence = new SubprogramCallSequenceImpl();
 		return subprogramCallSequence;
@@ -1092,6 +1152,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public BusSubcomponent createBusSubcomponent() {
 		BusSubcomponentImpl busSubcomponent = new BusSubcomponentImpl();
 		return busSubcomponent;
@@ -1102,6 +1163,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public DataSubcomponent createDataSubcomponent() {
 		DataSubcomponentImpl dataSubcomponent = new DataSubcomponentImpl();
 		return dataSubcomponent;
@@ -1112,6 +1174,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public DeviceSubcomponent createDeviceSubcomponent() {
 		DeviceSubcomponentImpl deviceSubcomponent = new DeviceSubcomponentImpl();
 		return deviceSubcomponent;
@@ -1122,6 +1185,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public MemorySubcomponent createMemorySubcomponent() {
 		MemorySubcomponentImpl memorySubcomponent = new MemorySubcomponentImpl();
 		return memorySubcomponent;
@@ -1132,6 +1196,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ProcessSubcomponent createProcessSubcomponent() {
 		ProcessSubcomponentImpl processSubcomponent = new ProcessSubcomponentImpl();
 		return processSubcomponent;
@@ -1142,6 +1207,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ProcessorSubcomponent createProcessorSubcomponent() {
 		ProcessorSubcomponentImpl processorSubcomponent = new ProcessorSubcomponentImpl();
 		return processorSubcomponent;
@@ -1152,6 +1218,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public SystemSubcomponent createSystemSubcomponent() {
 		SystemSubcomponentImpl systemSubcomponent = new SystemSubcomponentImpl();
 		return systemSubcomponent;
@@ -1162,6 +1229,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public SubprogramSubcomponent createSubprogramSubcomponent() {
 		SubprogramSubcomponentImpl subprogramSubcomponent = new SubprogramSubcomponentImpl();
 		return subprogramSubcomponent;
@@ -1172,6 +1240,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public SubprogramGroupSubcomponent createSubprogramGroupSubcomponent() {
 		SubprogramGroupSubcomponentImpl subprogramGroupSubcomponent = new SubprogramGroupSubcomponentImpl();
 		return subprogramGroupSubcomponent;
@@ -1182,6 +1251,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ThreadSubcomponent createThreadSubcomponent() {
 		ThreadSubcomponentImpl threadSubcomponent = new ThreadSubcomponentImpl();
 		return threadSubcomponent;
@@ -1192,6 +1262,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ThreadGroupSubcomponent createThreadGroupSubcomponent() {
 		ThreadGroupSubcomponentImpl threadGroupSubcomponent = new ThreadGroupSubcomponentImpl();
 		return threadGroupSubcomponent;
@@ -1202,6 +1273,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public VirtualBusSubcomponent createVirtualBusSubcomponent() {
 		VirtualBusSubcomponentImpl virtualBusSubcomponent = new VirtualBusSubcomponentImpl();
 		return virtualBusSubcomponent;
@@ -1212,6 +1284,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public VirtualProcessorSubcomponent createVirtualProcessorSubcomponent() {
 		VirtualProcessorSubcomponentImpl virtualProcessorSubcomponent = new VirtualProcessorSubcomponentImpl();
 		return virtualProcessorSubcomponent;
@@ -1222,6 +1295,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public AbstractPrototype createAbstractPrototype() {
 		AbstractPrototypeImpl abstractPrototype = new AbstractPrototypeImpl();
 		return abstractPrototype;
@@ -1232,6 +1306,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public BusType createBusType() {
 		BusTypeImpl busType = new BusTypeImpl();
 		return busType;
@@ -1242,6 +1317,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public BusImplementation createBusImplementation() {
 		BusImplementationImpl busImplementation = new BusImplementationImpl();
 		return busImplementation;
@@ -1252,6 +1328,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public BusPrototype createBusPrototype() {
 		BusPrototypeImpl busPrototype = new BusPrototypeImpl();
 		return busPrototype;
@@ -1262,6 +1339,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public DataType createDataType() {
 		DataTypeImpl dataType = new DataTypeImpl();
 		return dataType;
@@ -1272,6 +1350,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public DataImplementation createDataImplementation() {
 		DataImplementationImpl dataImplementation = new DataImplementationImpl();
 		return dataImplementation;
@@ -1282,6 +1361,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public DataPrototype createDataPrototype() {
 		DataPrototypeImpl dataPrototype = new DataPrototypeImpl();
 		return dataPrototype;
@@ -1292,6 +1372,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public DeviceType createDeviceType() {
 		DeviceTypeImpl deviceType = new DeviceTypeImpl();
 		return deviceType;
@@ -1302,6 +1383,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public DeviceImplementation createDeviceImplementation() {
 		DeviceImplementationImpl deviceImplementation = new DeviceImplementationImpl();
 		return deviceImplementation;
@@ -1312,6 +1394,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public DevicePrototype createDevicePrototype() {
 		DevicePrototypeImpl devicePrototype = new DevicePrototypeImpl();
 		return devicePrototype;
@@ -1322,6 +1405,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public MemoryType createMemoryType() {
 		MemoryTypeImpl memoryType = new MemoryTypeImpl();
 		return memoryType;
@@ -1332,6 +1416,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public MemoryImplementation createMemoryImplementation() {
 		MemoryImplementationImpl memoryImplementation = new MemoryImplementationImpl();
 		return memoryImplementation;
@@ -1342,6 +1427,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public MemoryPrototype createMemoryPrototype() {
 		MemoryPrototypeImpl memoryPrototype = new MemoryPrototypeImpl();
 		return memoryPrototype;
@@ -1352,6 +1438,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ProcessType createProcessType() {
 		ProcessTypeImpl processType = new ProcessTypeImpl();
 		return processType;
@@ -1362,6 +1449,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ProcessorType createProcessorType() {
 		ProcessorTypeImpl processorType = new ProcessorTypeImpl();
 		return processorType;
@@ -1372,6 +1460,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ProcessImplementation createProcessImplementation() {
 		ProcessImplementationImpl processImplementation = new ProcessImplementationImpl();
 		return processImplementation;
@@ -1382,6 +1471,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ProcessPrototype createProcessPrototype() {
 		ProcessPrototypeImpl processPrototype = new ProcessPrototypeImpl();
 		return processPrototype;
@@ -1392,6 +1482,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ProcessorImplementation createProcessorImplementation() {
 		ProcessorImplementationImpl processorImplementation = new ProcessorImplementationImpl();
 		return processorImplementation;
@@ -1402,6 +1493,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ProcessorPrototype createProcessorPrototype() {
 		ProcessorPrototypeImpl processorPrototype = new ProcessorPrototypeImpl();
 		return processorPrototype;
@@ -1412,6 +1504,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public SubprogramType createSubprogramType() {
 		SubprogramTypeImpl subprogramType = new SubprogramTypeImpl();
 		return subprogramType;
@@ -1422,6 +1515,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public SubprogramImplementation createSubprogramImplementation() {
 		SubprogramImplementationImpl subprogramImplementation = new SubprogramImplementationImpl();
 		return subprogramImplementation;
@@ -1432,6 +1526,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public SubprogramPrototype createSubprogramPrototype() {
 		SubprogramPrototypeImpl subprogramPrototype = new SubprogramPrototypeImpl();
 		return subprogramPrototype;
@@ -1442,6 +1537,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public SubprogramGroupType createSubprogramGroupType() {
 		SubprogramGroupTypeImpl subprogramGroupType = new SubprogramGroupTypeImpl();
 		return subprogramGroupType;
@@ -1452,6 +1548,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public SubprogramGroupImplementation createSubprogramGroupImplementation() {
 		SubprogramGroupImplementationImpl subprogramGroupImplementation = new SubprogramGroupImplementationImpl();
 		return subprogramGroupImplementation;
@@ -1462,6 +1559,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public SubprogramGroupPrototype createSubprogramGroupPrototype() {
 		SubprogramGroupPrototypeImpl subprogramGroupPrototype = new SubprogramGroupPrototypeImpl();
 		return subprogramGroupPrototype;
@@ -1472,6 +1570,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public SystemType createSystemType() {
 		SystemTypeImpl systemType = new SystemTypeImpl();
 		return systemType;
@@ -1482,6 +1581,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public SystemImplementation createSystemImplementation() {
 		SystemImplementationImpl systemImplementation = new SystemImplementationImpl();
 		return systemImplementation;
@@ -1492,6 +1592,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public SystemPrototype createSystemPrototype() {
 		SystemPrototypeImpl systemPrototype = new SystemPrototypeImpl();
 		return systemPrototype;
@@ -1502,6 +1603,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ThreadType createThreadType() {
 		ThreadTypeImpl threadType = new ThreadTypeImpl();
 		return threadType;
@@ -1512,6 +1614,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ThreadImplementation createThreadImplementation() {
 		ThreadImplementationImpl threadImplementation = new ThreadImplementationImpl();
 		return threadImplementation;
@@ -1522,6 +1625,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ThreadPrototype createThreadPrototype() {
 		ThreadPrototypeImpl threadPrototype = new ThreadPrototypeImpl();
 		return threadPrototype;
@@ -1532,6 +1636,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ThreadGroupType createThreadGroupType() {
 		ThreadGroupTypeImpl threadGroupType = new ThreadGroupTypeImpl();
 		return threadGroupType;
@@ -1542,6 +1647,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ThreadGroupImplementation createThreadGroupImplementation() {
 		ThreadGroupImplementationImpl threadGroupImplementation = new ThreadGroupImplementationImpl();
 		return threadGroupImplementation;
@@ -1552,6 +1658,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ThreadGroupPrototype createThreadGroupPrototype() {
 		ThreadGroupPrototypeImpl threadGroupPrototype = new ThreadGroupPrototypeImpl();
 		return threadGroupPrototype;
@@ -1562,6 +1669,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public VirtualBusType createVirtualBusType() {
 		VirtualBusTypeImpl virtualBusType = new VirtualBusTypeImpl();
 		return virtualBusType;
@@ -1572,6 +1680,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public VirtualBusImplementation createVirtualBusImplementation() {
 		VirtualBusImplementationImpl virtualBusImplementation = new VirtualBusImplementationImpl();
 		return virtualBusImplementation;
@@ -1582,6 +1691,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public VirtualBusPrototype createVirtualBusPrototype() {
 		VirtualBusPrototypeImpl virtualBusPrototype = new VirtualBusPrototypeImpl();
 		return virtualBusPrototype;
@@ -1592,6 +1702,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public VirtualProcessorType createVirtualProcessorType() {
 		VirtualProcessorTypeImpl virtualProcessorType = new VirtualProcessorTypeImpl();
 		return virtualProcessorType;
@@ -1602,6 +1713,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public VirtualProcessorImplementation createVirtualProcessorImplementation() {
 		VirtualProcessorImplementationImpl virtualProcessorImplementation = new VirtualProcessorImplementationImpl();
 		return virtualProcessorImplementation;
@@ -1612,6 +1724,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public VirtualProcessorPrototype createVirtualProcessorPrototype() {
 		VirtualProcessorPrototypeImpl virtualProcessorPrototype = new VirtualProcessorPrototypeImpl();
 		return virtualProcessorPrototype;
@@ -1622,6 +1735,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ComponentPrototypeBinding createComponentPrototypeBinding() {
 		ComponentPrototypeBindingImpl componentPrototypeBinding = new ComponentPrototypeBindingImpl();
 		return componentPrototypeBinding;
@@ -1632,6 +1746,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ComponentPrototypeActual createComponentPrototypeActual() {
 		ComponentPrototypeActualImpl componentPrototypeActual = new ComponentPrototypeActualImpl();
 		return componentPrototypeActual;
@@ -1642,16 +1757,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public FeatureGroupPrototype createFeatureGroupPrototype() {
-		FeatureGroupPrototypeImpl featureGroupPrototype = new FeatureGroupPrototypeImpl();
-		return featureGroupPrototype;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+	@Override
 	public FeatureGroupPrototypeBinding createFeatureGroupPrototypeBinding() {
 		FeatureGroupPrototypeBindingImpl featureGroupPrototypeBinding = new FeatureGroupPrototypeBindingImpl();
 		return featureGroupPrototypeBinding;
@@ -1662,6 +1768,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public FeatureGroupPrototypeActual createFeatureGroupPrototypeActual() {
 		FeatureGroupPrototypeActualImpl featureGroupPrototypeActual = new FeatureGroupPrototypeActualImpl();
 		return featureGroupPrototypeActual;
@@ -1672,6 +1779,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public FeaturePrototype createFeaturePrototype() {
 		FeaturePrototypeImpl featurePrototype = new FeaturePrototypeImpl();
 		return featurePrototype;
@@ -1682,6 +1790,18 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
+	public FeatureGroupPrototype createFeatureGroupPrototype() {
+		FeatureGroupPrototypeImpl featureGroupPrototype = new FeatureGroupPrototypeImpl();
+		return featureGroupPrototype;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public FeaturePrototypeBinding createFeaturePrototypeBinding() {
 		FeaturePrototypeBindingImpl featurePrototypeBinding = new FeaturePrototypeBindingImpl();
 		return featurePrototypeBinding;
@@ -1692,6 +1812,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public AccessSpecification createAccessSpecification() {
 		AccessSpecificationImpl accessSpecification = new AccessSpecificationImpl();
 		return accessSpecification;
@@ -1702,6 +1823,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public PortSpecification createPortSpecification() {
 		PortSpecificationImpl portSpecification = new PortSpecificationImpl();
 		return portSpecification;
@@ -1712,6 +1834,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public FeaturePrototypeReference createFeaturePrototypeReference() {
 		FeaturePrototypeReferenceImpl featurePrototypeReference = new FeaturePrototypeReferenceImpl();
 		return featurePrototypeReference;
@@ -1722,16 +1845,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ProcessorCall createProcessorCall() {
-		ProcessorCallImpl processorCall = new ProcessorCallImpl();
-		return processorCall;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+	@Override
 	public SubprogramCall createSubprogramCall() {
 		SubprogramCallImpl subprogramCall = new SubprogramCallImpl();
 		return subprogramCall;
@@ -1742,6 +1856,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public BasicPropertyAssociation createBasicPropertyAssociation() {
 		BasicPropertyAssociationImpl basicPropertyAssociation = new BasicPropertyAssociationImpl();
 		return basicPropertyAssociation;
@@ -1752,6 +1867,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public PropertyConstant createPropertyConstant() {
 		PropertyConstantImpl propertyConstant = new PropertyConstantImpl();
 		return propertyConstant;
@@ -1762,6 +1878,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EnumerationLiteral createEnumerationLiteral() {
 		EnumerationLiteralImpl enumerationLiteral = new EnumerationLiteralImpl();
 		return enumerationLiteral;
@@ -1772,6 +1889,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public UnitLiteral createUnitLiteral() {
 		UnitLiteralImpl unitLiteral = new UnitLiteralImpl();
 		return unitLiteral;
@@ -1782,6 +1900,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public StringLiteral createStringLiteral() {
 		StringLiteralImpl stringLiteral = new StringLiteralImpl();
 		return stringLiteral;
@@ -1792,6 +1911,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ClassifierValue createClassifierValue() {
 		ClassifierValueImpl classifierValue = new ClassifierValueImpl();
 		return classifierValue;
@@ -1802,6 +1922,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ReferenceValue createReferenceValue() {
 		ReferenceValueImpl referenceValue = new ReferenceValueImpl();
 		return referenceValue;
@@ -1812,6 +1933,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public BooleanLiteral createBooleanLiteral() {
 		BooleanLiteralImpl booleanLiteral = new BooleanLiteralImpl();
 		return booleanLiteral;
@@ -1822,6 +1944,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public RangeValue createRangeValue() {
 		RangeValueImpl rangeValue = new RangeValueImpl();
 		return rangeValue;
@@ -1832,6 +1955,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public IntegerLiteral createIntegerLiteral() {
 		IntegerLiteralImpl integerLiteral = new IntegerLiteralImpl();
 		return integerLiteral;
@@ -1842,6 +1966,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public RealLiteral createRealLiteral() {
 		RealLiteralImpl realLiteral = new RealLiteralImpl();
 		return realLiteral;
@@ -1852,6 +1977,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Operation createOperation() {
 		OperationImpl operation = new OperationImpl();
 		return operation;
@@ -1862,6 +1988,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public RecordValue createRecordValue() {
 		RecordValueImpl recordValue = new RecordValueImpl();
 		return recordValue;
@@ -1872,6 +1999,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ComputedValue createComputedValue() {
 		ComputedValueImpl computedValue = new ComputedValueImpl();
 		return computedValue;
@@ -1882,6 +2010,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ListValue createListValue() {
 		ListValueImpl listValue = new ListValueImpl();
 		return listValue;
@@ -1892,6 +2021,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NamedValue createNamedValue() {
 		NamedValueImpl namedValue = new NamedValueImpl();
 		return namedValue;
@@ -1902,6 +2032,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public PropertySet createPropertySet() {
 		PropertySetImpl propertySet = new PropertySetImpl();
 		return propertySet;
@@ -1912,6 +2043,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public GlobalNamespace createGlobalNamespace() {
 		GlobalNamespaceImpl globalNamespace = new GlobalNamespaceImpl();
 		return globalNamespace;
@@ -1922,6 +2054,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public AadlBoolean createAadlBoolean() {
 		AadlBooleanImpl aadlBoolean = new AadlBooleanImpl();
 		return aadlBoolean;
@@ -1932,6 +2065,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public AadlString createAadlString() {
 		AadlStringImpl aadlString = new AadlStringImpl();
 		return aadlString;
@@ -1942,6 +2076,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public AadlInteger createAadlInteger() {
 		AadlIntegerImpl aadlInteger = new AadlIntegerImpl();
 		return aadlInteger;
@@ -1952,6 +2087,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public UnitsType createUnitsType() {
 		UnitsTypeImpl unitsType = new UnitsTypeImpl();
 		return unitsType;
@@ -1962,6 +2098,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EnumerationType createEnumerationType() {
 		EnumerationTypeImpl enumerationType = new EnumerationTypeImpl();
 		return enumerationType;
@@ -1972,6 +2109,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public NumericRange createNumericRange() {
 		NumericRangeImpl numericRange = new NumericRangeImpl();
 		return numericRange;
@@ -1982,6 +2120,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public AadlReal createAadlReal() {
 		AadlRealImpl aadlReal = new AadlRealImpl();
 		return aadlReal;
@@ -1992,6 +2131,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ClassifierType createClassifierType() {
 		ClassifierTypeImpl classifierType = new ClassifierTypeImpl();
 		return classifierType;
@@ -2002,6 +2142,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public RangeType createRangeType() {
 		RangeTypeImpl rangeType = new RangeTypeImpl();
 		return rangeType;
@@ -2012,6 +2153,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public RecordType createRecordType() {
 		RecordTypeImpl recordType = new RecordTypeImpl();
 		return recordType;
@@ -2022,6 +2164,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public RecordField createRecordField() {
 		RecordFieldImpl recordField = new RecordFieldImpl();
 		return recordField;
@@ -2032,6 +2175,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ReferenceType createReferenceType() {
 		ReferenceTypeImpl referenceType = new ReferenceTypeImpl();
 		return referenceType;
@@ -2042,6 +2186,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ListType createListType() {
 		ListTypeImpl listType = new ListTypeImpl();
 		return listType;
@@ -2052,13 +2197,12 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public DirectionType createDirectionTypeFromString(EDataType eDataType,
-			String initialValue) {
+	public DirectionType createDirectionTypeFromString(EDataType eDataType, String initialValue) {
 		DirectionType result = DirectionType.get(initialValue);
-		if (result == null)
-			throw new IllegalArgumentException("The value '" + initialValue
-					+ "' is not a valid enumerator of '" + eDataType.getName()
-					+ "'");
+		if (result == null) {
+			throw new IllegalArgumentException(
+					"The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		}
 		return result;
 	}
 
@@ -2067,8 +2211,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertDirectionTypeToString(EDataType eDataType,
-			Object instanceValue) {
+	public String convertDirectionTypeToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 
@@ -2077,13 +2220,12 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public PortCategory createPortCategoryFromString(EDataType eDataType,
-			String initialValue) {
+	public PortCategory createPortCategoryFromString(EDataType eDataType, String initialValue) {
 		PortCategory result = PortCategory.get(initialValue);
-		if (result == null)
-			throw new IllegalArgumentException("The value '" + initialValue
-					+ "' is not a valid enumerator of '" + eDataType.getName()
-					+ "'");
+		if (result == null) {
+			throw new IllegalArgumentException(
+					"The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		}
 		return result;
 	}
 
@@ -2092,8 +2234,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertPortCategoryToString(EDataType eDataType,
-			Object instanceValue) {
+	public String convertPortCategoryToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 
@@ -2102,13 +2243,12 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public FlowKind createFlowKindFromString(EDataType eDataType,
-			String initialValue) {
+	public FlowKind createFlowKindFromString(EDataType eDataType, String initialValue) {
 		FlowKind result = FlowKind.get(initialValue);
-		if (result == null)
-			throw new IllegalArgumentException("The value '" + initialValue
-					+ "' is not a valid enumerator of '" + eDataType.getName()
-					+ "'");
+		if (result == null) {
+			throw new IllegalArgumentException(
+					"The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		}
 		return result;
 	}
 
@@ -2117,8 +2257,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertFlowKindToString(EDataType eDataType,
-			Object instanceValue) {
+	public String convertFlowKindToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 
@@ -2127,13 +2266,12 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public AccessType createAccessTypeFromString(EDataType eDataType,
-			String initialValue) {
+	public AccessType createAccessTypeFromString(EDataType eDataType, String initialValue) {
 		AccessType result = AccessType.get(initialValue);
-		if (result == null)
-			throw new IllegalArgumentException("The value '" + initialValue
-					+ "' is not a valid enumerator of '" + eDataType.getName()
-					+ "'");
+		if (result == null) {
+			throw new IllegalArgumentException(
+					"The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		}
 		return result;
 	}
 
@@ -2142,8 +2280,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertAccessTypeToString(EDataType eDataType,
-			Object instanceValue) {
+	public String convertAccessTypeToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 
@@ -2152,13 +2289,12 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public AccessCategory createAccessCategoryFromString(EDataType eDataType,
-			String initialValue) {
+	public AccessCategory createAccessCategoryFromString(EDataType eDataType, String initialValue) {
 		AccessCategory result = AccessCategory.get(initialValue);
-		if (result == null)
-			throw new IllegalArgumentException("The value '" + initialValue
-					+ "' is not a valid enumerator of '" + eDataType.getName()
-					+ "'");
+		if (result == null) {
+			throw new IllegalArgumentException(
+					"The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		}
 		return result;
 	}
 
@@ -2167,8 +2303,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertAccessCategoryToString(EDataType eDataType,
-			Object instanceValue) {
+	public String convertAccessCategoryToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 
@@ -2177,13 +2312,12 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ComponentCategory createComponentCategoryFromString(
-			EDataType eDataType, String initialValue) {
+	public ComponentCategory createComponentCategoryFromString(EDataType eDataType, String initialValue) {
 		ComponentCategory result = ComponentCategory.get(initialValue);
-		if (result == null)
-			throw new IllegalArgumentException("The value '" + initialValue
-					+ "' is not a valid enumerator of '" + eDataType.getName()
-					+ "'");
+		if (result == null) {
+			throw new IllegalArgumentException(
+					"The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		}
 		return result;
 	}
 
@@ -2192,8 +2326,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertComponentCategoryToString(EDataType eDataType,
-			Object instanceValue) {
+	public String convertComponentCategoryToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 
@@ -2202,38 +2335,12 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public ElementNameKind createElementNameKindFromString(EDataType eDataType,
-			String initialValue) {
-		ElementNameKind result = ElementNameKind.get(initialValue);
-		if (result == null)
-			throw new IllegalArgumentException("The value '" + initialValue
-					+ "' is not a valid enumerator of '" + eDataType.getName()
-					+ "'");
-		return result;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String convertElementNameKindToString(EDataType eDataType,
-			Object instanceValue) {
-		return instanceValue == null ? null : instanceValue.toString();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public OperationKind createOperationKindFromString(EDataType eDataType,
-			String initialValue) {
+	public OperationKind createOperationKindFromString(EDataType eDataType, String initialValue) {
 		OperationKind result = OperationKind.get(initialValue);
-		if (result == null)
-			throw new IllegalArgumentException("The value '" + initialValue
-					+ "' is not a valid enumerator of '" + eDataType.getName()
-					+ "'");
+		if (result == null) {
+			throw new IllegalArgumentException(
+					"The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		}
 		return result;
 	}
 
@@ -2242,8 +2349,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertOperationKindToString(EDataType eDataType,
-			Object instanceValue) {
+	public String convertOperationKindToString(EDataType eDataType, Object instanceValue) {
 		return instanceValue == null ? null : instanceValue.toString();
 	}
 
@@ -2252,8 +2358,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String createStringFromString(EDataType eDataType,
-			String initialValue) {
+	public String createStringFromString(EDataType eDataType, String initialValue) {
 		return (String) super.createFromString(eDataType, initialValue);
 	}
 
@@ -2262,8 +2367,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertStringToString(EDataType eDataType,
-			Object instanceValue) {
+	public String convertStringToString(EDataType eDataType, Object instanceValue) {
 		return super.convertToString(eDataType, instanceValue);
 	}
 
@@ -2272,8 +2376,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Boolean createBooleanFromString(EDataType eDataType,
-			String initialValue) {
+	public Boolean createBooleanFromString(EDataType eDataType, String initialValue) {
 		return (Boolean) super.createFromString(eDataType, initialValue);
 	}
 
@@ -2282,8 +2385,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertBooleanToString(EDataType eDataType,
-			Object instanceValue) {
+	public String convertBooleanToString(EDataType eDataType, Object instanceValue) {
 		return super.convertToString(eDataType, instanceValue);
 	}
 
@@ -2301,8 +2403,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public String convertIntegerToString(EDataType eDataType,
-			Object instanceValue) {
+	public String convertIntegerToString(EDataType eDataType, Object instanceValue) {
 		return super.convertToString(eDataType, instanceValue);
 	}
 
@@ -2329,6 +2430,7 @@ public class Aadl2FactoryImpl extends EFactoryImpl implements Aadl2Factory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Aadl2Package getAadl2Package() {
 		return (Aadl2Package) getEPackage();
 	}

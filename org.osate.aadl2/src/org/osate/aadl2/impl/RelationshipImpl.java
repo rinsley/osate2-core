@@ -50,15 +50,14 @@ import org.osate.aadl2.Relationship;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.osate.aadl2.impl.RelationshipImpl#getRelatedElements <em>Related Element</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
-public abstract class RelationshipImpl extends ElementImpl implements
-		Relationship {
+public abstract class RelationshipImpl extends ElementImpl implements Relationship {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -83,28 +82,23 @@ public abstract class RelationshipImpl extends ElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Element> getRelatedElements() {
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
 			@SuppressWarnings("unchecked")
-			EList<Element> relatedElements = (EList<Element>) cache.get(
-					eResource, this,
+			EList<Element> relatedElements = (EList<Element>) cache.get(eResource, this,
 					Aadl2Package.eINSTANCE.getRelationship_RelatedElement());
 			if (relatedElements == null) {
-				cache.put(
-						eResource,
-						this,
-						Aadl2Package.eINSTANCE.getRelationship_RelatedElement(),
-						relatedElements = new DerivedUnionEObjectEList<Element>(
-								Element.class, this,
-								Aadl2Package.RELATIONSHIP__RELATED_ELEMENT,
-								null));
+				cache.put(eResource, this, Aadl2Package.eINSTANCE.getRelationship_RelatedElement(),
+						relatedElements = new DerivedUnionEObjectEList<Element>(Element.class, this,
+								Aadl2Package.RELATIONSHIP__RELATED_ELEMENT, null));
 			}
 			return relatedElements;
 		}
-		return new DerivedUnionEObjectEList<Element>(Element.class, this,
-				Aadl2Package.RELATIONSHIP__RELATED_ELEMENT, null);
+		return new DerivedUnionEObjectEList<Element>(Element.class, this, Aadl2Package.RELATIONSHIP__RELATED_ELEMENT,
+				null);
 	}
 
 	/**

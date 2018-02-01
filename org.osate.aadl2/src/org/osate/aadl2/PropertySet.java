@@ -43,15 +43,20 @@ import org.eclipse.emf.ecore.EClass;
  * A representation of the model object '<em><b>Property Set</b></em>'.
  * <!-- end-user-doc -->
  *
+ * <!-- begin-model-doc -->
+ * <p>From package AADLProperties::PropertySets.</p>
+ * <!-- end-model-doc -->
+ *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.osate.aadl2.PropertySet#getOwnedPropertyTypes <em>Owned Property Type</em>}</li>
  *   <li>{@link org.osate.aadl2.PropertySet#getOwnedProperties <em>Owned Property</em>}</li>
  *   <li>{@link org.osate.aadl2.PropertySet#getOwnedPropertyConstants <em>Owned Property Constant</em>}</li>
  *   <li>{@link org.osate.aadl2.PropertySet#getImportedUnits <em>Imported Unit</em>}</li>
+ *   <li>{@link org.osate.aadl2.PropertySet#getOwnedAnnexSubclauses <em>Owned Annex Subclause</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.osate.aadl2.Aadl2Package#getPropertySet()
  * @model
@@ -63,16 +68,19 @@ public interface PropertySet extends Namespace, ModelUnit {
 	 * The list contents are of type {@link org.osate.aadl2.PropertyType}.
 	 * <p>
 	 * This feature subsets the following features:
+	 * </p>
 	 * <ul>
 	 *   <li>'{@link org.osate.aadl2.Namespace#getOwnedMembers() <em>Owned Member</em>}'</li>
 	 * </ul>
-	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Property Type</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * <p>From package AADLProperties::PropertySets.</p>
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Property Type</em>' containment reference list.
 	 * @see org.osate.aadl2.Aadl2Package#getPropertySet_OwnedPropertyType()
 	 * @model containment="true" ordered="false"
@@ -96,16 +104,19 @@ public interface PropertySet extends Namespace, ModelUnit {
 	 * The list contents are of type {@link org.osate.aadl2.Property}.
 	 * <p>
 	 * This feature subsets the following features:
+	 * </p>
 	 * <ul>
 	 *   <li>'{@link org.osate.aadl2.Namespace#getOwnedMembers() <em>Owned Member</em>}'</li>
 	 * </ul>
-	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Property</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * <p>From package AADLProperties::PropertySets.</p>
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Property</em>' containment reference list.
 	 * @see org.osate.aadl2.Aadl2Package#getPropertySet_OwnedProperty()
 	 * @model containment="true" ordered="false"
@@ -128,16 +139,19 @@ public interface PropertySet extends Namespace, ModelUnit {
 	 * The list contents are of type {@link org.osate.aadl2.PropertyConstant}.
 	 * <p>
 	 * This feature subsets the following features:
+	 * </p>
 	 * <ul>
 	 *   <li>'{@link org.osate.aadl2.Namespace#getOwnedMembers() <em>Owned Member</em>}'</li>
 	 * </ul>
-	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Property Constant</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * <p>From package AADLProperties::PropertySets.</p>
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Property Constant</em>' containment reference list.
 	 * @see org.osate.aadl2.Aadl2Package#getPropertySet_OwnedPropertyConstant()
 	 * @model containment="true" ordered="false"
@@ -164,11 +178,54 @@ public interface PropertySet extends Namespace, ModelUnit {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * <p>From package AADLProperties::PropertySets.</p>
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Imported Unit</em>' reference list.
 	 * @see org.osate.aadl2.Aadl2Package#getPropertySet_ImportedUnit()
 	 * @model ordered="false"
 	 * @generated
 	 */
 	EList<ModelUnit> getImportedUnits();
+
+	/**
+	 * Returns the value of the '<em><b>Owned Annex Subclause</b></em>' containment reference list.
+	 * The list contents are of type {@link org.osate.aadl2.AnnexSubclause}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Owned Annex Subclause</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * <p>From package AADLProperties::PropertySets.</p>
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Owned Annex Subclause</em>' containment reference list.
+	 * @see org.osate.aadl2.Aadl2Package#getPropertySet_OwnedAnnexSubclause()
+	 * @model containment="true" ordered="false"
+	 * @generated
+	 */
+	EList<AnnexSubclause> getOwnedAnnexSubclauses();
+
+	/**
+	 * Creates a new {@link org.osate.aadl2.AnnexSubclause} and appends it to the '<em><b>Owned Annex Subclause</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param eClass The Ecore class of the {@link org.osate.aadl2.AnnexSubclause} to create.
+	 * @return The new {@link org.osate.aadl2.AnnexSubclause}.
+	 * @see #getOwnedAnnexSubclauses()
+	 * @generated
+	 */
+	AnnexSubclause createOwnedAnnexSubclause(EClass eClass);
+
+	/**
+	 * Creates a new {@link org.osate.aadl2.DefaultAnnexSubclause} and appends it to the '<em><b>Owned Annex Subclause</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return The new {@link org.osate.aadl2.DefaultAnnexSubclause}.
+	 * @see #getOwnedAnnexSubclauses()
+	 * @generated
+	 */
+	AnnexSubclause createOwnedAnnexSubclause();
 
 } // PropertySet

@@ -41,12 +41,7 @@ import java.util.List;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
-import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
-import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.osate.aadl2.Aadl2Factory;
 import org.osate.aadl2.Aadl2Package;
@@ -58,9 +53,7 @@ import org.osate.aadl2.ClassifierType;
  * <!-- end-user-doc -->
  * @generated
  */
-public class ClassifierTypeItemProvider extends NonListTypeItemProvider
-		implements IEditingDomainItemProvider, IStructuredItemContentProvider,
-		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class ClassifierTypeItemProvider extends NonListTypeItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -95,12 +88,10 @@ public class ClassifierTypeItemProvider extends NonListTypeItemProvider
 	 * @generated
 	 */
 	@Override
-	public Collection<? extends EStructuralFeature> getChildrenFeatures(
-			Object object) {
+	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(Aadl2Package.eINSTANCE
-					.getClassifierType_ClassifierReference());
+			childrenFeatures.add(Aadl2Package.eINSTANCE.getClassifierType_ClassifierReference());
 		}
 		return childrenFeatures;
 	}
@@ -126,8 +117,7 @@ public class ClassifierTypeItemProvider extends NonListTypeItemProvider
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object,
-				getResourceLocator().getImage("full/obj16/ClassifierType"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/ClassifierType"));
 	}
 
 	/**
@@ -156,8 +146,7 @@ public class ClassifierTypeItemProvider extends NonListTypeItemProvider
 
 		switch (notification.getFeatureID(ClassifierType.class)) {
 		case Aadl2Package.CLASSIFIER_TYPE__CLASSIFIER_REFERENCE:
-			fireNotifyChanged(new ViewerNotification(notification,
-					notification.getNotifier(), true, false));
+			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 			return;
 		}
 		super.notifyChanged(notification);
@@ -171,12 +160,10 @@ public class ClassifierTypeItemProvider extends NonListTypeItemProvider
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(
-			Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(
-				Aadl2Package.eINSTANCE.getClassifierType_ClassifierReference(),
+		newChildDescriptors.add(createChildParameter(Aadl2Package.eINSTANCE.getClassifierType_ClassifierReference(),
 				Aadl2Factory.eINSTANCE.createMetaclassReference()));
 	}
 

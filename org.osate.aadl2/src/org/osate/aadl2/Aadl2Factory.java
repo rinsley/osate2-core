@@ -1,12 +1,12 @@
 /**
  * <copyright>
  * Copyright  2011 by Carnegie Mellon University, all rights reserved.
- * 
+ *
  * Use of the Open Source AADL Tool Environment (OSATE) is subject to the terms of the license set forth
  * at http://www.eclipse.org/org/documents/epl-v10.html.
- * 
+ *
  * NO WARRANTY
- * 
+ *
  * ANY INFORMATION, MATERIALS, SERVICES, INTELLECTUAL PROPERTY OR OTHER PROPERTY OR RIGHTS GRANTED OR PROVIDED BY
  * CARNEGIE MELLON UNIVERSITY PURSUANT TO THIS LICENSE (HEREINAFTER THE ''DELIVERABLES'') ARE ON AN ''AS-IS'' BASIS.
  * CARNEGIE MELLON UNIVERSITY MAKES NO WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED AS TO ANY MATTER INCLUDING,
@@ -16,21 +16,21 @@
  * REGARDLESS OF WHETHER SUCH PARTY WAS AWARE OF THE POSSIBILITY OF SUCH DAMAGES. LICENSEE AGREES THAT IT WILL NOT
  * MAKE ANY WARRANTY ON BEHALF OF CARNEGIE MELLON UNIVERSITY, EXPRESS OR IMPLIED, TO ANY PERSON CONCERNING THE
  * APPLICATION OF OR THE RESULTS TO BE OBTAINED WITH THE DELIVERABLES UNDER THIS LICENSE.
- * 
+ *
  * Licensee hereby agrees to defend, indemnify, and hold harmless Carnegie Mellon University, its trustees, officers,
  * employees, and agents from all claims or demands made against them (and any related losses, expenses, or
  * attorney's fees) arising out of, or relating to Licensee's and/or its sub licensees' negligent use or willful
  * misuse of or negligent conduct or willful misconduct regarding the Software, facilities, or other rights or
  * assistance granted by Carnegie Mellon University under this License, including, but not limited to, any claims of
  * product liability, personal injury, death, damage to property, or violation of any laws or regulations.
- * 
+ *
  * Carnegie Mellon University Software Engineering Institute authored documents are sponsored by the U.S. Department
  * of Defense under Contract F19628-00-C-0003. Carnegie Mellon University retains copyrights in all material produced
  * under this contract. The U.S. Government retains a non-exclusive, royalty-free license to publish or reproduce these
  * documents, or allow others to do so, for U.S. Government purposes only pursuant to the copyright license
  * under the contract clause at 252.227.7013.
  * </copyright>
- * 
+ *
  */
 package org.osate.aadl2;
 
@@ -189,31 +189,13 @@ public interface Aadl2Factory extends EFactory {
 	ModeTransition createModeTransition();
 
 	/**
-	 * Returns a new object of class '<em>Trigger Port</em>'.
+	 * Returns a new object of class '<em>Mode Transition Trigger</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Trigger Port</em>'.
+	 * @return a new object of class '<em>Mode Transition Trigger</em>'.
 	 * @generated
 	 */
-	TriggerPort createTriggerPort();
-
-	/**
-	 * Returns a new object of class '<em>Processor Port</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Processor Port</em>'.
-	 * @generated
-	 */
-	ProcessorPort createProcessorPort();
-
-	/**
-	 * Returns a new object of class '<em>Internal Event</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Internal Event</em>'.
-	 * @generated
-	 */
-	InternalEvent createInternalEvent();
+	ModeTransitionTrigger createModeTransitionTrigger();
 
 	/**
 	 * Returns a new object of class '<em>Flow Specification</em>'.
@@ -432,15 +414,6 @@ public interface Aadl2Factory extends EFactory {
 	AbstractSubcomponent createAbstractSubcomponent();
 
 	/**
-	 * Returns a new object of class '<em>Element Name</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Element Name</em>'.
-	 * @generated
-	 */
-	ElementName createElementName();
-
-	/**
 	 * Returns a new object of class '<em>Access Connection</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -486,13 +459,40 @@ public interface Aadl2Factory extends EFactory {
 	FeatureGroupConnection createFeatureGroupConnection();
 
 	/**
-	 * Returns a new object of class '<em>Processor Subprogram</em>'.
+	 * Returns a new object of class '<em>Event Source</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Processor Subprogram</em>'.
+	 * @return a new object of class '<em>Event Source</em>'.
 	 * @generated
 	 */
-	ProcessorSubprogram createProcessorSubprogram();
+	EventSource createEventSource();
+
+	/**
+	 * Returns a new object of class '<em>Event Data Source</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Event Data Source</em>'.
+	 * @generated
+	 */
+	EventDataSource createEventDataSource();
+
+	/**
+	 * Returns a new object of class '<em>Port Proxy</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Port Proxy</em>'.
+	 * @generated
+	 */
+	PortProxy createPortProxy();
+
+	/**
+	 * Returns a new object of class '<em>Subprogram Proxy</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Subprogram Proxy</em>'.
+	 * @generated
+	 */
+	SubprogramProxy createSubprogramProxy();
 
 	/**
 	 * Returns a new object of class '<em>Default Annex Library</em>'.
@@ -1089,15 +1089,6 @@ public interface Aadl2Factory extends EFactory {
 	ComponentPrototypeActual createComponentPrototypeActual();
 
 	/**
-	 * Returns a new object of class '<em>Feature Group Prototype</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Feature Group Prototype</em>'.
-	 * @generated
-	 */
-	FeatureGroupPrototype createFeatureGroupPrototype();
-
-	/**
 	 * Returns a new object of class '<em>Feature Group Prototype Binding</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1123,6 +1114,15 @@ public interface Aadl2Factory extends EFactory {
 	 * @generated
 	 */
 	FeaturePrototype createFeaturePrototype();
+
+	/**
+	 * Returns a new object of class '<em>Feature Group Prototype</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Feature Group Prototype</em>'.
+	 * @generated
+	 */
+	FeatureGroupPrototype createFeatureGroupPrototype();
 
 	/**
 	 * Returns a new object of class '<em>Feature Prototype Binding</em>'.
@@ -1159,15 +1159,6 @@ public interface Aadl2Factory extends EFactory {
 	 * @generated
 	 */
 	FeaturePrototypeReference createFeaturePrototypeReference();
-
-	/**
-	 * Returns a new object of class '<em>Processor Call</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Processor Call</em>'.
-	 * @generated
-	 */
-	ProcessorCall createProcessorCall();
 
 	/**
 	 * Returns a new object of class '<em>Subprogram Call</em>'.

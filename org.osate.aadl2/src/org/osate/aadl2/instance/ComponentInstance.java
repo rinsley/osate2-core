@@ -1,12 +1,12 @@
 /**
  * <copyright>
  * Copyright  2008 by Carnegie Mellon University, all rights reserved.
- * 
+ *
  * Use of the Open Source AADL Tool Environment (OSATE) is subject to the terms of the license set forth
  * at http://www.eclipse.org/org/documents/epl-v10.html.
- * 
+ *
  * NO WARRANTY
- * 
+ *
  * ANY INFORMATION, MATERIALS, SERVICES, INTELLECTUAL PROPERTY OR OTHER PROPERTY OR RIGHTS GRANTED OR PROVIDED BY
  * CARNEGIE MELLON UNIVERSITY PURSUANT TO THIS LICENSE (HEREINAFTER THE ''DELIVERABLES'') ARE ON AN ''AS-IS'' BASIS.
  * CARNEGIE MELLON UNIVERSITY MAKES NO WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED AS TO ANY MATTER INCLUDING,
@@ -16,14 +16,14 @@
  * REGARDLESS OF WHETHER SUCH PARTY WAS AWARE OF THE POSSIBILITY OF SUCH DAMAGES. LICENSEE AGREES THAT IT WILL NOT
  * MAKE ANY WARRANTY ON BEHALF OF CARNEGIE MELLON UNIVERSITY, EXPRESS OR IMPLIED, TO ANY PERSON CONCERNING THE
  * APPLICATION OF OR THE RESULTS TO BE OBTAINED WITH THE DELIVERABLES UNDER THIS LICENSE.
- * 
+ *
  * Licensee hereby agrees to defend, indemnify, and hold harmless Carnegie Mellon University, its trustees, officers,
  * employees, and agents from all claims or demands made against them (and any related losses, expenses, or
  * attorney's fees) arising out of, or relating to Licensee's and/or its sub licensees' negligent use or willful
  * misuse of or negligent conduct or willful misconduct regarding the Software, facilities, or other rights or
  * assistance granted by Carnegie Mellon University under this License, including, but not limited to, any claims of
  * product liability, personal injury, death, damage to property, or violation of any laws or regulations.
- * 
+ *
  * Carnegie Mellon University Software Engineering Institute authored documents are sponsored by the U.S. Department
  * of Defense under Contract F19628-00-C-0003. Carnegie Mellon University retains copyrights in all material produced
  * under this contract. The U.S. Government retains a non-exclusive, royalty-free license to publish or reproduce these
@@ -54,6 +54,7 @@ import org.osate.aadl2.Subcomponent;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.osate.aadl2.instance.ComponentInstance#getFeatureInstances <em>Feature Instance</em>}</li>
  *   <li>{@link org.osate.aadl2.instance.ComponentInstance#getComponentInstances <em>Component Instance</em>}</li>
@@ -66,15 +67,14 @@ import org.osate.aadl2.Subcomponent;
  *   <li>{@link org.osate.aadl2.instance.ComponentInstance#getConnectionInstances <em>Connection Instance</em>}</li>
  *   <li>{@link org.osate.aadl2.instance.ComponentInstance#getSubcomponent <em>Subcomponent</em>}</li>
  *   <li>{@link org.osate.aadl2.instance.ComponentInstance#getIndices <em>Index</em>}</li>
+ *   <li>{@link org.osate.aadl2.instance.ComponentInstance#getClassifier <em>Classifier</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.osate.aadl2.instance.InstancePackage#getComponentInstance()
  * @model
  * @generated
  */
-public interface ComponentInstance extends ConnectionInstanceEnd,
-		FlowElementInstance {
+public interface ComponentInstance extends ConnectionInstanceEnd, FlowElementInstance {
 	/**
 	 * Returns the value of the '<em><b>Feature Instance</b></em>' containment reference list.
 	 * The list contents are of type {@link org.osate.aadl2.instance.FeatureInstance}.
@@ -179,6 +179,32 @@ public interface ComponentInstance extends ConnectionInstanceEnd,
 	 * @generated
 	 */
 	EList<Long> getIndices();
+
+	/**
+	 * Returns the value of the '<em><b>Classifier</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Classifier</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Classifier</em>' reference.
+	 * @see #setClassifier(ComponentClassifier)
+	 * @see org.osate.aadl2.instance.InstancePackage#getComponentInstance_Classifier()
+	 * @model ordered="false"
+	 * @generated
+	 */
+	ComponentClassifier getClassifier();
+
+	/**
+	 * Sets the value of the '{@link org.osate.aadl2.instance.ComponentInstance#getClassifier <em>Classifier</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Classifier</em>' reference.
+	 * @see #getClassifier()
+	 * @generated
+	 */
+	void setClassifier(ComponentClassifier value);
 
 	/**
 	 * Returns the value of the '<em><b>Mode Instance</b></em>' containment reference list.
@@ -373,11 +399,11 @@ public interface ComponentInstance extends ConnectionInstanceEnd,
 
 	/**
 	 * find the subcomponent instance of this component instance
-	 * 
+	 *
 	 * <p>This method is sensitive to the current system operation mode of the
 	 * containing system instance.  The component instance corresponding to the
 	 * subcomponent is only returned if it exists in the current som.
-	 * 
+	 *
 	 * @param sc subcomponent
 	 * @return component instance with the specified subcomponent, or null
 	 */
@@ -418,11 +444,11 @@ public interface ComponentInstance extends ConnectionInstanceEnd,
 	 * that utilize the given connection.  Returns a list
 	 * because a connection can be in multiple semantic connections if there are
 	 * multiple connections coming in or going out of a port.
-	 * 
+	 *
 	 * <p>This method is sensitive to the {@link SystemInstance#getCurrentSystemOperationMode()
 	 * current system operation mode}.  It only return those connection
 	 * instances that exist in the current SOM.
-	 * 
+	 *
 	 * @param conn Connection whose instance is to be found
 	 * @return Connection instance list with the specified Connection
 	 */
@@ -432,11 +458,11 @@ public interface ComponentInstance extends ConnectionInstanceEnd,
 	/**
 	 * Find the end to end flow instance of this component that corresponds
 	 * to the given end to end flow.
-	 * 
+	 *
 	 * <p>This method is sensitive to the {@link SystemInstance#getCurrentSystemOperationMode()
 	 * current system operation mode}.  It only returns the end to end flow
 	 * instance if it exists in the current mode.
-	 * 
+	 *
 	 * @param ete endtoendflow whose instance is to be found
 	 * @return endtoendflow instance with the specified endtoendflow, or null
 	 */
@@ -458,6 +484,33 @@ public interface ComponentInstance extends ConnectionInstanceEnd,
 	 */
 	EList<ComponentInstance> getAllComponentInstances();
 
+	/**
+	 * Return all component instances of the specified category in the containment structure rooted at
+	 * this component, including this component.  This method is sensitive to the
+	 * {@link SystemInstance#setCurrentSystemOperationMode(SystemOperationMode) current system
+	 * operation mode}. The assumption is that this component instance
+	 * {{@link #exists() exists in the current system operation mode} if it is being queried.
+	 * If this object is not part of a system instance, then
+	 * all the component instances are returned.  If this object is part of a system
+	 * instance and the current SOM is set, then this method only returns those
+	 * component instances that exist in the current SOM.  If the current SOM
+	 * is not set, then it returns all the component instances.
+	 * @return
+	 */
+	EList<ComponentInstance> getAllComponentInstances(ComponentCategory category);
+
 	ComponentClassifier getComponentClassifier();
+
+	/**
+	 * return all leaf feature instances in the component instance.
+	 * For feature groups recursively traverse all elements of the feature group
+	 */
+	EList<FeatureInstance> getAllFeatureInstances();
+
+	/**
+	 * return all feature instances in the component instance
+	 * if it is of the specified category. For feature groups recursively traverse all elements of the feature group
+	 */
+	EList<FeatureInstance> getAllFeatureInstances(FeatureCategory category);
 
 } // ComponentInstance

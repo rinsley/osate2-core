@@ -44,15 +44,16 @@ import org.eclipse.emf.common.util.EList;
  *
  * <!-- begin-model-doc -->
  * A directed relationship represents a relationship between a collection of source model elements and a collection of target model elements.
+ * <p>From package AADLInfrastructure.</p>
  * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.osate.aadl2.DirectedRelationship#getSources <em>Source</em>}</li>
  *   <li>{@link org.osate.aadl2.DirectedRelationship#getTargets <em>Target</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.osate.aadl2.Aadl2Package#getDirectedRelationship()
  * @model abstract="true"
@@ -64,15 +65,16 @@ public interface DirectedRelationship extends Relationship {
 	 * The list contents are of type {@link org.osate.aadl2.Element}.
 	 * <p>
 	 * This feature subsets the following features:
+	 * </p>
 	 * <ul>
 	 *   <li>'{@link org.osate.aadl2.Relationship#getRelatedElements() <em>Related Element</em>}'</li>
 	 * </ul>
-	 * </p>
 	 * This feature is a derived union.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Specifies the sources of the DirectedRelationship.
+	 * <p>From package AADLInfrastructure.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Source</em>' reference list.
 	 * @see org.osate.aadl2.Aadl2Package#getDirectedRelationship_Source()
@@ -86,15 +88,16 @@ public interface DirectedRelationship extends Relationship {
 	 * The list contents are of type {@link org.osate.aadl2.Element}.
 	 * <p>
 	 * This feature subsets the following features:
+	 * </p>
 	 * <ul>
 	 *   <li>'{@link org.osate.aadl2.Relationship#getRelatedElements() <em>Related Element</em>}'</li>
 	 * </ul>
-	 * </p>
 	 * This feature is a derived union.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Specifies the targets of the DirectedRelationship.
+	 * <p>From package AADLInfrastructure.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Target</em>' reference list.
 	 * @see org.osate.aadl2.Aadl2Package#getDirectedRelationship_Target()

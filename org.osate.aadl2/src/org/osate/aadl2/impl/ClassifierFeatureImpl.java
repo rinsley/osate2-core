@@ -48,15 +48,14 @@ import org.osate.aadl2.util.NonNotifyingEObjectEList;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.osate.aadl2.impl.ClassifierFeatureImpl#getFeaturingClassifiers <em>Featuring Classifier</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
-public abstract class ClassifierFeatureImpl extends NamedElementImpl implements
-		ClassifierFeature {
+public abstract class ClassifierFeatureImpl extends NamedElementImpl implements ClassifierFeature {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -81,11 +80,11 @@ public abstract class ClassifierFeatureImpl extends NamedElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
+	@Override
 	public EList<Classifier> getFeaturingClassifiers() {
 		// DB This should be an EStructuralFeature.Setting
-		//		final EList<Classifier> list = new BasicEList<Classifier>();
-		final EList<Classifier> list = new NonNotifyingEObjectEList<Classifier>(
-				Classifier.class, this,
+		// final EList<Classifier> list = new BasicEList<Classifier>();
+		final EList<Classifier> list = new NonNotifyingEObjectEList<Classifier>(Classifier.class, this,
 				Aadl2Package.CLASSIFIER_FEATURE__FEATURING_CLASSIFIER);
 
 		final Classifier contClassifier = getContainingClassifier();

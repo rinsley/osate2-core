@@ -41,12 +41,7 @@ import java.util.List;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
-import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
-import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
-import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.osate.aadl2.Aadl2Package;
 import org.osate.aadl2.DataAccess;
 
@@ -56,9 +51,7 @@ import org.osate.aadl2.DataAccess;
  * <!-- end-user-doc -->
  * @generated
  */
-public class DataAccessItemProvider extends AccessItemProvider implements
-		IEditingDomainItemProvider, IStructuredItemContentProvider,
-		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class DataAccessItemProvider extends AccessItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -92,16 +85,13 @@ public class DataAccessItemProvider extends AccessItemProvider implements
 	 * @generated
 	 */
 	protected void addDataFeatureClassifierPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-						.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_DataAccess_dataFeatureClassifier_feature"),
-				getString("_UI_PropertyDescriptor_description",
-						"_UI_DataAccess_dataFeatureClassifier_feature",
-						"_UI_DataAccess_type"), Aadl2Package.eINSTANCE
-						.getDataAccess_DataFeatureClassifier(), true, false,
-				true, null, null, null));
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_DataAccess_dataFeatureClassifier_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_DataAccess_dataFeatureClassifier_feature",
+								"_UI_DataAccess_type"),
+						Aadl2Package.eINSTANCE.getDataAccess_DataFeatureClassifier(), true, false, true, null, null,
+						null));
 	}
 
 	/**
@@ -112,8 +102,7 @@ public class DataAccessItemProvider extends AccessItemProvider implements
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object,
-				getResourceLocator().getImage("full/obj16/DataAccess"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/DataAccess"));
 	}
 
 	/**
@@ -150,8 +139,7 @@ public class DataAccessItemProvider extends AccessItemProvider implements
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(
-			Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 

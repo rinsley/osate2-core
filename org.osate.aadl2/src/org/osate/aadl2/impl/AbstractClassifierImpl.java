@@ -43,13 +43,10 @@ import org.osate.aadl2.AbstractClassifier;
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Abstract Classifier</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */
-public abstract class AbstractClassifierImpl extends ComponentClassifierImpl
-		implements AbstractClassifier {
+public abstract class AbstractClassifierImpl extends ComponentClassifierImpl implements AbstractClassifier {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

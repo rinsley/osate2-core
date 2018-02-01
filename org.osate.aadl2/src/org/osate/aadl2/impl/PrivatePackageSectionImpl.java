@@ -50,15 +50,14 @@ import org.osate.aadl2.PublicPackageSection;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.osate.aadl2.impl.PrivatePackageSectionImpl#getPublicSection <em>Public Section</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
-public class PrivatePackageSectionImpl extends PackageSectionImpl implements
-		PrivatePackageSection {
+public class PrivatePackageSectionImpl extends PackageSectionImpl implements PrivatePackageSection {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -83,10 +82,11 @@ public class PrivatePackageSectionImpl extends PackageSectionImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public PublicPackageSection getPublicSection() {
 		PublicPackageSection publicSection = basicGetPublicSection();
-		return publicSection != null && ((EObject) publicSection).eIsProxy() ? (PublicPackageSection) eResolveProxy((InternalEObject) publicSection)
-				: publicSection;
+		return publicSection != null && ((EObject) publicSection).eIsProxy()
+				? (PublicPackageSection) eResolveProxy((InternalEObject) publicSection) : publicSection;
 	}
 
 	/**
@@ -99,7 +99,9 @@ public class PrivatePackageSectionImpl extends PackageSectionImpl implements
 		return ((AadlPackage) getOwner()).getPublicSection();
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 *
 	 * @see org.osate.aadl2.impl.NamedElementImpl#getNamespace()
 	 */
 	@Override
@@ -116,8 +118,9 @@ public class PrivatePackageSectionImpl extends PackageSectionImpl implements
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 		case Aadl2Package.PRIVATE_PACKAGE_SECTION__PUBLIC_SECTION:
-			if (resolve)
+			if (resolve) {
 				return getPublicSection();
+			}
 			return basicGetPublicSection();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -142,7 +145,7 @@ public class PrivatePackageSectionImpl extends PackageSectionImpl implements
 	 */
 	@Override
 	public String getName() {
-		return ((AadlPackage) getOwner()).getName() + "_private";
+		return super.getName() + "_private";
 	}
 
 } // PrivatePackageSectionImpl

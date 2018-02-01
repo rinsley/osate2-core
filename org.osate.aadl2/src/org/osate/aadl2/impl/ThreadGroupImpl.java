@@ -42,13 +42,10 @@ import org.osate.aadl2.Aadl2Package;
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Thread Group</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */
-public abstract class ThreadGroupImpl extends NamedElementImpl implements
-		org.osate.aadl2.ThreadGroup {
+public abstract class ThreadGroupImpl extends NamedElementImpl implements org.osate.aadl2.ThreadGroup {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

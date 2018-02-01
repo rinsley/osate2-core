@@ -49,16 +49,15 @@ import org.osate.aadl2.util.Aadl2Util;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.osate.aadl2.impl.RefinableElementImpl#getRefinedElement <em>Refined Element</em>}</li>
  *   <li>{@link org.osate.aadl2.impl.RefinableElementImpl#getRefinementContext <em>Refinement Context</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
-public abstract class RefinableElementImpl extends NamedElementImpl implements
-		RefinableElement {
+public abstract class RefinableElementImpl extends NamedElementImpl implements RefinableElement {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -83,11 +82,11 @@ public abstract class RefinableElementImpl extends NamedElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Classifier getRefinementContext() {
 		Classifier refinementContext = basicGetRefinementContext();
-		return refinementContext != null
-				&& ((EObject) refinementContext).eIsProxy() ? (Classifier) eResolveProxy((InternalEObject) refinementContext)
-				: refinementContext;
+		return refinementContext != null && ((EObject) refinementContext).eIsProxy()
+				? (Classifier) eResolveProxy((InternalEObject) refinementContext) : refinementContext;
 	}
 
 	/**
@@ -106,10 +105,11 @@ public abstract class RefinableElementImpl extends NamedElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public RefinableElement getRefinedElement() {
 		RefinableElement refinedElement = basicGetRefinedElement();
-		return refinedElement != null && ((EObject) refinedElement).eIsProxy() ? (RefinableElement) eResolveProxy((InternalEObject) refinedElement)
-				: refinedElement;
+		return refinedElement != null && ((EObject) refinedElement).eIsProxy()
+				? (RefinableElement) eResolveProxy((InternalEObject) refinedElement) : refinedElement;
 	}
 
 	/**
@@ -130,12 +130,14 @@ public abstract class RefinableElementImpl extends NamedElementImpl implements
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 		case Aadl2Package.REFINABLE_ELEMENT__REFINED_ELEMENT:
-			if (resolve)
+			if (resolve) {
 				return getRefinedElement();
+			}
 			return basicGetRefinedElement();
 		case Aadl2Package.REFINABLE_ELEMENT__REFINEMENT_CONTEXT:
-			if (resolve)
+			if (resolve) {
 				return getRefinementContext();
+			}
 			return basicGetRefinementContext();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -168,13 +170,22 @@ public abstract class RefinableElementImpl extends NamedElementImpl implements
 
 	@Override
 	public String getName() {
-		if (name == null) {
-			if (!Aadl2Util.isNull(getRefinedElement()))
+		if (name == null) { // DB Avoids stack trace overflow when a component refines itself (seems to be supported by OSATE)
+			if (!Aadl2Util.isNull(getRefinedElement()) && getRefinedElement() != this) {
 				return getRefinedElement().getName();
-			else
+			} else {
 				return "";
+			}
 		}
 		return name;
 	}
 
+	@Override
+	public void setName(final String newName) {
+		// DB: Avoid setting a non null name to refined elements (causes a validation error during serialization
+		// when both the name and refined element are set).
+		final String actualName = Aadl2Util.isNull(getRefinedElement()) ? newName : null;
+
+		super.setName(actualName);
+	}
 } // RefinableElementImpl

@@ -36,6 +36,7 @@
 package org.osate.aadl2.impl;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.osate.aadl2.Aadl2Package;
 import org.osate.aadl2.PropertyExpression;
 import org.osate.aadl2.properties.EvaluatedProperty;
@@ -45,13 +46,10 @@ import org.osate.aadl2.properties.EvaluationContext;
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Property Expression</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */
-public abstract class PropertyExpressionImpl extends ElementImpl implements
-		PropertyExpression {
+public abstract class PropertyExpressionImpl extends ElementImpl implements PropertyExpression {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -71,8 +69,19 @@ public abstract class PropertyExpressionImpl extends ElementImpl implements
 		return Aadl2Package.eINSTANCE.getPropertyExpression();
 	}
 
-	public EvaluatedProperty evaluate(EvaluationContext ctx) {
-		return new EvaluatedProperty(this);
+	@Override
+	public EvaluatedProperty evaluate(EvaluationContext ctx, int depth) {
+		return new EvaluatedProperty(EcoreUtil.copy(this));
+	}
+
+	/*
+	 * (non-Javadoc)
+	 *
+	 * @see org.osate.aadl2.PropertyExpression#sameAs(org.osate.aadl2.PropertyExpression)
+	 */
+	@Override
+	public boolean sameAs(PropertyExpression other) {
+		return false;
 	}
 
 } // PropertyExpressionImpl

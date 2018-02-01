@@ -46,6 +46,9 @@ import org.eclipse.emf.common.util.Enumerator;
  * A representation of the literals of the enumeration '<em><b>Operation Kind</b></em>',
  * and utility methods for working with them.
  * <!-- end-user-doc -->
+ * <!-- begin-model-doc -->
+ * <p>From package AADLProperties::Expressions.</p>
+ * <!-- end-model-doc -->
  * @see org.osate.aadl2.Aadl2Package#getOperationKind()
  * @model
  * @generated
@@ -86,20 +89,20 @@ public enum OperationKind implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #PLUS_VALUE
-	 * @generated
+	 * @generated NOT
 	 * @ordered
 	 */
-	PLUS(3, "plus", "plus"),
+	PLUS(3, "plus", "+"),
 
 	/**
 	 * The '<em><b>Minus</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #MINUS_VALUE
-	 * @generated
+	 * @generated NOT
 	 * @ordered
 	 */
-	MINUS(4, "minus", "minus");
+	MINUS(4, "minus", "-");
 
 	/**
 	 * The '<em><b>And</b></em>' literal value.
@@ -182,8 +185,7 @@ public enum OperationKind implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private static final OperationKind[] VALUES_ARRAY = new OperationKind[] {
-			AND, OR, NOT, PLUS, MINUS, };
+	private static final OperationKind[] VALUES_ARRAY = new OperationKind[] { AND, OR, NOT, PLUS, MINUS, };
 
 	/**
 	 * A public read-only list of all the '<em><b>Operation Kind</b></em>' enumerators.
@@ -191,13 +193,14 @@ public enum OperationKind implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final List<OperationKind> VALUES = Collections
-			.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<OperationKind> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
 	 * Returns the '<em><b>Operation Kind</b></em>' literal with the specified literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param literal the literal.
+	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
 	public static OperationKind get(String literal) {
@@ -214,6 +217,8 @@ public enum OperationKind implements Enumerator {
 	 * Returns the '<em><b>Operation Kind</b></em>' literal with the specified name.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param name the name.
+	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
 	public static OperationKind getByName(String name) {
@@ -230,6 +235,8 @@ public enum OperationKind implements Enumerator {
 	 * Returns the '<em><b>Operation Kind</b></em>' literal with the specified integer value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param value the integer value.
+	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
 	public static OperationKind get(int value) {
@@ -286,6 +293,7 @@ public enum OperationKind implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public int getValue() {
 		return value;
 	}
@@ -295,6 +303,7 @@ public enum OperationKind implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getName() {
 		return name;
 	}
@@ -304,6 +313,7 @@ public enum OperationKind implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getLiteral() {
 		return literal;
 	}

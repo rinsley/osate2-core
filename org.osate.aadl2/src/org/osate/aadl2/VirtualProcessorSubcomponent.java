@@ -40,34 +40,40 @@ package org.osate.aadl2;
  * A representation of the model object '<em><b>Virtual Processor Subcomponent</b></em>'.
  * <!-- end-user-doc -->
  *
+ * <!-- begin-model-doc -->
+ * <p>From package AADLDetails::Components::VirtualProcessor.</p>
+ * <!-- end-model-doc -->
+ *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.osate.aadl2.VirtualProcessorSubcomponent#getVirtualProcessorSubcomponentType <em>Virtual Processor Subcomponent Type</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.osate.aadl2.Aadl2Package#getVirtualProcessorSubcomponent()
  * @model
  * @generated
  */
-public interface VirtualProcessorSubcomponent extends Subcomponent,
-		VirtualProcessor {
+public interface VirtualProcessorSubcomponent extends Subcomponent, VirtualProcessor {
 
 	/**
 	 * Returns the value of the '<em><b>Virtual Processor Subcomponent Type</b></em>' reference.
 	 * <p>
 	 * This feature subsets the following features:
+	 * </p>
 	 * <ul>
 	 *   <li>'{@link org.osate.aadl2.Subcomponent#getSubcomponentType() <em>Subcomponent Type</em>}'</li>
 	 * </ul>
-	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Virtual Processor Subcomponent Type</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * <p>From package AADLDetails::Components::VirtualProcessor.</p>
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Virtual Processor Subcomponent Type</em>' reference.
 	 * @see #setVirtualProcessorSubcomponentType(VirtualProcessorSubcomponentType)
 	 * @see org.osate.aadl2.Aadl2Package#getVirtualProcessorSubcomponent_VirtualProcessorSubcomponentType()
@@ -84,7 +90,6 @@ public interface VirtualProcessorSubcomponent extends Subcomponent,
 	 * @see #getVirtualProcessorSubcomponentType()
 	 * @generated
 	 */
-	void setVirtualProcessorSubcomponentType(
-			VirtualProcessorSubcomponentType value);
+	void setVirtualProcessorSubcomponentType(VirtualProcessorSubcomponentType value);
 
 } // VirtualProcessorSubcomponent

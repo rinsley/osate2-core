@@ -1,10 +1,10 @@
 /*******************************************************************************
  * Copyright (c) 2000, 2004 IBM Corporation and others.
- * All rights reserved. This program and the accompanying materials 
+ * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Common Public License v1.0
  * which accompanies this distribution, and is available at
  * http://www.eclipse.org/legal/cpl-v10.html
- * 
+ *
  * Contributors:
  *     IBM Corporation - initial API and implementation
  *******************************************************************************/
@@ -12,12 +12,9 @@ package org.osate.workspace;
 
 import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IFile;
-import org.eclipse.core.resources.IFolder;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.QualifiedName;
-import org.osate.internal.workspace.AadlWorkspace;
-
 
 public class IResourceUtility {
 
@@ -25,8 +22,8 @@ public class IResourceUtility {
 	 * the qualified name for tagging an aaxl file as invalid due to syntax
 	 * errors in text file
 	 */
-	public static final QualifiedName ResourceWithSyntaxErrors = new QualifiedName(
-			"org.osate.ResourceWithSyntaxErrors", "BadAadlFile");
+	public static final QualifiedName ResourceWithSyntaxErrors = new QualifiedName("org.osate.ResourceWithSyntaxErrors",
+			"BadAadlFile");
 	public static final QualifiedName ResourceDerived = new QualifiedName("org.osate.ResourceDerived",
 			"IResourceDerived");
 	public static final QualifiedName IsInstanceModel = new QualifiedName("org.osate.IsInstanceModel",
@@ -36,7 +33,7 @@ public class IResourceUtility {
 	 * tag the IResource of the model is tagged with syntax errors i.e., its
 	 * corresponding aadl text file has syntax errors It is also touched to make
 	 * sure it has a newer date than the text.
-	 * 
+	 *
 	 * @param modelfile IResource of aaxl model
 	 */
 	public static void tagModelWithSyntaxErrors(IResource modelfile) {
@@ -52,7 +49,7 @@ public class IResourceUtility {
 	/**
 	 * untag the IResource of the model is tagged with syntax errors i.e., its
 	 * corresponding aadl text file has syntax errors
-	 * 
+	 *
 	 * @param modelfile IResource of aaxl model
 	 */
 	public static void untagModelWithSyntaxErrors(IResource modelfile) {
@@ -68,7 +65,7 @@ public class IResourceUtility {
 	/**
 	 * check whether the model IResource is tagged with syntax errors i.e., its
 	 * corresponding aadl text file has syntax errors
-	 * 
+	 *
 	 * @param modelfile aaxl file
 	 * @return true if it is tagged as its aadl text equivalent having syntax
 	 *         errors; false if no syntax error or the IResource does not exist
@@ -87,7 +84,7 @@ public class IResourceUtility {
 	/**
 	 * check whether the ires IResource is tagged with syntax errors i.e., its
 	 * corresponding aadl text file has syntax errors
-	 * 
+	 *
 	 * @param ires project, folder, or IResource
 	 * @return true if it contains a IResource that is tagged as its aadl text
 	 *         equivalent having syntax errors
@@ -122,7 +119,7 @@ public class IResourceUtility {
 	 * tag the IResource of the model is tagged with syntax errors i.e., its
 	 * corresponding aadl text file has syntax errors It is also touched to make
 	 * sure it has a newer date than the text.
-	 * 
+	 *
 	 * @param modelfile IResource of aaxl model
 	 */
 	public static void tagAsInstanceModel(IResource modelfile) {
@@ -139,7 +136,8 @@ public class IResourceUtility {
 	public static boolean isAadlFile(IResource file) {
 		if (file instanceof IFile) {
 			String ext = file.getFileExtension();
-			return ext != null && (ext.equals(WorkspacePlugin.SOURCE_FILE_EXT)||ext.equals(WorkspacePlugin.SOURCE_FILE_EXT2));
+			return ext != null
+					&& (ext.equals(WorkspacePlugin.SOURCE_FILE_EXT) || ext.equals(WorkspacePlugin.SOURCE_FILE_EXT2));
 		} else {
 			return false;
 		}
@@ -147,7 +145,7 @@ public class IResourceUtility {
 
 	/**
 	 * is file with aaxl extension, i.e., both decl models and instance models
-	 * 
+	 *
 	 * @param file
 	 * @return true if extension is aaxl
 	 */
@@ -177,8 +175,9 @@ public class IResourceUtility {
 	 */
 	public static boolean isInstanceFile(IResource file) {
 		if (file instanceof IFile) {
-			return (file.getName().endsWith(WorkspacePlugin.INSTANCE_MODEL_POSTFIX + "." + WorkspacePlugin.MODEL_FILE_EXT)||
-					file.getName().endsWith(WorkspacePlugin.INSTANCE_FILE_EXT));
+			return (file.getName()
+					.endsWith(WorkspacePlugin.INSTANCE_MODEL_POSTFIX + "." + WorkspacePlugin.MODEL_FILE_EXT)
+					|| file.getName().endsWith(WorkspacePlugin.INSTANCE_FILE_EXT));
 		}
 		if (file != null && file.exists()) {
 			try {
@@ -198,39 +197,8 @@ public class IResourceUtility {
 	}
 
 	/**
-	 * get the complement file for the given deleted file
-	 * 
-	 * @param origfile
-	 */
-	public static IFile getComplementFile(IFile origfile) {
-		IFile complementfile = null;
-		if (IResourceUtility.isAadlFile(origfile)) {
-			IAadlProject aadlProject = workspace.getAadlProject(origfile);
-			complementfile = aadlProject.getAaxlFile(origfile);
-		} else if (IResourceUtility.isModelFile(origfile)) {
-			IAadlProject aadlProject = workspace.getAadlProject(origfile);
-			complementfile = aadlProject.getAadlFile(origfile);
-		}
-		return complementfile;
-	}
-
-	/**
-	 * get the complement file for the given deleted file
-	 * 
-	 * @param origfolder
-	 */
-	public static IFolder getComplementFolder(IFolder origfolder) {
-		IAadlProject aadlProject = workspace.getAadlProject(origfolder);
-		IFolder complementfolder = aadlProject.getComplementFolder(origfolder);
-		return complementfolder;
-	}
-
-	/** A reference to the current workspace. */
-	private static IAadlWorkspace workspace = AadlWorkspace.getAadlWorkspace();
-
-	/**
 	 * check whether the model IResource is tagged as derived
-	 * 
+	 *
 	 * @param modelfile aaxl file
 	 * @return true if it is tagged as derived; false if not derived or the
 	 *         IResource does not exist
@@ -248,7 +216,7 @@ public class IResourceUtility {
 
 	/**
 	 * set the IResource of the model as derived True/False
-	 * 
+	 *
 	 * @param modelfile IResource of aaxl model
 	 */
 	public static void setGenerated(IResource modelfile, boolean value) {

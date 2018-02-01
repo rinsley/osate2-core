@@ -36,9 +36,12 @@
 package org.osate.aadl2.impl;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.osate.aadl2.Aadl2Package;
+import org.osate.aadl2.AnnexLibrary;
 import org.osate.aadl2.DefaultAnnexLibrary;
 
 /**
@@ -47,15 +50,15 @@ import org.osate.aadl2.DefaultAnnexLibrary;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.osate.aadl2.impl.DefaultAnnexLibraryImpl#getSourceText <em>Source Text</em>}</li>
+ *   <li>{@link org.osate.aadl2.impl.DefaultAnnexLibraryImpl#getParsedAnnexLibrary <em>Parsed Annex Library</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
-public class DefaultAnnexLibraryImpl extends AnnexLibraryImpl implements
-		DefaultAnnexLibrary {
+public class DefaultAnnexLibraryImpl extends AnnexLibraryImpl implements DefaultAnnexLibrary {
 	/**
 	 * The default value of the '{@link #getSourceText() <em>Source Text</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -75,6 +78,16 @@ public class DefaultAnnexLibraryImpl extends AnnexLibraryImpl implements
 	 * @ordered
 	 */
 	protected String sourceText = SOURCE_TEXT_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getParsedAnnexLibrary() <em>Parsed Annex Library</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getParsedAnnexLibrary()
+	 * @generated
+	 * @ordered
+	 */
+	protected AnnexLibrary parsedAnnexLibrary;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -100,6 +113,7 @@ public class DefaultAnnexLibraryImpl extends AnnexLibraryImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getSourceText() {
 		return sourceText;
 	}
@@ -109,13 +123,109 @@ public class DefaultAnnexLibraryImpl extends AnnexLibraryImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setSourceText(String newSourceText) {
 		String oldSourceText = sourceText;
 		sourceText = newSourceText;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					Aadl2Package.DEFAULT_ANNEX_LIBRARY__SOURCE_TEXT,
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, Notification.SET, Aadl2Package.DEFAULT_ANNEX_LIBRARY__SOURCE_TEXT,
 					oldSourceText, sourceText));
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public AnnexLibrary getParsedAnnexLibrary() {
+		return parsedAnnexLibrary;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetParsedAnnexLibrary(AnnexLibrary newParsedAnnexLibrary, NotificationChain msgs) {
+		AnnexLibrary oldParsedAnnexLibrary = parsedAnnexLibrary;
+		parsedAnnexLibrary = newParsedAnnexLibrary;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+					Aadl2Package.DEFAULT_ANNEX_LIBRARY__PARSED_ANNEX_LIBRARY, oldParsedAnnexLibrary,
+					newParsedAnnexLibrary);
+			if (msgs == null) {
+				msgs = notification;
+			} else {
+				msgs.add(notification);
+			}
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setParsedAnnexLibrary(AnnexLibrary newParsedAnnexLibrary) {
+		if (newParsedAnnexLibrary != parsedAnnexLibrary) {
+			NotificationChain msgs = null;
+			if (parsedAnnexLibrary != null) {
+				msgs = ((InternalEObject) parsedAnnexLibrary).eInverseRemove(this,
+						EOPPOSITE_FEATURE_BASE - Aadl2Package.DEFAULT_ANNEX_LIBRARY__PARSED_ANNEX_LIBRARY, null, msgs);
+			}
+			if (newParsedAnnexLibrary != null) {
+				msgs = ((InternalEObject) newParsedAnnexLibrary).eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE - Aadl2Package.DEFAULT_ANNEX_LIBRARY__PARSED_ANNEX_LIBRARY, null, msgs);
+			}
+			msgs = basicSetParsedAnnexLibrary(newParsedAnnexLibrary, msgs);
+			if (msgs != null) {
+				msgs.dispatch();
+			}
+		} else if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					Aadl2Package.DEFAULT_ANNEX_LIBRARY__PARSED_ANNEX_LIBRARY, newParsedAnnexLibrary,
+					newParsedAnnexLibrary));
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public AnnexLibrary createParsedAnnexLibrary(EClass eClass) {
+		AnnexLibrary newParsedAnnexLibrary = (AnnexLibrary) create(eClass);
+		setParsedAnnexLibrary(newParsedAnnexLibrary);
+		return newParsedAnnexLibrary;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public AnnexLibrary createParsedAnnexLibrary() {
+		return createParsedAnnexLibrary(Aadl2Package.eINSTANCE.getAnnexLibrary());
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+		case Aadl2Package.DEFAULT_ANNEX_LIBRARY__PARSED_ANNEX_LIBRARY:
+			return basicSetParsedAnnexLibrary(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -128,6 +238,8 @@ public class DefaultAnnexLibraryImpl extends AnnexLibraryImpl implements
 		switch (featureID) {
 		case Aadl2Package.DEFAULT_ANNEX_LIBRARY__SOURCE_TEXT:
 			return getSourceText();
+		case Aadl2Package.DEFAULT_ANNEX_LIBRARY__PARSED_ANNEX_LIBRARY:
+			return getParsedAnnexLibrary();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -142,6 +254,9 @@ public class DefaultAnnexLibraryImpl extends AnnexLibraryImpl implements
 		switch (featureID) {
 		case Aadl2Package.DEFAULT_ANNEX_LIBRARY__SOURCE_TEXT:
 			setSourceText((String) newValue);
+			return;
+		case Aadl2Package.DEFAULT_ANNEX_LIBRARY__PARSED_ANNEX_LIBRARY:
+			setParsedAnnexLibrary((AnnexLibrary) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -158,6 +273,9 @@ public class DefaultAnnexLibraryImpl extends AnnexLibraryImpl implements
 		case Aadl2Package.DEFAULT_ANNEX_LIBRARY__SOURCE_TEXT:
 			setSourceText(SOURCE_TEXT_EDEFAULT);
 			return;
+		case Aadl2Package.DEFAULT_ANNEX_LIBRARY__PARSED_ANNEX_LIBRARY:
+			setParsedAnnexLibrary((AnnexLibrary) null);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -171,8 +289,9 @@ public class DefaultAnnexLibraryImpl extends AnnexLibraryImpl implements
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 		case Aadl2Package.DEFAULT_ANNEX_LIBRARY__SOURCE_TEXT:
-			return SOURCE_TEXT_EDEFAULT == null ? sourceText != null
-					: !SOURCE_TEXT_EDEFAULT.equals(sourceText);
+			return SOURCE_TEXT_EDEFAULT == null ? sourceText != null : !SOURCE_TEXT_EDEFAULT.equals(sourceText);
+		case Aadl2Package.DEFAULT_ANNEX_LIBRARY__PARSED_ANNEX_LIBRARY:
+			return parsedAnnexLibrary != null;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -184,8 +303,9 @@ public class DefaultAnnexLibraryImpl extends AnnexLibraryImpl implements
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy())
+		if (eIsProxy()) {
 			return super.toString();
+		}
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (sourceText: ");

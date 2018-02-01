@@ -41,12 +41,7 @@ import java.util.List;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
-import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
-import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
-import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.osate.aadl2.Aadl2Package;
 import org.osate.aadl2.ProcessorSubcomponent;
 
@@ -56,9 +51,7 @@ import org.osate.aadl2.ProcessorSubcomponent;
  * <!-- end-user-doc -->
  * @generated
  */
-public class ProcessorSubcomponentItemProvider extends SubcomponentItemProvider
-		implements IEditingDomainItemProvider, IStructuredItemContentProvider,
-		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class ProcessorSubcomponentItemProvider extends SubcomponentItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -93,18 +86,13 @@ public class ProcessorSubcomponentItemProvider extends SubcomponentItemProvider
 	 */
 	protected void addProcessorSubcomponentTypePropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(
-						((ComposeableAdapterFactory) adapterFactory)
-								.getRootAdapterFactory(),
-						getResourceLocator(),
-						getString("_UI_ProcessorSubcomponent_processorSubcomponentType_feature"),
-						getString(
-								"_UI_PropertyDescriptor_description",
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_ProcessorSubcomponent_processorSubcomponentType_feature"),
+						getString("_UI_PropertyDescriptor_description",
 								"_UI_ProcessorSubcomponent_processorSubcomponentType_feature",
 								"_UI_ProcessorSubcomponent_type"),
-						Aadl2Package.eINSTANCE
-								.getProcessorSubcomponent_ProcessorSubcomponentType(),
-						true, false, true, null, null, null));
+						Aadl2Package.eINSTANCE.getProcessorSubcomponent_ProcessorSubcomponentType(), true, false, true,
+						null, null, null));
 	}
 
 	/**
@@ -115,10 +103,7 @@ public class ProcessorSubcomponentItemProvider extends SubcomponentItemProvider
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(
-				object,
-				getResourceLocator().getImage(
-						"full/obj16/ProcessorSubcomponent"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/ProcessorSubcomponent"));
 	}
 
 	/**
@@ -155,8 +140,7 @@ public class ProcessorSubcomponentItemProvider extends SubcomponentItemProvider
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(
-			Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 

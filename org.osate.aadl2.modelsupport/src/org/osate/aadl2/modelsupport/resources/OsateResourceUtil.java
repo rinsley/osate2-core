@@ -52,71 +52,66 @@ import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.xtext.resource.SaveOptions;
 import org.eclipse.xtext.resource.XtextResourceSet;
 import org.eclipse.xtext.ui.resource.IResourceSetProvider;
-import org.osate.aadl2.SystemImplementation;
+import org.osate.aadl2.ComponentImplementation;
 import org.osate.aadl2.instance.InstanceObject;
 import org.osate.core.OsateCorePlugin;
 import org.osate.workspace.WorkspacePlugin;
 
 import com.google.inject.Injector;
 
-
-
 /**
  * static utility methods for handling models as persistent resources
- * 
+ *
  * @author phf
  * @version $Id: OsateResourceManager.java,v 1.17 2009-07-09 19:23:11 jseibel
  *          Exp $
  */
 public class OsateResourceUtil {
 
-
 	private static boolean DEBUG = true;
+	public static boolean USES_GUI = true;
+	// private static Injector injector = OsateCorePlugin
+//            .getDefault().getInjector("org.osate.xtext.aadl2.properties.Properties");//org.osate.xtext.aadl2.Aadl2");
+	private static Injector injector;
+	private static IResourceSetProvider fResourceSetProvider;
 
-	public static final String PLUGIN_RESOURCES_DIRECTORY_NAME = "Plugin_Resources";
+	private static XtextResourceSet resourceSet;
 
-    
-    private static Injector injector = OsateCorePlugin
-            .getDefault().getInjector("org.osate.xtext.aadl2.properties.Properties");//org.osate.xtext.aadl2.Aadl2");
+	public static XtextResourceSet getResourceSet() {
+		if (OsateCorePlugin.getDefault() == null) {
+			return null;
+		}
 
-    private static IResourceSetProvider fResourceSetProvider;
-    
-    private static XtextResourceSet resourceSet;
-    
-    
-    public static XtextResourceSet getResourceSet(){
-    	if (injector==null) {
-    		injector = OsateCorePlugin
-    				.getDefault().getInjector("org.osate.xtext.aadl2.properties.Properties");
-    		if (injector == null){
-    			return null;
-    		}
-    	}
+		if (injector == null) {
+			injector = OsateCorePlugin.getDefault().getInjector("org.osate.xtext.aadl2.properties.Properties");
+			if (injector == null) {
+				return null;
+			}
+		}
 //        PredeclaredProperties.initPluginContributedAadl();
-    	if(Platform.isRunning())
-    	{
-    		if (fResourceSetProvider == null)
-    			fResourceSetProvider = injector.getInstance(IResourceSetProvider.class);
+		if (USES_GUI) {
+			if (fResourceSetProvider == null) {
+				fResourceSetProvider = injector.getInstance(IResourceSetProvider.class);
+			}
 
-    		if (resourceSet == null) 
-    			resourceSet = (XtextResourceSet) fResourceSetProvider.get(null);//project);
-    	}
-    	else
-    	{
-    		if (resourceSet == null) 
-    			resourceSet = injector
-    				.getInstance(XtextResourceSet.class) ;
-    	}
-        return resourceSet;
-   	
-    }
-    
-    public static void setResourceSet(XtextResourceSet rs){
-    	resourceSet=rs;
-    }
-    
-    public static XtextResourceSet createResourceSet(){
-    	return getResourceSet();
+			if (resourceSet == null) {
+				resourceSet = (XtextResourceSet) fResourceSetProvider.get(null);// project);
+			}
+		} else {
+			if (resourceSet == null) {
+				resourceSet = injector.getInstance(XtextResourceSet.class);
+			}
+		}
+		return resourceSet;
+
+	}
+
+	public static void setResourceSet(XtextResourceSet rs) {
+		resourceSet = rs;
+	}
+
+	public static XtextResourceSet createResourceSet() {
+		return getResourceSet();
 //    	if (injector==null) {
 //    		injector = OsateCorePlugin
 //    				.getDefault().getInjector("org.osate.xtext.aadl2.properties.Properties");
@@ -128,71 +123,72 @@ public class OsateResourceUtil {
 //        	fResourceSetProvider = injector.getInstance(IResourceSetProvider.class);
 //
 //        	return (XtextResourceSet) fResourceSetProvider.get(null);//project);
-   	
-    }
-    
-    /**
-     * method that creates an Xtext-based ResoruceSet (EMF resource set plus synchronization
-     * It iwll not use the shared/global Osate resource set
-     * @return
-     */
-    public static XtextResourceSet createXtextResourceSet(){
-    	if (injector==null) {
-    		injector = OsateCorePlugin
-    				.getDefault().getInjector("org.osate.xtext.aadl2.properties.Properties");
-    		if (injector == null){
-    			return null;
-    		}
-    	}
-    	if(Platform.isRunning())
-    	{
-    		if (fResourceSetProvider == null)
-    			fResourceSetProvider = injector.getInstance(IResourceSetProvider.class);
 
-     			return (XtextResourceSet) fResourceSetProvider.get(null);//project);
-    	}
-    	else
-    	{
-     			return injector.getInstance(XtextResourceSet.class) ;
-    	}
-   	
-    }
-    
-    /**
-     * unload all aadl resources so they get reloaded for instantiation
-     * @param rs Resource Set containing the instance model
-     */
-    public static void refreshResourceSet(){
-    	EList<Resource> rlist = getResourceSet().getResources();
-    	for (Resource resource : rlist) {
+	}
+
+	/**
+	 * method that creates an Xtext-based ResoruceSet (EMF resource set plus synchronization
+	 * It iwll not use the shared/global Osate resource set
+	 * @return
+	 */
+	public static XtextResourceSet createXtextResourceSet() {
+		if (injector == null) {
+			injector = OsateCorePlugin.getDefault().getInjector("org.osate.xtext.aadl2.properties.Properties");
+			if (injector == null) {
+				return null;
+			}
+		}
+		if (Platform.isRunning()) {
+			if (fResourceSetProvider == null) {
+				fResourceSetProvider = injector.getInstance(IResourceSetProvider.class);
+			}
+
+			return (XtextResourceSet) fResourceSetProvider.get(null);// project);
+		} else {
+			return injector.getInstance(XtextResourceSet.class);
+		}
+
+	}
+
+	/**
+	 * unload all aadl resources so they get reloaded for instantiation
+	 * @param rs Resource Set containing the instance model
+	 */
+	public static void refreshResourceSet(ResourceSet rset) {
+		EList<Resource> rlist = rset.getResources();
+		for (Resource resource : rlist) {
 			URI uri = resource.getURI();
-			if (uri.fileExtension().equalsIgnoreCase("aadl")||uri.fileExtension().equalsIgnoreCase("aadl2")){
+			if (uri.fileExtension() == null) {
+				continue;
+			}
+			if (uri.fileExtension().equalsIgnoreCase("aadl") || uri.fileExtension().equalsIgnoreCase("aadl2")) {
 				resource.unload();
 			}
 		}
-    }
-
+	}
 
 	/**
 	 * converts Resource into corresponding IResource without use of registry.
-	 * 
+	 *
 	 * @param res
 	 *            Resource
 	 * @return IResource
 	 */
 	public static IResource convertToIResource(Resource res) {
-		if (res == null)
+		if (res == null) {
 			return null;
-		
+		}
+
 		URI uri = res.getURI();
 		if (uri != null) {
 			return getOsateIFile(uri);
 		}
 		return null;
 	}
+
 	/**
 	 * return the IPath for the path. Strips the leading "resource" as necessary
-	 * 
+	 *
 	 * @param resourceURI
 	 *            The URI of the Resource
 	 * @return IPath to the file identified by the URI
@@ -201,55 +197,56 @@ public class OsateResourceUtil {
 	 *                protocol.
 	 */
 	public static IFile getOsateIFile(final URI resourceURI) {
-		
+
 		/*
 		 * I don't really understand why this method does what it does, but the
 		 * point seems to be to take a URI for a Resource that resembles
 		 * "platform:/resource/xxx/yyy/zzz" and return the Eclipse IPath to the
 		 * file for that Resource. This seems to involve removing the
 		 * "/resource/" part.
-		 * 
+		 *
 		 * --aarong
 		 */
 
 		// Is it a "plaform:" uri?
-		IWorkspaceRoot myWorkspaceRoot = ResourcesPlugin.getWorkspace()
-				.getRoot();
-		if (resourceURI.scheme() != null
-				&& resourceURI.scheme().equalsIgnoreCase("platform")) 
-		{
+		IWorkspaceRoot myWorkspaceRoot = ResourcesPlugin.getWorkspace().getRoot();
+		if (resourceURI.isPlatform()) {
 			// FIXME JD
 			// Fixes bug 162, see https://github.com/osate/osate2-core/issues/162
 			return myWorkspaceRoot.getFile(new Path(null, resourceURI.toPlatformString(true)));
 		} else if (resourceURI.isFile()) {
-			return  myWorkspaceRoot.getFile(new Path(resourceURI.toFileString())); //ForLocation
+			try {
+				return myWorkspaceRoot.getFile(new Path(resourceURI.toFileString())); // ForLocation
+			} catch (IllegalArgumentException e) {
+				return null;
+			}
 		} else {
-			throw new IllegalArgumentException("Cannot decode URI protocol: "
-					+ resourceURI.scheme());
+			throw new IllegalArgumentException("Cannot decode URI protocol: " + resourceURI.scheme());
 		}
 	}
-	
+
 	/**
 	 * return the IPath for the path. Strips the leading "resource" as necessary
-	 * 
-	 * @param resourceURI The URI of the Resource 
+	 *
+	 * @param resourceURI The URI of the Resource
 	 * @return IPath to the file identified by the URI
 	 * @exception IllegalArgumentException Thrown if the URI is
 	 * does not use the "platform:" protocol.
 	 */
 	public static IPath getOsatePath(final URI resourceURI) {
-		/* I don't really understand why this method does what it does, but
+		/*
+		 * I don't really understand why this method does what it does, but
 		 * the point seems to be to take a URI for a Resource that resembles
 		 * "platform:/resource/xxx/yyy/zzz" and return the Eclipse IPath to
-		 * the file for that Resource.  This seems to involve removing the
+		 * the file for that Resource. This seems to involve removing the
 		 * "/resource/" part.
-		 * 
+		 *
 		 * --aarong
 		 */
 
 		// Is it a "plaform:" uri?
 		if (resourceURI.scheme() != null && resourceURI.scheme().equalsIgnoreCase("platform")) {
-			// Get the segments.  See if the first is "resource"
+			// Get the segments. See if the first is "resource"
 			final String[] segments = resourceURI.segments();
 			final StringBuffer path = new StringBuffer();
 
@@ -260,8 +257,9 @@ public class OsateResourceUtil {
 					path.append(segments[i]);
 					path.append('/');
 				}
-				if (lastIdx >= 0)
+				if (lastIdx >= 0) {
 					path.append(segments[lastIdx]);
+				}
 			}
 			return new Path(null, path.toString());
 		} else if (resourceURI.isFile()) {
@@ -271,61 +269,25 @@ public class OsateResourceUtil {
 		}
 	}
 
-
-//	/**
-//	 * Find the resource for given URI, but do not demand load
-//	 * 
-//	 * @param uri
-//	 *            URI
-//	 * @return Resource, null if it is not in the resource set.
-//	 */
-//	public static Resource findResource(URI uri, Element context) {
-//		return context.eResource().getResourceSet().getResource(uri, false);
-//	}
-//
-//	/**
-//	 * creates a Resource for file name with path within Eclipse If it exists,
-//	 * it will delete the file before creating the resource.
-//	 * 
-//	 * @param uri Assumed to be an aadl or aaxl extension
-//	 * @return Resource Xtext resource for aadl and Aadl2ResourceImpl for aaxl
-//	 */
-//	public static Resource getEmptyAadl2Resource(URI uri) {
-//		Resource res = null;
-//		if (uri != null) {
-//			IResource iResource =  getOsateIFile(uri);
-//			if (iResource != null && iResource.exists()) {
-//				try {
-//					iResource.delete(true, null);
-//				} catch (CoreException e) {
-//					// TODO Auto-generated catch block
-//					e.printStackTrace();
-//				}
-//				}
-//		}
-//
-//		res = getResourceSet().createResource(uri);
-//		return res;
-//	}
-
-
 	/**
 	 * creates a Resource for file name with path within Eclipse If it exists,
 	 * it will delete the file before creating the resource.
-	 * 
+	 *
 	 * @param uri Assumed to be an aaxl extension
 	 * @return Resource Aadl2ResourceImpl for aaxl
 	 */
 	public static Resource getEmptyAaxl2Resource(URI uri) {
-		if (uri == null) return null;
+		if (uri == null) {
+			return null;
+		}
 		// the next piece of code deals with the ending of instance files having changed from _Instance to _instance
-		String  instancename = uri.trimFileExtension().lastSegment();
-		if (instancename.endsWith("_Instance")){
+		String instancename = uri.trimFileExtension().lastSegment();
+		if (instancename.endsWith("_Instance")) {
 			int idx = instancename.lastIndexOf("_Instance");
-			instancename = instancename.substring(0,idx)+"_instance";
+			instancename = instancename.substring(0, idx) + "_instance";
 			String ext = uri.fileExtension();
 			URI olduri = uri.trimSegments(1).appendSegment(instancename).appendFileExtension(ext);
-			IResource iResource =  getOsateIFile(olduri);
+			IResource iResource = getOsateIFile(olduri);
 			if (iResource != null && iResource.exists()) {
 				try {
 					iResource.delete(true, null);
@@ -334,16 +296,16 @@ public class OsateResourceUtil {
 					e.printStackTrace();
 				}
 			}
-			Resource res  = getResourceSet().getResource(olduri, false);
-			if (res != null){
-				if(res.isLoaded()){
+			Resource res = getResourceSet().getResource(olduri, false);
+			if (res != null) {
+				if (res.isLoaded()) {
 					res.unload();
 				}
 				getResourceSet().getResources().remove(res);
 			}
 		}
 		// get the empty resource
-		IResource iResource =  getOsateIFile(uri);
+		IResource iResource = getOsateIFile(uri);
 		if (iResource != null && iResource.exists()) {
 			try {
 				iResource.delete(true, null);
@@ -352,11 +314,11 @@ public class OsateResourceUtil {
 				e.printStackTrace();
 			}
 		}
-		Resource res  = getResourceSet().getResource(uri, false);
-		if (res == null){
+		Resource res = getResourceSet().getResource(uri, false);
+		if (res == null) {
 			res = getResourceSet().createResource(uri);
 		} else {
-			if (res.isLoaded()){
+			if (res.isLoaded()) {
 				res.unload();
 			}
 			getResourceSet().getResources().remove(res);
@@ -364,36 +326,36 @@ public class OsateResourceUtil {
 		}
 		return res;
 	}
-	
 
 	/**
-	 * deletes a Resource for file name with path within Eclipse 
-	 * 
+	 * deletes a Resource for file name with path within Eclipse
+	 *
 	 * @param uri Assumed to be an aaxl extension
 	 * @return Resource Aadl2ResourceImpl for aaxl
 	 */
 	public static void deleteAaxl2Resource(URI uri) {
-		if (uri == null) return ;
-			IResource iResource =  getOsateIFile(uri);
-			if (iResource != null && iResource.exists()) {
-				try {
-					iResource.delete(true, null);
-				} catch (CoreException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+		if (uri == null) {
+			return;
+		}
+		IResource iResource = getOsateIFile(uri);
+		if (iResource != null && iResource.exists()) {
+			try {
+				iResource.delete(true, null);
+			} catch (CoreException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
-			Resource res  = getResourceSet().getResource(uri, false);
-			if (res != null){
-				if(res.isLoaded()){
-					res.unload();
-				}
-				getResourceSet().getResources().remove(res);
+		}
+		Resource res = getResourceSet().getResource(uri, false);
+		if (res != null) {
+			if (res.isLoaded()) {
+				res.unload();
 			}
+			getResourceSet().getResources().remove(res);
+		}
 	}
 
-
-	public static void save(Resource res){
+	public static void save(Resource res) {
 		try {
 			res.save(null);
 		} catch (IOException e) {
@@ -401,11 +363,11 @@ public class OsateResourceUtil {
 			e.printStackTrace();
 		}
 	}
-	
+
 	/**
 	 * Save model as text and apply Formatter in the process
 	 */
-	public static void saveFormatted(Resource res){
+	public static void saveFormatted(Resource res) {
 		SaveOptions.Builder sb = SaveOptions.newBuilder();
 		sb = sb.format();
 		try {
@@ -415,11 +377,11 @@ public class OsateResourceUtil {
 			e.printStackTrace();
 		}
 	}
-	
+
 	/**
 	 * gets Resource for given IResource. Will create the resource if it does
 	 * not exist
-	 * 
+	 *
 	 * @param ires
 	 *            IResource
 	 * @return Resource
@@ -429,10 +391,15 @@ public class OsateResourceUtil {
 		return getResource(URI.createPlatformResourceURI(path.toString(), false));
 	}
 
+	public static Resource getResource(IResource ires, ResourceSet rset) {
+		IPath path = ires.getFullPath();
+		return getResource(URI.createPlatformResourceURI(path.toString(), false), rset);
+	}
+
 	/**
 	 * gets Resource for given IResource. Will create the resource if it does
 	 * not exist
-	 * 
+	 *
 	 * @param ires
 	 *            IResource
 	 * @return Resource
@@ -445,7 +412,7 @@ public class OsateResourceUtil {
 	/**
 	 * gets Resource for given URI. Will create the resource if it does not
 	 * exist
-	 * 
+	 *
 	 * @param uri
 	 *            URI
 	 * @return Resource
@@ -462,40 +429,59 @@ public class OsateResourceUtil {
 			// exist
 			res = getResourceSet().getResource(uri, false);
 			// if the retrieval fails create the resource
-			if (res == null)
+			if (res == null) {
 				res = getResourceSet().createResource(uri);
+			}
+		}
+		return res;
+	}
+
+	public static Resource getResource(URI uri, ResourceSet rset) {
+		Resource res = null;
+		try {
+			res = rset.getResource(uri, true);
+		} catch (RuntimeException e) {
+			// the resource may have been created but load failed
+			// let's retrieve the resource without loading
+			// NOTE: since demandload is false it will not even be created if it
+			// does not already
+			// exist
+			res = rset.getResource(uri, false);
+			// if the retrieval fails create the resource
+			if (res == null) {
+				res = rset.createResource(uri);
+			}
 		}
 		return res;
 	}
 
 	/*
 	 * returns the instance model URI for a given system implementation
-	 * 
+	 *
 	 * @param si
-	 * 
+	 *
 	 * @return URI for instance model file
 	 */
-	public static URI getInstanceModelURI(SystemImplementation si) {
-		Resource res = si.eResource();
+	public static URI getInstanceModelURI(ComponentImplementation ci) {
+		Resource res = ci.eResource();
 		URI modeluri = res.getURI();
 		String last = modeluri.lastSegment();
 		String filename = last.substring(0, last.indexOf('.'));
 		URI path = modeluri.trimSegments(1);
-		if (path.lastSegment().equalsIgnoreCase(WorkspacePlugin.AADL_PACKAGES_DIR)){
+		if (path.lastSegment().equalsIgnoreCase(WorkspacePlugin.AADL_PACKAGES_DIR)) {
 			path = path.trimSegments(1);
 		}
-		URI instanceURI = path.appendSegment(WorkspacePlugin.AADL_INSTANCES_DIR)
-				.appendSegment(
-				filename + "_" + si.getTypeName() + "_" + si.getImplementationName() + WorkspacePlugin.INSTANCE_MODEL_POSTFIX );
+		URI instanceURI = path.appendSegment(WorkspacePlugin.AADL_INSTANCES_DIR).appendSegment(filename + "_"
+				+ ci.getTypeName() + "_" + ci.getImplementationName() + WorkspacePlugin.INSTANCE_MODEL_POSTFIX);
 		instanceURI = instanceURI.appendFileExtension(WorkspacePlugin.INSTANCE_FILE_EXT);
 		return instanceURI;
 	}
 
 	/*
 	 * returns the instance model URI for a given system implementation
-	 * 
+	 *
 	 * @param si
-	 * 
+	 *
 	 * @return URI for instance model file
 	 */
 	public static URI getReportsURI(InstanceObject obj, String reporttype, String extension) {
@@ -504,35 +490,31 @@ public class OsateResourceUtil {
 		String last = modeluri.lastSegment();
 		String filename = last.substring(0, last.indexOf('.'));
 		URI path = modeluri.trimSegments(1);
-		if (path.lastSegment().equalsIgnoreCase(WorkspacePlugin.AADL_INSTANCES_DIR)){
+		if (path.lastSegment().equalsIgnoreCase(WorkspacePlugin.AADL_INSTANCES_DIR)) {
 			path = path.trimSegments(1);
 		}
 		URI reportURI = path.appendSegment(WorkspacePlugin.AADL_REPORTS_DIR);
-		if (reporttype != null && !reporttype.isEmpty()) reportURI = reportURI.appendSegment(reporttype);
-		reportURI = reportURI.appendSegment(filename );
-		if (extension != null && !extension.isEmpty())
+		if (reporttype != null && !reporttype.isEmpty()) {
+			reportURI = reportURI.appendSegment(reporttype);
+		}
+		reportURI = reportURI.appendSegment(filename);
+		if (extension != null && !extension.isEmpty()) {
 			reportURI = reportURI.appendFileExtension(extension);
+		}
 		return reportURI;
 	}
-	
-	/**
-	 * Make sure the EObject is available in the Osate Resource Set
-	 * The EObject may currently be in the resource set of an XText editor, not the shared resource set
-	 * We also make sure that the Osate resource set will pick up any changed resources by unloading all declarative models in it
-	 * @param eobj
-	 * @return
-	 */
-	public static EObject loadElementIntoResourceSet(EObject eobj){
-		ResourceSet rs = OsateResourceUtil.getResourceSet();
-		ResourceSet sirs = eobj.eResource().getResourceSet();
-		if (rs != sirs){
-			// we unload all to make sure all changes make it into this resource set
-			URI uri =EcoreUtil.getURI(eobj);
-			OsateResourceUtil.refreshResourceSet();
-			eobj = rs.getEObject(uri, true);
-		}
-		return eobj;
 
+	public static URI saveEMFModel(EObject root, final URI newURI, EObject context) {
+		try {
+			ResourceSet set = context.eResource().getResourceSet();
+			Resource res = set.createResource(newURI);
+			res.getContents().add(root);
+			res.save(null);
+			return EcoreUtil.getURI(root);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return newURI;
 	}
 
 }

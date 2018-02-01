@@ -38,10 +38,10 @@ package org.osate.aadl2.impl;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.osate.aadl2.Aadl2Package;
 import org.osate.aadl2.PropertyExpression;
 import org.osate.aadl2.ReferenceValue;
-import org.osate.aadl2.instance.ComponentInstance;
 import org.osate.aadl2.instance.FeatureInstance;
 import org.osate.aadl2.instance.InstanceFactory;
 import org.osate.aadl2.instance.InstanceObject;
@@ -54,13 +54,10 @@ import org.osate.aadl2.properties.InvalidModelException;
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Reference Value</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */
-public class ReferenceValueImpl extends ContainedNamedElementImpl implements
-		ReferenceValue {
+public class ReferenceValueImpl extends ContainedNamedElementImpl implements ReferenceValue {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -80,49 +77,47 @@ public class ReferenceValueImpl extends ContainedNamedElementImpl implements
 		return Aadl2Package.eINSTANCE.getReferenceValue();
 	}
 
-	public PropertyExpression instantiate(ComponentInstance root)
-			throws InvalidModelException {
-		List<InstanceObject> iol = root
-				.findInstanceObjects(getContainmentPathElements());
+	@Override
+	public PropertyExpression instantiate(InstanceObject root) throws InvalidModelException {
+		List<InstanceObject> iol = root.findInstanceObjects(getContainmentPathElements());
 		if (iol.size() == 0) {
-			throw new InvalidModelException(this,
-					"Reference does not refer to an instance object");
+			// reference to a non-instantiated element, e.g., subprogram or call sequence
+			return null;
 		} else if (iol.size() > 1) {
-			throw new InvalidModelException(this,
-					"Reference refers to more than one instance object");
+			throw new InvalidModelException(this, "Reference refers to more than one instance object");
 		} else {
 			final InstanceObject io = iol.get(0);
-			final InstanceReferenceValue irv = InstanceFactory.eINSTANCE
-					.createInstanceReferenceValue();
+			final InstanceReferenceValue irv = InstanceFactory.eINSTANCE.createInstanceReferenceValue();
 			irv.setReferencedInstanceObject(io);
 			return irv;
 		}
 	}
 
-	public PropertyExpression instantiate(FeatureInstance root)
-			throws InvalidModelException {
-		final List<InstanceObject> iol = root
-				.findInstanceObjects(getContainmentPathElements());
+	@Override
+	public PropertyExpression instantiate(FeatureInstance root) throws InvalidModelException {
+		final List<InstanceObject> iol = root.findInstanceObjects(getContainmentPathElements());
 		if (iol.size() == 0) {
-			throw new InvalidModelException(this,
-					"Reference does not refer to a nested feature");
+			throw new InvalidModelException(this, "Reference does not refer to a nested feature");
 		} else if (iol.size() > 1) {
-			throw new InvalidModelException(this,
-					"Reference refers to more than one feature");
+			throw new InvalidModelException(this, "Reference refers to more than one feature");
 		} else {
 			final InstanceObject io = iol.get(0);
-			final InstanceReferenceValue irv = InstanceFactory.eINSTANCE
-					.createInstanceReferenceValue();
+			final InstanceReferenceValue irv = InstanceFactory.eINSTANCE.createInstanceReferenceValue();
 			irv.setReferencedInstanceObject(io);
 			return irv;
 		}
 	}
 
 	// TODO: LW features can have reference properties too
-	public EvaluatedProperty evaluate(EvaluationContext ctx) {
-		return new EvaluatedProperty(this);
+	@Override
+	public EvaluatedProperty evaluate(EvaluationContext ctx, int depth) {
+		return new EvaluatedProperty(EcoreUtil.copy(this));
 	}
 
-	// no equals needed here -> InstanceReferenceValue
+	@Override
+	public boolean sameAs(PropertyExpression other) {
+		// TODO: implement comparison of reference values
+		return false;
+	}
 
 } // ReferenceValueImpl

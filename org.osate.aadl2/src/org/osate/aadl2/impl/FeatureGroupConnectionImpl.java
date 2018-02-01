@@ -43,13 +43,10 @@ import org.osate.aadl2.FeatureGroupConnection;
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Feature Group Connection</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */
-public class FeatureGroupConnectionImpl extends ConnectionImpl implements
-		FeatureGroupConnection {
+public class FeatureGroupConnectionImpl extends ConnectionImpl implements FeatureGroupConnection {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

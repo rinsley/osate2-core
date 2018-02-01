@@ -37,7 +37,6 @@ import org.eclipse.core.runtime.preferences.AbstractPreferenceInitializer;
 import org.eclipse.jface.preference.IPreferenceStore;
 import org.osate.workspace.WorkspacePlugin;
 
-
 /**
  * @author lwrage
  * @version $Id: PreferenceInitializer.java,v 1.9 2007-06-18 18:47:25 jseibel
@@ -51,6 +50,7 @@ public class PreferenceInitializer extends AbstractPreferenceInitializer {
 	 * @seeorg.eclipse.core.runtime.preferences.AbstractPreferenceInitializer#
 	 * initializeDefaultPreferences()
 	 */
+	@Override
 	public void initializeDefaultPreferences() {
 		/**
 		 * Sets the default values of the preferences.
@@ -58,5 +58,9 @@ public class PreferenceInitializer extends AbstractPreferenceInitializer {
 		IPreferenceStore store = WorkspacePlugin.getDefault().getPreferenceStore();
 		store.setDefault(WorkspacePlugin.EXPAND_DEFAULT_FLAG, false);
 		store.setDefault(WorkspacePlugin.AUTO_REINSTANTIATE, true);
+		store.setDefault(WorkspacePlugin.AUTO_INDENT, true);
+		store.setDefault(WorkspacePlugin.AUTO_COMPLETE, true);
+		store.setDefault(WorkspacePlugin.CAPITALIZE, false);
+		store.setDefault(WorkspacePlugin.INDENT_SECTIONS, true);
 	}
 }

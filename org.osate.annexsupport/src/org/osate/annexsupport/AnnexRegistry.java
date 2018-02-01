@@ -32,6 +32,7 @@
  * </copyright>
  */
 package org.osate.annexsupport;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -40,6 +41,7 @@ import org.eclipse.core.runtime.IExtension;
 import org.eclipse.core.runtime.IExtensionPoint;
 import org.eclipse.core.runtime.IExtensionRegistry;
 import org.eclipse.core.runtime.Platform;
+import org.osate.aadl2.parsesupport.ParseUtil;
 
 /**
  * @author lwrage
@@ -66,10 +68,13 @@ public abstract class AnnexRegistry {
 	public static final String ANNEX_INSTANTIATOR_EXT_ID = "instantiator";
 
 	/** ID of annex highlighter extension point */
-		public static final String ANNEX_HIGHLIGHTER_EXT_ID = "highlighter";
-		
+	public static final String ANNEX_HIGHLIGHTER_EXT_ID = "highlighter";
+
+	/** ID of annex content assist extention point */
+	public static final String ANNEX_CONTENT_ASSIST_EXT_ID = "contentassist";
 
 	private static final String ATT_ANNEXNAME = "annexName";
+	private static final String ATT_ANNEXNSURI = "annexNSURI";
 
 	private static final Map registries = new HashMap();
 
@@ -78,7 +83,7 @@ public abstract class AnnexRegistry {
 
 	/**
 	 * Get the annex parser registry.
-	 * 
+	 *
 	 * @return the single instance of this class.
 	 */
 	public static AnnexRegistry getRegistry(String extensionId) {
@@ -95,7 +100,7 @@ public abstract class AnnexRegistry {
 		if (extensionId == ANNEX_PARSER_EXT_ID) {
 			return new AnnexParserRegistry();
 		} else if (extensionId == ANNEX_UNPARSER_EXT_ID) {
-				return new AnnexUnparserRegistry();
+			return new AnnexUnparserRegistry();
 		} else if (extensionId == ANNEX_RESOLVER_EXT_ID) {
 			return new AnnexResolverRegistry();
 		} else if (extensionId == ANNEX_LINKINGSERVICE_EXT_ID) {
@@ -106,32 +111,37 @@ public abstract class AnnexRegistry {
 			return new AnnexInstantiatorRegistry();
 		} else if (extensionId == ANNEX_HIGHLIGHTER_EXT_ID) {
 			return new AnnexHighlighterRegistry();
+		} else if (extensionId == ANNEX_CONTENT_ASSIST_EXT_ID) {
+			return new AnnexContentAssistRegistry();
 		}
+
 		return null;
 	}
-	
+
 	protected void initialize(String extensionId) {
-		IExtensionRegistry extensionRegistry = Platform.getExtensionRegistry();		
-		IExtensionPoint extensionPoint = extensionRegistry.getExtensionPoint(AnnexPlugin.PLUGIN_ID,
-				extensionId);
+		IExtensionRegistry extensionRegistry = Platform.getExtensionRegistry();
+		IExtensionPoint extensionPoint = extensionRegistry.getExtensionPoint(AnnexPlugin.PLUGIN_ID, extensionId);
 		IExtension[] exts = extensionPoint.getExtensions();
-		
+
 		extensions = new HashMap();
 		for (int i = 0; i < exts.length; i++) {
 			IConfigurationElement[] configElems = exts[i].getConfigurationElements();
-			
+
 			for (int j = 0; j < configElems.length; j++) {
 				String annexName = configElems[j].getAttribute(ATT_ANNEXNAME);
-				
+				String annexNSURI = configElems[j].getAttribute(ATT_ANNEXNSURI);
+
 				if (extensions.get(annexName) != null) {
 					AnnexPlugin.logError("Duplicate extension: " + extensionId + ", annex " + annexName, null);
 				} else {
+					ParseUtil.setAnnexNS(annexName, annexNSURI);
+
 					extensions.put(annexName.toLowerCase(), createProxy(configElems[j]));
 				}
 			}
 		}
 	}
-	
+
 	/**
 	 * Factory method for annex proxies.
 	 */

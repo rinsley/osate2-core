@@ -40,34 +40,40 @@ package org.osate.aadl2;
  * A representation of the model object '<em><b>Thread Group Subcomponent</b></em>'.
  * <!-- end-user-doc -->
  *
+ * <!-- begin-model-doc -->
+ * <p>From package AADLDetails::Components::ThreadGroup.</p>
+ * <!-- end-model-doc -->
+ *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.osate.aadl2.ThreadGroupSubcomponent#getThreadGroupSubcomponentType <em>Thread Group Subcomponent Type</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.osate.aadl2.Aadl2Package#getThreadGroupSubcomponent()
  * @model
  * @generated
  */
-public interface ThreadGroupSubcomponent extends Subcomponent,
-		org.osate.aadl2.ThreadGroup {
+public interface ThreadGroupSubcomponent extends Subcomponent, org.osate.aadl2.ThreadGroup {
 
 	/**
 	 * Returns the value of the '<em><b>Thread Group Subcomponent Type</b></em>' reference.
 	 * <p>
 	 * This feature subsets the following features:
+	 * </p>
 	 * <ul>
 	 *   <li>'{@link org.osate.aadl2.Subcomponent#getSubcomponentType() <em>Subcomponent Type</em>}'</li>
 	 * </ul>
-	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Thread Group Subcomponent Type</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * <p>From package AADLDetails::Components::ThreadGroup.</p>
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Thread Group Subcomponent Type</em>' reference.
 	 * @see #setThreadGroupSubcomponentType(ThreadGroupSubcomponentType)
 	 * @see org.osate.aadl2.Aadl2Package#getThreadGroupSubcomponent_ThreadGroupSubcomponentType()

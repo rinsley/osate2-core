@@ -43,13 +43,10 @@ import org.osate.aadl2.BusClassifier;
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Bus Classifier</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */
-public abstract class BusClassifierImpl extends ComponentClassifierImpl
-		implements BusClassifier {
+public abstract class BusClassifierImpl extends ComponentClassifierImpl implements BusClassifier {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

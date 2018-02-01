@@ -51,16 +51,15 @@ import org.osate.aadl2.ImplementationExtension;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.osate.aadl2.impl.ImplementationExtensionImpl#getGeneral <em>General</em>}</li>
  *   <li>{@link org.osate.aadl2.impl.ImplementationExtensionImpl#getExtended <em>Extended</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
-public class ImplementationExtensionImpl extends GeneralizationImpl implements
-		ImplementationExtension {
+public class ImplementationExtensionImpl extends GeneralizationImpl implements ImplementationExtension {
 	/**
 	 * The cached value of the '{@link #getExtended() <em>Extended</em>}' reference.
 	 * <!-- begin-user-doc -->
@@ -120,15 +119,16 @@ public class ImplementationExtensionImpl extends GeneralizationImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ComponentImplementation getExtended() {
 		if (extended != null && ((EObject) extended).eIsProxy()) {
 			InternalEObject oldExtended = (InternalEObject) extended;
 			extended = (ComponentImplementation) eResolveProxy(oldExtended);
 			if (extended != oldExtended) {
-				if (eNotificationRequired())
+				if (eNotificationRequired()) {
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-							Aadl2Package.IMPLEMENTATION_EXTENSION__EXTENDED,
-							oldExtended, extended));
+							Aadl2Package.IMPLEMENTATION_EXTENSION__EXTENDED, oldExtended, extended));
+				}
 			}
 		}
 		return extended;
@@ -148,13 +148,14 @@ public class ImplementationExtensionImpl extends GeneralizationImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setExtended(ComponentImplementation newExtended) {
 		ComponentImplementation oldExtended = extended;
 		extended = newExtended;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					Aadl2Package.IMPLEMENTATION_EXTENSION__EXTENDED,
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, Notification.SET, Aadl2Package.IMPLEMENTATION_EXTENSION__EXTENDED,
 					oldExtended, extended));
+		}
 	}
 
 	/**
@@ -166,8 +167,9 @@ public class ImplementationExtensionImpl extends GeneralizationImpl implements
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 		case Aadl2Package.IMPLEMENTATION_EXTENSION__EXTENDED:
-			if (resolve)
+			if (resolve) {
 				return getExtended();
+			}
 			return basicGetExtended();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -211,6 +213,8 @@ public class ImplementationExtensionImpl extends GeneralizationImpl implements
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+		case Aadl2Package.IMPLEMENTATION_EXTENSION__GENERAL:
+			return isSetGeneral();
 		case Aadl2Package.IMPLEMENTATION_EXTENSION__EXTENDED:
 			return extended != null;
 		}
@@ -224,7 +228,6 @@ public class ImplementationExtensionImpl extends GeneralizationImpl implements
 	 */
 	@Override
 	public boolean isSetGeneral() {
-		return super.isSetGeneral()
-				|| eIsSet(Aadl2Package.IMPLEMENTATION_EXTENSION__EXTENDED);
+		return super.isSetGeneral() || eIsSet(Aadl2Package.IMPLEMENTATION_EXTENSION__EXTENDED);
 	}
 } // ImplementationExtensionImpl

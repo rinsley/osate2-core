@@ -44,6 +44,10 @@ import org.osate.aadl2.properties.InvalidModelException;
  * A representation of the model object '<em><b>Property Expression</b></em>'.
  * <!-- end-user-doc -->
  *
+ * <!-- begin-model-doc -->
+ * <p>From package AADLProperties::Expressions.</p>
+ * <!-- end-model-doc -->
+ *
  *
  * @see org.osate.aadl2.Aadl2Package#getPropertyExpression()
  * @model abstract="true"
@@ -52,7 +56,7 @@ import org.osate.aadl2.properties.InvalidModelException;
 public interface PropertyExpression extends Element {
 	/**
 	 * Evaluate a property value.
-	 * 
+	 *
 	 * @param context
 	 *            The context in which to look up any property value references.
 	 * @param modes
@@ -63,7 +67,13 @@ public interface PropertyExpression extends Element {
 	 * or inconsistency in the model that prevents the property value from
 	 * being evaluated.
 	 */
-	EvaluatedProperty evaluate(EvaluationContext ctx)
-			throws InvalidModelException;
+	EvaluatedProperty evaluate(EvaluationContext ctx, int depth) throws InvalidModelException;
 
+	/**
+	 * Compare to another expression
+	 * 
+	 * @param other The expression to compare with
+	 * @return If the expressions represent the same value
+	 */
+	boolean sameAs(PropertyExpression other);
 } // PropertyExpression

@@ -40,39 +40,47 @@ package org.osate.aadl2;
  * A representation of the model object '<em><b>Bus Access</b></em>'.
  * <!-- end-user-doc -->
  *
+ * <!-- begin-model-doc -->
+ * <p>From package AADLDetails::Features.</p>
+ * <!-- end-model-doc -->
+ *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.osate.aadl2.BusAccess#getBusFeatureClassifier <em>Bus Feature Classifier</em>}</li>
+ *   <li>{@link org.osate.aadl2.BusAccess#isVirtual <em>Virtual</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.osate.aadl2.Aadl2Package#getBusAccess()
  * @model
  * @generated
  */
-public interface BusAccess extends Access, Bus {
+public interface BusAccess extends Access {
 	/**
 	 * Returns the value of the '<em><b>Bus Feature Classifier</b></em>' reference.
 	 * <p>
 	 * This feature subsets the following features:
+	 * </p>
 	 * <ul>
 	 *   <li>'{@link org.osate.aadl2.Feature#getFeatureClassifier() <em>Feature Classifier</em>}'</li>
 	 * </ul>
-	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Bus Feature Classifier</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * <p>From package AADLDetails::Features.</p>
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Bus Feature Classifier</em>' reference.
-	 * @see #setBusFeatureClassifier(BusSubcomponentType)
+	 * @see #setBusFeatureClassifier(BusFeatureClassifier)
 	 * @see org.osate.aadl2.Aadl2Package#getBusAccess_BusFeatureClassifier()
 	 * @model ordered="false"
 	 * @generated
 	 */
-	BusSubcomponentType getBusFeatureClassifier();
+	BusFeatureClassifier getBusFeatureClassifier();
 
 	/**
 	 * Sets the value of the '{@link org.osate.aadl2.BusAccess#getBusFeatureClassifier <em>Bus Feature Classifier</em>}' reference.
@@ -82,6 +90,32 @@ public interface BusAccess extends Access, Bus {
 	 * @see #getBusFeatureClassifier()
 	 * @generated
 	 */
-	void setBusFeatureClassifier(BusSubcomponentType value);
+	void setBusFeatureClassifier(BusFeatureClassifier value);
+
+	/**
+	 * Returns the value of the '<em><b>Virtual</b></em>' attribute.
+	 * The default value is <code>"false"</code>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * <p>From package AADLDetails::Features.</p>
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Virtual</em>' attribute.
+	 * @see #setVirtual(boolean)
+	 * @see org.osate.aadl2.Aadl2Package#getBusAccess_Virtual()
+	 * @model default="false" dataType="org.osate.aadl2.Boolean" required="true" ordered="false"
+	 * @generated
+	 */
+	boolean isVirtual();
+
+	/**
+	 * Sets the value of the '{@link org.osate.aadl2.BusAccess#isVirtual <em>Virtual</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Virtual</em>' attribute.
+	 * @see #isVirtual()
+	 * @generated
+	 */
+	void setVirtual(boolean value);
 
 } // BusAccess

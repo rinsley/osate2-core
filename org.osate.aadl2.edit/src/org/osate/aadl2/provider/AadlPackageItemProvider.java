@@ -1,12 +1,12 @@
 /**
  * <copyright>
  * Copyright  2008 by Carnegie Mellon University, all rights reserved.
- * 
+ *
  * Use of the Open Source AADL Tool Environment (OSATE) is subject to the terms of the license set forth
  * at http://www.eclipse.org/org/documents/epl-v10.html.
- * 
+ *
  * NO WARRANTY
- * 
+ *
  * ANY INFORMATION, MATERIALS, SERVICES, INTELLECTUAL PROPERTY OR OTHER PROPERTY OR RIGHTS GRANTED OR PROVIDED BY
  * CARNEGIE MELLON UNIVERSITY PURSUANT TO THIS LICENSE (HEREINAFTER THE ''DELIVERABLES'') ARE ON AN ''AS-IS'' BASIS.
  * CARNEGIE MELLON UNIVERSITY MAKES NO WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED AS TO ANY MATTER INCLUDING,
@@ -16,21 +16,21 @@
  * REGARDLESS OF WHETHER SUCH PARTY WAS AWARE OF THE POSSIBILITY OF SUCH DAMAGES. LICENSEE AGREES THAT IT WILL NOT
  * MAKE ANY WARRANTY ON BEHALF OF CARNEGIE MELLON UNIVERSITY, EXPRESS OR IMPLIED, TO ANY PERSON CONCERNING THE
  * APPLICATION OF OR THE RESULTS TO BE OBTAINED WITH THE DELIVERABLES UNDER THIS LICENSE.
- * 
+ *
  * Licensee hereby agrees to defend, indemnify, and hold harmless Carnegie Mellon University, its trustees, officers,
  * employees, and agents from all claims or demands made against them (and any related losses, expenses, or
  * attorney's fees) arising out of, or relating to Licensee's and/or its sub licensees' negligent use or willful
  * misuse of or negligent conduct or willful misconduct regarding the Software, facilities, or other rights or
  * assistance granted by Carnegie Mellon University under this License, including, but not limited to, any claims of
  * product liability, personal injury, death, damage to property, or violation of any laws or regulations.
- * 
+ *
  * Carnegie Mellon University Software Engineering Institute authored documents are sponsored by the U.S. Department
  * of Defense under Contract F19628-00-C-0003. Carnegie Mellon University retains copyrights in all material produced
  * under this contract. The U.S. Government retains a non-exclusive, royalty-free license to publish or reproduce these
  * documents, or allow others to do so, for U.S. Government purposes only pursuant to the copyright license
  * under the contract clause at 252.227.7013.
  * </copyright>
- * 
+ *
  *
  * $Id: AadlPackageItemProvider.java,v 1.19 2011-04-11 13:36:06 lwrage Exp $
  */
@@ -46,12 +46,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.domain.EditingDomain;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
-import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
-import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
-import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.eclipse.uml2.common.edit.command.SubsetSupersetSetCommand;
 import org.osate.aadl2.Aadl2Factory;
@@ -64,9 +59,7 @@ import org.osate.aadl2.AadlPackage;
  * <!-- end-user-doc -->
  * @generated
  */
-public class AadlPackageItemProvider extends ModelUnitItemProvider implements
-		IEditingDomainItemProvider, IStructuredItemContentProvider,
-		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class AadlPackageItemProvider extends ModelUnitItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -101,16 +94,12 @@ public class AadlPackageItemProvider extends ModelUnitItemProvider implements
 	 * @generated
 	 */
 	protected void addPublicSectionPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-						.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_AadlPackage_publicSection_feature"),
-				getString("_UI_PropertyDescriptor_description",
-						"_UI_AadlPackage_publicSection_feature",
-						"_UI_AadlPackage_type"), Aadl2Package.eINSTANCE
-						.getAadlPackage_PublicSection(), true, false, true,
-				null, null, null));
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_AadlPackage_publicSection_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_AadlPackage_publicSection_feature",
+								"_UI_AadlPackage_type"),
+						Aadl2Package.eINSTANCE.getAadlPackage_PublicSection(), true, false, true, null, null, null));
 	}
 
 	/**
@@ -120,16 +109,12 @@ public class AadlPackageItemProvider extends ModelUnitItemProvider implements
 	 * @generated
 	 */
 	protected void addPrivateSectionPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-						.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_AadlPackage_privateSection_feature"),
-				getString("_UI_PropertyDescriptor_description",
-						"_UI_AadlPackage_privateSection_feature",
-						"_UI_AadlPackage_type"), Aadl2Package.eINSTANCE
-						.getAadlPackage_PrivateSection(), true, false, true,
-				null, null, null));
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_AadlPackage_privateSection_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_AadlPackage_privateSection_feature",
+								"_UI_AadlPackage_type"),
+						Aadl2Package.eINSTANCE.getAadlPackage_PrivateSection(), true, false, true, null, null, null));
 	}
 
 	/**
@@ -141,14 +126,11 @@ public class AadlPackageItemProvider extends ModelUnitItemProvider implements
 	 * @generated
 	 */
 	@Override
-	public Collection<? extends EStructuralFeature> getChildrenFeatures(
-			Object object) {
+	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(Aadl2Package.eINSTANCE
-					.getAadlPackage_OwnedPublicSection());
-			childrenFeatures.add(Aadl2Package.eINSTANCE
-					.getAadlPackage_OwnedPrivateSection());
+			childrenFeatures.add(Aadl2Package.eINSTANCE.getAadlPackage_OwnedPublicSection());
+			childrenFeatures.add(Aadl2Package.eINSTANCE.getAadlPackage_OwnedPrivateSection());
 		}
 		return childrenFeatures;
 	}
@@ -174,8 +156,7 @@ public class AadlPackageItemProvider extends ModelUnitItemProvider implements
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object,
-				getResourceLocator().getImage("full/obj16/AadlPackage"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/AadlPackage"));
 	}
 
 	/**
@@ -205,8 +186,7 @@ public class AadlPackageItemProvider extends ModelUnitItemProvider implements
 		switch (notification.getFeatureID(AadlPackage.class)) {
 		case Aadl2Package.AADL_PACKAGE__OWNED_PUBLIC_SECTION:
 		case Aadl2Package.AADL_PACKAGE__OWNED_PRIVATE_SECTION:
-			fireNotifyChanged(new ViewerNotification(notification,
-					notification.getNotifier(), true, false));
+			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 			return;
 		}
 		super.notifyChanged(notification);
@@ -220,16 +200,13 @@ public class AadlPackageItemProvider extends ModelUnitItemProvider implements
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(
-			Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(
-				Aadl2Package.eINSTANCE.getAadlPackage_OwnedPublicSection(),
+		newChildDescriptors.add(createChildParameter(Aadl2Package.eINSTANCE.getAadlPackage_OwnedPublicSection(),
 				Aadl2Factory.eINSTANCE.createPublicPackageSection()));
 
-		newChildDescriptors.add(createChildParameter(
-				Aadl2Package.eINSTANCE.getAadlPackage_OwnedPrivateSection(),
+		newChildDescriptors.add(createChildParameter(Aadl2Package.eINSTANCE.getAadlPackage_OwnedPrivateSection(),
 				Aadl2Factory.eINSTANCE.createPrivatePackageSection()));
 	}
 
@@ -240,29 +217,22 @@ public class AadlPackageItemProvider extends ModelUnitItemProvider implements
 	 * @generated
 	 */
 	@Override
-	protected Command createSetCommand(EditingDomain domain, EObject owner,
-			EStructuralFeature feature, Object value) {
-		if (feature == Aadl2Package.eINSTANCE
-				.getAadlPackage_OwnedPublicSection()) {
+	protected Command createSetCommand(EditingDomain domain, EObject owner, EStructuralFeature feature, Object value) {
+		if (feature == Aadl2Package.eINSTANCE.getAadlPackage_OwnedPublicSection()) {
 			return new SubsetSupersetSetCommand(domain, owner, feature,
-					new EStructuralFeature[] { Aadl2Package.eINSTANCE
-							.getAadlPackage_PublicSection() }, null, value);
+					new EStructuralFeature[] { Aadl2Package.eINSTANCE.getAadlPackage_PublicSection() }, null, value);
 		}
-		if (feature == Aadl2Package.eINSTANCE
-				.getAadlPackage_OwnedPrivateSection()) {
+		if (feature == Aadl2Package.eINSTANCE.getAadlPackage_OwnedPrivateSection()) {
 			return new SubsetSupersetSetCommand(domain, owner, feature,
-					new EStructuralFeature[] { Aadl2Package.eINSTANCE
-							.getAadlPackage_PrivateSection() }, null, value);
+					new EStructuralFeature[] { Aadl2Package.eINSTANCE.getAadlPackage_PrivateSection() }, null, value);
 		}
 		if (feature == Aadl2Package.eINSTANCE.getAadlPackage_PublicSection()) {
 			return new SubsetSupersetSetCommand(domain, owner, feature, null,
-					new EStructuralFeature[] { Aadl2Package.eINSTANCE
-							.getAadlPackage_OwnedPublicSection() }, value);
+					new EStructuralFeature[] { Aadl2Package.eINSTANCE.getAadlPackage_OwnedPublicSection() }, value);
 		}
 		if (feature == Aadl2Package.eINSTANCE.getAadlPackage_PrivateSection()) {
 			return new SubsetSupersetSetCommand(domain, owner, feature, null,
-					new EStructuralFeature[] { Aadl2Package.eINSTANCE
-							.getAadlPackage_OwnedPrivateSection() }, value);
+					new EStructuralFeature[] { Aadl2Package.eINSTANCE.getAadlPackage_OwnedPrivateSection() }, value);
 		}
 		return super.createSetCommand(domain, owner, feature, value);
 	}

@@ -41,12 +41,7 @@ import java.util.List;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
-import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
-import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
-import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.osate.aadl2.Aadl2Package;
 
 /**
@@ -55,9 +50,7 @@ import org.osate.aadl2.Aadl2Package;
  * <!-- end-user-doc -->
  * @generated
  */
-public class NumberValueItemProvider extends PropertyValueItemProvider
-		implements IEditingDomainItemProvider, IStructuredItemContentProvider,
-		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class NumberValueItemProvider extends PropertyValueItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -92,16 +85,11 @@ public class NumberValueItemProvider extends PropertyValueItemProvider
 	 */
 	protected void addUnitPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(
-						((ComposeableAdapterFactory) adapterFactory)
-								.getRootAdapterFactory(),
-						getResourceLocator(),
-						getString("_UI_NumberValue_unit_feature"),
-						getString("_UI_PropertyDescriptor_description",
-								"_UI_NumberValue_unit_feature",
-								"_UI_NumberValue_type"), Aadl2Package.eINSTANCE
-								.getNumberValue_Unit(), true, false, true,
-						null, null, null));
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_NumberValue_unit_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_NumberValue_unit_feature",
+								"_UI_NumberValue_type"),
+						Aadl2Package.eINSTANCE.getNumberValue_Unit(), true, false, true, null, null, null));
 	}
 
 	/**
@@ -136,8 +124,7 @@ public class NumberValueItemProvider extends PropertyValueItemProvider
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(
-			Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 

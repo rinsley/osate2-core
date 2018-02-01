@@ -40,12 +40,16 @@ package org.osate.aadl2;
  * A representation of the model object '<em><b>Prototype Binding</b></em>'.
  * <!-- end-user-doc -->
  *
+ * <!-- begin-model-doc -->
+ * <p>From package AADLConstructs::Templates.</p>
+ * <!-- end-model-doc -->
+ *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.osate.aadl2.PrototypeBinding#getFormal <em>Formal</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.osate.aadl2.Aadl2Package#getPrototypeBinding()
  * @model abstract="true"
@@ -60,6 +64,9 @@ public interface PrototypeBinding extends Element {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * <p>From package AADLConstructs::Templates.</p>
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Formal</em>' reference.
 	 * @see #setFormal(Prototype)
 	 * @see org.osate.aadl2.Aadl2Package#getPrototypeBinding_Formal()

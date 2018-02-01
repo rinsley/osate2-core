@@ -42,15 +42,16 @@ package org.osate.aadl2;
  *
  * <!-- begin-model-doc -->
  * A generalization is a taxonomic relationship between a more general classifier and a more specific classifier. Each instance of the specific classifier is also an instance of the general classifier. Thus, the specific classifier indirectly has features of the more general classifier.
+ * <p>From package AADLInfrastructure.</p>
  * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.osate.aadl2.Generalization#getGeneral <em>General</em>}</li>
  *   <li>{@link org.osate.aadl2.Generalization#getSpecific <em>Specific</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.osate.aadl2.Aadl2Package#getGeneralization()
  * @model abstract="true"
@@ -61,15 +62,16 @@ public interface Generalization extends DirectedRelationship {
 	 * Returns the value of the '<em><b>General</b></em>' reference.
 	 * <p>
 	 * This feature subsets the following features:
+	 * </p>
 	 * <ul>
 	 *   <li>'{@link org.osate.aadl2.DirectedRelationship#getTargets() <em>Target</em>}'</li>
 	 * </ul>
-	 * </p>
 	 * This feature is a derived union.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * References the general classifier in the Generalization relationship.
+	 * <p>From package AADLInfrastructure.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>General</em>' reference.
 	 * @see org.osate.aadl2.Aadl2Package#getGeneralization_General()
@@ -83,14 +85,15 @@ public interface Generalization extends DirectedRelationship {
 	 * It is bidirectional and its opposite is '{@link org.osate.aadl2.Classifier#getGeneralizations <em>Generalization</em>}'.
 	 * <p>
 	 * This feature subsets the following features:
+	 * </p>
 	 * <ul>
 	 *   <li>'{@link org.osate.aadl2.DirectedRelationship#getSources() <em>Source</em>}'</li>
 	 * </ul>
-	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
-	 * References the specializing classifier in the Generalization relationship. 
+	 * References the specializing classifier in the Generalization relationship.
+	 * <p>From package AADLInfrastructure.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Specific</em>' reference.
 	 * @see #setSpecific(Classifier)

@@ -41,12 +41,7 @@ import java.util.List;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
-import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
-import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
-import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.osate.aadl2.Aadl2Package;
@@ -58,9 +53,7 @@ import org.osate.aadl2.IntegerLiteral;
  * <!-- end-user-doc -->
  * @generated
  */
-public class IntegerLiteralItemProvider extends NumberValueItemProvider
-		implements IEditingDomainItemProvider, IStructuredItemContentProvider,
-		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class IntegerLiteralItemProvider extends NumberValueItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -95,16 +88,13 @@ public class IntegerLiteralItemProvider extends NumberValueItemProvider
 	 * @generated
 	 */
 	protected void addBasePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-						.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_IntegerLiteral_base_feature"),
-				getString("_UI_PropertyDescriptor_description",
-						"_UI_IntegerLiteral_base_feature",
-						"_UI_IntegerLiteral_type"), Aadl2Package.eINSTANCE
-						.getIntegerLiteral_Base(), true, false, false,
-				ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_IntegerLiteral_base_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_IntegerLiteral_base_feature",
+								"_UI_IntegerLiteral_type"),
+						Aadl2Package.eINSTANCE.getIntegerLiteral_Base(), true, false, false,
+						ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -114,16 +104,13 @@ public class IntegerLiteralItemProvider extends NumberValueItemProvider
 	 * @generated
 	 */
 	protected void addValuePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-						.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_IntegerLiteral_value_feature"),
-				getString("_UI_PropertyDescriptor_description",
-						"_UI_IntegerLiteral_value_feature",
-						"_UI_IntegerLiteral_type"), Aadl2Package.eINSTANCE
-						.getIntegerLiteral_Value(), true, false, false,
-				ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_IntegerLiteral_value_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_IntegerLiteral_value_feature",
+								"_UI_IntegerLiteral_type"),
+						Aadl2Package.eINSTANCE.getIntegerLiteral_Value(), true, false, false,
+						ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -134,8 +121,7 @@ public class IntegerLiteralItemProvider extends NumberValueItemProvider
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object,
-				getResourceLocator().getImage("full/obj16/IntegerLiteral"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/IntegerLiteral"));
 	}
 
 	/**
@@ -147,11 +133,8 @@ public class IntegerLiteralItemProvider extends NumberValueItemProvider
 	@Override
 	public String getText(Object object) {
 		IntegerLiteral integerLiteral = (IntegerLiteral) object;
-		return getString("_UI_IntegerLiteral_type")
-				+ " "
-				+ integerLiteral.getValue()
-				+ (integerLiteral.getUnit() != null ? " "
-						+ integerLiteral.getUnit().getName() : "");
+		return getString("_UI_IntegerLiteral_type") + " " + integerLiteral.getValue()
+				+ (integerLiteral.getUnit() != null ? " " + integerLiteral.getUnit().getName() : "");
 	}
 
 	/**
@@ -168,8 +151,7 @@ public class IntegerLiteralItemProvider extends NumberValueItemProvider
 		switch (notification.getFeatureID(IntegerLiteral.class)) {
 		case Aadl2Package.INTEGER_LITERAL__BASE:
 		case Aadl2Package.INTEGER_LITERAL__VALUE:
-			fireNotifyChanged(new ViewerNotification(notification,
-					notification.getNotifier(), false, true));
+			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
 		}
 		super.notifyChanged(notification);
@@ -183,8 +165,7 @@ public class IntegerLiteralItemProvider extends NumberValueItemProvider
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(
-			Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 

@@ -64,6 +64,7 @@ import org.osate.aadl2.SubprogramGroupAccess;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.osate.aadl2.impl.AbstractTypeImpl#getOwnedFeatures <em>Owned Feature</em>}</li>
  *   <li>{@link org.osate.aadl2.impl.AbstractTypeImpl#getOwnedBusAccesses <em>Owned Bus Access</em>}</li>
@@ -74,7 +75,6 @@ import org.osate.aadl2.SubprogramGroupAccess;
  *   <li>{@link org.osate.aadl2.impl.AbstractTypeImpl#getOwnedEventDataPorts <em>Owned Event Data Port</em>}</li>
  *   <li>{@link org.osate.aadl2.impl.AbstractTypeImpl#getOwnedSubprogramGroupAccesses <em>Owned Subprogram Group Access</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -173,21 +173,16 @@ public class AbstractTypeImpl extends ComponentTypeImpl implements AbstractType 
 		if (cache != null) {
 			Resource eResource = eResource();
 			@SuppressWarnings("unchecked")
-			EList<Feature> ownedFeatures = (EList<Feature>) cache.get(
-					eResource, this,
+			EList<Feature> ownedFeatures = (EList<Feature>) cache.get(eResource, this,
 					Aadl2Package.eINSTANCE.getComponentType_OwnedFeature());
 			if (ownedFeatures == null) {
-				cache.put(eResource, this, Aadl2Package.eINSTANCE
-						.getComponentType_OwnedFeature(),
-						ownedFeatures = new DerivedUnionEObjectEList<Feature>(
-								Feature.class, this,
-								Aadl2Package.ABSTRACT_TYPE__OWNED_FEATURE,
-								OWNED_FEATURE_ESUBSETS));
+				cache.put(eResource, this, Aadl2Package.eINSTANCE.getComponentType_OwnedFeature(),
+						ownedFeatures = new DerivedUnionEObjectEList<Feature>(Feature.class, this,
+								Aadl2Package.ABSTRACT_TYPE__OWNED_FEATURE, OWNED_FEATURE_ESUBSETS));
 			}
 			return ownedFeatures;
 		}
-		return new DerivedUnionEObjectEList<Feature>(Feature.class, this,
-				Aadl2Package.ABSTRACT_TYPE__OWNED_FEATURE,
+		return new DerivedUnionEObjectEList<Feature>(Feature.class, this, Aadl2Package.ABSTRACT_TYPE__OWNED_FEATURE,
 				OWNED_FEATURE_ESUBSETS);
 	}
 
@@ -199,14 +194,10 @@ public class AbstractTypeImpl extends ComponentTypeImpl implements AbstractType 
 	 * @generated
 	 * @ordered
 	 */
-	protected static final int[] OWNED_FEATURE_ESUBSETS = new int[] {
-			Aadl2Package.ABSTRACT_TYPE__OWNED_FEATURE_GROUP,
-			Aadl2Package.ABSTRACT_TYPE__OWNED_ABSTRACT_FEATURE,
-			Aadl2Package.ABSTRACT_TYPE__OWNED_BUS_ACCESS,
-			Aadl2Package.ABSTRACT_TYPE__OWNED_DATA_ACCESS,
-			Aadl2Package.ABSTRACT_TYPE__OWNED_SUBPROGRAM_ACCESS,
-			Aadl2Package.ABSTRACT_TYPE__OWNED_DATA_PORT,
-			Aadl2Package.ABSTRACT_TYPE__OWNED_EVENT_PORT,
+	protected static final int[] OWNED_FEATURE_ESUBSETS = new int[] { Aadl2Package.ABSTRACT_TYPE__OWNED_FEATURE_GROUP,
+			Aadl2Package.ABSTRACT_TYPE__OWNED_ABSTRACT_FEATURE, Aadl2Package.ABSTRACT_TYPE__OWNED_BUS_ACCESS,
+			Aadl2Package.ABSTRACT_TYPE__OWNED_DATA_ACCESS, Aadl2Package.ABSTRACT_TYPE__OWNED_SUBPROGRAM_ACCESS,
+			Aadl2Package.ABSTRACT_TYPE__OWNED_DATA_PORT, Aadl2Package.ABSTRACT_TYPE__OWNED_EVENT_PORT,
 			Aadl2Package.ABSTRACT_TYPE__OWNED_EVENT_DATA_PORT,
 			Aadl2Package.ABSTRACT_TYPE__OWNED_SUBPROGRAM_GROUP_ACCESS };
 
@@ -215,10 +206,10 @@ public class AbstractTypeImpl extends ComponentTypeImpl implements AbstractType 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<BusAccess> getOwnedBusAccesses() {
 		if (ownedBusAccesses == null) {
-			ownedBusAccesses = new EObjectContainmentEList<BusAccess>(
-					BusAccess.class, this,
+			ownedBusAccesses = new EObjectContainmentEList<BusAccess>(BusAccess.class, this,
 					Aadl2Package.ABSTRACT_TYPE__OWNED_BUS_ACCESS);
 		}
 		return ownedBusAccesses;
@@ -229,9 +220,9 @@ public class AbstractTypeImpl extends ComponentTypeImpl implements AbstractType 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public BusAccess createOwnedBusAccess() {
-		BusAccess newOwnedBusAccess = (BusAccess) create(Aadl2Package.eINSTANCE
-				.getBusAccess());
+		BusAccess newOwnedBusAccess = (BusAccess) create(Aadl2Package.eINSTANCE.getBusAccess());
 		getOwnedBusAccesses().add(newOwnedBusAccess);
 		return newOwnedBusAccess;
 	}
@@ -241,10 +232,10 @@ public class AbstractTypeImpl extends ComponentTypeImpl implements AbstractType 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<DataAccess> getOwnedDataAccesses() {
 		if (ownedDataAccesses == null) {
-			ownedDataAccesses = new EObjectContainmentEList<DataAccess>(
-					DataAccess.class, this,
+			ownedDataAccesses = new EObjectContainmentEList<DataAccess>(DataAccess.class, this,
 					Aadl2Package.ABSTRACT_TYPE__OWNED_DATA_ACCESS);
 		}
 		return ownedDataAccesses;
@@ -255,9 +246,9 @@ public class AbstractTypeImpl extends ComponentTypeImpl implements AbstractType 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public DataAccess createOwnedDataAccess() {
-		DataAccess newOwnedDataAccess = (DataAccess) create(Aadl2Package.eINSTANCE
-				.getDataAccess());
+		DataAccess newOwnedDataAccess = (DataAccess) create(Aadl2Package.eINSTANCE.getDataAccess());
 		getOwnedDataAccesses().add(newOwnedDataAccess);
 		return newOwnedDataAccess;
 	}
@@ -267,10 +258,10 @@ public class AbstractTypeImpl extends ComponentTypeImpl implements AbstractType 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<SubprogramAccess> getOwnedSubprogramAccesses() {
 		if (ownedSubprogramAccesses == null) {
-			ownedSubprogramAccesses = new EObjectContainmentEList<SubprogramAccess>(
-					SubprogramAccess.class, this,
+			ownedSubprogramAccesses = new EObjectContainmentEList<SubprogramAccess>(SubprogramAccess.class, this,
 					Aadl2Package.ABSTRACT_TYPE__OWNED_SUBPROGRAM_ACCESS);
 		}
 		return ownedSubprogramAccesses;
@@ -281,9 +272,10 @@ public class AbstractTypeImpl extends ComponentTypeImpl implements AbstractType 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public SubprogramAccess createOwnedSubprogramAccess() {
-		SubprogramAccess newOwnedSubprogramAccess = (SubprogramAccess) create(Aadl2Package.eINSTANCE
-				.getSubprogramAccess());
+		SubprogramAccess newOwnedSubprogramAccess = (SubprogramAccess) create(
+				Aadl2Package.eINSTANCE.getSubprogramAccess());
 		getOwnedSubprogramAccesses().add(newOwnedSubprogramAccess);
 		return newOwnedSubprogramAccess;
 	}
@@ -293,10 +285,10 @@ public class AbstractTypeImpl extends ComponentTypeImpl implements AbstractType 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<DataPort> getOwnedDataPorts() {
 		if (ownedDataPorts == null) {
-			ownedDataPorts = new EObjectContainmentEList<DataPort>(
-					DataPort.class, this,
+			ownedDataPorts = new EObjectContainmentEList<DataPort>(DataPort.class, this,
 					Aadl2Package.ABSTRACT_TYPE__OWNED_DATA_PORT);
 		}
 		return ownedDataPorts;
@@ -307,9 +299,9 @@ public class AbstractTypeImpl extends ComponentTypeImpl implements AbstractType 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public DataPort createOwnedDataPort() {
-		DataPort newOwnedDataPort = (DataPort) create(Aadl2Package.eINSTANCE
-				.getDataPort());
+		DataPort newOwnedDataPort = (DataPort) create(Aadl2Package.eINSTANCE.getDataPort());
 		getOwnedDataPorts().add(newOwnedDataPort);
 		return newOwnedDataPort;
 	}
@@ -319,10 +311,10 @@ public class AbstractTypeImpl extends ComponentTypeImpl implements AbstractType 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<EventPort> getOwnedEventPorts() {
 		if (ownedEventPorts == null) {
-			ownedEventPorts = new EObjectContainmentEList<EventPort>(
-					EventPort.class, this,
+			ownedEventPorts = new EObjectContainmentEList<EventPort>(EventPort.class, this,
 					Aadl2Package.ABSTRACT_TYPE__OWNED_EVENT_PORT);
 		}
 		return ownedEventPorts;
@@ -333,9 +325,9 @@ public class AbstractTypeImpl extends ComponentTypeImpl implements AbstractType 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EventPort createOwnedEventPort() {
-		EventPort newOwnedEventPort = (EventPort) create(Aadl2Package.eINSTANCE
-				.getEventPort());
+		EventPort newOwnedEventPort = (EventPort) create(Aadl2Package.eINSTANCE.getEventPort());
 		getOwnedEventPorts().add(newOwnedEventPort);
 		return newOwnedEventPort;
 	}
@@ -345,10 +337,10 @@ public class AbstractTypeImpl extends ComponentTypeImpl implements AbstractType 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<EventDataPort> getOwnedEventDataPorts() {
 		if (ownedEventDataPorts == null) {
-			ownedEventDataPorts = new EObjectContainmentEList<EventDataPort>(
-					EventDataPort.class, this,
+			ownedEventDataPorts = new EObjectContainmentEList<EventDataPort>(EventDataPort.class, this,
 					Aadl2Package.ABSTRACT_TYPE__OWNED_EVENT_DATA_PORT);
 		}
 		return ownedEventDataPorts;
@@ -359,9 +351,9 @@ public class AbstractTypeImpl extends ComponentTypeImpl implements AbstractType 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EventDataPort createOwnedEventDataPort() {
-		EventDataPort newOwnedEventDataPort = (EventDataPort) create(Aadl2Package.eINSTANCE
-				.getEventDataPort());
+		EventDataPort newOwnedEventDataPort = (EventDataPort) create(Aadl2Package.eINSTANCE.getEventDataPort());
 		getOwnedEventDataPorts().add(newOwnedEventDataPort);
 		return newOwnedEventDataPort;
 	}
@@ -371,11 +363,11 @@ public class AbstractTypeImpl extends ComponentTypeImpl implements AbstractType 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<SubprogramGroupAccess> getOwnedSubprogramGroupAccesses() {
 		if (ownedSubprogramGroupAccesses == null) {
 			ownedSubprogramGroupAccesses = new EObjectContainmentEList<SubprogramGroupAccess>(
-					SubprogramGroupAccess.class, this,
-					Aadl2Package.ABSTRACT_TYPE__OWNED_SUBPROGRAM_GROUP_ACCESS);
+					SubprogramGroupAccess.class, this, Aadl2Package.ABSTRACT_TYPE__OWNED_SUBPROGRAM_GROUP_ACCESS);
 		}
 		return ownedSubprogramGroupAccesses;
 	}
@@ -385,9 +377,10 @@ public class AbstractTypeImpl extends ComponentTypeImpl implements AbstractType 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public SubprogramGroupAccess createOwnedSubprogramGroupAccess() {
-		SubprogramGroupAccess newOwnedSubprogramGroupAccess = (SubprogramGroupAccess) create(Aadl2Package.eINSTANCE
-				.getSubprogramGroupAccess());
+		SubprogramGroupAccess newOwnedSubprogramGroupAccess = (SubprogramGroupAccess) create(
+				Aadl2Package.eINSTANCE.getSubprogramGroupAccess());
 		getOwnedSubprogramGroupAccesses().add(newOwnedSubprogramGroupAccess);
 		return newOwnedSubprogramGroupAccess;
 	}
@@ -398,30 +391,22 @@ public class AbstractTypeImpl extends ComponentTypeImpl implements AbstractType 
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case Aadl2Package.ABSTRACT_TYPE__OWNED_BUS_ACCESS:
-			return ((InternalEList<?>) getOwnedBusAccesses()).basicRemove(
-					otherEnd, msgs);
+			return ((InternalEList<?>) getOwnedBusAccesses()).basicRemove(otherEnd, msgs);
 		case Aadl2Package.ABSTRACT_TYPE__OWNED_DATA_ACCESS:
-			return ((InternalEList<?>) getOwnedDataAccesses()).basicRemove(
-					otherEnd, msgs);
+			return ((InternalEList<?>) getOwnedDataAccesses()).basicRemove(otherEnd, msgs);
 		case Aadl2Package.ABSTRACT_TYPE__OWNED_SUBPROGRAM_ACCESS:
-			return ((InternalEList<?>) getOwnedSubprogramAccesses())
-					.basicRemove(otherEnd, msgs);
+			return ((InternalEList<?>) getOwnedSubprogramAccesses()).basicRemove(otherEnd, msgs);
 		case Aadl2Package.ABSTRACT_TYPE__OWNED_DATA_PORT:
-			return ((InternalEList<?>) getOwnedDataPorts()).basicRemove(
-					otherEnd, msgs);
+			return ((InternalEList<?>) getOwnedDataPorts()).basicRemove(otherEnd, msgs);
 		case Aadl2Package.ABSTRACT_TYPE__OWNED_EVENT_PORT:
-			return ((InternalEList<?>) getOwnedEventPorts()).basicRemove(
-					otherEnd, msgs);
+			return ((InternalEList<?>) getOwnedEventPorts()).basicRemove(otherEnd, msgs);
 		case Aadl2Package.ABSTRACT_TYPE__OWNED_EVENT_DATA_PORT:
-			return ((InternalEList<?>) getOwnedEventDataPorts()).basicRemove(
-					otherEnd, msgs);
+			return ((InternalEList<?>) getOwnedEventDataPorts()).basicRemove(otherEnd, msgs);
 		case Aadl2Package.ABSTRACT_TYPE__OWNED_SUBPROGRAM_GROUP_ACCESS:
-			return ((InternalEList<?>) getOwnedSubprogramGroupAccesses())
-					.basicRemove(otherEnd, msgs);
+			return ((InternalEList<?>) getOwnedSubprogramGroupAccesses()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -463,38 +448,31 @@ public class AbstractTypeImpl extends ComponentTypeImpl implements AbstractType 
 		switch (featureID) {
 		case Aadl2Package.ABSTRACT_TYPE__OWNED_BUS_ACCESS:
 			getOwnedBusAccesses().clear();
-			getOwnedBusAccesses().addAll(
-					(Collection<? extends BusAccess>) newValue);
+			getOwnedBusAccesses().addAll((Collection<? extends BusAccess>) newValue);
 			return;
 		case Aadl2Package.ABSTRACT_TYPE__OWNED_DATA_ACCESS:
 			getOwnedDataAccesses().clear();
-			getOwnedDataAccesses().addAll(
-					(Collection<? extends DataAccess>) newValue);
+			getOwnedDataAccesses().addAll((Collection<? extends DataAccess>) newValue);
 			return;
 		case Aadl2Package.ABSTRACT_TYPE__OWNED_SUBPROGRAM_ACCESS:
 			getOwnedSubprogramAccesses().clear();
-			getOwnedSubprogramAccesses().addAll(
-					(Collection<? extends SubprogramAccess>) newValue);
+			getOwnedSubprogramAccesses().addAll((Collection<? extends SubprogramAccess>) newValue);
 			return;
 		case Aadl2Package.ABSTRACT_TYPE__OWNED_DATA_PORT:
 			getOwnedDataPorts().clear();
-			getOwnedDataPorts().addAll(
-					(Collection<? extends DataPort>) newValue);
+			getOwnedDataPorts().addAll((Collection<? extends DataPort>) newValue);
 			return;
 		case Aadl2Package.ABSTRACT_TYPE__OWNED_EVENT_PORT:
 			getOwnedEventPorts().clear();
-			getOwnedEventPorts().addAll(
-					(Collection<? extends EventPort>) newValue);
+			getOwnedEventPorts().addAll((Collection<? extends EventPort>) newValue);
 			return;
 		case Aadl2Package.ABSTRACT_TYPE__OWNED_EVENT_DATA_PORT:
 			getOwnedEventDataPorts().clear();
-			getOwnedEventDataPorts().addAll(
-					(Collection<? extends EventDataPort>) newValue);
+			getOwnedEventDataPorts().addAll((Collection<? extends EventDataPort>) newValue);
 			return;
 		case Aadl2Package.ABSTRACT_TYPE__OWNED_SUBPROGRAM_GROUP_ACCESS:
 			getOwnedSubprogramGroupAccesses().clear();
-			getOwnedSubprogramGroupAccesses().addAll(
-					(Collection<? extends SubprogramGroupAccess>) newValue);
+			getOwnedSubprogramGroupAccesses().addAll((Collection<? extends SubprogramGroupAccess>) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -541,23 +519,22 @@ public class AbstractTypeImpl extends ComponentTypeImpl implements AbstractType 
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+		case Aadl2Package.ABSTRACT_TYPE__OWNED_FEATURE:
+			return isSetOwnedFeatures();
 		case Aadl2Package.ABSTRACT_TYPE__OWNED_BUS_ACCESS:
 			return ownedBusAccesses != null && !ownedBusAccesses.isEmpty();
 		case Aadl2Package.ABSTRACT_TYPE__OWNED_DATA_ACCESS:
 			return ownedDataAccesses != null && !ownedDataAccesses.isEmpty();
 		case Aadl2Package.ABSTRACT_TYPE__OWNED_SUBPROGRAM_ACCESS:
-			return ownedSubprogramAccesses != null
-					&& !ownedSubprogramAccesses.isEmpty();
+			return ownedSubprogramAccesses != null && !ownedSubprogramAccesses.isEmpty();
 		case Aadl2Package.ABSTRACT_TYPE__OWNED_DATA_PORT:
 			return ownedDataPorts != null && !ownedDataPorts.isEmpty();
 		case Aadl2Package.ABSTRACT_TYPE__OWNED_EVENT_PORT:
 			return ownedEventPorts != null && !ownedEventPorts.isEmpty();
 		case Aadl2Package.ABSTRACT_TYPE__OWNED_EVENT_DATA_PORT:
-			return ownedEventDataPorts != null
-					&& !ownedEventDataPorts.isEmpty();
+			return ownedEventDataPorts != null && !ownedEventDataPorts.isEmpty();
 		case Aadl2Package.ABSTRACT_TYPE__OWNED_SUBPROGRAM_GROUP_ACCESS:
-			return ownedSubprogramGroupAccesses != null
-					&& !ownedSubprogramGroupAccesses.isEmpty();
+			return ownedSubprogramGroupAccesses != null && !ownedSubprogramGroupAccesses.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
@@ -569,8 +546,7 @@ public class AbstractTypeImpl extends ComponentTypeImpl implements AbstractType 
 	 */
 	@Override
 	public boolean isSetOwnedFeatures() {
-		return super.isSetOwnedFeatures()
-				|| eIsSet(Aadl2Package.ABSTRACT_TYPE__OWNED_BUS_ACCESS)
+		return super.isSetOwnedFeatures() || eIsSet(Aadl2Package.ABSTRACT_TYPE__OWNED_BUS_ACCESS)
 				|| eIsSet(Aadl2Package.ABSTRACT_TYPE__OWNED_DATA_ACCESS)
 				|| eIsSet(Aadl2Package.ABSTRACT_TYPE__OWNED_SUBPROGRAM_ACCESS)
 				|| eIsSet(Aadl2Package.ABSTRACT_TYPE__OWNED_DATA_PORT)
@@ -579,6 +555,7 @@ public class AbstractTypeImpl extends ComponentTypeImpl implements AbstractType 
 				|| eIsSet(Aadl2Package.ABSTRACT_TYPE__OWNED_SUBPROGRAM_GROUP_ACCESS);
 	}
 
+	@Override
 	public ComponentCategory getCategory() {
 		return ComponentCategory.ABSTRACT;
 	}

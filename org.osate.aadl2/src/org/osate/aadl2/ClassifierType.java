@@ -42,12 +42,16 @@ import org.eclipse.emf.common.util.EList;
  * A representation of the model object '<em><b>Classifier Type</b></em>'.
  * <!-- end-user-doc -->
  *
+ * <!-- begin-model-doc -->
+ * <p>From package AADLProperties::Types.</p>
+ * <!-- end-model-doc -->
+ *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.osate.aadl2.ClassifierType#getClassifierReferences <em>Classifier Reference</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.osate.aadl2.Aadl2Package#getClassifierType()
  * @model
@@ -64,9 +68,12 @@ public interface ClassifierType extends NonListType {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * <p>From package AADLProperties::Types.</p>
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Classifier Reference</em>' containment reference list.
 	 * @see org.osate.aadl2.Aadl2Package#getClassifierType_ClassifierReference()
-	 * @model containment="true" required="true" ordered="false"
+	 * @model containment="true" ordered="false"
 	 * @generated
 	 */
 	EList<MetaclassReference> getClassifierReferences();

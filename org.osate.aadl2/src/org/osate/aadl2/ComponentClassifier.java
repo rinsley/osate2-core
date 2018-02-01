@@ -42,38 +42,46 @@ import org.eclipse.emf.common.util.EList;
  * A representation of the model object '<em><b>Component Classifier</b></em>'.
  * <!-- end-user-doc -->
  *
+ * <!-- begin-model-doc -->
+ * <p>From package AADLDetails::NoneSupport.</p>
+ * <p>From package AADLConstructs::Components.</p>
+ * <!-- end-model-doc -->
+ *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.osate.aadl2.ComponentClassifier#getOwnedModes <em>Owned Mode</em>}</li>
  *   <li>{@link org.osate.aadl2.ComponentClassifier#getOwnedModeTransitions <em>Owned Mode Transition</em>}</li>
+ *   <li>{@link org.osate.aadl2.ComponentClassifier#isDerivedModes <em>Derived Modes</em>}</li>
  *   <li>{@link org.osate.aadl2.ComponentClassifier#isNoFlows <em>No Flows</em>}</li>
  *   <li>{@link org.osate.aadl2.ComponentClassifier#isNoModes <em>No Modes</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.osate.aadl2.Aadl2Package#getComponentClassifier()
  * @model abstract="true"
  * @generated
  */
-public interface ComponentClassifier extends Classifier, SubcomponentType,
-		FeatureClassifier {
+public interface ComponentClassifier extends Classifier, SubcomponentType, FeatureClassifier {
 	/**
 	 * Returns the value of the '<em><b>Owned Mode</b></em>' containment reference list.
 	 * The list contents are of type {@link org.osate.aadl2.Mode}.
 	 * <p>
 	 * This feature subsets the following features:
+	 * </p>
 	 * <ul>
 	 *   <li>'{@link org.osate.aadl2.Classifier#getClassifierFeatures() <em>Classifier Feature</em>}'</li>
 	 *   <li>'{@link org.osate.aadl2.Namespace#getOwnedMembers() <em>Owned Member</em>}'</li>
 	 * </ul>
-	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Mode</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * <p>From package AADLConstructs::Components.</p>
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Mode</em>' containment reference list.
 	 * @see org.osate.aadl2.Aadl2Package#getComponentClassifier_OwnedMode()
 	 * @model containment="true" ordered="false"
@@ -96,17 +104,20 @@ public interface ComponentClassifier extends Classifier, SubcomponentType,
 	 * The list contents are of type {@link org.osate.aadl2.ModeTransition}.
 	 * <p>
 	 * This feature subsets the following features:
+	 * </p>
 	 * <ul>
 	 *   <li>'{@link org.osate.aadl2.Classifier#getClassifierFeatures() <em>Classifier Feature</em>}'</li>
 	 *   <li>'{@link org.osate.aadl2.Namespace#getOwnedMembers() <em>Owned Member</em>}'</li>
 	 * </ul>
-	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Mode Transition</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * <p>From package AADLConstructs::Components.</p>
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Mode Transition</em>' containment reference list.
 	 * @see org.osate.aadl2.Aadl2Package#getComponentClassifier_OwnedModeTransition()
 	 * @model containment="true" ordered="false"
@@ -125,6 +136,35 @@ public interface ComponentClassifier extends Classifier, SubcomponentType,
 	ModeTransition createOwnedModeTransition();
 
 	/**
+	 * Returns the value of the '<em><b>Derived Modes</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Derived Modes</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * <p>From package AADLConstructs::Components.</p>
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Derived Modes</em>' attribute.
+	 * @see #setDerivedModes(boolean)
+	 * @see org.osate.aadl2.Aadl2Package#getComponentClassifier_DerivedModes()
+	 * @model dataType="org.osate.aadl2.Boolean" required="true" ordered="false"
+	 * @generated
+	 */
+	boolean isDerivedModes();
+
+	/**
+	 * Sets the value of the '{@link org.osate.aadl2.ComponentClassifier#isDerivedModes <em>Derived Modes</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Derived Modes</em>' attribute.
+	 * @see #isDerivedModes()
+	 * @generated
+	 */
+	void setDerivedModes(boolean value);
+
+	/**
 	 * Returns the value of the '<em><b>No Flows</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <p>
@@ -132,6 +172,9 @@ public interface ComponentClassifier extends Classifier, SubcomponentType,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * <p>From package AADLDetails::NoneSupport.</p>
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>No Flows</em>' attribute.
 	 * @see #setNoFlows(boolean)
 	 * @see org.osate.aadl2.Aadl2Package#getComponentClassifier_NoFlows()
@@ -158,6 +201,9 @@ public interface ComponentClassifier extends Classifier, SubcomponentType,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * <p>From package AADLDetails::NoneSupport.</p>
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>No Modes</em>' attribute.
 	 * @see #setNoModes(boolean)
 	 * @see org.osate.aadl2.Aadl2Package#getComponentClassifier_NoModes()
@@ -184,7 +230,7 @@ public interface ComponentClassifier extends Classifier, SubcomponentType,
 	/**
 	 * Returns all the mode objects of a given classifier, including
 	 * ancestor.
-	 * 
+	 *
 	 * @return EList of all mode objects
 	 */
 	EList<Mode> getAllModes();
@@ -192,14 +238,14 @@ public interface ComponentClassifier extends Classifier, SubcomponentType,
 	/**
 	 * Returns all the mode transition objects of a given classifier,
 	 * including ancestor.
-	 * 
+	 *
 	 * @return EList of all mode transition objects
 	 */
 	EList<ModeTransition> getAllModeTransitions();
 
 	/**
 	 * Returns all the prototypes, including  ancestor.
-	 * 
+	 *
 	 * @return EList of all mode objects
 	 */
 	EList<Prototype> getAllPrototypes();

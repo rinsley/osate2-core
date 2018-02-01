@@ -42,12 +42,16 @@ import org.eclipse.emf.common.util.EList;
  * A representation of the model object '<em><b>Reference Type</b></em>'.
  * <!-- end-user-doc -->
  *
+ * <!-- begin-model-doc -->
+ * <p>From package AADLProperties::Types.</p>
+ * <!-- end-model-doc -->
+ *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.osate.aadl2.ReferenceType#getNamedElementReferences <em>Named Element Reference</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.osate.aadl2.Aadl2Package#getReferenceType()
  * @model
@@ -63,9 +67,12 @@ public interface ReferenceType extends NonListType {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * <p>From package AADLProperties::Types.</p>
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Named Element Reference</em>' containment reference list.
 	 * @see org.osate.aadl2.Aadl2Package#getReferenceType_NamedElementReference()
-	 * @model containment="true" required="true" ordered="false"
+	 * @model containment="true" ordered="false"
 	 * @generated
 	 */
 	EList<MetaclassReference> getNamedElementReferences();

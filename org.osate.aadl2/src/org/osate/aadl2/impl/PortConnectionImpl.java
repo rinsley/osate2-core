@@ -45,13 +45,10 @@ import org.osate.aadl2.properties.PropertyAcc;
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Port Connection</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */
-public class PortConnectionImpl extends ConnectionImpl implements
-		PortConnection {
+public class PortConnectionImpl extends ConnectionImpl implements PortConnection {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

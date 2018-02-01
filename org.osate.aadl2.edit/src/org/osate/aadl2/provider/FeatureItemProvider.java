@@ -42,12 +42,7 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
-import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
-import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
-import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.osate.aadl2.Aadl2Factory;
 import org.osate.aadl2.Aadl2Package;
@@ -59,9 +54,7 @@ import org.osate.aadl2.Feature;
  * <!-- end-user-doc -->
  * @generated
  */
-public class FeatureItemProvider extends StructuralFeatureItemProvider
-		implements IEditingDomainItemProvider, IStructuredItemContentProvider,
-		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class FeatureItemProvider extends StructuralFeatureItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -98,15 +91,12 @@ public class FeatureItemProvider extends StructuralFeatureItemProvider
 	 * @generated
 	 */
 	protected void addPrototypePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-						.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_Feature_prototype_feature"),
-				getString("_UI_PropertyDescriptor_description",
-						"_UI_Feature_prototype_feature", "_UI_Feature_type"),
-				Aadl2Package.eINSTANCE.getFeature_Prototype(), true, false,
-				true, null, null, null));
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_Feature_prototype_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_Feature_prototype_feature",
+								"_UI_Feature_type"),
+						Aadl2Package.eINSTANCE.getFeature_Prototype(), false, false, false, null, null, null));
 	}
 
 	/**
@@ -116,16 +106,12 @@ public class FeatureItemProvider extends StructuralFeatureItemProvider
 	 * @generated
 	 */
 	protected void addFeatureClassifierPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-						.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_Feature_featureClassifier_feature"),
-				getString("_UI_PropertyDescriptor_description",
-						"_UI_Feature_featureClassifier_feature",
-						"_UI_Feature_type"), Aadl2Package.eINSTANCE
-						.getFeature_FeatureClassifier(), false, false, false,
-				null, null, null));
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_Feature_featureClassifier_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_Feature_featureClassifier_feature",
+								"_UI_Feature_type"),
+						Aadl2Package.eINSTANCE.getFeature_FeatureClassifier(), false, false, false, null, null, null));
 	}
 
 	/**
@@ -135,15 +121,12 @@ public class FeatureItemProvider extends StructuralFeatureItemProvider
 	 * @generated
 	 */
 	protected void addClassifierPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-						.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_Feature_classifier_feature"),
-				getString("_UI_PropertyDescriptor_description",
-						"_UI_Feature_classifier_feature", "_UI_Feature_type"),
-				Aadl2Package.eINSTANCE.getFeature_Classifier(), false, false,
-				false, null, null, null));
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_Feature_classifier_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_Feature_classifier_feature",
+								"_UI_Feature_type"),
+						Aadl2Package.eINSTANCE.getFeature_Classifier(), false, false, false, null, null, null));
 	}
 
 	/**
@@ -153,15 +136,12 @@ public class FeatureItemProvider extends StructuralFeatureItemProvider
 	 * @generated
 	 */
 	protected void addRefinedPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-						.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_Feature_refined_feature"),
-				getString("_UI_PropertyDescriptor_description",
-						"_UI_Feature_refined_feature", "_UI_Feature_type"),
-				Aadl2Package.eINSTANCE.getFeature_Refined(), true, false, true,
-				null, null, null));
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_Feature_refined_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_Feature_refined_feature",
+								"_UI_Feature_type"),
+						Aadl2Package.eINSTANCE.getFeature_Refined(), true, false, true, null, null, null));
 	}
 
 	/**
@@ -173,12 +153,10 @@ public class FeatureItemProvider extends StructuralFeatureItemProvider
 	 * @generated
 	 */
 	@Override
-	public Collection<? extends EStructuralFeature> getChildrenFeatures(
-			Object object) {
+	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(Aadl2Package.eINSTANCE
-					.getArrayableElement_ArrayDimension());
+			childrenFeatures.add(Aadl2Package.eINSTANCE.getArrayableElement_ArrayDimension());
 		}
 		return childrenFeatures;
 	}
@@ -222,8 +200,7 @@ public class FeatureItemProvider extends StructuralFeatureItemProvider
 
 		switch (notification.getFeatureID(Feature.class)) {
 		case Aadl2Package.FEATURE__ARRAY_DIMENSION:
-			fireNotifyChanged(new ViewerNotification(notification,
-					notification.getNotifier(), true, false));
+			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 			return;
 		}
 		super.notifyChanged(notification);
@@ -237,12 +214,10 @@ public class FeatureItemProvider extends StructuralFeatureItemProvider
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(
-			Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(
-				Aadl2Package.eINSTANCE.getArrayableElement_ArrayDimension(),
+		newChildDescriptors.add(createChildParameter(Aadl2Package.eINSTANCE.getArrayableElement_ArrayDimension(),
 				Aadl2Factory.eINSTANCE.createArrayDimension()));
 	}
 

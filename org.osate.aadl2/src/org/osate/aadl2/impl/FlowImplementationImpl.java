@@ -50,6 +50,7 @@ import org.osate.aadl2.Aadl2Package;
 import org.osate.aadl2.Classifier;
 import org.osate.aadl2.ClassifierFeature;
 import org.osate.aadl2.Flow;
+import org.osate.aadl2.FlowEnd;
 import org.osate.aadl2.FlowImplementation;
 import org.osate.aadl2.FlowKind;
 import org.osate.aadl2.FlowSegment;
@@ -62,18 +63,19 @@ import org.osate.aadl2.util.NonNotifyingEObjectEList;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.osate.aadl2.impl.FlowImplementationImpl#getFeaturingClassifiers <em>Featuring Classifier</em>}</li>
  *   <li>{@link org.osate.aadl2.impl.FlowImplementationImpl#getKind <em>Kind</em>}</li>
  *   <li>{@link org.osate.aadl2.impl.FlowImplementationImpl#getSpecification <em>Specification</em>}</li>
  *   <li>{@link org.osate.aadl2.impl.FlowImplementationImpl#getOwnedFlowSegments <em>Owned Flow Segment</em>}</li>
+ *   <li>{@link org.osate.aadl2.impl.FlowImplementationImpl#getInEnd <em>In End</em>}</li>
+ *   <li>{@link org.osate.aadl2.impl.FlowImplementationImpl#getOutEnd <em>Out End</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
-public class FlowImplementationImpl extends ModalPathImpl implements
-		FlowImplementation {
+public class FlowImplementationImpl extends ModalPathImpl implements FlowImplementation {
 
 	/**
 	 * The default value of the '{@link #getKind() <em>Kind</em>}' attribute.
@@ -116,6 +118,26 @@ public class FlowImplementationImpl extends ModalPathImpl implements
 	protected EList<FlowSegment> ownedFlowSegments;
 
 	/**
+	 * The cached value of the '{@link #getInEnd() <em>In End</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getInEnd()
+	 * @generated
+	 * @ordered
+	 */
+	protected FlowEnd inEnd;
+
+	/**
+	 * The cached value of the '{@link #getOutEnd() <em>Out End</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOutEnd()
+	 * @generated
+	 * @ordered
+	 */
+	protected FlowEnd outEnd;
+
+	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -139,10 +161,10 @@ public class FlowImplementationImpl extends ModalPathImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
+	@Override
 	public EList<Classifier> getFeaturingClassifiers() {
-		//BasicEList<Classifier> list = new BasicEList<Classifier>();
-		final EList<Classifier> list = new NonNotifyingEObjectEList<Classifier>(
-				Classifier.class, this,
+		// BasicEList<Classifier> list = new BasicEList<Classifier>();
+		final EList<Classifier> list = new NonNotifyingEObjectEList<Classifier>(Classifier.class, this,
 				Aadl2Package.FLOW_IMPLEMENTATION__FEATURING_CLASSIFIER);
 		list.add(getContainingClassifier());
 		return list;
@@ -153,15 +175,16 @@ public class FlowImplementationImpl extends ModalPathImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public FlowSpecification getSpecification() {
 		if (specification != null && ((EObject) specification).eIsProxy()) {
 			InternalEObject oldSpecification = (InternalEObject) specification;
 			specification = (FlowSpecification) eResolveProxy(oldSpecification);
 			if (specification != oldSpecification) {
-				if (eNotificationRequired())
+				if (eNotificationRequired()) {
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-							Aadl2Package.FLOW_IMPLEMENTATION__SPECIFICATION,
-							oldSpecification, specification));
+							Aadl2Package.FLOW_IMPLEMENTATION__SPECIFICATION, oldSpecification, specification));
+				}
 			}
 		}
 		return specification;
@@ -181,13 +204,14 @@ public class FlowImplementationImpl extends ModalPathImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setSpecification(FlowSpecification newSpecification) {
 		FlowSpecification oldSpecification = specification;
 		specification = newSpecification;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					Aadl2Package.FLOW_IMPLEMENTATION__SPECIFICATION,
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, Notification.SET, Aadl2Package.FLOW_IMPLEMENTATION__SPECIFICATION,
 					oldSpecification, specification));
+		}
 	}
 
 	/**
@@ -195,10 +219,10 @@ public class FlowImplementationImpl extends ModalPathImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<FlowSegment> getOwnedFlowSegments() {
 		if (ownedFlowSegments == null) {
-			ownedFlowSegments = new EObjectContainmentEList<FlowSegment>(
-					FlowSegment.class, this,
+			ownedFlowSegments = new EObjectContainmentEList<FlowSegment>(FlowSegment.class, this,
 					Aadl2Package.FLOW_IMPLEMENTATION__OWNED_FLOW_SEGMENT);
 		}
 		return ownedFlowSegments;
@@ -209,9 +233,9 @@ public class FlowImplementationImpl extends ModalPathImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public FlowSegment createOwnedFlowSegment() {
-		FlowSegment newOwnedFlowSegment = (FlowSegment) create(Aadl2Package.eINSTANCE
-				.getFlowSegment());
+		FlowSegment newOwnedFlowSegment = (FlowSegment) create(Aadl2Package.eINSTANCE.getFlowSegment());
 		getOwnedFlowSegments().add(newOwnedFlowSegment);
 		return newOwnedFlowSegment;
 	}
@@ -222,12 +246,152 @@ public class FlowImplementationImpl extends ModalPathImpl implements
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public FlowEnd getInEnd() {
+		return inEnd;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetInEnd(FlowEnd newInEnd, NotificationChain msgs) {
+		FlowEnd oldInEnd = inEnd;
+		inEnd = newInEnd;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+					Aadl2Package.FLOW_IMPLEMENTATION__IN_END, oldInEnd, newInEnd);
+			if (msgs == null) {
+				msgs = notification;
+			} else {
+				msgs.add(notification);
+			}
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setInEnd(FlowEnd newInEnd) {
+		if (newInEnd != inEnd) {
+			NotificationChain msgs = null;
+			if (inEnd != null) {
+				msgs = ((InternalEObject) inEnd).eInverseRemove(this,
+						EOPPOSITE_FEATURE_BASE - Aadl2Package.FLOW_IMPLEMENTATION__IN_END, null, msgs);
+			}
+			if (newInEnd != null) {
+				msgs = ((InternalEObject) newInEnd).eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE - Aadl2Package.FLOW_IMPLEMENTATION__IN_END, null, msgs);
+			}
+			msgs = basicSetInEnd(newInEnd, msgs);
+			if (msgs != null) {
+				msgs.dispatch();
+			}
+		} else if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, Notification.SET, Aadl2Package.FLOW_IMPLEMENTATION__IN_END, newInEnd,
+					newInEnd));
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public FlowEnd createInEnd() {
+		FlowEnd newInEnd = (FlowEnd) create(Aadl2Package.eINSTANCE.getFlowEnd());
+		setInEnd(newInEnd);
+		return newInEnd;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public FlowEnd getOutEnd() {
+		return outEnd;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetOutEnd(FlowEnd newOutEnd, NotificationChain msgs) {
+		FlowEnd oldOutEnd = outEnd;
+		outEnd = newOutEnd;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET,
+					Aadl2Package.FLOW_IMPLEMENTATION__OUT_END, oldOutEnd, newOutEnd);
+			if (msgs == null) {
+				msgs = notification;
+			} else {
+				msgs.add(notification);
+			}
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setOutEnd(FlowEnd newOutEnd) {
+		if (newOutEnd != outEnd) {
+			NotificationChain msgs = null;
+			if (outEnd != null) {
+				msgs = ((InternalEObject) outEnd).eInverseRemove(this,
+						EOPPOSITE_FEATURE_BASE - Aadl2Package.FLOW_IMPLEMENTATION__OUT_END, null, msgs);
+			}
+			if (newOutEnd != null) {
+				msgs = ((InternalEObject) newOutEnd).eInverseAdd(this,
+						EOPPOSITE_FEATURE_BASE - Aadl2Package.FLOW_IMPLEMENTATION__OUT_END, null, msgs);
+			}
+			msgs = basicSetOutEnd(newOutEnd, msgs);
+			if (msgs != null) {
+				msgs.dispatch();
+			}
+		} else if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, Notification.SET, Aadl2Package.FLOW_IMPLEMENTATION__OUT_END, newOutEnd,
+					newOutEnd));
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public FlowEnd createOutEnd() {
+		FlowEnd newOutEnd = (FlowEnd) create(Aadl2Package.eINSTANCE.getFlowEnd());
+		setOutEnd(newOutEnd);
+		return newOutEnd;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case Aadl2Package.FLOW_IMPLEMENTATION__OWNED_FLOW_SEGMENT:
-			return ((InternalEList<?>) getOwnedFlowSegments()).basicRemove(
-					otherEnd, msgs);
+			return ((InternalEList<?>) getOwnedFlowSegments()).basicRemove(otherEnd, msgs);
+		case Aadl2Package.FLOW_IMPLEMENTATION__IN_END:
+			return basicSetInEnd(null, msgs);
+		case Aadl2Package.FLOW_IMPLEMENTATION__OUT_END:
+			return basicSetOutEnd(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -237,6 +401,7 @@ public class FlowImplementationImpl extends ModalPathImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public FlowKind getKind() {
 		return kind;
 	}
@@ -246,12 +411,14 @@ public class FlowImplementationImpl extends ModalPathImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setKind(FlowKind newKind) {
 		FlowKind oldKind = kind;
 		kind = newKind == null ? KIND_EDEFAULT : newKind;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					Aadl2Package.FLOW_IMPLEMENTATION__KIND, oldKind, kind));
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, Notification.SET, Aadl2Package.FLOW_IMPLEMENTATION__KIND, oldKind,
+					kind));
+		}
 	}
 
 	/**
@@ -267,11 +434,16 @@ public class FlowImplementationImpl extends ModalPathImpl implements
 		case Aadl2Package.FLOW_IMPLEMENTATION__KIND:
 			return getKind();
 		case Aadl2Package.FLOW_IMPLEMENTATION__SPECIFICATION:
-			if (resolve)
+			if (resolve) {
 				return getSpecification();
+			}
 			return basicGetSpecification();
 		case Aadl2Package.FLOW_IMPLEMENTATION__OWNED_FLOW_SEGMENT:
 			return getOwnedFlowSegments();
+		case Aadl2Package.FLOW_IMPLEMENTATION__IN_END:
+			return getInEnd();
+		case Aadl2Package.FLOW_IMPLEMENTATION__OUT_END:
+			return getOutEnd();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -293,8 +465,13 @@ public class FlowImplementationImpl extends ModalPathImpl implements
 			return;
 		case Aadl2Package.FLOW_IMPLEMENTATION__OWNED_FLOW_SEGMENT:
 			getOwnedFlowSegments().clear();
-			getOwnedFlowSegments().addAll(
-					(Collection<? extends FlowSegment>) newValue);
+			getOwnedFlowSegments().addAll((Collection<? extends FlowSegment>) newValue);
+			return;
+		case Aadl2Package.FLOW_IMPLEMENTATION__IN_END:
+			setInEnd((FlowEnd) newValue);
+			return;
+		case Aadl2Package.FLOW_IMPLEMENTATION__OUT_END:
+			setOutEnd((FlowEnd) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -317,6 +494,12 @@ public class FlowImplementationImpl extends ModalPathImpl implements
 		case Aadl2Package.FLOW_IMPLEMENTATION__OWNED_FLOW_SEGMENT:
 			getOwnedFlowSegments().clear();
 			return;
+		case Aadl2Package.FLOW_IMPLEMENTATION__IN_END:
+			setInEnd((FlowEnd) null);
+			return;
+		case Aadl2Package.FLOW_IMPLEMENTATION__OUT_END:
+			setOutEnd((FlowEnd) null);
+			return;
 		}
 		super.eUnset(featureID);
 	}
@@ -337,6 +520,10 @@ public class FlowImplementationImpl extends ModalPathImpl implements
 			return specification != null;
 		case Aadl2Package.FLOW_IMPLEMENTATION__OWNED_FLOW_SEGMENT:
 			return ownedFlowSegments != null && !ownedFlowSegments.isEmpty();
+		case Aadl2Package.FLOW_IMPLEMENTATION__IN_END:
+			return inEnd != null;
+		case Aadl2Package.FLOW_IMPLEMENTATION__OUT_END:
+			return outEnd != null;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -396,8 +583,9 @@ public class FlowImplementationImpl extends ModalPathImpl implements
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy())
+		if (eIsProxy()) {
 			return super.toString();
+		}
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (kind: ");

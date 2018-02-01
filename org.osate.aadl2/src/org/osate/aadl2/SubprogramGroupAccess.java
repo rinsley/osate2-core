@@ -40,33 +40,39 @@ package org.osate.aadl2;
  * A representation of the model object '<em><b>Subprogram Group Access</b></em>'.
  * <!-- end-user-doc -->
  *
+ * <!-- begin-model-doc -->
+ * <p>From package AADLDetails::Features.</p>
+ * <!-- end-model-doc -->
+ *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.osate.aadl2.SubprogramGroupAccess#getSubprogramGroupFeatureClassifier <em>Subprogram Group Feature Classifier</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.osate.aadl2.Aadl2Package#getSubprogramGroupAccess()
  * @model
  * @generated
  */
-public interface SubprogramGroupAccess extends Access, SubprogramGroup,
-		CallContext {
+public interface SubprogramGroupAccess extends Access, CallContext {
 	/**
 	 * Returns the value of the '<em><b>Subprogram Group Feature Classifier</b></em>' reference.
 	 * <p>
 	 * This feature subsets the following features:
+	 * </p>
 	 * <ul>
 	 *   <li>'{@link org.osate.aadl2.Feature#getFeatureClassifier() <em>Feature Classifier</em>}'</li>
 	 * </ul>
-	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Subprogram Group Feature Classifier</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * <p>From package AADLDetails::Features.</p>
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Subprogram Group Feature Classifier</em>' reference.
 	 * @see #setSubprogramGroupFeatureClassifier(SubprogramGroupSubcomponentType)
 	 * @see org.osate.aadl2.Aadl2Package#getSubprogramGroupAccess_SubprogramGroupFeatureClassifier()
@@ -83,7 +89,6 @@ public interface SubprogramGroupAccess extends Access, SubprogramGroup,
 	 * @see #getSubprogramGroupFeatureClassifier()
 	 * @generated
 	 */
-	void setSubprogramGroupFeatureClassifier(
-			SubprogramGroupSubcomponentType value);
+	void setSubprogramGroupFeatureClassifier(SubprogramGroupSubcomponentType value);
 
 } // SubprogramGroupAccess

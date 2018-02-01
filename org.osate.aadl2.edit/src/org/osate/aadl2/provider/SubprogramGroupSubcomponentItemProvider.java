@@ -41,12 +41,7 @@ import java.util.List;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
-import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
-import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
-import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.osate.aadl2.Aadl2Package;
 import org.osate.aadl2.SubprogramGroupSubcomponent;
 
@@ -56,10 +51,7 @@ import org.osate.aadl2.SubprogramGroupSubcomponent;
  * <!-- end-user-doc -->
  * @generated
  */
-public class SubprogramGroupSubcomponentItemProvider extends
-		SubcomponentItemProvider implements IEditingDomainItemProvider,
-		IStructuredItemContentProvider, ITreeItemContentProvider,
-		IItemLabelProvider, IItemPropertySource {
+public class SubprogramGroupSubcomponentItemProvider extends SubcomponentItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -92,21 +84,15 @@ public class SubprogramGroupSubcomponentItemProvider extends
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected void addSubprogramGroupSubcomponentTypePropertyDescriptor(
-			Object object) {
-		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(
-						((ComposeableAdapterFactory) adapterFactory)
-								.getRootAdapterFactory(),
-						getResourceLocator(),
-						getString("_UI_SubprogramGroupSubcomponent_subprogramGroupSubcomponentType_feature"),
-						getString(
-								"_UI_PropertyDescriptor_description",
-								"_UI_SubprogramGroupSubcomponent_subprogramGroupSubcomponentType_feature",
-								"_UI_SubprogramGroupSubcomponent_type"),
-						Aadl2Package.eINSTANCE
-								.getSubprogramGroupSubcomponent_SubprogramGroupSubcomponentType(),
-						true, false, true, null, null, null));
+	protected void addSubprogramGroupSubcomponentTypePropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add(createItemPropertyDescriptor(
+				((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
+				getString("_UI_SubprogramGroupSubcomponent_subprogramGroupSubcomponentType_feature"),
+				getString("_UI_PropertyDescriptor_description",
+						"_UI_SubprogramGroupSubcomponent_subprogramGroupSubcomponentType_feature",
+						"_UI_SubprogramGroupSubcomponent_type"),
+				Aadl2Package.eINSTANCE.getSubprogramGroupSubcomponent_SubprogramGroupSubcomponentType(), true, false,
+				true, null, null, null));
 	}
 
 	/**
@@ -117,10 +103,7 @@ public class SubprogramGroupSubcomponentItemProvider extends
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(
-				object,
-				getResourceLocator().getImage(
-						"full/obj16/SubprogramGroupSubcomponent"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/SubprogramGroupSubcomponent"));
 	}
 
 	/**
@@ -133,8 +116,7 @@ public class SubprogramGroupSubcomponentItemProvider extends
 	public String getText(Object object) {
 		String label = ((SubprogramGroupSubcomponent) object).getName();
 		return label == null || label.length() == 0 ? getString("_UI_SubprogramGroupSubcomponent_type")
-				: getString("_UI_SubprogramGroupSubcomponent_type") + " "
-						+ label;
+				: getString("_UI_SubprogramGroupSubcomponent_type") + " " + label;
 	}
 
 	/**
@@ -158,8 +140,7 @@ public class SubprogramGroupSubcomponentItemProvider extends
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(
-			Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 

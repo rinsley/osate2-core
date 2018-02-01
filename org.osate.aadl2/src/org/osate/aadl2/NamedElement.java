@@ -37,9 +37,7 @@ package org.osate.aadl2;
 
 import java.util.Collection;
 import java.util.List;
-import java.util.Map;
 
-import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.EList;
 import org.osate.aadl2.impl.NamedElementImpl;
 import org.osate.aadl2.instance.InstanceObject;
@@ -68,7 +66,7 @@ import org.osate.aadl2.properties.PropertyNotPresentException;
  * <em>Owned Property Association</em>}</li>
  * </ul>
  * </p>
- * 
+ *
  * @see org.osate.aadl2.Aadl2Package#getNamedElement()
  * @model abstract="true"
  * @generated
@@ -78,7 +76,7 @@ public interface NamedElement extends Element {
 	 * Returns the value of the '<em><b>Name</b></em>' attribute. <!--
 	 * begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> The
 	 * name of the NamedElement. <!-- end-model-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
 	 * @see org.osate.aadl2.Aadl2Package#getNamedElement_Name()
@@ -104,7 +102,7 @@ public interface NamedElement extends Element {
 	 * nested Namespaces. It is constructed from the names of the containing
 	 * namespaces starting at the root of the hierarchy and ending with the name
 	 * of the NamedElement itself. <!-- end-model-doc -->
-	 * 
+	 *
 	 * @return the value of the '<em>Qualified Name</em>' attribute.
 	 * @see org.osate.aadl2.Aadl2Package#getNamedElement_QualifiedName()
 	 * @model dataType="org.osate.aadl2.String" transient="true"
@@ -125,6 +123,9 @@ public interface NamedElement extends Element {
 	 * here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * <p>From package AADLProperties::Associations.</p>
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Property Association</em>' containment reference list.
 	 * @see org.osate.aadl2.Aadl2Package#getNamedElement_OwnedPropertyAssociation()
 	 * @model containment="true" ordered="false"
@@ -142,90 +143,12 @@ public interface NamedElement extends Element {
 	PropertyAssociation createOwnedPropertyAssociation();
 
 	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc --> If
-	 * there is no name, or one of the containing namespaces has no name, there
-	 * is no qualified name. (self.name->isEmpty() or
-	 * self.allNamespaces()->select(ns | ns.name->isEmpty())->notEmpty())
-	 * implies self.qualifiedName->isEmpty()
-	 * 
-	 * @param diagnostics The chain of diagnostics to which problems are to be
-	 *            appended.
-	 * @param context The cache of context-specific information. <!--
-	 *            end-model-doc -->
-	 * @model annotation="http://www.eclipse.org/uml2/1.1.0/GenModel body='(self.name->isEmpty() or self.allNamespaces()->select(ns | ns.name->isEmpty())->notEmpty()) implies self.qualifiedName->isEmpty()'"
-	 * @generated
-	 */
-	boolean has_no_qualified_name(DiagnosticChain diagnostics,
-			Map<Object, Object> context);
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
-	 * When there is a name, and all of the containing namespaces have a name,
-	 * the qualified name is constructed from the names of the containing
-	 * namespaces. (self.name->notEmpty() and self.allNamespaces()->select(ns |
-	 * ns.name->isEmpty())->isEmpty()) implies self.qualifiedName =
-	 * self.allNamespaces()->iterate(ns: Namespace; result: String = self.name |
-	 * ns.name.concat(self.separator()).concat(result))
-	 * 
-	 * @param diagnostics The chain of diagnostics to which problems are to be
-	 *            appended.
-	 * @param context The cache of context-specific information. <!--
-	 *            end-model-doc -->
-	 * @model annotation="http://www.eclipse.org/uml2/1.1.0/GenModel body='(self.name->notEmpty() and self.allNamespaces()->select(ns | ns.name->isEmpty())->isEmpty()) \r\nimplies \r\nself.qualifiedName = self.allNamespaces()->iterate(ns: Namespace; result: String = self.name | ns.name.concat(self.separator()).concat(result))'"
-	 * @generated
-	 */
-	boolean has_qualified_name(DiagnosticChain diagnostics,
-			Map<Object, Object> context);
-
-	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @model kind="operation" required="true" ordered="false"
 	 * @generated
 	 */
 	Namespace getNamespace();
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
-	 * The query allNamespaces() gives the sequence of namespaces in which the
-	 * NamedElement is nested, working outwards. if self.namespace->isEmpty()
-	 * then Sequence{} else
-	 * self.namespace.allNamespaces()->prepend(self.namespace) endif <!--
-	 * end-model-doc -->
-	 * 
-	 * @model annotation="http://www.eclipse.org/uml2/1.1.0/GenModel body='if self.namespace->isEmpty() then \r\n  Sequence{}\r\nelse\r\n  self.namespace.allNamespaces()->prepend(self.namespace)\r\nendif'"
-	 * @generated
-	 */
-	EList<Namespace> allNamespaces();
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
-	 * The query isDistinguishableFrom() determines whether two NamedElements
-	 * may logically co-exist within a Namespace. By default, two named elements
-	 * are distinguishable if (a) they have unrelated types or (b) they have
-	 * related types but different names. if self.oclIsKindOf(n.oclType) or
-	 * n.oclIsKindOf(self.oclType) then
-	 * ns.getNamesOfMember(self)->intersection(ns
-	 * .getNamesOfMember(n))->isEmpty() else true endif <!-- end-model-doc -->
-	 * 
-	 * @model dataType="org.osate.aadl2.Boolean" required="true"
-	 *        ordered="false" nRequired="true" nOrdered="false"
-	 *        nsRequired="true" nsOrdered="false" annotation="http://www.eclipse.org/uml2/1.1.0/GenModel body='if self.oclIsKindOf(n.oclType) or n.oclIsKindOf(self.oclType) then\r\n  ns.getNamesOfMember(self)->intersection(ns.getNamesOfMember(n))->isEmpty()\r\nelse\r\n  true\r\nendif'"
-	 * @generated
-	 */
-	boolean isDistinguishableFrom(NamedElement n, Namespace ns);
-
-	/**
-	 * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
-	 * The query separator() gives the string that is used to separate names
-	 * when constructing a qualified name. '.' <!-- end-model-doc -->
-	 * 
-	 * @model dataType="org.osate.aadl2.String" required="true"
-	 *        ordered="false"
-	 *        annotation="http://www.eclipse.org/uml2/1.1.0/GenModel body='\'.\''"
-	 * @generated
-	 */
-	String separator();
 
 	/**
 	 * <!-- begin-user-doc --> <!-- end-user-doc --> <!-- begin-model-doc -->
@@ -236,7 +159,7 @@ public interface NamedElement extends Element {
 	 * Namespace; result: String = self.name |
 	 * ns.name.concat(self.separator()).concat(result)) else '' endif <!--
 	 * end-model-doc -->
-	 * 
+	 *
 	 * @model dataType="org.osate.aadl2.String" required="true"
 	 *        ordered="false" annotation="http://www.eclipse.org/uml2/1.1.0/GenModel body='if self.name->notEmpty() and self.allNamespaces()->select(ns | ns.name->isEmpty())->isEmpty() then\r\n  self.allNamespaces()->iterate(ns: Namespace; result: String = self.name | ns.name.concat(self.separator()).concat(result))\r\nelse \r\n  \'\' \r\nendif'"
 	 * @generated
@@ -244,9 +167,16 @@ public interface NamedElement extends Element {
 	String qualifiedName();
 
 	/**
+	 * Get the component name including array indices
+	 *
+	 * @return name as string
+	 */
+	String getFullName();
+
+	/**
 	 * Returns {@code true} if this {@code NamedElement} has a name. This method
 	 * will check for {@code null} and the empty string.
-	 * 
+	 *
 	 * @return {@code true} if object has a name; {@code false} otherwise.
 	 */
 	boolean hasName();
@@ -258,7 +188,7 @@ public interface NamedElement extends Element {
 	 * property value on an instance object when the current system operation
 	 * mode is non-null; in this case the returned value is that value
 	 * associated with the current system operation mode.
-	 * 
+	 *
 	 * @param property Property
 	 * @return The PropertyValue. This will never be null.
 	 * @throws InvalidModelException Thrown if the property value cannot be
@@ -277,17 +207,15 @@ public interface NamedElement extends Element {
 	 * @see org.osate.aadl2.instance.SystemInstance#setCurrentSystemOperationMode(org.osate.aadl2.instance.SystemOperationMode)
 	 */
 	PropertyExpression getSimplePropertyValue(Property property)
-			throws InvalidModelException, PropertyNotPresentException,
-			PropertyIsModalException, IllegalStateException,
-			IllegalArgumentException, PropertyDoesNotApplyToHolderException,
-			PropertyIsListException;
+			throws InvalidModelException, PropertyNotPresentException, PropertyIsModalException, IllegalStateException,
+			IllegalArgumentException, PropertyDoesNotApplyToHolderException, PropertyIsListException;
 
 	/**
 	 * Get the property value for a particular model element and property. The
 	 * property value is computed based on the rules in the AADL spec. The
 	 * returned value is a structure that further refines the property value
 	 * based on modes.
-	 * 
+	 *
 	 * @param property The property whose value is to be retieved.
 	 * @return The property value. This will never be <code>null</code>.
 	 * @throws IllegalStateException Thrown if the lookup encounters a cycle of
@@ -301,14 +229,13 @@ public interface NamedElement extends Element {
 	 *             .
 	 * @throws IllegalArgumentException Thrown if property is <code>null</code>.
 	 */
-	PropertyAcc getPropertyValue(Property property)
-			throws IllegalStateException, InvalidModelException,
+	PropertyAcc getPropertyValue(Property property) throws IllegalStateException, InvalidModelException,
 			PropertyDoesNotApplyToHolderException, IllegalArgumentException;
 
 	/**
 	 * Query whether this object accepts values for the given property. That is,
 	 * does the given property apply to this element?
-	 * 
+	 *
 	 * @param property The property definition to test.
 	 * @return <code>true</code> if the given property applies to this element.
 	 */
@@ -325,7 +252,7 @@ public interface NamedElement extends Element {
 	 * In particular, this method does not create a new property value
 	 * accumulator&mdash;it uses the one provided&mdash;and it does not look up
 	 * the default value of the property.
-	 * 
+	 *
 	 * @param property The property whose value is to be retrieved. It must be
 	 *            the case that this property is accepted by the property
 	 *            holder, i.e., {@link #acceptsProperty(Property)} must return
@@ -351,8 +278,8 @@ public interface NamedElement extends Element {
 	 *             retrieved because the model is incomplete or otherwise
 	 *             invalid.
 	 */
-	void getPropertyValueInternal(Property property, PropertyAcc pas,
-			boolean fromInstanceSlaveCall) throws InvalidModelException;
+	void getPropertyValueInternal(Property property, PropertyAcc pas, boolean fromInstanceSlaveCall)
+			throws InvalidModelException;
 
 	/**
 	 * Set property association for given property definition with specified
@@ -369,7 +296,7 @@ public interface NamedElement extends Element {
 	 * {@link InstanceObject}), the property association is made to apply only
 	 * to current system operation mode as determined from the containing system
 	 * instance's {@link SystemInstance#getCurrentSystemOperationMode()} method.
-	 * 
+	 *
 	 * @param pd property definition object
 	 * @param pvl List of property value objects.
 	 * @return PropertyAssociation that has been set
@@ -379,18 +306,16 @@ public interface NamedElement extends Element {
 	 *                list-valued and the given list does not have exactly 1
 	 *                element, or because of type mismatch issues.
 	 */
-	PropertyAssociation setPropertyValue(Property pd,
-			List<? extends PropertyExpression> pvl);
+	PropertyAssociation setPropertyValue(Property pd, List<? extends PropertyExpression> pvl);
 
 	/**
 	 * Check that the proposed association is legal for this property holder. If
 	 * the association is legal, then the method returns normally, otherwise it
 	 * throws an <code>IllegalArgumentException</code> describing the problem.
-	 * 
+	 *
 	 * @throws IllegalArgumentException (see description)
 	 */
-	void checkPropertyAssociation(final Property pd,
-			final Collection<? extends PropertyExpression> vals);
+	void checkPropertyAssociation(final Property pd, final Collection<? extends PropertyExpression> vals);
 
 	/**
 	 * Remove all the local property associations for the given property
@@ -398,7 +323,7 @@ public interface NamedElement extends Element {
 	 * NamedElement are affected, that is, any contained property associations
 	 * declared in this component, but applicable to another component are not
 	 * searched.
-	 * 
+	 *
 	 * @param pd The property definition
 	 */
 	void removePropertyAssociations(Property pd);
@@ -413,7 +338,7 @@ public interface NamedElement extends Element {
 	 * NamedElement are affected, that is, any contained property associations
 	 * declared in this component, but applicable to another component are not
 	 * searched.
-	 * 
+	 *
 	 * @param pd The property definition
 	 * @param modes list of modes
 	 */
@@ -431,7 +356,7 @@ public interface NamedElement extends Element {
 	 * <p>
 	 * Unlike {@link #setPropertyValue(Property, List)}, this method is not
 	 * affected by the current system operation mode.
-	 * 
+	 *
 	 * @param pd property definition object
 	 * @param pvl List of property value objects
 	 * @param modes list of modes.
@@ -442,14 +367,12 @@ public interface NamedElement extends Element {
 	 *                list-valued and the given list does not have exactly 1
 	 *                element, or because of type mismatch issues.
 	 */
-	PropertyAssociation setPropertyValue(Property pd,
-			List<? extends PropertyExpression> pvl, List<? extends Mode> modes);
+	PropertyAssociation setPropertyValue(Property pd, List<? extends PropertyExpression> pvl,
+			List<? extends Mode> modes);
 
-	public List<? extends PropertyExpression> getPropertyValueList(
-			final Property property);
+	public List<? extends PropertyExpression> getPropertyValueList(final Property property);
 
-	public PropertyAssociation setPropertyValue(final Property pd,
-			final PropertyValue pv);
+	public PropertyAssociation setPropertyValue(final Property pd, final PropertyValue pv);
 
 	/**
 	 * DB: Added for OCL.
@@ -462,10 +385,9 @@ public interface NamedElement extends Element {
 	 * @throws IllegalStateException
 	 * @throws PropertyDoesNotApplyToHolderException
 	 */
-	EList<PropertyExpression> getPropertyValues(String propertySetName,
-			String propertyName) throws InvalidModelException,
-			IllegalArgumentException, PropertyIsModalException,
-			IllegalStateException, PropertyDoesNotApplyToHolderException;
+	EList<PropertyExpression> getPropertyValues(String propertySetName, String propertyName)
+			throws InvalidModelException, IllegalArgumentException, PropertyIsModalException, IllegalStateException,
+			PropertyDoesNotApplyToHolderException;
 
 	PropertyExpression getNonModalPropertyValue(Property pd);
 

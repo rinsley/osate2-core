@@ -1,12 +1,12 @@
 /**
  * <copyright>
  * Copyright  2008 by Carnegie Mellon University, all rights reserved.
- * 
+ *
  * Use of the Open Source AADL Tool Environment (OSATE) is subject to the terms of the license set forth
  * at http://www.eclipse.org/org/documents/epl-v10.html.
- * 
+ *
  * NO WARRANTY
- * 
+ *
  * ANY INFORMATION, MATERIALS, SERVICES, INTELLECTUAL PROPERTY OR OTHER PROPERTY OR RIGHTS GRANTED OR PROVIDED BY
  * CARNEGIE MELLON UNIVERSITY PURSUANT TO THIS LICENSE (HEREINAFTER THE ''DELIVERABLES'') ARE ON AN ''AS-IS'' BASIS.
  * CARNEGIE MELLON UNIVERSITY MAKES NO WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED AS TO ANY MATTER INCLUDING,
@@ -16,21 +16,21 @@
  * REGARDLESS OF WHETHER SUCH PARTY WAS AWARE OF THE POSSIBILITY OF SUCH DAMAGES. LICENSEE AGREES THAT IT WILL NOT
  * MAKE ANY WARRANTY ON BEHALF OF CARNEGIE MELLON UNIVERSITY, EXPRESS OR IMPLIED, TO ANY PERSON CONCERNING THE
  * APPLICATION OF OR THE RESULTS TO BE OBTAINED WITH THE DELIVERABLES UNDER THIS LICENSE.
- * 
+ *
  * Licensee hereby agrees to defend, indemnify, and hold harmless Carnegie Mellon University, its trustees, officers,
  * employees, and agents from all claims or demands made against them (and any related losses, expenses, or
  * attorney's fees) arising out of, or relating to Licensee's and/or its sub licensees' negligent use or willful
  * misuse of or negligent conduct or willful misconduct regarding the Software, facilities, or other rights or
  * assistance granted by Carnegie Mellon University under this License, including, but not limited to, any claims of
  * product liability, personal injury, death, damage to property, or violation of any laws or regulations.
- * 
+ *
  * Carnegie Mellon University Software Engineering Institute authored documents are sponsored by the U.S. Department
  * of Defense under Contract F19628-00-C-0003. Carnegie Mellon University retains copyrights in all material produced
  * under this contract. The U.S. Government retains a non-exclusive, royalty-free license to publish or reproduce these
  * documents, or allow others to do so, for U.S. Government purposes only pursuant to the copyright license
  * under the contract clause at 252.227.7013.
  * </copyright>
- * 
+ *
  *
  * $Id: ConnectionKind.java,v 1.3 2010-05-07 20:01:28 lwrage Exp $
  */
@@ -100,17 +100,16 @@ public enum ConnectionKind implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	MODE_TRANSITION_CONNECTION(4, "modeTransitionConnection",
-			"modeTransitionConnection"), /**
-											 * The '<em><b>Feature Group Connection</b></em>' literal object.
-											 * <!-- begin-user-doc -->
-											 * <!-- end-user-doc -->
-											 * @see #FEATURE_GROUP_CONNECTION_VALUE
-											 * @generated
-											 * @ordered
-											 */
-	FEATURE_GROUP_CONNECTION(5,
-			"featureGroupConnection", "featureGroupConnection"); //$NON-NLS-1$ //$NON-NLS-2$
+	MODE_TRANSITION_CONNECTION(4, "modeTransitionConnection", "modeTransitionConnection"),
+	/**
+	 * The '<em><b>Feature Group Connection</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #FEATURE_GROUP_CONNECTION_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	FEATURE_GROUP_CONNECTION(5, "featureGroupConnection", "featureGroupConnection"); //$NON-NLS-1$ //$NON-NLS-2$
 
 	/**
 	 * The '<em><b>Feature Connection</b></em>' literal value.
@@ -208,10 +207,8 @@ public enum ConnectionKind implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private static final ConnectionKind[] VALUES_ARRAY = new ConnectionKind[] {
-			FEATURE_CONNECTION, ACCESS_CONNECTION, PARAMETER_CONNECTION,
-			PORT_CONNECTION, MODE_TRANSITION_CONNECTION,
-			FEATURE_GROUP_CONNECTION, };
+	private static final ConnectionKind[] VALUES_ARRAY = new ConnectionKind[] { FEATURE_CONNECTION, ACCESS_CONNECTION,
+			PARAMETER_CONNECTION, PORT_CONNECTION, MODE_TRANSITION_CONNECTION, FEATURE_GROUP_CONNECTION, };
 
 	/**
 	 * A public read-only list of all the '<em><b>Connection Kind</b></em>' enumerators.
@@ -219,13 +216,14 @@ public enum ConnectionKind implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final List<ConnectionKind> VALUES = Collections
-			.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<ConnectionKind> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
 	 * Returns the '<em><b>Connection Kind</b></em>' literal with the specified literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param literal the literal.
+	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
 	public static ConnectionKind get(String literal) {
@@ -242,6 +240,8 @@ public enum ConnectionKind implements Enumerator {
 	 * Returns the '<em><b>Connection Kind</b></em>' literal with the specified name.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param name the name.
+	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
 	public static ConnectionKind getByName(String name) {
@@ -258,6 +258,8 @@ public enum ConnectionKind implements Enumerator {
 	 * Returns the '<em><b>Connection Kind</b></em>' literal with the specified integer value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param value the integer value.
+	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
 	public static ConnectionKind get(int value) {
@@ -316,6 +318,7 @@ public enum ConnectionKind implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public int getValue() {
 		return value;
 	}
@@ -325,6 +328,7 @@ public enum ConnectionKind implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getName() {
 		return name;
 	}
@@ -334,6 +338,7 @@ public enum ConnectionKind implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getLiteral() {
 		return literal;
 	}
@@ -349,4 +354,4 @@ public enum ConnectionKind implements Enumerator {
 		return literal;
 	}
 
-} //ConnectionKind
+} // ConnectionKind

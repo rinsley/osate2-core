@@ -41,12 +41,7 @@ import java.util.List;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
-import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
-import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
-import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.osate.aadl2.Aadl2Package;
 import org.osate.aadl2.GlobalNamespace;
 
@@ -56,9 +51,7 @@ import org.osate.aadl2.GlobalNamespace;
  * <!-- end-user-doc -->
  * @generated
  */
-public class GlobalNamespaceItemProvider extends NamespaceItemProvider
-		implements IEditingDomainItemProvider, IStructuredItemContentProvider,
-		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class GlobalNamespaceItemProvider extends NamespaceItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -93,16 +86,12 @@ public class GlobalNamespaceItemProvider extends NamespaceItemProvider
 	 * @generated
 	 */
 	protected void addPackagePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-						.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_GlobalNamespace_package_feature"),
-				getString("_UI_PropertyDescriptor_description",
-						"_UI_GlobalNamespace_package_feature",
-						"_UI_GlobalNamespace_type"), Aadl2Package.eINSTANCE
-						.getGlobalNamespace_Package(), true, false, true, null,
-				null, null));
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_GlobalNamespace_package_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_GlobalNamespace_package_feature",
+								"_UI_GlobalNamespace_type"),
+						Aadl2Package.eINSTANCE.getGlobalNamespace_Package(), true, false, true, null, null, null));
 	}
 
 	/**
@@ -112,16 +101,12 @@ public class GlobalNamespaceItemProvider extends NamespaceItemProvider
 	 * @generated
 	 */
 	protected void addPropertySetPropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-						.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_GlobalNamespace_propertySet_feature"),
-				getString("_UI_PropertyDescriptor_description",
-						"_UI_GlobalNamespace_propertySet_feature",
-						"_UI_GlobalNamespace_type"), Aadl2Package.eINSTANCE
-						.getGlobalNamespace_PropertySet(), true, false, true,
-				null, null, null));
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_GlobalNamespace_propertySet_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_GlobalNamespace_propertySet_feature",
+								"_UI_GlobalNamespace_type"),
+						Aadl2Package.eINSTANCE.getGlobalNamespace_PropertySet(), true, false, true, null, null, null));
 	}
 
 	/**
@@ -132,8 +117,7 @@ public class GlobalNamespaceItemProvider extends NamespaceItemProvider
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object,
-				getResourceLocator().getImage("full/obj16/GlobalNamespace"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/GlobalNamespace"));
 	}
 
 	/**
@@ -170,8 +154,7 @@ public class GlobalNamespaceItemProvider extends NamespaceItemProvider
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(
-			Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 

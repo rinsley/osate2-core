@@ -1,12 +1,12 @@
 /**
  * <copyright>
  * Copyright  2008 by Carnegie Mellon University, all rights reserved.
- * 
+ *
  * Use of the Open Source AADL Tool Environment (OSATE) is subject to the terms of the license set forth
  * at http://www.eclipse.org/org/documents/epl-v10.html.
- * 
+ *
  * NO WARRANTY
- * 
+ *
  * ANY INFORMATION, MATERIALS, SERVICES, INTELLECTUAL PROPERTY OR OTHER PROPERTY OR RIGHTS GRANTED OR PROVIDED BY
  * CARNEGIE MELLON UNIVERSITY PURSUANT TO THIS LICENSE (HEREINAFTER THE ''DELIVERABLES'') ARE ON AN ''AS-IS'' BASIS.
  * CARNEGIE MELLON UNIVERSITY MAKES NO WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED AS TO ANY MATTER INCLUDING,
@@ -16,14 +16,14 @@
  * REGARDLESS OF WHETHER SUCH PARTY WAS AWARE OF THE POSSIBILITY OF SUCH DAMAGES. LICENSEE AGREES THAT IT WILL NOT
  * MAKE ANY WARRANTY ON BEHALF OF CARNEGIE MELLON UNIVERSITY, EXPRESS OR IMPLIED, TO ANY PERSON CONCERNING THE
  * APPLICATION OF OR THE RESULTS TO BE OBTAINED WITH THE DELIVERABLES UNDER THIS LICENSE.
- * 
+ *
  * Licensee hereby agrees to defend, indemnify, and hold harmless Carnegie Mellon University, its trustees, officers,
  * employees, and agents from all claims or demands made against them (and any related losses, expenses, or
  * attorney's fees) arising out of, or relating to Licensee's and/or its sub licensees' negligent use or willful
  * misuse of or negligent conduct or willful misconduct regarding the Software, facilities, or other rights or
  * assistance granted by Carnegie Mellon University under this License, including, but not limited to, any claims of
  * product liability, personal injury, death, damage to property, or violation of any laws or regulations.
- * 
+ *
  * Carnegie Mellon University Software Engineering Institute authored documents are sponsored by the U.S. Department
  * of Defense under Contract F19628-00-C-0003. Carnegie Mellon University retains copyrights in all material produced
  * under this contract. The U.S. Government retains a non-exclusive, royalty-free license to publish or reproduce these
@@ -56,84 +56,92 @@ public enum FeatureCategory implements Enumerator {
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #DATA_PORT_VALUE
-	 * @generated
+	 * @generated NOT
 	 * @ordered
 	 */
-	DATA_PORT(0, "dataPort", "dataPort"), /**
-											 * The '<em><b>Event Port</b></em>' literal object.
-											 * <!-- begin-user-doc -->
-											 * <!-- end-user-doc -->
-											 * @see #EVENT_PORT_VALUE
-											 * @generated
-											 * @ordered
-											 */
-	EVENT_PORT(1, "eventPort", "eventPort"), /**
-												 * The '<em><b>Event Data Port</b></em>' literal object.
-												 * <!-- begin-user-doc -->
-												 * <!-- end-user-doc -->
-												 * @see #EVENT_DATA_PORT_VALUE
-												 * @generated
-												 * @ordered
-												 */
-	EVENT_DATA_PORT(2, "eventDataPort", "eventDataPort"), /**
-															 * The '<em><b>Parameter</b></em>' literal object.
-															 * <!-- begin-user-doc -->
-															 * <!-- end-user-doc -->
-															 * @see #PARAMETER_VALUE
-															 * @generated
-															 * @ordered
-															 */
-	PARAMETER(3, "parameter", "parameter"),
+	DATA_PORT(0, "Data Port", "dataPort"),
+	/**
+	* The '<em><b>Event Port</b></em>' literal object.
+	* <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	* @see #EVENT_PORT_VALUE
+	* @generated NOT
+	* @ordered
+	*/
+	EVENT_PORT(1, "Event Port", "eventPort"),
+	/**
+	* The '<em><b>Event Data Port</b></em>' literal object.
+	* <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	* @see #EVENT_DATA_PORT_VALUE
+	* @generated NOT
+	* @ordered
+	*/
+	EVENT_DATA_PORT(2, "Event Data Port", "eventDataPort"),
+	/**
+	* The '<em><b>Parameter</b></em>' literal object.
+	* <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	* @see #PARAMETER_VALUE
+	* @generated NOT
+	* @ordered
+	*/
+	PARAMETER(3, "Parameter", "parameter"),
 
 	/**
 	 * The '<em><b>Bus Access</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #BUS_ACCESS_VALUE
-	 * @generated
+	 * @generated NOT
 	 * @ordered
 	 */
-	BUS_ACCESS(4, "busAccess", "busAccess"), /**
-												 * The '<em><b>Data Access</b></em>' literal object.
-												 * <!-- begin-user-doc -->
-												 * <!-- end-user-doc -->
-												 * @see #DATA_ACCESS_VALUE
-												 * @generated
-												 * @ordered
-												 */
-	DATA_ACCESS(5, "dataAccess", "dataAccess"), /**
-												 * The '<em><b>Subprogram Access</b></em>' literal object.
-												 * <!-- begin-user-doc -->
-												 * <!-- end-user-doc -->
-												 * @see #SUBPROGRAM_ACCESS_VALUE
-												 * @generated
-												 * @ordered
-												 */
-	SUBPROGRAM_ACCESS(6, "subprogramAccess", "subprogramAccess"), /**
-																	 * The '<em><b>Subprogram Group Access</b></em>' literal object.
-																	 * <!-- begin-user-doc -->
-																	 * <!-- end-user-doc -->
-																	 * @see #SUBPROGRAM_GROUP_ACCESS_VALUE
-																	 * @generated
-																	 * @ordered
-																	 */
-	SUBPROGRAM_GROUP_ACCESS(7, "subprogramGroupAccess", "subprogramGroupAccess"), /**
-																					 * The '<em><b>Feature Group</b></em>' literal object.
-																					 * <!-- begin-user-doc -->
-																					 * <!-- end-user-doc -->
-																					 * @see #FEATURE_GROUP_VALUE
-																					 * @generated
-																					 * @ordered
-																					 */
-	FEATURE_GROUP(8, "featureGroup", "featureGroup"), /**
-														 * The '<em><b>Abstract Feature</b></em>' literal object.
-														 * <!-- begin-user-doc -->
-														 * <!-- end-user-doc -->
-														 * @see #ABSTRACT_FEATURE_VALUE
-														 * @generated
-														 * @ordered
-														 */
-	ABSTRACT_FEATURE(9, "abstractFeature", "abstractFeature");
+	BUS_ACCESS(4, "Bus Access", "busAccess"),
+	/**
+	* The '<em><b>Data Access</b></em>' literal object.
+	* <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	* @see #DATA_ACCESS_VALUE
+	* @generated NOT
+	* @ordered
+	*/
+	DATA_ACCESS(5, "Data Access", "dataAccess"),
+	/**
+	* The '<em><b>Subprogram Access</b></em>' literal object.
+	* <!-- begin-user-doc -->
+	* <!-- end-user-doc -->
+	* @see #SUBPROGRAM_ACCESS_VALUE
+	* @generated NOT
+	* @ordered
+	*/
+	SUBPROGRAM_ACCESS(6, "Subprogram Access", "subprogramAccess"),
+	/**
+	* The '<em><b>Subprogram Group Access</b></em>' literal object.
+	* <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	* @see #SUBPROGRAM_GROUP_ACCESS_VALUE
+	* @generated NOT
+	* @ordered
+	*/
+	SUBPROGRAM_GROUP_ACCESS(7, "Subprogram Group Access", "subprogramGroupAccess"),
+	/**
+	* The '<em><b>Feature Group</b></em>' literal object.
+	* <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	* @see #FEATURE_GROUP_VALUE
+	* @generated NOT
+	* @ordered
+	*/
+	FEATURE_GROUP(8, "Feature Group", "featureGroup"),
+	/**
+	* The '<em><b>Abstract Feature</b></em>' literal object.
+	* <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	* @see #ABSTRACT_FEATURE_VALUE
+	* @generated NOT
+	* @ordered
+	*/
+	ABSTRACT_FEATURE(9, "Abstract Feature", "abstractFeature");
 
 	/**
 	 * The '<em><b>Data Port</b></em>' literal value.
@@ -291,9 +299,8 @@ public enum FeatureCategory implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private static final FeatureCategory[] VALUES_ARRAY = new FeatureCategory[] {
-			DATA_PORT, EVENT_PORT, EVENT_DATA_PORT, PARAMETER, BUS_ACCESS,
-			DATA_ACCESS, SUBPROGRAM_ACCESS, SUBPROGRAM_GROUP_ACCESS,
+	private static final FeatureCategory[] VALUES_ARRAY = new FeatureCategory[] { DATA_PORT, EVENT_PORT,
+			EVENT_DATA_PORT, PARAMETER, BUS_ACCESS, DATA_ACCESS, SUBPROGRAM_ACCESS, SUBPROGRAM_GROUP_ACCESS,
 			FEATURE_GROUP, ABSTRACT_FEATURE, };
 
 	/**
@@ -302,13 +309,14 @@ public enum FeatureCategory implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final List<FeatureCategory> VALUES = Collections
-			.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<FeatureCategory> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
 	 * Returns the '<em><b>Feature Category</b></em>' literal with the specified literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param literal the literal.
+	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
 	public static FeatureCategory get(String literal) {
@@ -325,6 +333,8 @@ public enum FeatureCategory implements Enumerator {
 	 * Returns the '<em><b>Feature Category</b></em>' literal with the specified name.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param name the name.
+	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
 	public static FeatureCategory getByName(String name) {
@@ -341,6 +351,8 @@ public enum FeatureCategory implements Enumerator {
 	 * Returns the '<em><b>Feature Category</b></em>' literal with the specified integer value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param value the integer value.
+	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
 	public static FeatureCategory get(int value) {
@@ -407,6 +419,7 @@ public enum FeatureCategory implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public int getValue() {
 		return value;
 	}
@@ -416,6 +429,7 @@ public enum FeatureCategory implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getName() {
 		return name;
 	}
@@ -425,6 +439,7 @@ public enum FeatureCategory implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getLiteral() {
 		return literal;
 	}
@@ -440,4 +455,4 @@ public enum FeatureCategory implements Enumerator {
 		return literal;
 	}
 
-} //FeatureCategory
+} // FeatureCategory

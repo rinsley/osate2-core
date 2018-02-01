@@ -52,16 +52,15 @@ import org.osate.aadl2.SubcomponentType;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.osate.aadl2.impl.BusSubcomponentImpl#getSubcomponentType <em>Subcomponent Type</em>}</li>
  *   <li>{@link org.osate.aadl2.impl.BusSubcomponentImpl#getBusSubcomponentType <em>Bus Subcomponent Type</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
-public class BusSubcomponentImpl extends SubcomponentImpl implements
-		BusSubcomponent {
+public class BusSubcomponentImpl extends SubcomponentImpl implements BusSubcomponent {
 	/**
 	 * The cached value of the '{@link #getBusSubcomponentType() <em>Bus Subcomponent Type</em>}' reference.
 	 * <!-- begin-user-doc -->
@@ -99,9 +98,8 @@ public class BusSubcomponentImpl extends SubcomponentImpl implements
 	@Override
 	public SubcomponentType getSubcomponentType() {
 		SubcomponentType subcomponentType = basicGetSubcomponentType();
-		return subcomponentType != null
-				&& ((EObject) subcomponentType).eIsProxy() ? (SubcomponentType) eResolveProxy((InternalEObject) subcomponentType)
-				: subcomponentType;
+		return subcomponentType != null && ((EObject) subcomponentType).eIsProxy()
+				? (SubcomponentType) eResolveProxy((InternalEObject) subcomponentType) : subcomponentType;
 	}
 
 	/**
@@ -122,18 +120,17 @@ public class BusSubcomponentImpl extends SubcomponentImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public BusSubcomponentType getBusSubcomponentType() {
-		if (busSubcomponentType != null
-				&& ((EObject) busSubcomponentType).eIsProxy()) {
+		if (busSubcomponentType != null && ((EObject) busSubcomponentType).eIsProxy()) {
 			InternalEObject oldBusSubcomponentType = (InternalEObject) busSubcomponentType;
 			busSubcomponentType = (BusSubcomponentType) eResolveProxy(oldBusSubcomponentType);
 			if (busSubcomponentType != oldBusSubcomponentType) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(
-							this,
-							Notification.RESOLVE,
-							Aadl2Package.BUS_SUBCOMPONENT__BUS_SUBCOMPONENT_TYPE,
-							oldBusSubcomponentType, busSubcomponentType));
+				if (eNotificationRequired()) {
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+							Aadl2Package.BUS_SUBCOMPONENT__BUS_SUBCOMPONENT_TYPE, oldBusSubcomponentType,
+							busSubcomponentType));
+				}
 			}
 		}
 		return busSubcomponentType;
@@ -153,14 +150,14 @@ public class BusSubcomponentImpl extends SubcomponentImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setBusSubcomponentType(
-			BusSubcomponentType newBusSubcomponentType) {
+	@Override
+	public void setBusSubcomponentType(BusSubcomponentType newBusSubcomponentType) {
 		BusSubcomponentType oldBusSubcomponentType = busSubcomponentType;
 		busSubcomponentType = newBusSubcomponentType;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					Aadl2Package.BUS_SUBCOMPONENT__BUS_SUBCOMPONENT_TYPE,
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, Notification.SET, Aadl2Package.BUS_SUBCOMPONENT__BUS_SUBCOMPONENT_TYPE,
 					oldBusSubcomponentType, busSubcomponentType));
+		}
 	}
 
 	/**
@@ -172,8 +169,9 @@ public class BusSubcomponentImpl extends SubcomponentImpl implements
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 		case Aadl2Package.BUS_SUBCOMPONENT__BUS_SUBCOMPONENT_TYPE:
-			if (resolve)
+			if (resolve) {
 				return getBusSubcomponentType();
+			}
 			return basicGetBusSubcomponentType();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -217,6 +215,8 @@ public class BusSubcomponentImpl extends SubcomponentImpl implements
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+		case Aadl2Package.BUS_SUBCOMPONENT__SUBCOMPONENT_TYPE:
+			return isSetSubcomponentType();
 		case Aadl2Package.BUS_SUBCOMPONENT__BUS_SUBCOMPONENT_TYPE:
 			return busSubcomponentType != null;
 		}
@@ -230,10 +230,10 @@ public class BusSubcomponentImpl extends SubcomponentImpl implements
 	 */
 	@Override
 	public boolean isSetSubcomponentType() {
-		return super.isSetSubcomponentType()
-				|| eIsSet(Aadl2Package.BUS_SUBCOMPONENT__BUS_SUBCOMPONENT_TYPE);
+		return super.isSetSubcomponentType() || eIsSet(Aadl2Package.BUS_SUBCOMPONENT__BUS_SUBCOMPONENT_TYPE);
 	}
 
+	@Override
 	public ComponentCategory getCategory() {
 		return ComponentCategory.BUS;
 	}

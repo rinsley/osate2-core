@@ -40,13 +40,17 @@ package org.osate.aadl2;
  * A representation of the model object '<em><b>Mode</b></em>'.
  * <!-- end-user-doc -->
  *
+ * <!-- begin-model-doc -->
+ * <p>From package AADLConstructs::Modes.</p>
+ * <!-- end-model-doc -->
+ *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.osate.aadl2.Mode#isInitial <em>Initial</em>}</li>
  *   <li>{@link org.osate.aadl2.Mode#isDerived <em>Derived</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.osate.aadl2.Aadl2Package#getMode()
  * @model
@@ -62,6 +66,9 @@ public interface Mode extends ModeFeature {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * <p>From package AADLConstructs::Modes.</p>
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Initial</em>' attribute.
 	 * @see #setInitial(boolean)
 	 * @see org.osate.aadl2.Aadl2Package#getMode_Initial()
@@ -89,22 +96,14 @@ public interface Mode extends ModeFeature {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * <p>From package AADLConstructs::Modes.</p>
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Derived</em>' attribute.
-	 * @see #setDerived(boolean)
 	 * @see org.osate.aadl2.Aadl2Package#getMode_Derived()
-	 * @model default="false" dataType="org.osate.aadl2.Boolean" required="true" ordered="false"
+	 * @model default="false" dataType="org.osate.aadl2.Boolean" required="true" transient="true" changeable="false" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
 	boolean isDerived();
-
-	/**
-	 * Sets the value of the '{@link org.osate.aadl2.Mode#isDerived <em>Derived</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Derived</em>' attribute.
-	 * @see #isDerived()
-	 * @generated
-	 */
-	void setDerived(boolean value);
 
 } // Mode

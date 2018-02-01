@@ -41,41 +41,64 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.eclipse.xtext.naming.IQualifiedNameProvider;
+import org.eclipse.xtext.naming.QualifiedName;
 import org.eclipse.xtext.resource.IFragmentProvider;
-import org.osate.aadl2.NamedElement;
+import org.eclipse.xtext.util.OnChangeEvictingCache;
 
 import com.google.inject.Inject;
+import com.google.inject.Provider;
+import com.google.inject.Singleton;
 
-	public class Aadl2QualifiedNameFragmentProvider implements IFragmentProvider {
+@Singleton
+public class Aadl2QualifiedNameFragmentProvider implements IFragmentProvider {
 
-		  @Inject
-		  private IQualifiedNameProvider qualifiedNameProvider;
+	private IQualifiedNameProvider qualifiedNameProvider;
 
-	public String getFragment(EObject obj, Fallback fallback) {
-		String qName = null;
-		if (obj instanceof NamedElement) {
-			qName = ((NamedElement) obj).getQualifiedName();
-		} else {
-			qName = qualifiedNameProvider.getFullyQualifiedName(obj).toString();
-		}
-		return qName != null ? qName : fallback.getFragment(obj);
+	@Inject
+	private OnChangeEvictingCache cache;
+
+	@Inject
+	public Aadl2QualifiedNameFragmentProvider(final IQualifiedNameProvider qualifiedNameProvider) {
+		super();
+
+		this.qualifiedNameProvider = qualifiedNameProvider;
 	}
 
-		  public EObject getEObject(Resource resource, 
-		                            String fragment, 
-		                            Fallback fallback) {
-		    if (fragment != null) {
-		      Iterator<EObject> i = EcoreUtil.getAllContents(resource, false);
-		      while(i.hasNext()) {
-		        EObject eObject = i.next();
-		        String candidateFragment = (eObject.eIsProxy()) 
-		            ? ((InternalEObject) eObject).eProxyURI().fragment()
-		            : getFragment(eObject, fallback);
-		        if (fragment.equals(candidateFragment)) 
-		          return eObject;
-		      }
-		    }
-		    return fallback.getEObject(fragment);
-		  }
+	@Override
+	public String getFragment(EObject obj, Fallback fallback) {
+		final QualifiedName qualifiedName = qualifiedNameProvider.getFullyQualifiedName(obj);
+
+		if (qualifiedName != null) {
+			return qualifiedName.toString();
+		}
+		return fallback.getFragment(obj);
+	}
+
+	@Override
+	public EObject getEObject(final Resource resource, final String fragment, final Fallback fallback) {
+		return cache.get(fragment, resource, new Provider<EObject>() {
+			@Override
+			public EObject get() {
+				return doGetEObject(resource, fragment, fallback);
+			}
+		});
+	}
+
+	private EObject doGetEObject(Resource resource, String fragment, Fallback fallback) {
+		if (fragment != null) {
+			Iterator<EObject> i = EcoreUtil.getAllContents(resource, false);
+
+			while (i.hasNext()) {
+				EObject eObject = i.next();
+				String candidateFragment = (eObject.eIsProxy()) ? ((InternalEObject) eObject).eProxyURI().fragment()
+						: getFragment(eObject, fallback);
+
+				if (fragment.equals(candidateFragment)) {
+					return eObject;
+				}
+			}
 		}
 
+		return fallback.getEObject(fragment);
+	}
+}

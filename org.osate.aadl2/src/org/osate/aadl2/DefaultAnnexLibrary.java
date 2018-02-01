@@ -35,17 +35,24 @@
  */
 package org.osate.aadl2;
 
+import org.eclipse.emf.ecore.EClass;
+
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Default Annex Library</b></em>'.
  * <!-- end-user-doc -->
  *
+ * <!-- begin-model-doc -->
+ * <p>From package AADLConstructs::Extensibility.</p>
+ * <!-- end-model-doc -->
+ *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.osate.aadl2.DefaultAnnexLibrary#getSourceText <em>Source Text</em>}</li>
+ *   <li>{@link org.osate.aadl2.DefaultAnnexLibrary#getParsedAnnexLibrary <em>Parsed Annex Library</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.osate.aadl2.Aadl2Package#getDefaultAnnexLibrary()
  * @model
@@ -60,6 +67,9 @@ public interface DefaultAnnexLibrary extends AnnexLibrary {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * <p>From package AADLConstructs::Extensibility.</p>
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Source Text</em>' attribute.
 	 * @see #setSourceText(String)
 	 * @see org.osate.aadl2.Aadl2Package#getDefaultAnnexLibrary_SourceText()
@@ -77,5 +87,55 @@ public interface DefaultAnnexLibrary extends AnnexLibrary {
 	 * @generated
 	 */
 	void setSourceText(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Parsed Annex Library</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Parsed Annex Library</em>' containment reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * <p>From package AADLConstructs::Extensibility.</p>
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Parsed Annex Library</em>' containment reference.
+	 * @see #setParsedAnnexLibrary(AnnexLibrary)
+	 * @see org.osate.aadl2.Aadl2Package#getDefaultAnnexLibrary_ParsedAnnexLibrary()
+	 * @model containment="true" ordered="false"
+	 * @generated
+	 */
+	AnnexLibrary getParsedAnnexLibrary();
+
+	/**
+	 * Sets the value of the '{@link org.osate.aadl2.DefaultAnnexLibrary#getParsedAnnexLibrary <em>Parsed Annex Library</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Parsed Annex Library</em>' containment reference.
+	 * @see #getParsedAnnexLibrary()
+	 * @generated
+	 */
+	void setParsedAnnexLibrary(AnnexLibrary value);
+
+	/**
+	 * Creates a new {@link org.osate.aadl2.AnnexLibrary} and sets the '<em><b>Parsed Annex Library</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param eClass The Ecore class of the {@link org.osate.aadl2.AnnexLibrary} to create.
+	 * @return The new {@link org.osate.aadl2.AnnexLibrary}.
+	 * @see #getParsedAnnexLibrary()
+	 * @generated
+	 */
+	AnnexLibrary createParsedAnnexLibrary(EClass eClass);
+
+	/**
+	 * Creates a new {@link org.osate.aadl2.DefaultAnnexLibrary} and sets the '<em><b>Parsed Annex Library</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return The new {@link org.osate.aadl2.DefaultAnnexLibrary}.
+	 * @see #getParsedAnnexLibrary()
+	 * @generated
+	 */
+	AnnexLibrary createParsedAnnexLibrary();
 
 } // DefaultAnnexLibrary

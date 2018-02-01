@@ -42,8 +42,13 @@ import org.eclipse.emf.common.util.EList;
  * A representation of the model object '<em><b>Thread Group Implementation</b></em>'.
  * <!-- end-user-doc -->
  *
+ * <!-- begin-model-doc -->
+ * <p>From package AADLDetails::Components::ThreadGroup.</p>
+ * <!-- end-model-doc -->
+ *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.osate.aadl2.ThreadGroupImplementation#getOwnedDataSubcomponents <em>Owned Data Subcomponent</em>}</li>
  *   <li>{@link org.osate.aadl2.ThreadGroupImplementation#getOwnedThreadSubcomponents <em>Owned Thread Subcomponent</em>}</li>
@@ -51,29 +56,30 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.osate.aadl2.ThreadGroupImplementation#getOwnedSubprogramSubcomponents <em>Owned Subprogram Subcomponent</em>}</li>
  *   <li>{@link org.osate.aadl2.ThreadGroupImplementation#getOwnedSubprogramGroupSubcomponents <em>Owned Subprogram Group Subcomponent</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.osate.aadl2.Aadl2Package#getThreadGroupImplementation()
  * @model
  * @generated
  */
-public interface ThreadGroupImplementation extends ComponentImplementation,
-		ThreadGroupClassifier {
+public interface ThreadGroupImplementation extends ComponentImplementation, ThreadGroupClassifier {
 	/**
 	 * Returns the value of the '<em><b>Owned Data Subcomponent</b></em>' containment reference list.
 	 * The list contents are of type {@link org.osate.aadl2.DataSubcomponent}.
 	 * <p>
 	 * This feature subsets the following features:
+	 * </p>
 	 * <ul>
 	 *   <li>'{@link org.osate.aadl2.ComponentImplementation#getOwnedSubcomponents() <em>Owned Subcomponent</em>}'</li>
 	 * </ul>
-	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Data Subcomponent</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * <p>From package AADLDetails::Components::ThreadGroup.</p>
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Data Subcomponent</em>' containment reference list.
 	 * @see org.osate.aadl2.Aadl2Package#getThreadGroupImplementation_OwnedDataSubcomponent()
 	 * @model containment="true" ordered="false"
@@ -96,16 +102,19 @@ public interface ThreadGroupImplementation extends ComponentImplementation,
 	 * The list contents are of type {@link org.osate.aadl2.ThreadSubcomponent}.
 	 * <p>
 	 * This feature subsets the following features:
+	 * </p>
 	 * <ul>
 	 *   <li>'{@link org.osate.aadl2.ComponentImplementation#getOwnedSubcomponents() <em>Owned Subcomponent</em>}'</li>
 	 * </ul>
-	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Thread Subcomponent</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * <p>From package AADLDetails::Components::ThreadGroup.</p>
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Thread Subcomponent</em>' containment reference list.
 	 * @see org.osate.aadl2.Aadl2Package#getThreadGroupImplementation_OwnedThreadSubcomponent()
 	 * @model containment="true" ordered="false"
@@ -128,16 +137,19 @@ public interface ThreadGroupImplementation extends ComponentImplementation,
 	 * The list contents are of type {@link org.osate.aadl2.ThreadGroupSubcomponent}.
 	 * <p>
 	 * This feature subsets the following features:
+	 * </p>
 	 * <ul>
 	 *   <li>'{@link org.osate.aadl2.ComponentImplementation#getOwnedSubcomponents() <em>Owned Subcomponent</em>}'</li>
 	 * </ul>
-	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Thread Group Subcomponent</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * <p>From package AADLDetails::Components::ThreadGroup.</p>
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Thread Group Subcomponent</em>' containment reference list.
 	 * @see org.osate.aadl2.Aadl2Package#getThreadGroupImplementation_OwnedThreadGroupSubcomponent()
 	 * @model containment="true" ordered="false"
@@ -160,16 +172,19 @@ public interface ThreadGroupImplementation extends ComponentImplementation,
 	 * The list contents are of type {@link org.osate.aadl2.SubprogramSubcomponent}.
 	 * <p>
 	 * This feature subsets the following features:
+	 * </p>
 	 * <ul>
 	 *   <li>'{@link org.osate.aadl2.ComponentImplementation#getOwnedSubcomponents() <em>Owned Subcomponent</em>}'</li>
 	 * </ul>
-	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Subprogram Subcomponent</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * <p>From package AADLDetails::Components::ThreadGroup.</p>
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Subprogram Subcomponent</em>' containment reference list.
 	 * @see org.osate.aadl2.Aadl2Package#getThreadGroupImplementation_OwnedSubprogramSubcomponent()
 	 * @model containment="true" ordered="false"
@@ -192,16 +207,19 @@ public interface ThreadGroupImplementation extends ComponentImplementation,
 	 * The list contents are of type {@link org.osate.aadl2.SubprogramGroupSubcomponent}.
 	 * <p>
 	 * This feature subsets the following features:
+	 * </p>
 	 * <ul>
 	 *   <li>'{@link org.osate.aadl2.ComponentImplementation#getOwnedSubcomponents() <em>Owned Subcomponent</em>}'</li>
 	 * </ul>
-	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Subprogram Group Subcomponent</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * <p>From package AADLDetails::Components::ThreadGroup.</p>
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Subprogram Group Subcomponent</em>' containment reference list.
 	 * @see org.osate.aadl2.Aadl2Package#getThreadGroupImplementation_OwnedSubprogramGroupSubcomponent()
 	 * @model containment="true" ordered="false"
@@ -223,6 +241,7 @@ public interface ThreadGroupImplementation extends ComponentImplementation,
 	 * Returns the value of the '<em><b>Type</b></em>' reference.
 	 * Not generated because thae code generator doesn't know about covariant return types.
 	 */
+	@Override
 	ThreadGroupType getType();
 
 } // ThreadGroupImplementation

@@ -1,12 +1,12 @@
 /**
  * <copyright>
  * Copyright  2008 by Carnegie Mellon University, all rights reserved.
- * 
+ *
  * Use of the Open Source AADL Tool Environment (OSATE) is subject to the terms of the license set forth
  * at http://www.eclipse.org/org/documents/epl-v10.html.
- * 
+ *
  * NO WARRANTY
- * 
+ *
  * ANY INFORMATION, MATERIALS, SERVICES, INTELLECTUAL PROPERTY OR OTHER PROPERTY OR RIGHTS GRANTED OR PROVIDED BY
  * CARNEGIE MELLON UNIVERSITY PURSUANT TO THIS LICENSE (HEREINAFTER THE ''DELIVERABLES'') ARE ON AN ''AS-IS'' BASIS.
  * CARNEGIE MELLON UNIVERSITY MAKES NO WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED AS TO ANY MATTER INCLUDING,
@@ -16,14 +16,14 @@
  * REGARDLESS OF WHETHER SUCH PARTY WAS AWARE OF THE POSSIBILITY OF SUCH DAMAGES. LICENSEE AGREES THAT IT WILL NOT
  * MAKE ANY WARRANTY ON BEHALF OF CARNEGIE MELLON UNIVERSITY, EXPRESS OR IMPLIED, TO ANY PERSON CONCERNING THE
  * APPLICATION OF OR THE RESULTS TO BE OBTAINED WITH THE DELIVERABLES UNDER THIS LICENSE.
- * 
+ *
  * Licensee hereby agrees to defend, indemnify, and hold harmless Carnegie Mellon University, its trustees, officers,
  * employees, and agents from all claims or demands made against them (and any related losses, expenses, or
  * attorney's fees) arising out of, or relating to Licensee's and/or its sub licensees' negligent use or willful
  * misuse of or negligent conduct or willful misconduct regarding the Software, facilities, or other rights or
  * assistance granted by Carnegie Mellon University under this License, including, but not limited to, any claims of
  * product liability, personal injury, death, damage to property, or violation of any laws or regulations.
- * 
+ *
  * Carnegie Mellon University Software Engineering Institute authored documents are sponsored by the U.S. Department
  * of Defense under Contract F19628-00-C-0003. Carnegie Mellon University retains copyrights in all material produced
  * under this contract. The U.S. Government retains a non-exclusive, royalty-free license to publish or reproduce these
@@ -51,6 +51,7 @@ import org.osate.aadl2.properties.InvalidModelException;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.osate.aadl2.instance.ConnectionInstance#getInSystemOperationModes <em>In System Operation Mode</em>}</li>
  *   <li>{@link org.osate.aadl2.instance.ConnectionInstance#getInModeTransitions <em>In Mode Transition</em>}</li>
@@ -61,7 +62,6 @@ import org.osate.aadl2.properties.InvalidModelException;
  *   <li>{@link org.osate.aadl2.instance.ConnectionInstance#isBidirectional <em>Bidirectional</em>}</li>
  *   <li>{@link org.osate.aadl2.instance.ConnectionInstance#getSource <em>Source</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.osate.aadl2.instance.InstancePackage#getConnectionInstance()
  * @model
@@ -168,7 +168,7 @@ public interface ConnectionInstance extends FlowElementInstance {
 	 * @see #setDestination(ConnectionInstanceEnd)
 	 * @see org.osate.aadl2.instance.InstancePackage#getConnectionInstance_Destination()
 	 * @see org.osate.aadl2.instance.ConnectionInstanceEnd#getDstConnectionInstances
-	 * @model opposite="dstConnectionInstance" required="true" ordered="false"
+	 * @model opposite="dstConnectionInstance" resolveProxies="false" required="true" ordered="false"
 	 * @generated
 	 */
 	ConnectionInstanceEnd getDestination();
@@ -248,7 +248,7 @@ public interface ConnectionInstance extends FlowElementInstance {
 	 * @see #setSource(ConnectionInstanceEnd)
 	 * @see org.osate.aadl2.instance.InstancePackage#getConnectionInstance_Source()
 	 * @see org.osate.aadl2.instance.ConnectionInstanceEnd#getSrcConnectionInstances
-	 * @model opposite="srcConnectionInstance" required="true" ordered="false"
+	 * @model opposite="srcConnectionInstance" resolveProxies="false" required="true" ordered="false"
 	 * @generated
 	 */
 	ConnectionInstanceEnd getSource();
@@ -266,7 +266,7 @@ public interface ConnectionInstance extends FlowElementInstance {
 	/**
 	 * Get the values associated with the given property for each connection
 	 * declaration that defines this semantic connection.
-	 * 
+	 *
 	 * @param property
 	 * 			  The property to look up
 	 * @return A list of
@@ -283,14 +283,13 @@ public interface ConnectionInstance extends FlowElementInstance {
 	 * 				  Thrown if one of the underlying connection declarations
 	 * 				  does not accept the property.
 	 */
-	List<ModalPropertyValue> getConnectionPropertyValues(Property property)
-			throws InvalidModelException;
+	List<ModalPropertyValue> getConnectionPropertyValues(Property property) throws InvalidModelException;
 
 	/**
 	 * Get the feature instances that this semantic connection passes through
 	 * including the ultimate start and end points.  The features are returned in
 	 * the order in which they are passed through.
-	 * 
+	 *
 	 * @return A list of <code>InstanceObject</code>s.  The first item in the
 	 * 		   list will be a {@link ComponentInstance} if the connection is an
 	 * 		   access connection.  In this case, the component is the data or bus
@@ -301,7 +300,7 @@ public interface ConnectionInstance extends FlowElementInstance {
 	 */
 	List<InstanceObject> getThroughFeatureInstances();
 
-	ConnectionInstanceEnd getInstantiatedEndPoint(final ComponentInstance ctxt,
-			final ConnectionEnd connEndPoint, final Context connCtxt);
+	ConnectionInstanceEnd getInstantiatedEndPoint(final ComponentInstance ctxt, final ConnectionEnd connEndPoint,
+			final Context connCtxt);
 
 } // ConnectionInstance

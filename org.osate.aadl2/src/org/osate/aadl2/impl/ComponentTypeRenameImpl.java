@@ -51,16 +51,15 @@ import org.osate.aadl2.ComponentTypeRename;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.osate.aadl2.impl.ComponentTypeRenameImpl#getCategory <em>Category</em>}</li>
  *   <li>{@link org.osate.aadl2.impl.ComponentTypeRenameImpl#getRenamedComponentType <em>Renamed Component Type</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
-public class ComponentTypeRenameImpl extends NamedElementImpl implements
-		ComponentTypeRename {
+public class ComponentTypeRenameImpl extends NamedElementImpl implements ComponentTypeRename {
 	/**
 	 * The default value of the '{@link #getCategory() <em>Category</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -115,6 +114,7 @@ public class ComponentTypeRenameImpl extends NamedElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ComponentCategory getCategory() {
 		return category;
 	}
@@ -124,13 +124,14 @@ public class ComponentTypeRenameImpl extends NamedElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setCategory(ComponentCategory newCategory) {
 		ComponentCategory oldCategory = category;
 		category = newCategory == null ? CATEGORY_EDEFAULT : newCategory;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					Aadl2Package.COMPONENT_TYPE_RENAME__CATEGORY, oldCategory,
-					category));
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, Notification.SET, Aadl2Package.COMPONENT_TYPE_RENAME__CATEGORY,
+					oldCategory, category));
+		}
 	}
 
 	/**
@@ -138,18 +139,17 @@ public class ComponentTypeRenameImpl extends NamedElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ComponentType getRenamedComponentType() {
-		if (renamedComponentType != null
-				&& ((EObject) renamedComponentType).eIsProxy()) {
+		if (renamedComponentType != null && ((EObject) renamedComponentType).eIsProxy()) {
 			InternalEObject oldRenamedComponentType = (InternalEObject) renamedComponentType;
 			renamedComponentType = (ComponentType) eResolveProxy(oldRenamedComponentType);
 			if (renamedComponentType != oldRenamedComponentType) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(
-							this,
-							Notification.RESOLVE,
-							Aadl2Package.COMPONENT_TYPE_RENAME__RENAMED_COMPONENT_TYPE,
-							oldRenamedComponentType, renamedComponentType));
+				if (eNotificationRequired()) {
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+							Aadl2Package.COMPONENT_TYPE_RENAME__RENAMED_COMPONENT_TYPE, oldRenamedComponentType,
+							renamedComponentType));
+				}
 			}
 		}
 		return renamedComponentType;
@@ -169,13 +169,15 @@ public class ComponentTypeRenameImpl extends NamedElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setRenamedComponentType(ComponentType newRenamedComponentType) {
 		ComponentType oldRenamedComponentType = renamedComponentType;
 		renamedComponentType = newRenamedComponentType;
-		if (eNotificationRequired())
+		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					Aadl2Package.COMPONENT_TYPE_RENAME__RENAMED_COMPONENT_TYPE,
-					oldRenamedComponentType, renamedComponentType));
+					Aadl2Package.COMPONENT_TYPE_RENAME__RENAMED_COMPONENT_TYPE, oldRenamedComponentType,
+					renamedComponentType));
+		}
 	}
 
 	/**
@@ -189,8 +191,9 @@ public class ComponentTypeRenameImpl extends NamedElementImpl implements
 		case Aadl2Package.COMPONENT_TYPE_RENAME__CATEGORY:
 			return getCategory();
 		case Aadl2Package.COMPONENT_TYPE_RENAME__RENAMED_COMPONENT_TYPE:
-			if (resolve)
+			if (resolve) {
 				return getRenamedComponentType();
+			}
 			return basicGetRenamedComponentType();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -255,8 +258,9 @@ public class ComponentTypeRenameImpl extends NamedElementImpl implements
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy())
+		if (eIsProxy()) {
 			return super.toString();
+		}
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (category: ");

@@ -43,13 +43,10 @@ import org.osate.aadl2.DataClassifier;
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Data Classifier</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */
-public abstract class DataClassifierImpl extends ComponentClassifierImpl
-		implements DataClassifier {
+public abstract class DataClassifierImpl extends ComponentClassifierImpl implements DataClassifier {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

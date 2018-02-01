@@ -50,15 +50,14 @@ import org.osate.aadl2.TypedElement;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.osate.aadl2.impl.TypedElementImpl#getType <em>Type</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
-public abstract class TypedElementImpl extends NamedElementImpl implements
-		TypedElement {
+public abstract class TypedElementImpl extends NamedElementImpl implements TypedElement {
 	/**
 	 * The cached value of the '{@link #getType() <em>Type</em>}' reference.
 	 * <!-- begin-user-doc -->
@@ -93,14 +92,16 @@ public abstract class TypedElementImpl extends NamedElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Type getType() {
 		if (type != null && ((EObject) type).eIsProxy()) {
 			InternalEObject oldType = (InternalEObject) type;
 			type = (Type) eResolveProxy(oldType);
 			if (type != oldType) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-							Aadl2Package.TYPED_ELEMENT__TYPE, oldType, type));
+				if (eNotificationRequired()) {
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, Aadl2Package.TYPED_ELEMENT__TYPE, oldType,
+							type));
+				}
 			}
 		}
 		return type;
@@ -120,12 +121,13 @@ public abstract class TypedElementImpl extends NamedElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setType(Type newType) {
 		Type oldType = type;
 		type = newType;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					Aadl2Package.TYPED_ELEMENT__TYPE, oldType, type));
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, Notification.SET, Aadl2Package.TYPED_ELEMENT__TYPE, oldType, type));
+		}
 	}
 
 	/**
@@ -137,8 +139,9 @@ public abstract class TypedElementImpl extends NamedElementImpl implements
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 		case Aadl2Package.TYPED_ELEMENT__TYPE:
-			if (resolve)
+			if (resolve) {
 				return getType();
+			}
 			return basicGetType();
 		}
 		return super.eGet(featureID, resolve, coreType);

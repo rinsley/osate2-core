@@ -43,13 +43,10 @@ import org.osate.aadl2.DeviceClassifier;
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Device Classifier</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */
-public abstract class DeviceClassifierImpl extends ComponentClassifierImpl
-		implements DeviceClassifier {
+public abstract class DeviceClassifierImpl extends ComponentClassifierImpl implements DeviceClassifier {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

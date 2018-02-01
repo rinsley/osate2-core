@@ -39,12 +39,7 @@ import java.util.List;
 
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
-import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
-import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.osate.aadl2.SubprogramGroupSubcomponentType;
 
 /**
@@ -53,18 +48,14 @@ import org.osate.aadl2.SubprogramGroupSubcomponentType;
  * <!-- end-user-doc -->
  * @generated
  */
-public class SubprogramGroupSubcomponentTypeItemProvider extends
-		SubcomponentTypeItemProvider implements IEditingDomainItemProvider,
-		IStructuredItemContentProvider, ITreeItemContentProvider,
-		IItemLabelProvider, IItemPropertySource {
+public class SubprogramGroupSubcomponentTypeItemProvider extends SubcomponentTypeItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public SubprogramGroupSubcomponentTypeItemProvider(
-			AdapterFactory adapterFactory) {
+	public SubprogramGroupSubcomponentTypeItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
@@ -93,8 +84,7 @@ public class SubprogramGroupSubcomponentTypeItemProvider extends
 	public String getText(Object object) {
 		String label = ((SubprogramGroupSubcomponentType) object).getName();
 		return label == null || label.length() == 0 ? getString("_UI_SubprogramGroupSubcomponentType_type")
-				: getString("_UI_SubprogramGroupSubcomponentType_type") + " "
-						+ label;
+				: getString("_UI_SubprogramGroupSubcomponentType_type") + " " + label;
 	}
 
 	/**
@@ -118,8 +108,7 @@ public class SubprogramGroupSubcomponentTypeItemProvider extends
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(
-			Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 

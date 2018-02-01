@@ -44,14 +44,15 @@ import org.eclipse.emf.common.util.EList;
  *
  * <!-- begin-model-doc -->
  * A classifier feature declares a behavioral or structural characteristic of instances of classifiers.
+ * <p>From package AADLInfrastructure.</p>
  * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.osate.aadl2.ClassifierFeature#getFeaturingClassifiers <em>Featuring Classifier</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.osate.aadl2.Aadl2Package#getClassifierFeature()
  * @model abstract="true"
@@ -66,6 +67,7 @@ public interface ClassifierFeature extends NamedElement {
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The Classifiers that have this ClassifierFeature as a feature.
+	 * <p>From package AADLInfrastructure.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Featuring Classifier</em>' reference list.
 	 * @see org.osate.aadl2.Aadl2Package#getClassifierFeature_FeaturingClassifier()

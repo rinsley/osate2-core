@@ -35,22 +35,24 @@
  */
 package org.osate.aadl2;
 
-import org.eclipse.emf.ecore.EClass;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Connection</b></em>'.
  * <!-- end-user-doc -->
  *
+ * <!-- begin-model-doc -->
+ * <p>From package AADLConstructs::Connections.</p>
+ * <!-- end-model-doc -->
+ *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.osate.aadl2.Connection#getDestination <em>Destination</em>}</li>
  *   <li>{@link org.osate.aadl2.Connection#getSource <em>Source</em>}</li>
  *   <li>{@link org.osate.aadl2.Connection#isBidirectional <em>Bidirectional</em>}</li>
  *   <li>{@link org.osate.aadl2.Connection#getRefined <em>Refined</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.osate.aadl2.Aadl2Package#getConnection()
  * @model abstract="true"
@@ -65,13 +67,16 @@ public interface Connection extends StructuralFeature, ModalPath, FlowElement {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * <p>From package AADLConstructs::Connections.</p>
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Destination</em>' containment reference.
-	 * @see #setDestination(AbstractConnectionEnd)
+	 * @see #setDestination(ConnectedElement)
 	 * @see org.osate.aadl2.Aadl2Package#getConnection_Destination()
-	 * @model containment="true" required="true" ordered="false"
+	 * @model containment="true" ordered="false"
 	 * @generated
 	 */
-	AbstractConnectionEnd getDestination();
+	ConnectedElement getDestination();
 
 	/**
 	 * Sets the value of the '{@link org.osate.aadl2.Connection#getDestination <em>Destination</em>}' containment reference.
@@ -81,18 +86,17 @@ public interface Connection extends StructuralFeature, ModalPath, FlowElement {
 	 * @see #getDestination()
 	 * @generated
 	 */
-	void setDestination(AbstractConnectionEnd value);
+	void setDestination(ConnectedElement value);
 
 	/**
-	 * Creates a new {@link org.osate.aadl2.AbstractConnectionEnd} and sets the '<em><b>Destination</b></em>' containment reference.
+	 * Creates a new {@link org.osate.aadl2.ConnectedElement} and sets the '<em><b>Destination</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param eClass The Ecore class of the {@link org.osate.aadl2.AbstractConnectionEnd} to create.
-	 * @return The new {@link org.osate.aadl2.AbstractConnectionEnd}.
+	 * @return The new {@link org.osate.aadl2.ConnectedElement}.
 	 * @see #getDestination()
 	 * @generated
 	 */
-	AbstractConnectionEnd createDestination(EClass eClass);
+	ConnectedElement createDestination();
 
 	/**
 	 * Returns the value of the '<em><b>Source</b></em>' containment reference.
@@ -102,13 +106,16 @@ public interface Connection extends StructuralFeature, ModalPath, FlowElement {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * <p>From package AADLConstructs::Connections.</p>
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Source</em>' containment reference.
-	 * @see #setSource(AbstractConnectionEnd)
+	 * @see #setSource(ConnectedElement)
 	 * @see org.osate.aadl2.Aadl2Package#getConnection_Source()
-	 * @model containment="true" required="true" ordered="false"
+	 * @model containment="true" ordered="false"
 	 * @generated
 	 */
-	AbstractConnectionEnd getSource();
+	ConnectedElement getSource();
 
 	/**
 	 * Sets the value of the '{@link org.osate.aadl2.Connection#getSource <em>Source</em>}' containment reference.
@@ -118,18 +125,17 @@ public interface Connection extends StructuralFeature, ModalPath, FlowElement {
 	 * @see #getSource()
 	 * @generated
 	 */
-	void setSource(AbstractConnectionEnd value);
+	void setSource(ConnectedElement value);
 
 	/**
-	 * Creates a new {@link org.osate.aadl2.AbstractConnectionEnd} and sets the '<em><b>Source</b></em>' containment reference.
+	 * Creates a new {@link org.osate.aadl2.ConnectedElement} and sets the '<em><b>Source</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param eClass The Ecore class of the {@link org.osate.aadl2.AbstractConnectionEnd} to create.
-	 * @return The new {@link org.osate.aadl2.AbstractConnectionEnd}.
+	 * @return The new {@link org.osate.aadl2.ConnectedElement}.
 	 * @see #getSource()
 	 * @generated
 	 */
-	AbstractConnectionEnd createSource(EClass eClass);
+	ConnectedElement createSource();
 
 	/**
 	 * Returns the value of the '<em><b>Bidirectional</b></em>' attribute.
@@ -139,6 +145,9 @@ public interface Connection extends StructuralFeature, ModalPath, FlowElement {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * <p>From package AADLConstructs::Connections.</p>
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Bidirectional</em>' attribute.
 	 * @see #setBidirectional(boolean)
 	 * @see org.osate.aadl2.Aadl2Package#getConnection_Bidirectional()
@@ -161,16 +170,19 @@ public interface Connection extends StructuralFeature, ModalPath, FlowElement {
 	 * Returns the value of the '<em><b>Refined</b></em>' reference.
 	 * <p>
 	 * This feature subsets the following features:
+	 * </p>
 	 * <ul>
 	 *   <li>'{@link org.osate.aadl2.RefinableElement#getRefinedElement() <em>Refined Element</em>}'</li>
 	 * </ul>
-	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Refined</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * <p>From package AADLConstructs::Connections.</p>
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Refined</em>' reference.
 	 * @see #setRefined(Connection)
 	 * @see org.osate.aadl2.Aadl2Package#getConnection_Refined()
@@ -190,11 +202,21 @@ public interface Connection extends StructuralFeature, ModalPath, FlowElement {
 	void setRefined(Connection value);
 
 	/**
+	 * For a refined connection, returns the original connection.  For non-refined connections, returns "this".
+	 */
+	Connection getRootConnection();
+
+	/**
 	 * get source
 	 * in case of a refined connection get it from the connection being refine
 	 * @return ConnectionEnd the source (feature, data/bus access end or parameter end)
 	 */
 	ConnectionEnd getAllSource();
+
+	/**
+	 * Gets the last element in the source chain.
+	 */
+	ConnectionEnd getAllLastSource();
 
 	/**
 	 * get destination context
@@ -209,6 +231,12 @@ public interface Connection extends StructuralFeature, ModalPath, FlowElement {
 	 * @return ConnectionEnd the destination (feature, data/bus access end or parameter end)
 	 */
 	ConnectionEnd getAllDestination();
+
+	/**
+	 * Gets the last element in the destination chain.
+	 * @return
+	 */
+	ConnectionEnd getAllLastDestination();
 
 	/**
 	 * get source context
@@ -232,5 +260,16 @@ public interface Connection extends StructuralFeature, ModalPath, FlowElement {
 	 * @return PropertyHolder context subcomponent or component implementation
 	 */
 	public NamedElement getAllDstContextComponent();
+
+	/**
+	 * Return if the connection is bidirectional. If the connection is refined this information must be
+	 * retrieved from the refined connection.
+	 */
+	public boolean isAllBidirectional();
+
+	/**
+	 * Return whether this connection is between two subcomponents and not up/down the hierarchy.
+	 */
+	public boolean isAcross();
 
 } // Connection

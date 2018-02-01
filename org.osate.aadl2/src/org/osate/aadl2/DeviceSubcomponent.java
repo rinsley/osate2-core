@@ -40,12 +40,16 @@ package org.osate.aadl2;
  * A representation of the model object '<em><b>Device Subcomponent</b></em>'.
  * <!-- end-user-doc -->
  *
+ * <!-- begin-model-doc -->
+ * <p>From package AADLDetails::Components::Device.</p>
+ * <!-- end-model-doc -->
+ *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.osate.aadl2.DeviceSubcomponent#getDeviceSubcomponentType <em>Device Subcomponent Type</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.osate.aadl2.Aadl2Package#getDeviceSubcomponent()
  * @model
@@ -57,16 +61,19 @@ public interface DeviceSubcomponent extends Subcomponent, Device {
 	 * Returns the value of the '<em><b>Device Subcomponent Type</b></em>' reference.
 	 * <p>
 	 * This feature subsets the following features:
+	 * </p>
 	 * <ul>
 	 *   <li>'{@link org.osate.aadl2.Subcomponent#getSubcomponentType() <em>Subcomponent Type</em>}'</li>
 	 * </ul>
-	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Device Subcomponent Type</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * <p>From package AADLDetails::Components::Device.</p>
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Device Subcomponent Type</em>' reference.
 	 * @see #setDeviceSubcomponentType(DeviceSubcomponentType)
 	 * @see org.osate.aadl2.Aadl2Package#getDeviceSubcomponent_DeviceSubcomponentType()

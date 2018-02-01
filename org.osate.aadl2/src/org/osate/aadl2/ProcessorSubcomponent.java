@@ -40,12 +40,16 @@ package org.osate.aadl2;
  * A representation of the model object '<em><b>Processor Subcomponent</b></em>'.
  * <!-- end-user-doc -->
  *
+ * <!-- begin-model-doc -->
+ * <p>From package AADLDetails::Components::Processor.</p>
+ * <!-- end-model-doc -->
+ *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.osate.aadl2.ProcessorSubcomponent#getProcessorSubcomponentType <em>Processor Subcomponent Type</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.osate.aadl2.Aadl2Package#getProcessorSubcomponent()
  * @model
@@ -57,16 +61,19 @@ public interface ProcessorSubcomponent extends Subcomponent, Processor {
 	 * Returns the value of the '<em><b>Processor Subcomponent Type</b></em>' reference.
 	 * <p>
 	 * This feature subsets the following features:
+	 * </p>
 	 * <ul>
 	 *   <li>'{@link org.osate.aadl2.Subcomponent#getSubcomponentType() <em>Subcomponent Type</em>}'</li>
 	 * </ul>
-	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Processor Subcomponent Type</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * <p>From package AADLDetails::Components::Processor.</p>
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Processor Subcomponent Type</em>' reference.
 	 * @see #setProcessorSubcomponentType(ProcessorSubcomponentType)
 	 * @see org.osate.aadl2.Aadl2Package#getProcessorSubcomponent_ProcessorSubcomponentType()

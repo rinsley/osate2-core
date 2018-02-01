@@ -35,7 +35,6 @@
  */
 package org.osate.core;
 
-import org.eclipse.core.resources.ICommand;
 import org.eclipse.core.resources.IProject;
 import org.eclipse.core.resources.IProjectDescription;
 import org.eclipse.core.resources.IProjectNature;
@@ -43,7 +42,8 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
 import org.eclipse.xtext.builder.nature.XtextNature;
 
-public class AadlNature extends XtextNature implements IProjectNature{
+@SuppressWarnings("restriction")
+public class AadlNature extends XtextNature implements IProjectNature {
 
 	public static final String copyright = "Copyright 2004 by Carnegie Mellon University, all rights reserved";
 
@@ -62,6 +62,7 @@ public class AadlNature extends XtextNature implements IProjectNature{
 	/**
 	 * @see IProjectNature#getProject()
 	 */
+	@Override
 	public IProject getProject() {
 		return project;
 	}
@@ -69,6 +70,7 @@ public class AadlNature extends XtextNature implements IProjectNature{
 	/**
 	 * @see IProjectNature#setProject(IProject)
 	 */
+	@Override
 	public void setProject(IProject project) {
 		this.project = project;
 	}
@@ -76,43 +78,20 @@ public class AadlNature extends XtextNature implements IProjectNature{
 	/**
 	 * @see IProjectNature#configure()
 	 */
+	@Override
 	public void configure() throws CoreException {
 		if (DEBUG) {
 			System.out.println("configuring AADL nature");
 		}
-		IProjectDescription desc = getProject().getDescription();
-		
-//		ICommand command = desc.newCommand();
-//		command.setBuilderName("edu.cmu.sei.osate.autoanalysis.autoanalysisbuilder");
-//		setBuilderCommand(desc, command);
-		
-//		ICommand command = desc.newCommand();
-//		command.setBuilderName(AadlBuilder.BUILDER_ID);
-//		setBuilderCommand(desc, command);
 	}
 
 	/**
 	 * @see IProjectNature#deconfigure()
 	 */
+	@Override
 	public void deconfigure() throws CoreException {
 		if (DEBUG) {
 			System.out.println("deconfiguring AADL nature");
-		}
-		IProject project = getProject();
-		IProjectDescription desc = project.getDescription();
-		ICommand[] commands = desc.getBuildSpec();
-		for (int i = commands.length - 1; i >= 0; i--) {
-			String builderName = commands[i].getBuilderName();
-// commented out addition of Aadl builder additions
-//						if (builderName.equals(AadlBuilder.BUILDER_ID) || builderName.equals("edu.cmu.sei.osate.autoanalysis.autoanalysisbuilder")) {
-//				ICommand[] newCommands = new ICommand[commands.length - 1];
-//				System.arraycopy(commands, 0, newCommands, 0, i);
-//				System.arraycopy(commands, i + 1, newCommands, i, commands.length - i - 1);
-//				// Commit the spec change into the project
-//				desc.setBuildSpec(newCommands);
-//				project.setDescription(desc, null);
-//				break;
-//			}
 		}
 	}
 
@@ -126,8 +105,8 @@ public class AadlNature extends XtextNature implements IProjectNature{
 					IProjectDescription desc = project.getDescription();
 					String[] oldNatures = desc.getNatureIds();
 					String[] newNatures = new String[oldNatures.length + 1];
-					System.arraycopy(oldNatures, 0, newNatures, 0, oldNatures.length);
-					newNatures[oldNatures.length] = ID;
+					System.arraycopy(oldNatures, 0, newNatures, 1, oldNatures.length);
+					newNatures[0] = ID;
 					desc.setNatureIds(newNatures);
 					project.setDescription(desc, monitor);
 				}
@@ -168,7 +147,9 @@ public class AadlNature extends XtextNature implements IProjectNature{
 	 */
 	public static boolean hasNature(IProject project) {
 		boolean hasNature;
-		if (!project.isOpen()) return false;
+		if (!project.isOpen()) {
+			return false;
+		}
 		try {
 			hasNature = project.hasNature(ID);
 		} catch (CoreException e) {
@@ -178,40 +159,4 @@ public class AadlNature extends XtextNature implements IProjectNature{
 		return hasNature;
 	}
 
-	private ICommand getBuilderCommand(IProjectDescription description, String builderID) {
-		ICommand command = null;
-		ICommand[] commands = description.getBuildSpec();
-		for (int i = commands.length - 1; i >= 0; i--) {
-			if (commands[i].getBuilderName().equals(builderID)) {
-				command = commands[i];
-				break;
-			}
-		}
-		return command;
-	}
-
-	private void setBuilderCommand(IProjectDescription description, ICommand command) throws CoreException {
-		ICommand[] oldCommands = description.getBuildSpec();
-		ICommand oldBuilderCommand = getBuilderCommand(description, command.getBuilderName());
-		ICommand[] newCommands;
-
-		if (oldBuilderCommand == null) {
-			// Add a build spec in front of other builders
-			newCommands = new ICommand[oldCommands.length + 1];
-			newCommands[0] = command;
-			System.arraycopy(oldCommands, 0, newCommands, 1, oldCommands.length);
-		} else {
-			for (int i = 0, max = oldCommands.length; i < max; i++) {
-				if (oldCommands[i] == oldBuilderCommand) {
-					oldCommands[i] = command;
-					break;
-				}
-			}
-			newCommands = oldCommands;
-		}
-
-		// Commit the spec change into the project
-		description.setBuildSpec(newCommands);
-		getProject().setDescription(description, null);
-	}
 }

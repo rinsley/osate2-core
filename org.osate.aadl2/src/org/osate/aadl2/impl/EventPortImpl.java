@@ -44,8 +44,6 @@ import org.osate.aadl2.PortCategory;
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Event Port</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */
@@ -69,7 +67,9 @@ public class EventPortImpl extends PortImpl implements EventPort {
 		return Aadl2Package.eINSTANCE.getEventPort();
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 *
 	 * @see org.osate.aadl2.impl.PortImpl#getCategory()
 	 */
 	@Override

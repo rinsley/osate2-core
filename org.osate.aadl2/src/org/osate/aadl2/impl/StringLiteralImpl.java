@@ -39,6 +39,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.osate.aadl2.Aadl2Package;
+import org.osate.aadl2.PropertyExpression;
 import org.osate.aadl2.StringLiteral;
 
 /**
@@ -47,15 +48,14 @@ import org.osate.aadl2.StringLiteral;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.osate.aadl2.impl.StringLiteralImpl#getValue <em>Value</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
-public class StringLiteralImpl extends PropertyValueImpl implements
-		StringLiteral {
+public class StringLiteralImpl extends PropertyValueImpl implements StringLiteral {
 	/**
 	 * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -100,6 +100,7 @@ public class StringLiteralImpl extends PropertyValueImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getValue() {
 		return value;
 	}
@@ -109,12 +110,13 @@ public class StringLiteralImpl extends PropertyValueImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setValue(String newValue) {
 		String oldValue = value;
 		value = newValue;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					Aadl2Package.STRING_LITERAL__VALUE, oldValue, value));
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, Notification.SET, Aadl2Package.STRING_LITERAL__VALUE, oldValue, value));
+		}
 	}
 
 	/**
@@ -170,8 +172,7 @@ public class StringLiteralImpl extends PropertyValueImpl implements
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 		case Aadl2Package.STRING_LITERAL__VALUE:
-			return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT
-					.equals(value);
+			return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -179,43 +180,34 @@ public class StringLiteralImpl extends PropertyValueImpl implements
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy())
+		if (eIsProxy()) {
 			return super.toString();
+		}
 
 		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (value: ");
+		result.append('"');
 		result.append(value);
-		result.append(')');
+		result.append('"');
 		return result.toString();
 	}
 
 	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((value == null) ? 0 : value.hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
+	public boolean sameAs(PropertyExpression pe) {
+		if (this == pe) {
 			return true;
-		if (obj == null)
+		}
+		if (pe == null || getClass() != pe.getClass()) {
 			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		StringLiteralImpl other = (StringLiteralImpl) obj;
+		}
+		StringLiteralImpl other = (StringLiteralImpl) pe;
 		if (value == null) {
-			if (other.value != null)
-				return false;
-		} else if (!value.equals(other.value))
-			return false;
-		return true;
+			return other.value == null;
+		}
+		return value.equals(other.value);
 	}
 
 } // StringLiteralImpl

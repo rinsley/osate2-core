@@ -50,15 +50,14 @@ import org.osate.aadl2.FeatureGroupTypeRename;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.osate.aadl2.impl.FeatureGroupTypeRenameImpl#getRenamedFeatureGroupType <em>Renamed Feature Group Type</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
-public class FeatureGroupTypeRenameImpl extends NamedElementImpl implements
-		FeatureGroupTypeRename {
+public class FeatureGroupTypeRenameImpl extends NamedElementImpl implements FeatureGroupTypeRename {
 	/**
 	 * The cached value of the '{@link #getRenamedFeatureGroupType() <em>Renamed Feature Group Type</em>}' reference.
 	 * <!-- begin-user-doc -->
@@ -93,18 +92,17 @@ public class FeatureGroupTypeRenameImpl extends NamedElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public FeatureGroupType getRenamedFeatureGroupType() throws AssertionError {
-		if (renamedFeatureGroupType != null
-				&& ((EObject) renamedFeatureGroupType).eIsProxy()) {
+		if (renamedFeatureGroupType != null && ((EObject) renamedFeatureGroupType).eIsProxy()) {
 			InternalEObject oldRenamedFeatureGroupType = (InternalEObject) renamedFeatureGroupType;
 			renamedFeatureGroupType = (FeatureGroupType) eResolveProxy(oldRenamedFeatureGroupType);
 			if (renamedFeatureGroupType != oldRenamedFeatureGroupType) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(
-							this,
-							Notification.RESOLVE,
+				if (eNotificationRequired()) {
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
 							Aadl2Package.FEATURE_GROUP_TYPE_RENAME__RENAMED_FEATURE_GROUP_TYPE,
 							oldRenamedFeatureGroupType, renamedFeatureGroupType));
+				}
 			}
 		}
 		return renamedFeatureGroupType;
@@ -124,16 +122,15 @@ public class FeatureGroupTypeRenameImpl extends NamedElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setRenamedFeatureGroupType(
-			FeatureGroupType newRenamedFeatureGroupType) {
+	@Override
+	public void setRenamedFeatureGroupType(FeatureGroupType newRenamedFeatureGroupType) {
 		FeatureGroupType oldRenamedFeatureGroupType = renamedFeatureGroupType;
 		renamedFeatureGroupType = newRenamedFeatureGroupType;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(
-					this,
-					Notification.SET,
-					Aadl2Package.FEATURE_GROUP_TYPE_RENAME__RENAMED_FEATURE_GROUP_TYPE,
-					oldRenamedFeatureGroupType, renamedFeatureGroupType));
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, Notification.SET,
+					Aadl2Package.FEATURE_GROUP_TYPE_RENAME__RENAMED_FEATURE_GROUP_TYPE, oldRenamedFeatureGroupType,
+					renamedFeatureGroupType));
+		}
 	}
 
 	/**
@@ -145,8 +142,9 @@ public class FeatureGroupTypeRenameImpl extends NamedElementImpl implements
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 		case Aadl2Package.FEATURE_GROUP_TYPE_RENAME__RENAMED_FEATURE_GROUP_TYPE:
-			if (resolve)
+			if (resolve) {
 				return getRenamedFeatureGroupType();
+			}
 			return basicGetRenamedFeatureGroupType();
 		}
 		return super.eGet(featureID, resolve, coreType);

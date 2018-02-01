@@ -50,15 +50,14 @@ import org.osate.aadl2.PublicPackageSection;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.osate.aadl2.impl.PublicPackageSectionImpl#getPrivateSection <em>Private Section</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
-public class PublicPackageSectionImpl extends PackageSectionImpl implements
-		PublicPackageSection {
+public class PublicPackageSectionImpl extends PackageSectionImpl implements PublicPackageSection {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -83,10 +82,11 @@ public class PublicPackageSectionImpl extends PackageSectionImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public PrivatePackageSection getPrivateSection() {
 		PrivatePackageSection privateSection = basicGetPrivateSection();
-		return privateSection != null && ((EObject) privateSection).eIsProxy() ? (PrivatePackageSection) eResolveProxy((InternalEObject) privateSection)
-				: privateSection;
+		return privateSection != null && ((EObject) privateSection).eIsProxy()
+				? (PrivatePackageSection) eResolveProxy((InternalEObject) privateSection) : privateSection;
 	}
 
 	/**
@@ -99,7 +99,9 @@ public class PublicPackageSectionImpl extends PackageSectionImpl implements
 		return ((AadlPackage) getOwner()).getPrivateSection();
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 *
 	 * @see org.osate.aadl2.impl.NamedElementImpl#getNamespace()
 	 */
 	@Override
@@ -117,8 +119,9 @@ public class PublicPackageSectionImpl extends PackageSectionImpl implements
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 		case Aadl2Package.PUBLIC_PACKAGE_SECTION__PRIVATE_SECTION:
-			if (resolve)
+			if (resolve) {
 				return getPrivateSection();
+			}
 			return basicGetPrivateSection();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -136,5 +139,15 @@ public class PublicPackageSectionImpl extends PackageSectionImpl implements
 			return basicGetPrivateSection() != null;
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * Returns the name of the package.
+	 */
+	@Override
+	public String getName() {
+		// DB: Add the public suffix like it is done for the private package section so that a public package section
+		// has a different name than the package.
+		return super.getName() + "_public";
 	}
 } // PublicPackageSectionImpl

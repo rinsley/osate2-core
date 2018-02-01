@@ -43,13 +43,10 @@ import org.osate.aadl2.EndToEndFlowElement;
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>End To End Flow Element</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */
-public abstract class EndToEndFlowElementImpl extends NamedElementImpl
-		implements EndToEndFlowElement {
+public abstract class EndToEndFlowElementImpl extends NamedElementImpl implements EndToEndFlowElement {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

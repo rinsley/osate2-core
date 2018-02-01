@@ -32,6 +32,7 @@
  * </copyright>
  */
 package org.osate.annexsupport;
+
 import org.eclipse.core.runtime.IConfigurationElement;
 
 /**
@@ -42,6 +43,7 @@ abstract public class AnnexProxy {
 	protected static final String ATT_ID = "id";
 	protected static final String ATT_NAME = "name";
 	protected static final String ATT_ANNEXNAME = "annexName";
+	protected static final String ATT_ANNEXNSURI = "annexNSURI";
 	protected static final String ATT_CLASS = "class";
 
 	protected final IConfigurationElement configElem;
@@ -50,13 +52,13 @@ abstract public class AnnexProxy {
 	protected final String name;
 	protected final String annexName;
 	protected final String className;
-	
-	protected AnnexProxy(String id, String name, String annexName, String className){
+
+	protected AnnexProxy(String id, String name, String annexName, String className) {
 		this.id = id;
 		this.name = name;
 		this.annexName = annexName;
-		this.className  = className;
-		this.configElem = null;
+		this.className = className;
+		configElem = null;
 	}
 
 	protected AnnexProxy(IConfigurationElement configElem) {
@@ -68,7 +70,9 @@ abstract public class AnnexProxy {
 	}
 
 	private String getAttribute(String name, String defaultValue) {
-		if (configElem == null) return null;
+		if (configElem == null) {
+			return null;
+		}
 		String value = configElem.getAttribute(name);
 
 		if (value != null) {

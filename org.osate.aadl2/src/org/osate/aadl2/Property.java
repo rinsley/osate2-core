@@ -35,21 +35,25 @@
  */
 package org.osate.aadl2;
 
-import java.util.List;
-
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.osate.aadl2.properties.EvaluatedProperty;
 import org.osate.aadl2.properties.EvaluationContext;
 import org.osate.aadl2.properties.InvalidModelException;
+import org.osate.aadl2.properties.PropertyEvaluationResult;
 
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Property Definition</b></em>'.
  * <!-- end-user-doc -->
  *
+ * <!-- begin-model-doc -->
+ * <p>From package AADLProperties::Definitions.</p>
+ * <!-- end-model-doc -->
+ *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.osate.aadl2.Property#isInherit <em>Inherit</em>}</li>
  *   <li>{@link org.osate.aadl2.Property#getDefaultValue <em>Default Value</em>}</li>
@@ -58,14 +62,12 @@ import org.osate.aadl2.properties.InvalidModelException;
  *   <li>{@link org.osate.aadl2.Property#getAppliesTos <em>Applies To</em>}</li>
  *   <li>{@link org.osate.aadl2.Property#isEmptyListDefault <em>Empty List Default</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.osate.aadl2.Aadl2Package#getProperty()
  * @model
  * @generated
  */
-public interface Property extends BasicProperty, AbstractNamedValue,
-		ArraySizeProperty {
+public interface Property extends BasicProperty, AbstractNamedValue {
 	/**
 	 * Returns the value of the '<em><b>Inherit</b></em>' attribute.
 	 * <!-- begin-user-doc -->
@@ -74,6 +76,9 @@ public interface Property extends BasicProperty, AbstractNamedValue,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * <p>From package AADLProperties::Definitions.</p>
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Inherit</em>' attribute.
 	 * @see #setInherit(boolean)
 	 * @see org.osate.aadl2.Aadl2Package#getProperty_Inherit()
@@ -100,6 +105,9 @@ public interface Property extends BasicProperty, AbstractNamedValue,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * <p>From package AADLProperties::Definitions.</p>
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Default Value</em>' containment reference.
 	 * @see #setDefaultValue(PropertyExpression)
 	 * @see org.osate.aadl2.Aadl2Package#getProperty_DefaultValue()
@@ -127,6 +135,9 @@ public interface Property extends BasicProperty, AbstractNamedValue,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * <p>From package AADLProperties::Definitions.</p>
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Applies To</em>' containment reference list.
 	 * @see org.osate.aadl2.Aadl2Package#getProperty_AppliesTo()
 	 * @model containment="true" ordered="false"
@@ -153,6 +164,9 @@ public interface Property extends BasicProperty, AbstractNamedValue,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * <p>From package AADLProperties::Definitions.</p>
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Empty List Default</em>' attribute.
 	 * @see #setEmptyListDefault(boolean)
 	 * @see org.osate.aadl2.Aadl2Package#getProperty_EmptyListDefault()
@@ -191,6 +205,9 @@ public interface Property extends BasicProperty, AbstractNamedValue,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * <p>From package AADLProperties::Definitions.</p>
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Applies To Metaclass</em>' reference list.
 	 * @see org.osate.aadl2.Aadl2Package#getProperty_AppliesToMetaclass()
 	 * @model transient="true" volatile="true" derived="true" ordered="false"
@@ -207,6 +224,9 @@ public interface Property extends BasicProperty, AbstractNamedValue,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * <p>From package AADLProperties::Definitions.</p>
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Applies To Classifier</em>' reference list.
 	 * @see org.osate.aadl2.Aadl2Package#getProperty_AppliesToClassifier()
 	 * @model transient="true" volatile="true" derived="true" ordered="false"
@@ -216,12 +236,13 @@ public interface Property extends BasicProperty, AbstractNamedValue,
 
 	/**
 	 * Evaluate a referenced property.
-	 * 
+	 *
 	 * @return The evaluated property values, one per append operation.
 	 * @throws InvalidModelException Thrown if there is a problem with the
 	 * model that prevents the property value from being evaluated.
 	 */
-	List<EvaluatedProperty> evaluate(EvaluationContext ctx);
+	@Override
+	PropertyEvaluationResult evaluate(EvaluationContext ctx, int depth);
 
 	EvaluatedProperty evaluateDefault(EvaluationContext ctx);
 

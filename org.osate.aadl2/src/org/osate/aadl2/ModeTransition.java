@@ -36,21 +36,24 @@
 package org.osate.aadl2;
 
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EClass;
 
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Mode Transition</b></em>'.
  * <!-- end-user-doc -->
  *
+ * <!-- begin-model-doc -->
+ * <p>From package AADLConstructs::Modes.</p>
+ * <!-- end-model-doc -->
+ *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.osate.aadl2.ModeTransition#getSource <em>Source</em>}</li>
  *   <li>{@link org.osate.aadl2.ModeTransition#getDestination <em>Destination</em>}</li>
  *   <li>{@link org.osate.aadl2.ModeTransition#getOwnedTriggers <em>Owned Trigger</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.osate.aadl2.Aadl2Package#getModeTransition()
  * @model
@@ -65,6 +68,9 @@ public interface ModeTransition extends ModeFeature {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * <p>From package AADLConstructs::Modes.</p>
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Source</em>' reference.
 	 * @see #setSource(Mode)
 	 * @see org.osate.aadl2.Aadl2Package#getModeTransition_Source()
@@ -91,6 +97,9 @@ public interface ModeTransition extends ModeFeature {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * <p>From package AADLConstructs::Modes.</p>
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Destination</em>' reference.
 	 * @see #setDestination(Mode)
 	 * @see org.osate.aadl2.Aadl2Package#getModeTransition_Destination()
@@ -118,6 +127,9 @@ public interface ModeTransition extends ModeFeature {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * <p>From package AADLConstructs::Modes.</p>
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Trigger</em>' containment reference list.
 	 * @see org.osate.aadl2.Aadl2Package#getModeTransition_OwnedTrigger()
 	 * @model containment="true" required="true" ordered="false"
@@ -129,11 +141,10 @@ public interface ModeTransition extends ModeFeature {
 	 * Creates a new {@link org.osate.aadl2.ModeTransitionTrigger} and appends it to the '<em><b>Owned Trigger</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param eClass The Ecore class of the {@link org.osate.aadl2.ModeTransitionTrigger} to create.
 	 * @return The new {@link org.osate.aadl2.ModeTransitionTrigger}.
 	 * @see #getOwnedTriggers()
 	 * @generated
 	 */
-	ModeTransitionTrigger createOwnedTrigger(EClass eClass);
+	ModeTransitionTrigger createOwnedTrigger();
 
 } // ModeTransition

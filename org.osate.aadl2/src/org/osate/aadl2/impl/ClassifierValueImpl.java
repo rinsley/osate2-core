@@ -40,6 +40,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.util.EcoreUtil;
 import org.osate.aadl2.Aadl2Package;
 import org.osate.aadl2.Classifier;
 import org.osate.aadl2.ClassifierValue;
@@ -54,15 +55,14 @@ import org.osate.aadl2.properties.EvaluationContext;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.osate.aadl2.impl.ClassifierValueImpl#getClassifier <em>Classifier</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
-public class ClassifierValueImpl extends PropertyOwnerImpl implements
-		ClassifierValue {
+public class ClassifierValueImpl extends PropertyOwnerImpl implements ClassifierValue {
 	/**
 	 * The cached value of the '{@link #getClassifier() <em>Classifier</em>}' reference.
 	 * <!-- begin-user-doc -->
@@ -97,15 +97,16 @@ public class ClassifierValueImpl extends PropertyOwnerImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Classifier getClassifier() {
 		if (classifier != null && ((EObject) classifier).eIsProxy()) {
 			InternalEObject oldClassifier = (InternalEObject) classifier;
 			classifier = (Classifier) eResolveProxy(oldClassifier);
 			if (classifier != oldClassifier) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-							Aadl2Package.CLASSIFIER_VALUE__CLASSIFIER,
+				if (eNotificationRequired()) {
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, Aadl2Package.CLASSIFIER_VALUE__CLASSIFIER,
 							oldClassifier, classifier));
+				}
 			}
 		}
 		return classifier;
@@ -125,13 +126,14 @@ public class ClassifierValueImpl extends PropertyOwnerImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setClassifier(Classifier newClassifier) {
 		Classifier oldClassifier = classifier;
 		classifier = newClassifier;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					Aadl2Package.CLASSIFIER_VALUE__CLASSIFIER, oldClassifier,
-					classifier));
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, Notification.SET, Aadl2Package.CLASSIFIER_VALUE__CLASSIFIER,
+					oldClassifier, classifier));
+		}
 	}
 
 	/**
@@ -143,8 +145,9 @@ public class ClassifierValueImpl extends PropertyOwnerImpl implements
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 		case Aadl2Package.CLASSIFIER_VALUE__CLASSIFIER:
-			if (resolve)
+			if (resolve) {
 				return getClassifier();
+			}
 			return basicGetClassifier();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -194,8 +197,9 @@ public class ClassifierValueImpl extends PropertyOwnerImpl implements
 		return super.eIsSet(featureID);
 	}
 
-	public EvaluatedProperty evaluate(EvaluationContext ctx) {
-		return new EvaluatedProperty(this);
+	@Override
+	public EvaluatedProperty evaluate(EvaluationContext ctx, int depth) {
+		return new EvaluatedProperty(EcoreUtil.copy(this));
 	}
 
 	/**
@@ -207,29 +211,19 @@ public class ClassifierValueImpl extends PropertyOwnerImpl implements
 	}
 
 	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result
-				+ ((classifier == null) ? 0 : classifier.hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
+	public boolean sameAs(PropertyExpression pe) {
+		if (this == pe) {
 			return true;
-		if (obj == null)
+		}
+		if (pe == null || getClass() != pe.getClass()) {
 			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		ClassifierValueImpl other = (ClassifierValueImpl) obj;
+		}
+		ClassifierValueImpl other = (ClassifierValueImpl) pe;
 		if (classifier == null) {
-			if (other.classifier != null)
-				return false;
-		} else if (!classifier.equals(other.classifier))
-			return false;
-		return true;
+			return other.classifier == null;
+		} else {
+			return classifier == other.classifier;
+		}
 	}
 
 } // ClassifierValueImpl

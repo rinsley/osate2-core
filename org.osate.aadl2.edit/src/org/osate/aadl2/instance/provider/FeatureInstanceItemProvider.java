@@ -1,12 +1,12 @@
 /**
  * <copyright>
  * Copyright  2008 by Carnegie Mellon University, all rights reserved.
- * 
+ *
  * Use of the Open Source AADL Tool Environment (OSATE) is subject to the terms of the license set forth
  * at http://www.eclipse.org/org/documents/epl-v10.html.
- * 
+ *
  * NO WARRANTY
- * 
+ *
  * ANY INFORMATION, MATERIALS, SERVICES, INTELLECTUAL PROPERTY OR OTHER PROPERTY OR RIGHTS GRANTED OR PROVIDED BY
  * CARNEGIE MELLON UNIVERSITY PURSUANT TO THIS LICENSE (HEREINAFTER THE ''DELIVERABLES'') ARE ON AN ''AS-IS'' BASIS.
  * CARNEGIE MELLON UNIVERSITY MAKES NO WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED AS TO ANY MATTER INCLUDING,
@@ -16,21 +16,21 @@
  * REGARDLESS OF WHETHER SUCH PARTY WAS AWARE OF THE POSSIBILITY OF SUCH DAMAGES. LICENSEE AGREES THAT IT WILL NOT
  * MAKE ANY WARRANTY ON BEHALF OF CARNEGIE MELLON UNIVERSITY, EXPRESS OR IMPLIED, TO ANY PERSON CONCERNING THE
  * APPLICATION OF OR THE RESULTS TO BE OBTAINED WITH THE DELIVERABLES UNDER THIS LICENSE.
- * 
+ *
  * Licensee hereby agrees to defend, indemnify, and hold harmless Carnegie Mellon University, its trustees, officers,
  * employees, and agents from all claims or demands made against them (and any related losses, expenses, or
  * attorney's fees) arising out of, or relating to Licensee's and/or its sub licensees' negligent use or willful
  * misuse of or negligent conduct or willful misconduct regarding the Software, facilities, or other rights or
  * assistance granted by Carnegie Mellon University under this License, including, but not limited to, any claims of
  * product liability, personal injury, death, damage to property, or violation of any laws or regulations.
- * 
+ *
  * Carnegie Mellon University Software Engineering Institute authored documents are sponsored by the U.S. Department
  * of Defense under Contract F19628-00-C-0003. Carnegie Mellon University retains copyrights in all material produced
  * under this contract. The U.S. Government retains a non-exclusive, royalty-free license to publish or reproduce these
  * documents, or allow others to do so, for U.S. Government purposes only pursuant to the copyright license
  * under the contract clause at 252.227.7013.
  * </copyright>
- * 
+ *
  *
  * $Id: FeatureInstanceItemProvider.java,v 1.6 2010-05-12 20:09:31 lwrage Exp $
  */
@@ -43,16 +43,13 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
-import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
-import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
-import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
+import org.osate.aadl2.instance.FeatureCategory;
 import org.osate.aadl2.instance.FeatureInstance;
 import org.osate.aadl2.instance.InstancePackage;
+import org.osate.aadl2.instance.SystemInstance;
 
 /**
  * This is the item provider adapter for a {@link org.osate.aadl2.instance.FeatureInstance} object.
@@ -60,10 +57,7 @@ import org.osate.aadl2.instance.InstancePackage;
  * <!-- end-user-doc -->
  * @generated
  */
-public class FeatureInstanceItemProvider extends
-		ConnectionInstanceEndItemProvider implements
-		IEditingDomainItemProvider, IStructuredItemContentProvider,
-		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class FeatureInstanceItemProvider extends ConnectionInstanceEndItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -103,15 +97,11 @@ public class FeatureInstanceItemProvider extends
 	 */
 	protected void addSrcFlowSpecPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(
-						((ComposeableAdapterFactory) adapterFactory)
-								.getRootAdapterFactory(),
-						getResourceLocator(),
-						getString("_UI_FeatureInstance_srcFlowSpec_feature"), //$NON-NLS-1$
-						getString(
-								"_UI_PropertyDescriptor_description", "_UI_FeatureInstance_srcFlowSpec_feature", "_UI_FeatureInstance_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-						InstancePackage.Literals.FEATURE_INSTANCE__SRC_FLOW_SPEC,
-						true, false, true, null, null, null));
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_FeatureInstance_srcFlowSpec_feature"), //$NON-NLS-1$
+						getString("_UI_PropertyDescriptor_description", "_UI_FeatureInstance_srcFlowSpec_feature", //$NON-NLS-1$//$NON-NLS-2$
+								"_UI_FeatureInstance_type"), //$NON-NLS-1$
+						InstancePackage.Literals.FEATURE_INSTANCE__SRC_FLOW_SPEC, true, false, true, null, null, null));
 	}
 
 	/**
@@ -122,15 +112,11 @@ public class FeatureInstanceItemProvider extends
 	 */
 	protected void addDstFlowSpecPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(
-						((ComposeableAdapterFactory) adapterFactory)
-								.getRootAdapterFactory(),
-						getResourceLocator(),
-						getString("_UI_FeatureInstance_dstFlowSpec_feature"), //$NON-NLS-1$
-						getString(
-								"_UI_PropertyDescriptor_description", "_UI_FeatureInstance_dstFlowSpec_feature", "_UI_FeatureInstance_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-						InstancePackage.Literals.FEATURE_INSTANCE__DST_FLOW_SPEC,
-						true, false, true, null, null, null));
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_FeatureInstance_dstFlowSpec_feature"), //$NON-NLS-1$
+						getString("_UI_PropertyDescriptor_description", "_UI_FeatureInstance_dstFlowSpec_feature", //$NON-NLS-1$//$NON-NLS-2$
+								"_UI_FeatureInstance_type"), //$NON-NLS-1$
+						InstancePackage.Literals.FEATURE_INSTANCE__DST_FLOW_SPEC, true, false, true, null, null, null));
 	}
 
 	/**
@@ -141,15 +127,11 @@ public class FeatureInstanceItemProvider extends
 	 */
 	protected void addCategoryPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(
-						((ComposeableAdapterFactory) adapterFactory)
-								.getRootAdapterFactory(),
-						getResourceLocator(),
-						getString("_UI_FeatureInstance_category_feature"), //$NON-NLS-1$
-						getString(
-								"_UI_PropertyDescriptor_description", "_UI_FeatureInstance_category_feature", "_UI_FeatureInstance_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-						InstancePackage.Literals.FEATURE_INSTANCE__CATEGORY,
-						true, false, false,
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_FeatureInstance_category_feature"), //$NON-NLS-1$
+						getString("_UI_PropertyDescriptor_description", "_UI_FeatureInstance_category_feature", //$NON-NLS-1$//$NON-NLS-2$
+								"_UI_FeatureInstance_type"), //$NON-NLS-1$
+						InstancePackage.Literals.FEATURE_INSTANCE__CATEGORY, true, false, false,
 						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
@@ -161,15 +143,11 @@ public class FeatureInstanceItemProvider extends
 	 */
 	protected void addDirectionPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(
-						((ComposeableAdapterFactory) adapterFactory)
-								.getRootAdapterFactory(),
-						getResourceLocator(),
-						getString("_UI_FeatureInstance_direction_feature"), //$NON-NLS-1$
-						getString(
-								"_UI_PropertyDescriptor_description", "_UI_FeatureInstance_direction_feature", "_UI_FeatureInstance_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-						InstancePackage.Literals.FEATURE_INSTANCE__DIRECTION,
-						true, false, false,
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_FeatureInstance_direction_feature"), //$NON-NLS-1$
+						getString("_UI_PropertyDescriptor_description", "_UI_FeatureInstance_direction_feature", //$NON-NLS-1$//$NON-NLS-2$
+								"_UI_FeatureInstance_type"), //$NON-NLS-1$
+						InstancePackage.Literals.FEATURE_INSTANCE__DIRECTION, true, false, false,
 						ItemPropertyDescriptor.GENERIC_VALUE_IMAGE, null, null));
 	}
 
@@ -181,15 +159,11 @@ public class FeatureInstanceItemProvider extends
 	 */
 	protected void addFeaturePropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(
-						((ComposeableAdapterFactory) adapterFactory)
-								.getRootAdapterFactory(),
-						getResourceLocator(),
-						getString("_UI_FeatureInstance_feature_feature"), //$NON-NLS-1$
-						getString(
-								"_UI_PropertyDescriptor_description", "_UI_FeatureInstance_feature_feature", "_UI_FeatureInstance_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-						InstancePackage.Literals.FEATURE_INSTANCE__FEATURE,
-						true, false, true, null, null, null));
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_FeatureInstance_feature_feature"), //$NON-NLS-1$
+						getString("_UI_PropertyDescriptor_description", "_UI_FeatureInstance_feature_feature", //$NON-NLS-1$//$NON-NLS-2$
+								"_UI_FeatureInstance_type"), //$NON-NLS-1$
+						InstancePackage.Literals.FEATURE_INSTANCE__FEATURE, true, false, true, null, null, null));
 	}
 
 	/**
@@ -200,15 +174,11 @@ public class FeatureInstanceItemProvider extends
 	 */
 	protected void addIndexPropertyDescriptor(Object object) {
 		itemPropertyDescriptors
-				.add(createItemPropertyDescriptor(
-						((ComposeableAdapterFactory) adapterFactory)
-								.getRootAdapterFactory(),
-						getResourceLocator(),
-						getString("_UI_FeatureInstance_index_feature"), //$NON-NLS-1$
-						getString(
-								"_UI_PropertyDescriptor_description", "_UI_FeatureInstance_index_feature", "_UI_FeatureInstance_type"), //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-						InstancePackage.Literals.FEATURE_INSTANCE__INDEX, true,
-						false, false,
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_FeatureInstance_index_feature"), //$NON-NLS-1$
+						getString("_UI_PropertyDescriptor_description", "_UI_FeatureInstance_index_feature", //$NON-NLS-1$//$NON-NLS-2$
+								"_UI_FeatureInstance_type"), //$NON-NLS-1$
+						InstancePackage.Literals.FEATURE_INSTANCE__INDEX, true, false, false,
 						ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE, null, null));
 	}
 
@@ -221,12 +191,10 @@ public class FeatureInstanceItemProvider extends
 	 * @generated
 	 */
 	@Override
-	public Collection<? extends EStructuralFeature> getChildrenFeatures(
-			Object object) {
+	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures
-					.add(InstancePackage.Literals.FEATURE_INSTANCE__FEATURE_INSTANCE);
+			childrenFeatures.add(InstancePackage.Literals.FEATURE_INSTANCE__FEATURE_INSTANCE);
 		}
 		return childrenFeatures;
 	}
@@ -248,12 +216,28 @@ public class FeatureInstanceItemProvider extends
 	 * This returns FeatureInstance.gif.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object,
-				getResourceLocator().getImage("full/obj16/FeatureInstance")); //$NON-NLS-1$
+
+		FeatureCategory cat = ((FeatureInstance) object).getCategory();
+		String name = "FeatureInstance";
+		if (cat != null) {
+			name = cat.getLiteral();
+			int idx = name.indexOf(" ");
+			if (idx < 0) {
+				name = name.substring(0, 1).toUpperCase() + name.substring(1) + ".gif";
+			} else {
+				name = name.substring(0, 1).toUpperCase() + name.substring(1, idx).toLowerCase()
+						+ name.substring(idx + 1, idx + 2).toUpperCase() + name.substring(idx + 2).toLowerCase()
+						+ ".gif";
+			}
+		}
+		if (object instanceof SystemInstance) {
+			name = "System";
+		}
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/" + name)); //$NON-NLS-1$
 	}
 
 	/**
@@ -264,13 +248,11 @@ public class FeatureInstanceItemProvider extends
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((FeatureInstance) object).getName();
-		long index = ((FeatureInstance) object).getIndex();
-		if (index > 0) {
-			label += " [" + index + "]";
-		}
-		return label == null || label.length() == 0 ? getString("_UI_FeatureInstance_type") : //$NON-NLS-1$
-				getString("_UI_FeatureInstance_type") + " " + label; //$NON-NLS-1$ //$NON-NLS-2$
+		FeatureInstance fi = (FeatureInstance) object;
+		String label = fi.getFullName();
+		String ftype = fi.getCategory().getName();
+		return (ftype == null || ftype.length() == 0 ? getString("_UI_FeatureInstance_type") : ftype) //$NON-NLS-1$
+				+ (label == null || label.length() == 0 ? "" : " " + label);
 	}
 
 	/**
@@ -288,12 +270,10 @@ public class FeatureInstanceItemProvider extends
 		case InstancePackage.FEATURE_INSTANCE__CATEGORY:
 		case InstancePackage.FEATURE_INSTANCE__DIRECTION:
 		case InstancePackage.FEATURE_INSTANCE__INDEX:
-			fireNotifyChanged(new ViewerNotification(notification,
-					notification.getNotifier(), false, true));
+			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
 		case InstancePackage.FEATURE_INSTANCE__FEATURE_INSTANCE:
-			fireNotifyChanged(new ViewerNotification(notification,
-					notification.getNotifier(), true, false));
+			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 			return;
 		}
 		super.notifyChanged(notification);

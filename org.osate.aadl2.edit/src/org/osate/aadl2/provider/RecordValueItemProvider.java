@@ -41,12 +41,7 @@ import java.util.List;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EStructuralFeature;
-import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
-import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
-import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.osate.aadl2.Aadl2Factory;
 import org.osate.aadl2.Aadl2Package;
@@ -58,9 +53,7 @@ import org.osate.aadl2.RecordValue;
  * <!-- end-user-doc -->
  * @generated
  */
-public class RecordValueItemProvider extends PropertyValueItemProvider
-		implements IEditingDomainItemProvider, IStructuredItemContentProvider,
-		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class RecordValueItemProvider extends PropertyValueItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -95,12 +88,10 @@ public class RecordValueItemProvider extends PropertyValueItemProvider
 	 * @generated
 	 */
 	@Override
-	public Collection<? extends EStructuralFeature> getChildrenFeatures(
-			Object object) {
+	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(Aadl2Package.eINSTANCE
-					.getRecordValue_OwnedFieldValue());
+			childrenFeatures.add(Aadl2Package.eINSTANCE.getRecordValue_OwnedFieldValue());
 		}
 		return childrenFeatures;
 	}
@@ -126,8 +117,7 @@ public class RecordValueItemProvider extends PropertyValueItemProvider
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object,
-				getResourceLocator().getImage("full/obj16/RecordValue"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/RecordValue"));
 	}
 
 	/**
@@ -154,8 +144,7 @@ public class RecordValueItemProvider extends PropertyValueItemProvider
 
 		switch (notification.getFeatureID(RecordValue.class)) {
 		case Aadl2Package.RECORD_VALUE__OWNED_FIELD_VALUE:
-			fireNotifyChanged(new ViewerNotification(notification,
-					notification.getNotifier(), true, false));
+			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 			return;
 		}
 		super.notifyChanged(notification);
@@ -169,12 +158,10 @@ public class RecordValueItemProvider extends PropertyValueItemProvider
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(
-			Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(
-				Aadl2Package.eINSTANCE.getRecordValue_OwnedFieldValue(),
+		newChildDescriptors.add(createChildParameter(Aadl2Package.eINSTANCE.getRecordValue_OwnedFieldValue(),
 				Aadl2Factory.eINSTANCE.createBasicPropertyAssociation()));
 	}
 

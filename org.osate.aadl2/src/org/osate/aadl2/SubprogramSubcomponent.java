@@ -40,34 +40,40 @@ package org.osate.aadl2;
  * A representation of the model object '<em><b>Subprogram Subcomponent</b></em>'.
  * <!-- end-user-doc -->
  *
+ * <!-- begin-model-doc -->
+ * <p>From package AADLDetails::Components::Subprogram.</p>
+ * <!-- end-model-doc -->
+ *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.osate.aadl2.SubprogramSubcomponent#getSubprogramSubcomponentType <em>Subprogram Subcomponent Type</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.osate.aadl2.Aadl2Package#getSubprogramSubcomponent()
  * @model
  * @generated
  */
-public interface SubprogramSubcomponent extends Subcomponent,
-		AccessConnectionEnd, Subprogram {
+public interface SubprogramSubcomponent extends Subcomponent, AccessConnectionEnd, Subprogram {
 
 	/**
 	 * Returns the value of the '<em><b>Subprogram Subcomponent Type</b></em>' reference.
 	 * <p>
 	 * This feature subsets the following features:
+	 * </p>
 	 * <ul>
 	 *   <li>'{@link org.osate.aadl2.Subcomponent#getSubcomponentType() <em>Subcomponent Type</em>}'</li>
 	 * </ul>
-	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Subprogram Subcomponent Type</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * <p>From package AADLDetails::Components::Subprogram.</p>
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Subprogram Subcomponent Type</em>' reference.
 	 * @see #setSubprogramSubcomponentType(SubprogramSubcomponentType)
 	 * @see org.osate.aadl2.Aadl2Package#getSubprogramSubcomponent_SubprogramSubcomponentType()

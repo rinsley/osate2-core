@@ -40,12 +40,16 @@ package org.osate.aadl2;
  * A representation of the model object '<em><b>Number Value</b></em>'.
  * <!-- end-user-doc -->
  *
+ * <!-- begin-model-doc -->
+ * <p>From package AADLProperties::Expressions.</p>
+ * <!-- end-model-doc -->
+ *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.osate.aadl2.NumberValue#getUnit <em>Unit</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.osate.aadl2.Aadl2Package#getNumberValue()
  * @model abstract="true"
@@ -60,6 +64,9 @@ public interface NumberValue extends PropertyValue {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * <p>From package AADLProperties::Expressions.</p>
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Unit</em>' reference.
 	 * @see #setUnit(UnitLiteral)
 	 * @see org.osate.aadl2.Aadl2Package#getNumberValue_Unit()
@@ -80,7 +87,7 @@ public interface NumberValue extends PropertyValue {
 
 	/**
 	 * @author dionisio
-	 * 
+	 *
 	 * set the value by parsing the string.
 	 * @param s string with number to parse
 	 */

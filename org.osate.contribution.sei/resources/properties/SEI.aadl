@@ -1,7 +1,7 @@
 property set SEI is
   -- property to support security level analysis
-  SecurityLevel: inherit aadlinteger  applies to (thread, thread group, process, system);
-  SafetyCriticality  : aadlinteger applies to (thread, thread group, process, system);
+  SecurityLevel: inherit aadlinteger  applies to (thread, thread group, process, system, virtual processor);
+  SafetyCriticality  : aadlinteger applies to (thread, thread group, process, system, virtual processor);
   
   -- property to support analysis of missrate propagation along flows
   StreamMissRate: aadlreal  applies to (port);
@@ -35,8 +35,8 @@ property set SEI is
   -- properties to support specification of partitions and latency analysis
   -- The partition execution rate, specified through Partition_Latency, 
   -- contributes to flow latency on cross-partition communication
-  Partition_Latency: Time => 50 Ms applies to (system, process);
-  Is_Partition: aadlboolean  => false applies to (system, process);
+  Partition_Latency: Time applies to (system, process, virtual processor);
+  Is_Partition: aadlboolean  applies to (system, process, virtual processor);
   
   -- properties to support adjustment of execution time according to processor speed
   -- time to execute one processor cycle
@@ -66,11 +66,11 @@ property set SEI is
   -- ROM budget by an application component
   ROMBudget: aadlreal  units Size_Units applies to (thread, thread group, process, system, device);
   -- capacity of a power source
-  PowerCapacity: aadlreal  units SEI::Power_Units applies to (bus, system);
+  PowerCapacity: aadlreal  units SEI::Power_Units applies to (bus, system, device, abstract);
   -- power draw (demand) of a component
-  PowerBudget: aadlreal  units SEI::Power_Units applies to (bus access);
+  PowerBudget: aadlreal  units SEI::Power_Units applies to ( feature);
   -- power supply by a component
-  PowerSupply: aadlreal  units SEI::Power_Units applies to (bus access);
+  PowerSupply: aadlreal  units SEI::Power_Units applies to ( feature);
   -- capacity of a bus component for transfer of data
   BandWidthCapacity: aadlreal  units Data_Rate_Units applies to (bus, system);
   -- demand for data transfer by a connection
@@ -91,8 +91,25 @@ property set SEI is
   
   -- Data_Rate in the SAVI context. From the original POC demo
    Data_Rate: aadlreal  units (perSecond) applies to (port); -- We now have output_rate as predeclared property, but we keep this around as a simple proeprty
+   Message_Rate: aadlreal  units (perSecond) applies to (port); -- We now have output_rate as predeclared property, but we keep this around as a simple proeprty
   
   --  The next properties are used for the Value-Driven Incremental Development plug-in
   nsloc : aadlinteger applies to (system, subprogram, abstract, thread, process); 
   vdid_inspect : aadlboolean applies to (system, process, abstract, thread, subprogram);
+  
+  Broadcast_Protocol : aadlboolean applies to (bus, virtual bus, system);
+  
+  Platform : aadlstring applies to (processor, virtual processor);
+
+  Price : aadlreal applies to (all);
+
+  Reference_Kind_Type      : type enumeration (any,exist,component,connection,behavior,unknown);
+  Model_Source_Type        : type enumeration (simulink,scade,geometry_stp,sysml);
+  
+  Model_Reference : type record (
+	Model_Type : SEI::Model_Source_Type;
+	Kind       : SEI::Reference_Kind_Type;
+	Filename   : aadlstring;
+	Artifact   : aadlstring;);
+  Model_References : list of SEI::Model_Reference applies to (all);
 end SEI;

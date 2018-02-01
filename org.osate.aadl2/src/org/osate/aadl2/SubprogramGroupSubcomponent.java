@@ -40,34 +40,40 @@ package org.osate.aadl2;
  * A representation of the model object '<em><b>Subprogram Group Subcomponent</b></em>'.
  * <!-- end-user-doc -->
  *
+ * <!-- begin-model-doc -->
+ * <p>From package AADLDetails::Components::SubprogramGroup.</p>
+ * <!-- end-model-doc -->
+ *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.osate.aadl2.SubprogramGroupSubcomponent#getSubprogramGroupSubcomponentType <em>Subprogram Group Subcomponent Type</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.osate.aadl2.Aadl2Package#getSubprogramGroupSubcomponent()
  * @model
  * @generated
  */
-public interface SubprogramGroupSubcomponent extends Subcomponent,
-		AccessConnectionEnd, SubprogramGroup, CallContext {
+public interface SubprogramGroupSubcomponent extends Subcomponent, AccessConnectionEnd, SubprogramGroup, CallContext {
 
 	/**
 	 * Returns the value of the '<em><b>Subprogram Group Subcomponent Type</b></em>' reference.
 	 * <p>
 	 * This feature subsets the following features:
+	 * </p>
 	 * <ul>
 	 *   <li>'{@link org.osate.aadl2.Subcomponent#getSubcomponentType() <em>Subcomponent Type</em>}'</li>
 	 * </ul>
-	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Subprogram Group Subcomponent Type</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * <p>From package AADLDetails::Components::SubprogramGroup.</p>
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Subprogram Group Subcomponent Type</em>' reference.
 	 * @see #setSubprogramGroupSubcomponentType(SubprogramGroupSubcomponentType)
 	 * @see org.osate.aadl2.Aadl2Package#getSubprogramGroupSubcomponent_SubprogramGroupSubcomponentType()
@@ -84,7 +90,6 @@ public interface SubprogramGroupSubcomponent extends Subcomponent,
 	 * @see #getSubprogramGroupSubcomponentType()
 	 * @generated
 	 */
-	void setSubprogramGroupSubcomponentType(
-			SubprogramGroupSubcomponentType value);
+	void setSubprogramGroupSubcomponentType(SubprogramGroupSubcomponentType value);
 
 } // SubprogramGroupSubcomponent

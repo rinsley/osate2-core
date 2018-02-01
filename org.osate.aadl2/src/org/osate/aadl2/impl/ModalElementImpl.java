@@ -51,10 +51,10 @@ import org.osate.aadl2.operations.ModalElementOperations;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.osate.aadl2.impl.ModalElementImpl#getInModes <em>In Mode</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -93,10 +93,10 @@ public class ModalElementImpl extends NamedElementImpl implements ModalElement {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Mode> getInModes() {
 		if (inModes == null) {
-			inModes = new EObjectResolvingEList<Mode>(Mode.class, this,
-					Aadl2Package.MODAL_ELEMENT__IN_MODE);
+			inModes = new EObjectResolvingEList<Mode>(Mode.class, this, Aadl2Package.MODAL_ELEMENT__IN_MODE);
 		}
 		return inModes;
 	}
@@ -106,6 +106,7 @@ public class ModalElementImpl extends NamedElementImpl implements ModalElement {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Mode> getAllInModes() {
 		return ModalElementOperations.getAllInModes(this);
 	}

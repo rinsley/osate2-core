@@ -1,38 +1,17 @@
 /**
  * <copyright>
- * Copyright  2008 by Carnegie Mellon University, all rights reserved.
- * 
- * Use of the Open Source AADL Tool Environment (OSATE) is subject to the terms of the license set forth
- * at http://www.eclipse.org/org/documents/epl-v10.html.
- * 
- * NO WARRANTY
- * 
- * ANY INFORMATION, MATERIALS, SERVICES, INTELLECTUAL PROPERTY OR OTHER PROPERTY OR RIGHTS GRANTED OR PROVIDED BY
- * CARNEGIE MELLON UNIVERSITY PURSUANT TO THIS LICENSE (HEREINAFTER THE ''DELIVERABLES'') ARE ON AN ''AS-IS'' BASIS.
- * CARNEGIE MELLON UNIVERSITY MAKES NO WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED AS TO ANY MATTER INCLUDING,
- * BUT NOT LIMITED TO, WARRANTY OF FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABILITY, INFORMATIONAL CONTENT,
- * NONINFRINGEMENT, OR ERROR-FREE OPERATION. CARNEGIE MELLON UNIVERSITY SHALL NOT BE LIABLE FOR INDIRECT, SPECIAL OR
- * CONSEQUENTIAL DAMAGES, SUCH AS LOSS OF PROFITS OR INABILITY TO USE SAID INTELLECTUAL PROPERTY, UNDER THIS LICENSE,
- * REGARDLESS OF WHETHER SUCH PARTY WAS AWARE OF THE POSSIBILITY OF SUCH DAMAGES. LICENSEE AGREES THAT IT WILL NOT
- * MAKE ANY WARRANTY ON BEHALF OF CARNEGIE MELLON UNIVERSITY, EXPRESS OR IMPLIED, TO ANY PERSON CONCERNING THE
- * APPLICATION OF OR THE RESULTS TO BE OBTAINED WITH THE DELIVERABLES UNDER THIS LICENSE.
- * 
- * Licensee hereby agrees to defend, indemnify, and hold harmless Carnegie Mellon University, its trustees, officers,
- * employees, and agents from all claims or demands made against them (and any related losses, expenses, or
- * attorney's fees) arising out of, or relating to Licensee's and/or its sub licensees' negligent use or willful
- * misuse of or negligent conduct or willful misconduct regarding the Software, facilities, or other rights or
- * assistance granted by Carnegie Mellon University under this License, including, but not limited to, any claims of
- * product liability, personal injury, death, damage to property, or violation of any laws or regulations.
- * 
- * Carnegie Mellon University Software Engineering Institute authored documents are sponsored by the U.S. Department
- * of Defense under Contract F19628-00-C-0003. Carnegie Mellon University retains copyrights in all material produced
- * under this contract. The U.S. Government retains a non-exclusive, royalty-free license to publish or reproduce these
- * documents, or allow others to do so, for U.S. Government purposes only pursuant to the copyright license
- * under the contract clause at 252.227.7013.
- * </copyright>
- * 
  *
- * $Id: Aadl2ModelEditor.java,v 1.3 2009-12-01 15:31:10 lwrage Exp $
+ * Copyright (c) 2005, 2007 IBM Corporation and others.
+ * All rights reserved.   This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *   IBM - Initial API and implementation
+ *   CMU/SEI - modifications for OSATE
+ *
+ * </copyright>
  */
 package org.osate.aadl2.presentation;
 
@@ -67,6 +46,7 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.ui.MarkerHelper;
 import org.eclipse.emf.common.ui.ViewerPane;
 import org.eclipse.emf.common.ui.editor.ProblemEditorPart;
+import org.eclipse.emf.common.ui.viewer.ColumnViewerInformationControlToolTipSupport;
 import org.eclipse.emf.common.ui.viewer.IViewerProvider;
 import org.eclipse.emf.common.util.BasicDiagnostic;
 import org.eclipse.emf.common.util.Diagnostic;
@@ -90,6 +70,8 @@ import org.eclipse.emf.edit.ui.celleditor.AdapterFactoryTreeEditor;
 import org.eclipse.emf.edit.ui.dnd.EditingDomainViewerDropAdapter;
 import org.eclipse.emf.edit.ui.dnd.LocalTransfer;
 import org.eclipse.emf.edit.ui.dnd.ViewerDragAdapter;
+import org.eclipse.emf.edit.ui.provider.DecoratingColumLabelProvider;
+import org.eclipse.emf.edit.ui.provider.DiagnosticDecorator;
 import org.eclipse.emf.edit.ui.provider.UnwrappingSelectionProvider;
 import org.eclipse.emf.edit.ui.util.EditUIMarkerHelper;
 import org.eclipse.emf.edit.ui.util.EditUIUtil;
@@ -100,7 +82,6 @@ import org.eclipse.emf.transaction.ui.provider.TransactionalAdapterFactoryLabelP
 import org.eclipse.emf.workspace.EMFCommandOperation;
 import org.eclipse.emf.workspace.IWorkspaceCommandStack;
 import org.eclipse.emf.workspace.ResourceUndoContext;
-import org.eclipse.emf.workspace.util.WorkspaceSynchronizer;
 import org.eclipse.jface.action.IMenuListener;
 import org.eclipse.jface.action.IMenuManager;
 import org.eclipse.jface.action.IStatusLineManager;
@@ -118,6 +99,7 @@ import org.eclipse.jface.viewers.StructuredSelection;
 import org.eclipse.jface.viewers.StructuredViewer;
 import org.eclipse.jface.viewers.TreeViewer;
 import org.eclipse.jface.viewers.Viewer;
+import org.eclipse.jface.viewers.ViewerFilter;
 import org.eclipse.swt.SWT;
 import org.eclipse.swt.custom.CTabFolder;
 import org.eclipse.swt.dnd.DND;
@@ -146,9 +128,10 @@ import org.eclipse.ui.views.contentoutline.IContentOutlinePage;
 import org.eclipse.ui.views.properties.IPropertySheetPage;
 import org.eclipse.ui.views.properties.PropertySheet;
 import org.eclipse.ui.views.properties.PropertySheetPage;
+import org.osate.aadl2.PropertyAssociation;
 import org.osate.aadl2.instance.provider.InstanceItemProviderAdapterFactory;
 import org.osate.aadl2.provider.Aadl2ItemProviderAdapterFactory;
-
+import org.osate.emf.workspace.util.WorkspaceSynchronizer;
 
 /**
  * This is an example of a Instance model editor.
@@ -156,8 +139,8 @@ import org.osate.aadl2.provider.Aadl2ItemProviderAdapterFactory;
  * <!-- end-user-doc -->
  * @generated NOT
  */
-public class Aadl2ModelEditor extends MultiPageEditorPart implements IEditingDomainProvider, ISelectionProvider,
-		IMenuListener, IViewerProvider, IGotoMarker {
+public class Aadl2ModelEditor extends MultiPageEditorPart
+		implements IEditingDomainProvider, ISelectionProvider, IMenuListener, IViewerProvider, IGotoMarker {
 	/**
 	 * This keeps track of the editing domain that is used to track all changes to the model.
 	 * <!-- begin-user-doc -->
@@ -166,11 +149,11 @@ public class Aadl2ModelEditor extends MultiPageEditorPart implements IEditingDom
 	 */
 	protected AdapterFactoryEditingDomain editingDomain;
 
-	//.CUSTOM: The undo context for this editor's Undo and Redo menus
+	// .CUSTOM: The undo context for this editor's Undo and Redo menus
 	protected IUndoContext undoContext;
 
-	//.CUSTOM: The (one and only) resource that we are editing.  The
-	//         EMF-generated editor edits any number of resources.
+	// .CUSTOM: The (one and only) resource that we are editing. The
+	// EMF-generated editor edits any number of resources.
 	protected Resource resource;
 
 	/**
@@ -222,10 +205,10 @@ public class Aadl2ModelEditor extends MultiPageEditorPart implements IEditingDom
 	 */
 	protected TreeViewer selectionViewer;
 
-	//.CUSTOM: Tracking of the current viewer-pane and definition of additional
-	//         viewers is deleted by this single-page editor.  The following
-	//         fields generated by EMF are deleted:
-	//           parentViewer, treeViewer, listViewer, tableViewer, treeViewerWithColumns
+	// .CUSTOM: Tracking of the current viewer-pane and definition of additional
+	// viewers is deleted by this single-page editor. The following
+	// fields generated by EMF are deleted:
+	// parentViewer, treeViewer, listViewer, tableViewer, treeViewerWithColumns
 
 	/**
 	 * This keeps track of the active viewer pane, in the book.
@@ -283,6 +266,7 @@ public class Aadl2ModelEditor extends MultiPageEditorPart implements IEditingDom
 	 * @generated
 	 */
 	protected IPartListener partListener = new IPartListener() {
+		@Override
 		public void partActivated(IWorkbenchPart p) {
 			if (p instanceof ContentOutline) {
 				if (((ContentOutline) p).getCurrentPage() == contentOutlinePage) {
@@ -300,18 +284,22 @@ public class Aadl2ModelEditor extends MultiPageEditorPart implements IEditingDom
 			}
 		}
 
+		@Override
 		public void partBroughtToTop(IWorkbenchPart p) {
 			// Ignore.
 		}
 
+		@Override
 		public void partClosed(IWorkbenchPart p) {
 			// Ignore.
 		}
 
+		@Override
 		public void partDeactivated(IWorkbenchPart p) {
 			// Ignore.
 		}
 
+		@Override
 		public void partOpened(IWorkbenchPart p) {
 			// Ignore.
 		}
@@ -336,7 +324,7 @@ public class Aadl2ModelEditor extends MultiPageEditorPart implements IEditingDom
 	/**
 	 * Resources that have been moved since last activation.
 	 */
-	//.CUSTOM: Demonstrates the WorkspaceSynchronizer's handling of moves
+	// .CUSTOM: Demonstrates the WorkspaceSynchronizer's handling of moves
 	protected Map<Resource, URI> movedResources = new HashMap<Resource, URI>();
 
 	/**
@@ -387,6 +375,7 @@ public class Aadl2ModelEditor extends MultiPageEditorPart implements IEditingDom
 
 					if (updateProblemIndication) {
 						getSite().getShell().getDisplay().asyncExec(new Runnable() {
+							@Override
 							public void run() {
 								updateProblemIndication();
 							}
@@ -411,13 +400,14 @@ public class Aadl2ModelEditor extends MultiPageEditorPart implements IEditingDom
 		}
 	};
 
-	//.CUSTOM: We track dirty state by the last operation executed when saved
+	// .CUSTOM: We track dirty state by the last operation executed when saved
 	private IUndoableOperation savedOperation;
 
-	//.CUSTOM: Applies this editor's undo context to operations that affect
-	//         its resource.  Also sets selection to viewer on execution of
-	//         operations that wrap EMF Commands.
+	// .CUSTOM: Applies this editor's undo context to operations that affect
+	// its resource. Also sets selection to viewer on execution of
+	// operations that wrap EMF Commands.
 	private final IOperationHistoryListener historyListener = new IOperationHistoryListener() {
+		@Override
 		public void historyNotification(final OperationHistoryEvent event) {
 			Set<Resource> affectedResources = ResourceUndoContext.getAffectedResources(event.getOperation());
 			switch (event.getEventType()) {
@@ -427,14 +417,15 @@ public class Aadl2ModelEditor extends MultiPageEditorPart implements IEditingDom
 					final IUndoableOperation operation = event.getOperation();
 
 					// remove the default undo context so that we can have
-					//     independent undo/redo of independent resource changes
-					operation.removeContext(((IWorkspaceCommandStack) getEditingDomain().getCommandStack())
-							.getDefaultUndoContext());
+					// independent undo/redo of independent resource changes
+					operation.removeContext(
+							((IWorkspaceCommandStack) getEditingDomain().getCommandStack()).getDefaultUndoContext());
 
 					// add our undo context to populate our undo menu
 					operation.addContext(getUndoContext());
 
 					getSite().getShell().getDisplay().asyncExec(new Runnable() {
+						@Override
 						public void run() {
 							firePropertyChange(IEditorPart.PROP_DIRTY);
 
@@ -461,6 +452,7 @@ public class Aadl2ModelEditor extends MultiPageEditorPart implements IEditingDom
 					final IUndoableOperation operation = event.getOperation();
 
 					getSite().getShell().getDisplay().asyncExec(new Runnable() {
+						@Override
 						public void run() {
 							firePropertyChange(IEditorPart.PROP_DIRTY);
 
@@ -488,7 +480,7 @@ public class Aadl2ModelEditor extends MultiPageEditorPart implements IEditingDom
 	/**
 	 * Synchronizes workspace changes with the editing domain.
 	 */
-	//.CUSTOM: Replaces the resourceChangeListener field generated by EMF
+	// .CUSTOM: Replaces the resourceChangeListener field generated by EMF
 	protected WorkspaceSynchronizer workspaceSynchronizer;
 
 	/**
@@ -497,8 +489,8 @@ public class Aadl2ModelEditor extends MultiPageEditorPart implements IEditingDom
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	//.CUSTOM: This editor edits only a single resource and uses a
-	//         WorkspaceSynchronizer to detect external changes
+	// .CUSTOM: This editor edits only a single resource and uses a
+	// WorkspaceSynchronizer to detect external changes
 	protected void handleActivate() {
 		setCurrentViewer(selectionViewer);
 
@@ -520,7 +512,7 @@ public class Aadl2ModelEditor extends MultiPageEditorPart implements IEditingDom
 					getSite().getPage().closeEditor(Aadl2ModelEditor.this, false);
 				}
 			} else if (movedResources.containsKey(res)) {
-				//.CUSTOM: Generated editor does not have move support
+				// .CUSTOM: Generated editor does not have move support
 				if (savedResources.contains(res)) {
 					getOperationHistory().dispose(undoContext, true, true, true);
 
@@ -546,13 +538,15 @@ public class Aadl2ModelEditor extends MultiPageEditorPart implements IEditingDom
 		}
 	}
 
-	//.CUSTOM: Replaces EMF-generated IResourceChangeListener implementation
+	// .CUSTOM: Replaces EMF-generated IResourceChangeListener implementation
 	private WorkspaceSynchronizer.Delegate createSynchronizationDelegate() {
 		return new WorkspaceSynchronizer.Delegate() {
+			@Override
 			public boolean handleResourceDeleted(Resource resource) {
 				if ((resource == getResource()) && !isDirty()) {
 					// just close now without prompt
 					getSite().getShell().getDisplay().asyncExec(new Runnable() {
+						@Override
 						public void run() {
 							getSite().getPage().closeEditor(Aadl2ModelEditor.this, false);
 						}
@@ -564,9 +558,10 @@ public class Aadl2ModelEditor extends MultiPageEditorPart implements IEditingDom
 				return true;
 			}
 
+			@Override
 			public boolean handleResourceChanged(Resource resource) {
-				// is this a resource that we just saved?  If so, then this is
-				//   notification of that save, so forget it
+				// is this a resource that we just saved? If so, then this is
+				// notification of that save, so forget it
 				if (savedResources.contains(resource)) {
 					savedResources.remove(resource);
 				} else {
@@ -576,12 +571,22 @@ public class Aadl2ModelEditor extends MultiPageEditorPart implements IEditingDom
 				return true;
 			}
 
+			@Override
 			public boolean handleResourceMoved(Resource resource, URI newURI) {
 				movedResources.put(resource, newURI);
 
 				return true;
 			}
 
+			@Override
+			public boolean handleResourceMarkersChanged(Resource resource, IFile file) {
+				DiagnosticDecorator.DiagnosticAdapter.update(resource,
+						markerHelper.getMarkerDiagnostics(resource, file));
+
+				return true;
+			}
+
+			@Override
 			public void dispose() {
 				removedResources.clear();
 				changedResources.clear();
@@ -593,7 +598,7 @@ public class Aadl2ModelEditor extends MultiPageEditorPart implements IEditingDom
 	/**
 	 * Handles what to do with changed resource on activation.
 	 */
-	//.CUSTOM: Replaces EMF-generated handleChangedResources() method
+	// .CUSTOM: Replaces EMF-generated handleChangedResources() method
 	protected void handleChangedResource() {
 		Resource res = getResource();
 
@@ -629,7 +634,7 @@ public class Aadl2ModelEditor extends MultiPageEditorPart implements IEditingDom
 	/**
 	 * Handles what to do with moved resource on activation.
 	 */
-	//.CUSTOM: EMF-generated editor does not handle moves
+	// .CUSTOM: EMF-generated editor does not handle moves
 	protected void handleMovedResource() {
 		if (!isDirty() || handleDirtyConflict()) {
 			Resource res = getResource();
@@ -727,8 +732,8 @@ public class Aadl2ModelEditor extends MultiPageEditorPart implements IEditingDom
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	//.CUSTOM: Instead of the command-stack listener, we create an
-	//         operation-history listener.  We also create our undo context.
+	// .CUSTOM: Instead of the command-stack listener, we create an
+	// operation-history listener. We also create our undo context.
 	protected void initializeEditingDomain() {
 		// Create an adapter factory that yields item providers.
 		//
@@ -742,13 +747,9 @@ public class Aadl2ModelEditor extends MultiPageEditorPart implements IEditingDom
 
 		// Get the registered workbench editing domain.
 		//
-		// XXX separate vs. shared resource set
-//		editingDomain = 
-//				(AdapterFactoryEditingDomain) new ModelEditingDomainFactory().createEditingDomain();
-		editingDomain =	(AdapterFactoryEditingDomain) TransactionalEditingDomain.Registry.INSTANCE
+		editingDomain = (AdapterFactoryEditingDomain) TransactionalEditingDomain.Registry.INSTANCE
 				.getEditingDomain("org.osate.aadl2.ModelEditingDomain"); //$NON-NLS-1$
-		undoContext = new ObjectUndoContext(this, Aadl2EditorPlugin.getPlugin()
-				.getString("_UI_InstanceEditor_label")); //$NON-NLS-1$
+		undoContext = new ObjectUndoContext(this, Aadl2EditorPlugin.getPlugin().getString("_UI_InstanceEditor_label")); //$NON-NLS-1$
 		getOperationHistory().addOperationHistoryListener(historyListener);
 	}
 
@@ -780,6 +781,7 @@ public class Aadl2ModelEditor extends MultiPageEditorPart implements IEditingDom
 			//
 			//
 			Runnable runnable = new Runnable() {
+				@Override
 				public void run() {
 					// Try to select the items in the current content viewer of the editor.
 					//
@@ -800,6 +802,7 @@ public class Aadl2ModelEditor extends MultiPageEditorPart implements IEditingDom
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EditingDomain getEditingDomain() {
 		return editingDomain;
 	}
@@ -809,14 +812,14 @@ public class Aadl2ModelEditor extends MultiPageEditorPart implements IEditingDom
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	//.CUSTOM: EMF-generated class extends AdapterFactoryContentProvider
+	// .CUSTOM: EMF-generated class extends AdapterFactoryContentProvider
 	public class ReverseAdapterFactoryContentProvider extends TransactionalAdapterFactoryContentProvider {
 		/**
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated NOT
 		 */
-		//.CUSTOM: Superclass constructor requires the transactional editing domain
+		// .CUSTOM: Superclass constructor requires the transactional editing domain
 		public ReverseAdapterFactoryContentProvider(AdapterFactory adapterFactory) {
 			super((TransactionalEditingDomain) getEditingDomain(), adapterFactory);
 		}
@@ -897,6 +900,7 @@ public class Aadl2ModelEditor extends MultiPageEditorPart implements IEditingDom
 				selectionChangedListener = new ISelectionChangedListener() {
 					// This just notifies those things that are affected by the section.
 					//
+					@Override
 					public void selectionChanged(SelectionChangedEvent selectionChangedEvent) {
 						setSelection(selectionChangedEvent.getSelection());
 					}
@@ -931,6 +935,7 @@ public class Aadl2ModelEditor extends MultiPageEditorPart implements IEditingDom
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Viewer getViewer() {
 		return currentViewer;
 	}
@@ -965,7 +970,7 @@ public class Aadl2ModelEditor extends MultiPageEditorPart implements IEditingDom
 	public void createModel() {
 		URI resourceURI = EditUIUtil.getURI(getEditorInput());
 		Exception exception = null;
-		resource = null; //.CUSTOM: We record our single resource
+		resource = null; // .CUSTOM: We record our single resource
 		try {
 			// Load the resource through the editing domain.
 			//
@@ -980,7 +985,7 @@ public class Aadl2ModelEditor extends MultiPageEditorPart implements IEditingDom
 			resourceToDiagnosticMap.put(resource, analyzeResourceProblems(resource, exception));
 		}
 
-		//.CUSTOM: We manage only the one resource in the set
+		// .CUSTOM: We manage only the one resource in the set
 		editingDomain.getResourceSet().eAdapters().add(problemIndicationAdapter);
 	}
 
@@ -1010,7 +1015,7 @@ public class Aadl2ModelEditor extends MultiPageEditorPart implements IEditingDom
 	/**
 	 * Obtains the single resource that I edit.
 	 */
-	//.CUSTOM: This editor edits only one resource.
+	// .CUSTOM: This editor edits only one resource.
 	protected Resource getResource() {
 		return resource;
 	}
@@ -1019,7 +1024,7 @@ public class Aadl2ModelEditor extends MultiPageEditorPart implements IEditingDom
 	 * Obtains my undo context for populating the Undo and Redo menus
 	 * from the operation history.
 	 */
-	//.CUSTOM: Operation-history-integrated editors have undo contexts.
+	// .CUSTOM: Operation-history-integrated editors have undo contexts.
 	public IUndoContext getUndoContext() {
 		return undoContext;
 	}
@@ -1030,7 +1035,7 @@ public class Aadl2ModelEditor extends MultiPageEditorPart implements IEditingDom
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	//.CUSTOM: We only have the one tree editor in this example.
+	// .CUSTOM: We only have the one tree editor in this example.
 	@Override
 	public void createPages() {
 		// Creates the model from the editor input
@@ -1061,20 +1066,25 @@ public class Aadl2ModelEditor extends MultiPageEditorPart implements IEditingDom
 
 				selectionViewer = (TreeViewer) viewerPane.getViewer();
 
-				//.CUSTOM: Use a transactional content provider
+				// .CUSTOM: Use a transactional content provider
 				selectionViewer.setContentProvider(new TransactionalAdapterFactoryContentProvider(
 						(TransactionalEditingDomain) getEditingDomain(), adapterFactory));
 
-				//.CUSTOM: Use a transactional label provider
-				selectionViewer.setLabelProvider(new TransactionalAdapterFactoryLabelProvider(
-						(TransactionalEditingDomain) getEditingDomain(), adapterFactory));
+				// .CUSTOM: Use a transactional label provider
+				selectionViewer.setLabelProvider(new DecoratingColumLabelProvider(
+						new TransactionalAdapterFactoryLabelProvider((TransactionalEditingDomain) getEditingDomain(),
+								adapterFactory),
+						new DiagnosticDecorator(editingDomain, selectionViewer,
+								Aadl2EditorPlugin.getPlugin().getDialogSettings())));
 
-				//.CUSTOM: I edit only a single resource
+				// .CUSTOM: I edit only a single resource
 				selectionViewer.setInput(getResource());
 				selectionViewer.setSelection(new StructuredSelection(getResource()), true);
 				viewerPane.setTitle(getResource());
 
 				new AdapterFactoryTreeEditor(selectionViewer.getTree(), adapterFactory);
+				new ColumnViewerInformationControlToolTipSupport(selectionViewer,
+						new DiagnosticDecorator.EditingDomainLocationListener(editingDomain, selectionViewer));
 
 				createContextMenuFor(selectionViewer);
 				int pageIndex = addPage(viewerPane.getControl());
@@ -1099,6 +1109,7 @@ public class Aadl2ModelEditor extends MultiPageEditorPart implements IEditingDom
 		});
 
 		getSite().getShell().getDisplay().asyncExec(new Runnable() {
+			@Override
 			public void run() {
 				updateProblemIndication();
 			}
@@ -1147,9 +1158,8 @@ public class Aadl2ModelEditor extends MultiPageEditorPart implements IEditingDom
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
-	@SuppressWarnings("unchecked")
 	@Override
-	public Object getAdapter(Class key) {
+	public Object getAdapter(@SuppressWarnings("rawtypes") Class key) {
 		if (key.equals(IContentOutlinePage.class)) {
 			return showOutlineView() ? getContentOutlinePage() : null;
 		} else if (key.equals(IPropertySheetPage.class)) {
@@ -1157,7 +1167,7 @@ public class Aadl2ModelEditor extends MultiPageEditorPart implements IEditingDom
 		} else if (key.equals(IGotoMarker.class)) {
 			return this;
 		} else if (key.equals(IUndoContext.class)) {
-			//.CUSTOM: used by undo/redo actions to get their undo context
+			// .CUSTOM: used by undo/redo actions to get their undo context
 			return undoContext;
 		} else {
 			return super.getAdapter(key);
@@ -1183,16 +1193,28 @@ public class Aadl2ModelEditor extends MultiPageEditorPart implements IEditingDom
 
 					// Set up the tree viewer.
 					//
-					//.CUSTOM: Use transactional content provider
+					// .CUSTOM: Use transactional content provider
 					contentOutlineViewer.setContentProvider(new TransactionalAdapterFactoryContentProvider(
 							(TransactionalEditingDomain) getEditingDomain(), adapterFactory));
 
-					//.CUSTOM: Use transactional label provider
-					contentOutlineViewer.setLabelProvider(new TransactionalAdapterFactoryLabelProvider(
-							(TransactionalEditingDomain) getEditingDomain(), adapterFactory));
+					// .CUSTOM: Use transactional label provider
+					contentOutlineViewer.setLabelProvider(new DecoratingColumLabelProvider(
+							new TransactionalAdapterFactoryLabelProvider(
+									(TransactionalEditingDomain) getEditingDomain(), adapterFactory),
+							new DiagnosticDecorator(editingDomain, contentOutlineViewer,
+									Aadl2EditorPlugin.getPlugin().getDialogSettings())));
 
-					//.CUSTOM: I edit only a single resource, not a resource set
+					contentOutlineViewer.addFilter(new ViewerFilter() {
+						@Override
+						public boolean select(Viewer viewer, Object parentElement, Object element) {
+							return !(element instanceof PropertyAssociation);
+						}
+					});
+					// .CUSTOM: I edit only a single resource, not a resource set
 					contentOutlineViewer.setInput(getResource());
+
+					new ColumnViewerInformationControlToolTipSupport(contentOutlineViewer,
+							new DiagnosticDecorator.EditingDomainLocationListener(editingDomain, contentOutlineViewer));
 
 					// Make sure our popups work.
 					//
@@ -1201,7 +1223,7 @@ public class Aadl2ModelEditor extends MultiPageEditorPart implements IEditingDom
 					if (!editingDomain.getResourceSet().getResources().isEmpty()) {
 						// Select the root object in the view.
 						//
-						//.CUSTOM: I edit only a single resource.
+						// .CUSTOM: I edit only a single resource.
 						ArrayList<Object> selection = new ArrayList<Object>();
 						selection.add(getResource());
 						contentOutlineViewer.setSelection(new StructuredSelection(selection), true);
@@ -1229,6 +1251,7 @@ public class Aadl2ModelEditor extends MultiPageEditorPart implements IEditingDom
 			contentOutlinePage.addSelectionChangedListener(new ISelectionChangedListener() {
 				// This ensures that we handle selections correctly.
 				//
+				@Override
 				public void selectionChanged(SelectionChangedEvent event) {
 					handleContentOutlineSelection(event.getSelection());
 				}
@@ -1246,7 +1269,8 @@ public class Aadl2ModelEditor extends MultiPageEditorPart implements IEditingDom
 	 */
 	public IPropertySheetPage getPropertySheetPage() {
 		if (propertySheetPage == null) {
-			propertySheetPage = new ExtendedPropertySheetPage(editingDomain) {
+			propertySheetPage = new ExtendedPropertySheetPage(editingDomain, ExtendedPropertySheetPage.Decoration.LIVE,
+					Aadl2EditorPlugin.getPlugin().getDialogSettings()) {
 				@Override
 				public void setSelectionToViewer(List<?> selection) {
 					Aadl2ModelEditor.this.setSelectionToViewer(selection);
@@ -1259,7 +1283,7 @@ public class Aadl2ModelEditor extends MultiPageEditorPart implements IEditingDom
 					getActionBarContributor().shareGlobalActions(this, actionBars);
 				}
 			};
-			//.CUSTOM: Use a transactional property-source provider
+			// .CUSTOM: Use a transactional property-source provider
 			propertySheetPage.setPropertySourceProvider(new TransactionalAdapterFactoryContentProvider(
 					(TransactionalEditingDomain) getEditingDomain(), adapterFactory));
 		}
@@ -1302,7 +1326,7 @@ public class Aadl2ModelEditor extends MultiPageEditorPart implements IEditingDom
 	 */
 	@Override
 	public boolean isDirty() {
-		//.CUSTOM: We track the last operation executed before save was performed
+		// .CUSTOM: We track the last operation executed before save was performed
 		IUndoableOperation op = getOperationHistory().getUndoOperation(getUndoContext());
 		return op != savedOperation;
 	}
@@ -1324,9 +1348,8 @@ public class Aadl2ModelEditor extends MultiPageEditorPart implements IEditingDom
 		saveOptions.put(XMLResource.OPTION_CONFIGURATION_CACHE, Boolean.TRUE);
 		saveOptions.put(XMLResource.OPTION_USE_FILE_BUFFER, Boolean.TRUE);
 
-
 		// Do the work within an operation because this is a long running activity
-		// that modifies the workbench.  Moreover, we must do this in a read-only
+		// that modifies the workbench. Moreover, we must do this in a read-only
 		// transaction in the editing domain, to ensure exclusive read access
 		//
 		WorkspaceModifyOperation operation = new WorkspaceModifyOperation() {
@@ -1335,8 +1358,9 @@ public class Aadl2ModelEditor extends MultiPageEditorPart implements IEditingDom
 			@Override
 			public void execute(IProgressMonitor monitor) {
 				try {
-					//.CUSTOM: Save in a read-only transaction
+					// .CUSTOM: Save in a read-only transaction
 					((TransactionalEditingDomain) getEditingDomain()).runExclusive(new Runnable() {
+						@Override
 						public void run() {
 							try {
 								// Save the resource to the file system.
@@ -1363,7 +1387,7 @@ public class Aadl2ModelEditor extends MultiPageEditorPart implements IEditingDom
 
 			// Refresh the necessary state.
 			//
-			//.CUSTOM: We record the last operation executed when saved.
+			// .CUSTOM: We record the last operation executed when saved.
 			savedOperation = getOperationHistory().getUndoOperation(getUndoContext());
 			firePropertyChange(IEditorPart.PROP_DIRTY);
 		} catch (Exception exception) {
@@ -1377,7 +1401,7 @@ public class Aadl2ModelEditor extends MultiPageEditorPart implements IEditingDom
 
 	/**
 	 * This returns whether something has been persisted to the URI of the specified resource.
-	 * The implementation uses the URI converter from the editor's resource set to try to open an input stream. 
+	 * The implementation uses the URI converter from the editor's resource set to try to open an input stream.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -1432,12 +1456,13 @@ public class Aadl2ModelEditor extends MultiPageEditorPart implements IEditingDom
 	 * @generated NOT
 	 */
 	protected void doSaveAs(final URI uri, final IEditorInput editorInput) {
-		// changing the URI is, conceptually, a write operation.  However, it does
-		//    not affect the abstract state of the model, so we only need exclusive
-		//    (read) access
+		// changing the URI is, conceptually, a write operation. However, it does
+		// not affect the abstract state of the model, so we only need exclusive
+		// (read) access
 		try {
-			//.CUSTOM: Save in a read-only transaction
+			// .CUSTOM: Save in a read-only transaction
 			((TransactionalEditingDomain) getEditingDomain()).runExclusive(new Runnable() {
+				@Override
 				public void run() {
 					getResource().setURI(uri);
 					setInputWithNotify(editorInput);
@@ -1449,12 +1474,12 @@ public class Aadl2ModelEditor extends MultiPageEditorPart implements IEditingDom
 			Aadl2EditorPlugin.INSTANCE.log(e);
 
 			// don't follow through with the save because we were interrupted while
-			//    trying to start the transaction, so our URI is not actually changed
+			// trying to start the transaction, so our URI is not actually changed
 			return;
 		}
 
-		IProgressMonitor progressMonitor = getActionBars().getStatusLineManager() != null ? getActionBars()
-				.getStatusLineManager().getProgressMonitor() : new NullProgressMonitor();
+		IProgressMonitor progressMonitor = getActionBars().getStatusLineManager() != null
+				? getActionBars().getStatusLineManager().getProgressMonitor() : new NullProgressMonitor();
 		doSave(progressMonitor);
 	}
 
@@ -1463,29 +1488,31 @@ public class Aadl2ModelEditor extends MultiPageEditorPart implements IEditingDom
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
+	@Override
 	public void gotoMarker(IMarker marker) {
 		try {
 			String t = marker.getType();
 //			if (t.startsWith("org.osate.an")) {
-				final String uriAttribute = marker.getAttribute(EValidator.URI_ATTRIBUTE, null);
-				if (uriAttribute != null) {
-					//.CUSTOM: Use a read-only transaction to read the resource
-					//         when navigating to an object
-					try {
-						((TransactionalEditingDomain) getEditingDomain()).runExclusive(new Runnable() {
-							public void run() {
-								URI uri = URI.createURI(uriAttribute);
-								EObject eObject = editingDomain.getResourceSet().getEObject(uri, true);
-								if (eObject != null) {
-									setSelectionToViewer(Collections.singleton(editingDomain.getWrapper(eObject)));
-								}
+			final String uriAttribute = marker.getAttribute(EValidator.URI_ATTRIBUTE, null);
+			if (uriAttribute != null) {
+				// .CUSTOM: Use a read-only transaction to read the resource
+				// when navigating to an object
+				try {
+					((TransactionalEditingDomain) getEditingDomain()).runExclusive(new Runnable() {
+						@Override
+						public void run() {
+							URI uri = URI.createURI(uriAttribute);
+							EObject eObject = editingDomain.getResourceSet().getEObject(uri, true);
+							if (eObject != null) {
+								setSelectionToViewer(Collections.singleton(editingDomain.getWrapper(eObject)));
 							}
-						});
-					} catch (InterruptedException e) {
-						// just log it
-						Aadl2EditorPlugin.INSTANCE.log(e);
-					}
+						}
+					});
+				} catch (InterruptedException e) {
+					// just log it
+					Aadl2EditorPlugin.INSTANCE.log(e);
 				}
+			}
 //			}
 		} catch (CoreException exception) {
 			Aadl2EditorPlugin.INSTANCE.log(exception);
@@ -1506,8 +1533,8 @@ public class Aadl2ModelEditor extends MultiPageEditorPart implements IEditingDom
 		site.setSelectionProvider(this);
 		site.getPage().addPartListener(partListener);
 
-		//.CUSTOM: Create a workspace synchronizer instead of a
-		//         resource change listener
+		// .CUSTOM: Create a workspace synchronizer instead of a
+		// resource change listener
 		workspaceSynchronizer = new WorkspaceSynchronizer((TransactionalEditingDomain) editingDomain,
 				createSynchronizationDelegate());
 	}
@@ -1519,7 +1546,7 @@ public class Aadl2ModelEditor extends MultiPageEditorPart implements IEditingDom
 	 */
 	@Override
 	public void setFocus() {
-		//.CUSTOM: We only have the one viewer
+		// .CUSTOM: We only have the one viewer
 		selectionViewer.getControl().setFocus();
 	}
 
@@ -1529,6 +1556,7 @@ public class Aadl2ModelEditor extends MultiPageEditorPart implements IEditingDom
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void addSelectionChangedListener(ISelectionChangedListener listener) {
 		selectionChangedListeners.add(listener);
 	}
@@ -1539,6 +1567,7 @@ public class Aadl2ModelEditor extends MultiPageEditorPart implements IEditingDom
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void removeSelectionChangedListener(ISelectionChangedListener listener) {
 		selectionChangedListeners.remove(listener);
 	}
@@ -1549,6 +1578,7 @@ public class Aadl2ModelEditor extends MultiPageEditorPart implements IEditingDom
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ISelection getSelection() {
 		return editorSelection;
 	}
@@ -1560,6 +1590,7 @@ public class Aadl2ModelEditor extends MultiPageEditorPart implements IEditingDom
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setSelection(ISelection selection) {
 		editorSelection = selection;
 
@@ -1575,8 +1606,8 @@ public class Aadl2ModelEditor extends MultiPageEditorPart implements IEditingDom
 	 * @generated
 	 */
 	public void setStatusLineManager(ISelection selection) {
-		IStatusLineManager statusLineManager = currentViewer != null && currentViewer == contentOutlineViewer ? contentOutlineStatusLineManager
-				: getActionBars().getStatusLineManager();
+		IStatusLineManager statusLineManager = currentViewer != null && currentViewer == contentOutlineViewer
+				? contentOutlineStatusLineManager : getActionBars().getStatusLineManager();
 
 		if (statusLineManager != null) {
 			if (selection instanceof IStructuredSelection) {
@@ -1592,8 +1623,8 @@ public class Aadl2ModelEditor extends MultiPageEditorPart implements IEditingDom
 					break;
 				}
 				default: {
-					statusLineManager.setMessage(getString(
-							"_UI_MultiObjectSelected", Integer.toString(collection.size()))); //$NON-NLS-1$
+					statusLineManager
+							.setMessage(getString("_UI_MultiObjectSelected", Integer.toString(collection.size()))); //$NON-NLS-1$
 					break;
 				}
 				}
@@ -1629,6 +1660,7 @@ public class Aadl2ModelEditor extends MultiPageEditorPart implements IEditingDom
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void menuAboutToShow(IMenuManager menuManager) {
 		((IMenuListener) getEditorSite().getActionBarContributor()).menuAboutToShow(menuManager);
 	}
@@ -1660,8 +1692,8 @@ public class Aadl2ModelEditor extends MultiPageEditorPart implements IEditingDom
 		return adapterFactory;
 	}
 
-	//.CUSTOM: We have a command stack that delegates
-	//         to the operation history
+	// .CUSTOM: We have a command stack that delegates
+	// to the operation history
 	private IOperationHistory getOperationHistory() {
 		return ((IWorkspaceCommandStack) editingDomain.getCommandStack()).getOperationHistory();
 	}
@@ -1675,22 +1707,21 @@ public class Aadl2ModelEditor extends MultiPageEditorPart implements IEditingDom
 	public void dispose() {
 		updateProblemIndication = false;
 
-		//.CUSTOM: We use a workspace synchronizer instead of a
-		//         resource change listener
+		// .CUSTOM: We use a workspace synchronizer instead of a
+		// resource change listener
 		workspaceSynchronizer.dispose();
 
-		//.CUSTOM: We have operation history stuff to clean up
+		// .CUSTOM: We have operation history stuff to clean up
 		getOperationHistory().removeOperationHistoryListener(historyListener);
 		getOperationHistory().dispose(getUndoContext(), true, true, true);
 
-		//.CUSTOM: We have only one resource to edit, but it is in
-		//         a shared resource set (not our own private set).
-		//         So, we must unload it explicitly.  Also remove our problem
-		//         indication adapter
-		
-		// XXX XXX should not remove the resource possibly not even unload it
-//		getResource().unload();
-//		editingDomain.getResourceSet().getResources().remove(getResource());
+		// .CUSTOM: We have only one resource to edit, but it is in
+		// a shared resource set (not our own private set).
+		// So, we must unload it explicitly. Also remove our problem
+		// indication adapter
+
+		getResource().unload();
+		editingDomain.getResourceSet().getResources().remove(getResource());
 		editingDomain.getResourceSet().eAdapters().remove(problemIndicationAdapter);
 
 		getSite().getPage().removePartListener(partListener);

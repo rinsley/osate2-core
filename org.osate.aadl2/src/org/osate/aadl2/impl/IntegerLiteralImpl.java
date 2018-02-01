@@ -42,6 +42,7 @@ import org.osate.aadl2.Aadl2Factory;
 import org.osate.aadl2.Aadl2Package;
 import org.osate.aadl2.IntegerLiteral;
 import org.osate.aadl2.NumberValue;
+import org.osate.aadl2.PropertyExpression;
 import org.osate.aadl2.parsesupport.ParseUtil;
 
 /**
@@ -50,16 +51,15 @@ import org.osate.aadl2.parsesupport.ParseUtil;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.osate.aadl2.impl.IntegerLiteralImpl#getBase <em>Base</em>}</li>
  *   <li>{@link org.osate.aadl2.impl.IntegerLiteralImpl#getValue <em>Value</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
-public class IntegerLiteralImpl extends NumberValueImpl implements
-		IntegerLiteral {
+public class IntegerLiteralImpl extends NumberValueImpl implements IntegerLiteral {
 	/**
 	 * The default value of the '{@link #getBase() <em>Base</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -124,6 +124,7 @@ public class IntegerLiteralImpl extends NumberValueImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public long getBase() {
 		return base;
 	}
@@ -133,12 +134,13 @@ public class IntegerLiteralImpl extends NumberValueImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setBase(long newBase) {
 		long oldBase = base;
 		base = newBase;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					Aadl2Package.INTEGER_LITERAL__BASE, oldBase, base));
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, Notification.SET, Aadl2Package.INTEGER_LITERAL__BASE, oldBase, base));
+		}
 	}
 
 	/**
@@ -146,6 +148,7 @@ public class IntegerLiteralImpl extends NumberValueImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public long getValue() {
 		return value;
 	}
@@ -155,12 +158,14 @@ public class IntegerLiteralImpl extends NumberValueImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setValue(long newValue) {
 		long oldValue = value;
 		value = newValue;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					Aadl2Package.INTEGER_LITERAL__VALUE, oldValue, value));
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, Notification.SET, Aadl2Package.INTEGER_LITERAL__VALUE, oldValue,
+					value));
+		}
 	}
 
 	/**
@@ -234,36 +239,36 @@ public class IntegerLiteralImpl extends NumberValueImpl implements
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy())
+		if (eIsProxy()) {
 			return super.toString();
+		}
 
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (base: ");
-		result.append(base);
-		result.append(", value: ");
+		StringBuffer result = new StringBuffer();
 		result.append(value);
-		result.append(')');
+		result.append(' ');
+		if (unit != null) {
+			result.append(unit.getName());
+		}
 		return result.toString();
 	}
 
 	/**
 	 * @author dionisio
-	 * 
+	 *
 	 * set the value by parsing the string. This can contain the a base part and an exponent
 	 * e.g. "base#number#exponent" as well as underscore separators, e.g. "12_345"
-	 * 
+	 *
 	 * @param s string with number to parse
 	 */
 	public static int parseInt(String s) {
 		// first remove all the underscores
 		int underscorePosition = s.indexOf('_');
 		while (underscorePosition != -1) {
-			s = s.substring(0, underscorePosition)
-					+ s.substring(underscorePosition + 1, s.length());
+			s = s.substring(0, underscorePosition) + s.substring(underscorePosition + 1, s.length());
 			underscorePosition = s.indexOf('_');
 		}
 
@@ -302,9 +307,10 @@ public class IntegerLiteralImpl extends NumberValueImpl implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see org.osate.aadl2.NumberValue#setValue(java.lang.String)
 	 */
+	@Override
 	public void setValue(String s) {
 		long[] res = ParseUtil.parseAadlInteger(s);
 		Long.valueOf(res[1]);
@@ -314,12 +320,12 @@ public class IntegerLiteralImpl extends NumberValueImpl implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see org.osate.aadl2.NumberValue#cloneAndInvert()
 	 */
+	@Override
 	public NumberValue cloneAndInvert() {
-		final IntegerLiteral newVal = Aadl2Factory.eINSTANCE
-				.createIntegerLiteral();
+		final IntegerLiteral newVal = Aadl2Factory.eINSTANCE.createIntegerLiteral();
 		newVal.setLocationReference(getLocationReference());
 		// Copy the unit information
 		newVal.setUnit(getUnit());
@@ -332,12 +338,12 @@ public class IntegerLiteralImpl extends NumberValueImpl implements
 
 	/*
 	 * (non-Javadoc)
-	 * 
+	 *
 	 * @see org.osate.aadl2.NumberValue#cloneNumber()
 	 */
+	@Override
 	public final NumberValue cloneNumber() {
-		final IntegerLiteral newVal = Aadl2Factory.eINSTANCE
-				.createIntegerLiteral();
+		final IntegerLiteral newVal = Aadl2Factory.eINSTANCE.createIntegerLiteral();
 		newVal.setLocationReference(getLocationReference());
 		// Copy the unit information
 		newVal.setUnit(getUnit());
@@ -346,41 +352,15 @@ public class IntegerLiteralImpl extends NumberValueImpl implements
 		return newVal;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see org.osate.aadl2.NumberValue#getScaledValue()
-	 * DB: Moved to NumberValueOperations
-	 */
-	//	public final double getScaledValue() {
-	//		final long value = getValue();
-	//		final UnitLiteral unit = getUnit();
-	//		final double factor = (unit == null) ? 1.0 : unit.getAbsoluteFactor();
-	//		return value * factor;
-	//	}
-
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * org.osate.aadl2.NumberValue#getScaledValue(org.osate.aadl2
-	 * .UnitLiteral)
-	 * DB: Moved to NumberValueOperations
-	 */
-	//	public double getScaledValue(UnitLiteral target) {
-	//		final long value = getValue();
-	//		final UnitLiteral unit = getUnit();
-	//		final double factor = (unit == null) ? 1.0 : unit.getAbsoluteFactor(target);
-	//		return value * factor;
-	//	}
-
 	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
+	public boolean sameAs(PropertyExpression pe) {
+		if (this == pe) {
 			return true;
-		if (obj == null || getClass() != obj.getClass() || !super.equals(obj))
+		}
+		if (pe == null || getClass() != pe.getClass()) {
 			return false;
-		IntegerLiteralImpl other = (IntegerLiteralImpl) obj;
+		}
+		IntegerLiteralImpl other = (IntegerLiteralImpl) pe;
 		return base == other.base && value == other.value;
 	}
 

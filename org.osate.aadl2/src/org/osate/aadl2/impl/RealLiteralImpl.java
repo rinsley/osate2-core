@@ -41,6 +41,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.osate.aadl2.Aadl2Factory;
 import org.osate.aadl2.Aadl2Package;
 import org.osate.aadl2.NumberValue;
+import org.osate.aadl2.PropertyExpression;
 import org.osate.aadl2.RealLiteral;
 import org.osate.aadl2.parsesupport.ParseUtil;
 
@@ -50,10 +51,10 @@ import org.osate.aadl2.parsesupport.ParseUtil;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.osate.aadl2.impl.RealLiteralImpl#getValue <em>Value</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -102,6 +103,7 @@ public class RealLiteralImpl extends NumberValueImpl implements RealLiteral {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public double getValue() {
 		return value;
 	}
@@ -111,12 +113,13 @@ public class RealLiteralImpl extends NumberValueImpl implements RealLiteral {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setValue(double newValue) {
 		double oldValue = value;
 		value = newValue;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					Aadl2Package.REAL_LITERAL__VALUE, oldValue, value));
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, Notification.SET, Aadl2Package.REAL_LITERAL__VALUE, oldValue, value));
+		}
 	}
 
 	/**
@@ -180,34 +183,41 @@ public class RealLiteralImpl extends NumberValueImpl implements RealLiteral {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @generated
+	 * @generated NOT
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy())
+		if (eIsProxy()) {
 			return super.toString();
+		}
 
-		StringBuffer result = new StringBuffer(super.toString());
-		result.append(" (value: ");
+		StringBuffer result = new StringBuffer();
 		result.append(value);
-		result.append(')');
+		result.append(' ');
+		if (unit != null) {
+			result.append(unit.getName());
+		}
 		return result.toString();
 	}
 
 	/**
 	 * @author dionisio
-	 * 
-	 * set the value by parsing the string. 	 * 
+	 *
+	 * set the value by parsing the string. 	 *
 	 * @param s string with number to parse
 	 */
 
+	@Override
 	public void setValue(String s) {
 		setValue(ParseUtil.parseAadlReal(s));
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 *
 	 * @see org.osate.aadl2.NumberValue#cloneAndInvert()
 	 */
+	@Override
 	public NumberValue cloneAndInvert() {
 		final RealLiteral newVal = Aadl2Factory.eINSTANCE.createRealLiteral();
 		newVal.setLocationReference(getLocationReference());
@@ -218,9 +228,12 @@ public class RealLiteralImpl extends NumberValueImpl implements RealLiteral {
 		return newVal;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 *
 	 * @see org.osate.aadl2.NumberValue#cloneNumber()
 	 */
+	@Override
 	public final NumberValue cloneNumber() {
 		final RealLiteral newVal = Aadl2Factory.eINSTANCE.createRealLiteral();
 		newVal.setLocationReference(getLocationReference());
@@ -230,38 +243,16 @@ public class RealLiteralImpl extends NumberValueImpl implements RealLiteral {
 		return newVal;
 	}
 
-	/* (non-Javadoc)
-	 * @see org.osate.aadl2.NumberValue#getScaledValue()
-	 * DB: Moved to NumberValueOperations
-	 */
-	//	public final double getScaledValue() {
-	//		final double value = getValue();
-	//		final UnitLiteral unit = getUnit();
-	//		final double factor = (unit == null) ? 1.0 : unit.getAbsoluteFactor();
-	//		return value * factor;
-	//	}
-
-	/* (non-Javadoc)
-	 * @see org.osate.aadl2.NumberValue#getScaledValue(org.osate.aadl2.UnitLiteral)
-	 * DB: Moved to NumberValueOperations
-	 */
-	//	public double getScaledValue(UnitLiteral target) {
-	//		final double value = getValue();
-	//		final UnitLiteral unit = getUnit();
-	//		final double factor = (unit == null) ? 1.0 : unit
-	//				.getAbsoluteFactor(target);
-	//		return value * factor;
-	//	}
-
 	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
+	public boolean sameAs(PropertyExpression pe) {
+		if (this == pe) {
 			return true;
-		if (obj == null || getClass() != obj.getClass() || !super.equals(obj))
+		}
+		if (pe == null || getClass() != pe.getClass()) {
 			return false;
-		RealLiteralImpl other = (RealLiteralImpl) obj;
-		return Double.doubleToLongBits(value) == Double
-				.doubleToLongBits(other.value);
+		}
+		RealLiteralImpl other = (RealLiteralImpl) pe;
+		return Double.doubleToLongBits(value) == Double.doubleToLongBits(other.value);
 	}
 
 } // RealLiteralImpl

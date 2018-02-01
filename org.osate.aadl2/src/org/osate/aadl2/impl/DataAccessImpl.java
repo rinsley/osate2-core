@@ -51,11 +51,11 @@ import org.osate.aadl2.FeatureClassifier;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.osate.aadl2.impl.DataAccessImpl#getFeatureClassifier <em>Feature Classifier</em>}</li>
  *   <li>{@link org.osate.aadl2.impl.DataAccessImpl#getDataFeatureClassifier <em>Data Feature Classifier</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -97,9 +97,8 @@ public class DataAccessImpl extends AccessImpl implements DataAccess {
 	@Override
 	public FeatureClassifier getFeatureClassifier() {
 		FeatureClassifier featureClassifier = basicGetFeatureClassifier();
-		return featureClassifier != null
-				&& ((EObject) featureClassifier).eIsProxy() ? (FeatureClassifier) eResolveProxy((InternalEObject) featureClassifier)
-				: featureClassifier;
+		return featureClassifier != null && ((EObject) featureClassifier).eIsProxy()
+				? (FeatureClassifier) eResolveProxy((InternalEObject) featureClassifier) : featureClassifier;
 	}
 
 	/**
@@ -120,16 +119,17 @@ public class DataAccessImpl extends AccessImpl implements DataAccess {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public DataSubcomponentType getDataFeatureClassifier() {
-		if (dataFeatureClassifier != null
-				&& ((EObject) dataFeatureClassifier).eIsProxy()) {
+		if (dataFeatureClassifier != null && ((EObject) dataFeatureClassifier).eIsProxy()) {
 			InternalEObject oldDataFeatureClassifier = (InternalEObject) dataFeatureClassifier;
 			dataFeatureClassifier = (DataSubcomponentType) eResolveProxy(oldDataFeatureClassifier);
 			if (dataFeatureClassifier != oldDataFeatureClassifier) {
-				if (eNotificationRequired())
+				if (eNotificationRequired()) {
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-							Aadl2Package.DATA_ACCESS__DATA_FEATURE_CLASSIFIER,
-							oldDataFeatureClassifier, dataFeatureClassifier));
+							Aadl2Package.DATA_ACCESS__DATA_FEATURE_CLASSIFIER, oldDataFeatureClassifier,
+							dataFeatureClassifier));
+				}
 			}
 		}
 		return dataFeatureClassifier;
@@ -149,14 +149,14 @@ public class DataAccessImpl extends AccessImpl implements DataAccess {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setDataFeatureClassifier(
-			DataSubcomponentType newDataFeatureClassifier) {
+	@Override
+	public void setDataFeatureClassifier(DataSubcomponentType newDataFeatureClassifier) {
 		DataSubcomponentType oldDataFeatureClassifier = dataFeatureClassifier;
 		dataFeatureClassifier = newDataFeatureClassifier;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					Aadl2Package.DATA_ACCESS__DATA_FEATURE_CLASSIFIER,
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, Notification.SET, Aadl2Package.DATA_ACCESS__DATA_FEATURE_CLASSIFIER,
 					oldDataFeatureClassifier, dataFeatureClassifier));
+		}
 	}
 
 	/**
@@ -168,8 +168,9 @@ public class DataAccessImpl extends AccessImpl implements DataAccess {
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 		case Aadl2Package.DATA_ACCESS__DATA_FEATURE_CLASSIFIER:
-			if (resolve)
+			if (resolve) {
 				return getDataFeatureClassifier();
+			}
 			return basicGetDataFeatureClassifier();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -213,6 +214,8 @@ public class DataAccessImpl extends AccessImpl implements DataAccess {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+		case Aadl2Package.DATA_ACCESS__FEATURE_CLASSIFIER:
+			return isSetFeatureClassifier();
 		case Aadl2Package.DATA_ACCESS__DATA_FEATURE_CLASSIFIER:
 			return dataFeatureClassifier != null;
 		}
@@ -226,8 +229,7 @@ public class DataAccessImpl extends AccessImpl implements DataAccess {
 	 */
 	@Override
 	public boolean isSetFeatureClassifier() {
-		return super.isSetFeatureClassifier()
-				|| eIsSet(Aadl2Package.DATA_ACCESS__DATA_FEATURE_CLASSIFIER);
+		return super.isSetFeatureClassifier() || eIsSet(Aadl2Package.DATA_ACCESS__DATA_FEATURE_CLASSIFIER);
 	}
 
 } // DataAccessImpl

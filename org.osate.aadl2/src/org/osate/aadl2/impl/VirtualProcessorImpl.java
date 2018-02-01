@@ -43,13 +43,10 @@ import org.osate.aadl2.VirtualProcessor;
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Virtual Processor</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */
-public abstract class VirtualProcessorImpl extends NamedElementImpl implements
-		VirtualProcessor {
+public abstract class VirtualProcessorImpl extends NamedElementImpl implements VirtualProcessor {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

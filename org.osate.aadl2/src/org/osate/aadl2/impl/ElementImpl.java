@@ -36,11 +36,9 @@
 package org.osate.aadl2.impl;
 
 import java.util.Collection;
-import java.util.Map;
 
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.BasicEList;
-import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
@@ -66,11 +64,11 @@ import org.osate.aadl2.parsesupport.AObjectImpl;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.osate.aadl2.impl.ElementImpl#getOwnedElements <em>Owned Element</em>}</li>
  *   <li>{@link org.osate.aadl2.impl.ElementImpl#getOwnedComments <em>Owned Comment</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -109,26 +107,23 @@ public abstract class ElementImpl extends AObjectImpl implements Element {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Element> getOwnedElements() {
 		CacheAdapter cache = getCacheAdapter();
 		if (cache != null) {
 			Resource eResource = eResource();
 			@SuppressWarnings("unchecked")
-			EList<Element> ownedElements = (EList<Element>) cache.get(
-					eResource, this,
+			EList<Element> ownedElements = (EList<Element>) cache.get(eResource, this,
 					Aadl2Package.eINSTANCE.getElement_OwnedElement());
 			if (ownedElements == null) {
-				cache.put(eResource, this, Aadl2Package.eINSTANCE
-						.getElement_OwnedElement(),
-						ownedElements = new DerivedUnionEObjectEList<Element>(
-								Element.class, this,
-								Aadl2Package.ELEMENT__OWNED_ELEMENT,
-								OWNED_ELEMENT_ESUBSETS));
+				cache.put(eResource, this, Aadl2Package.eINSTANCE.getElement_OwnedElement(),
+						ownedElements = new DerivedUnionEObjectEList<Element>(Element.class, this,
+								Aadl2Package.ELEMENT__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS));
 			}
 			return ownedElements;
 		}
-		return new DerivedUnionEObjectEList<Element>(Element.class, this,
-				Aadl2Package.ELEMENT__OWNED_ELEMENT, OWNED_ELEMENT_ESUBSETS);
+		return new DerivedUnionEObjectEList<Element>(Element.class, this, Aadl2Package.ELEMENT__OWNED_ELEMENT,
+				OWNED_ELEMENT_ESUBSETS);
 	}
 
 	/**
@@ -146,10 +141,11 @@ public abstract class ElementImpl extends AObjectImpl implements Element {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<Comment> getOwnedComments() {
 		if (ownedComments == null) {
-			ownedComments = new EObjectContainmentEList<Comment>(Comment.class,
-					this, Aadl2Package.ELEMENT__OWNED_COMMENT);
+			ownedComments = new EObjectContainmentEList<Comment>(Comment.class, this,
+					Aadl2Package.ELEMENT__OWNED_COMMENT);
 		}
 		return ownedComments;
 	}
@@ -159,9 +155,9 @@ public abstract class ElementImpl extends AObjectImpl implements Element {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Comment createOwnedComment() {
-		Comment newOwnedComment = (Comment) create(Aadl2Package.eINSTANCE
-				.getComment());
+		Comment newOwnedComment = (Comment) create(Aadl2Package.eINSTANCE.getComment());
 		getOwnedComments().add(newOwnedComment);
 		return newOwnedComment;
 	}
@@ -171,26 +167,7 @@ public abstract class ElementImpl extends AObjectImpl implements Element {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean not_own_self(DiagnosticChain diagnostics,
-			Map<Object, Object> context) {
-		return ElementOperations.not_own_self(this, diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean has_owner(DiagnosticChain diagnostics,
-			Map<Object, Object> context) {
-		return ElementOperations.has_owner(this, diagnostics, context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+	@Override
 	public Element getOwner() {
 		return ElementOperations.getOwner(this);
 	}
@@ -200,31 +177,11 @@ public abstract class ElementImpl extends AObjectImpl implements Element {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Element> allOwnedElements() {
-		return ElementOperations.allOwnedElements(this);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean mustBeOwned() {
-		return ElementOperations.mustBeOwned(this);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case Aadl2Package.ELEMENT__OWNED_COMMENT:
-			return ((InternalEList<?>) getOwnedComments()).basicRemove(
-					otherEnd, msgs);
+			return ((InternalEList<?>) getOwnedComments()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -329,6 +286,7 @@ public abstract class ElementImpl extends AObjectImpl implements Element {
 	 * find the enclosing root object ( package, propertyset, or system instance
 	 * @return the root object
 	 */
+	@Override
 	public NamedElement getElementRoot() {
 		Element obj = this;
 		while (obj.eContainer() != null) {
@@ -345,6 +303,7 @@ public abstract class ElementImpl extends AObjectImpl implements Element {
 	 * the subset that is active in a given mode
 	 * @return EList Element
 	 */
+	@Override
 	public EList<Element> getChildren() {
 		// TODO if we use this we need to change InstanceObject to not use
 		// ownedElement return getOwnedElements();
@@ -357,19 +316,26 @@ public abstract class ElementImpl extends AObjectImpl implements Element {
 		return list;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 *
 	 * @see org.osate.aadl2.Element#getContainingClassifier()
 	 */
+	@Override
 	public Classifier getContainingClassifier() {
 		Element obj = this;
-		while (obj != null && !(obj instanceof Classifier))
+		while (obj != null && !(obj instanceof Classifier)) {
 			obj = obj.getOwner();
+		}
 		return (Classifier) obj;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 *
 	 * @see org.osate.aadl2.Element#getContainingComponentImpl()
 	 */
+	@Override
 	public ComponentImplementation getContainingComponentImpl() {
 		Element obj = this;
 		while (obj != null && !(obj instanceof ComponentImplementation)) {

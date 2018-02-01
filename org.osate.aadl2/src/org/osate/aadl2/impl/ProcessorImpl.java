@@ -43,13 +43,10 @@ import org.osate.aadl2.Processor;
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Processor</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */
-public abstract class ProcessorImpl extends NamedElementImpl implements
-		Processor {
+public abstract class ProcessorImpl extends NamedElementImpl implements Processor {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

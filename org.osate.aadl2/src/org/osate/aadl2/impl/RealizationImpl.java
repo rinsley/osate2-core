@@ -51,11 +51,11 @@ import org.osate.aadl2.Realization;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.osate.aadl2.impl.RealizationImpl#getGeneral <em>General</em>}</li>
  *   <li>{@link org.osate.aadl2.impl.RealizationImpl#getImplemented <em>Implemented</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -119,15 +119,16 @@ public class RealizationImpl extends GeneralizationImpl implements Realization {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ComponentType getImplemented() {
 		if (implemented != null && ((EObject) implemented).eIsProxy()) {
 			InternalEObject oldImplemented = (InternalEObject) implemented;
 			implemented = (ComponentType) eResolveProxy(oldImplemented);
 			if (implemented != oldImplemented) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-							Aadl2Package.REALIZATION__IMPLEMENTED,
+				if (eNotificationRequired()) {
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, Aadl2Package.REALIZATION__IMPLEMENTED,
 							oldImplemented, implemented));
+				}
 			}
 		}
 		return implemented;
@@ -147,13 +148,14 @@ public class RealizationImpl extends GeneralizationImpl implements Realization {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setImplemented(ComponentType newImplemented) {
 		ComponentType oldImplemented = implemented;
 		implemented = newImplemented;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					Aadl2Package.REALIZATION__IMPLEMENTED, oldImplemented,
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, Notification.SET, Aadl2Package.REALIZATION__IMPLEMENTED, oldImplemented,
 					implemented));
+		}
 	}
 
 	/**
@@ -165,8 +167,9 @@ public class RealizationImpl extends GeneralizationImpl implements Realization {
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 		case Aadl2Package.REALIZATION__IMPLEMENTED:
-			if (resolve)
+			if (resolve) {
 				return getImplemented();
+			}
 			return basicGetImplemented();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -210,6 +213,8 @@ public class RealizationImpl extends GeneralizationImpl implements Realization {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+		case Aadl2Package.REALIZATION__GENERAL:
+			return isSetGeneral();
 		case Aadl2Package.REALIZATION__IMPLEMENTED:
 			return implemented != null;
 		}
@@ -223,8 +228,7 @@ public class RealizationImpl extends GeneralizationImpl implements Realization {
 	 */
 	@Override
 	public boolean isSetGeneral() {
-		return super.isSetGeneral()
-				|| eIsSet(Aadl2Package.REALIZATION__IMPLEMENTED);
+		return super.isSetGeneral() || eIsSet(Aadl2Package.REALIZATION__IMPLEMENTED);
 	}
 
 } // RealizationImpl

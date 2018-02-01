@@ -1,12 +1,12 @@
 /**
  * <copyright>
  * Copyright  2008 by Carnegie Mellon University, all rights reserved.
- * 
+ *
  * Use of the Open Source AADL Tool Environment (OSATE) is subject to the terms of the license set forth
  * at http://www.eclipse.org/org/documents/epl-v10.html.
- * 
+ *
  * NO WARRANTY
- * 
+ *
  * ANY INFORMATION, MATERIALS, SERVICES, INTELLECTUAL PROPERTY OR OTHER PROPERTY OR RIGHTS GRANTED OR PROVIDED BY
  * CARNEGIE MELLON UNIVERSITY PURSUANT TO THIS LICENSE (HEREINAFTER THE ''DELIVERABLES'') ARE ON AN ''AS-IS'' BASIS.
  * CARNEGIE MELLON UNIVERSITY MAKES NO WARRANTIES OF ANY KIND, EITHER EXPRESS OR IMPLIED AS TO ANY MATTER INCLUDING,
@@ -16,21 +16,21 @@
  * REGARDLESS OF WHETHER SUCH PARTY WAS AWARE OF THE POSSIBILITY OF SUCH DAMAGES. LICENSEE AGREES THAT IT WILL NOT
  * MAKE ANY WARRANTY ON BEHALF OF CARNEGIE MELLON UNIVERSITY, EXPRESS OR IMPLIED, TO ANY PERSON CONCERNING THE
  * APPLICATION OF OR THE RESULTS TO BE OBTAINED WITH THE DELIVERABLES UNDER THIS LICENSE.
- * 
+ *
  * Licensee hereby agrees to defend, indemnify, and hold harmless Carnegie Mellon University, its trustees, officers,
  * employees, and agents from all claims or demands made against them (and any related losses, expenses, or
  * attorney's fees) arising out of, or relating to Licensee's and/or its sub licensees' negligent use or willful
  * misuse of or negligent conduct or willful misconduct regarding the Software, facilities, or other rights or
  * assistance granted by Carnegie Mellon University under this License, including, but not limited to, any claims of
  * product liability, personal injury, death, damage to property, or violation of any laws or regulations.
- * 
+ *
  * Carnegie Mellon University Software Engineering Institute authored documents are sponsored by the U.S. Department
  * of Defense under Contract F19628-00-C-0003. Carnegie Mellon University retains copyrights in all material produced
  * under this contract. The U.S. Government retains a non-exclusive, royalty-free license to publish or reproduce these
  * documents, or allow others to do so, for U.S. Government purposes only pursuant to the copyright license
  * under the contract clause at 252.227.7013.
  * </copyright>
- * 
+ *
  *
  * $Id: InstanceItemProviderAdapterFactory.java,v 1.6 2010-06-14 01:21:48 lwrage Exp $
  */
@@ -128,6 +128,29 @@ public class InstanceItemProviderAdapterFactory extends InstanceAdapterFactory
 	}
 
 	/**
+	 * This keeps track of the one adapter used for all {@link org.osate.aadl2.instance.PropertyAssociationInstance} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected PropertyAssociationInstanceItemProvider propertyAssociationInstanceItemProvider;
+
+	/**
+	 * This creates an adapter for a {@link org.osate.aadl2.instance.PropertyAssociationInstance}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createPropertyAssociationInstanceAdapter() {
+		if (propertyAssociationInstanceItemProvider == null) {
+			propertyAssociationInstanceItemProvider = new PropertyAssociationInstanceItemProvider(this);
+		}
+
+		return propertyAssociationInstanceItemProvider;
+	}
+
+	/**
 	 * This keeps track of the one adapter used for all {@link org.osate.aadl2.instance.ConnectionInstance} instances.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -144,8 +167,7 @@ public class InstanceItemProviderAdapterFactory extends InstanceAdapterFactory
 	@Override
 	public Adapter createConnectionInstanceAdapter() {
 		if (connectionInstanceItemProvider == null) {
-			connectionInstanceItemProvider = new ConnectionInstanceItemProvider(
-					this);
+			connectionInstanceItemProvider = new ConnectionInstanceItemProvider(this);
 		}
 
 		return connectionInstanceItemProvider;
@@ -168,8 +190,7 @@ public class InstanceItemProviderAdapterFactory extends InstanceAdapterFactory
 	@Override
 	public Adapter createSystemOperationModeAdapter() {
 		if (systemOperationModeItemProvider == null) {
-			systemOperationModeItemProvider = new SystemOperationModeItemProvider(
-					this);
+			systemOperationModeItemProvider = new SystemOperationModeItemProvider(this);
 		}
 
 		return systemOperationModeItemProvider;
@@ -215,8 +236,7 @@ public class InstanceItemProviderAdapterFactory extends InstanceAdapterFactory
 	@Override
 	public Adapter createModeTransitionInstanceAdapter() {
 		if (modeTransitionInstanceItemProvider == null) {
-			modeTransitionInstanceItemProvider = new ModeTransitionInstanceItemProvider(
-					this);
+			modeTransitionInstanceItemProvider = new ModeTransitionInstanceItemProvider(this);
 		}
 
 		return modeTransitionInstanceItemProvider;
@@ -239,8 +259,7 @@ public class InstanceItemProviderAdapterFactory extends InstanceAdapterFactory
 	@Override
 	public Adapter createConnectionReferenceAdapter() {
 		if (connectionReferenceItemProvider == null) {
-			connectionReferenceItemProvider = new ConnectionReferenceItemProvider(
-					this);
+			connectionReferenceItemProvider = new ConnectionReferenceItemProvider(this);
 		}
 
 		return connectionReferenceItemProvider;
@@ -263,8 +282,7 @@ public class InstanceItemProviderAdapterFactory extends InstanceAdapterFactory
 	@Override
 	public Adapter createComponentInstanceAdapter() {
 		if (componentInstanceItemProvider == null) {
-			componentInstanceItemProvider = new ComponentInstanceItemProvider(
-					this);
+			componentInstanceItemProvider = new ComponentInstanceItemProvider(this);
 		}
 
 		return componentInstanceItemProvider;
@@ -287,8 +305,7 @@ public class InstanceItemProviderAdapterFactory extends InstanceAdapterFactory
 	@Override
 	public Adapter createFlowSpecificationInstanceAdapter() {
 		if (flowSpecificationInstanceItemProvider == null) {
-			flowSpecificationInstanceItemProvider = new FlowSpecificationInstanceItemProvider(
-					this);
+			flowSpecificationInstanceItemProvider = new FlowSpecificationInstanceItemProvider(this);
 		}
 
 		return flowSpecificationInstanceItemProvider;
@@ -311,8 +328,7 @@ public class InstanceItemProviderAdapterFactory extends InstanceAdapterFactory
 	@Override
 	public Adapter createEndToEndFlowInstanceAdapter() {
 		if (endToEndFlowInstanceItemProvider == null) {
-			endToEndFlowInstanceItemProvider = new EndToEndFlowInstanceItemProvider(
-					this);
+			endToEndFlowInstanceItemProvider = new EndToEndFlowInstanceItemProvider(this);
 		}
 
 		return endToEndFlowInstanceItemProvider;
@@ -358,8 +374,7 @@ public class InstanceItemProviderAdapterFactory extends InstanceAdapterFactory
 	@Override
 	public Adapter createInstanceReferenceValueAdapter() {
 		if (instanceReferenceValueItemProvider == null) {
-			instanceReferenceValueItemProvider = new InstanceReferenceValueItemProvider(
-					this);
+			instanceReferenceValueItemProvider = new InstanceReferenceValueItemProvider(this);
 		}
 
 		return instanceReferenceValueItemProvider;
@@ -371,9 +386,9 @@ public class InstanceItemProviderAdapterFactory extends InstanceAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ComposeableAdapterFactory getRootAdapterFactory() {
-		return parentAdapterFactory == null ? this : parentAdapterFactory
-				.getRootAdapterFactory();
+		return parentAdapterFactory == null ? this : parentAdapterFactory.getRootAdapterFactory();
 	}
 
 	/**
@@ -382,8 +397,8 @@ public class InstanceItemProviderAdapterFactory extends InstanceAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setParentAdapterFactory(
-			ComposedAdapterFactory parentAdapterFactory) {
+	@Override
+	public void setParentAdapterFactory(ComposedAdapterFactory parentAdapterFactory) {
 		this.parentAdapterFactory = parentAdapterFactory;
 	}
 
@@ -417,8 +432,7 @@ public class InstanceItemProviderAdapterFactory extends InstanceAdapterFactory
 	public Object adapt(Object object, Object type) {
 		if (isFactoryForType(type)) {
 			Object adapter = super.adapt(object, type);
-			if (!(type instanceof Class<?>)
-					|| (((Class<?>) type).isInstance(adapter))) {
+			if (!(type instanceof Class<?>) || (((Class<?>) type).isInstance(adapter))) {
 				return adapter;
 			}
 		}
@@ -432,6 +446,7 @@ public class InstanceItemProviderAdapterFactory extends InstanceAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void addListener(INotifyChangedListener notifyChangedListener) {
 		changeNotifier.addListener(notifyChangedListener);
 	}
@@ -442,6 +457,7 @@ public class InstanceItemProviderAdapterFactory extends InstanceAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void removeListener(INotifyChangedListener notifyChangedListener) {
 		changeNotifier.removeListener(notifyChangedListener);
 	}
@@ -452,6 +468,7 @@ public class InstanceItemProviderAdapterFactory extends InstanceAdapterFactory
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void fireNotifyChanged(Notification notification) {
 		changeNotifier.fireNotifyChanged(notification);
 
@@ -461,34 +478,49 @@ public class InstanceItemProviderAdapterFactory extends InstanceAdapterFactory
 	}
 
 	/**
-	 * This disposes all of the item providers created by this factory. 
+	 * This disposes all of the item providers created by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void dispose() {
-		if (featureInstanceItemProvider != null)
+		if (featureInstanceItemProvider != null) {
 			featureInstanceItemProvider.dispose();
-		if (connectionInstanceItemProvider != null)
+		}
+		if (propertyAssociationInstanceItemProvider != null) {
+			propertyAssociationInstanceItemProvider.dispose();
+		}
+		if (connectionInstanceItemProvider != null) {
 			connectionInstanceItemProvider.dispose();
-		if (systemOperationModeItemProvider != null)
+		}
+		if (systemOperationModeItemProvider != null) {
 			systemOperationModeItemProvider.dispose();
-		if (modeInstanceItemProvider != null)
+		}
+		if (modeInstanceItemProvider != null) {
 			modeInstanceItemProvider.dispose();
-		if (modeTransitionInstanceItemProvider != null)
+		}
+		if (modeTransitionInstanceItemProvider != null) {
 			modeTransitionInstanceItemProvider.dispose();
-		if (connectionReferenceItemProvider != null)
+		}
+		if (connectionReferenceItemProvider != null) {
 			connectionReferenceItemProvider.dispose();
-		if (componentInstanceItemProvider != null)
+		}
+		if (componentInstanceItemProvider != null) {
 			componentInstanceItemProvider.dispose();
-		if (flowSpecificationInstanceItemProvider != null)
+		}
+		if (flowSpecificationInstanceItemProvider != null) {
 			flowSpecificationInstanceItemProvider.dispose();
-		if (endToEndFlowInstanceItemProvider != null)
+		}
+		if (endToEndFlowInstanceItemProvider != null) {
 			endToEndFlowInstanceItemProvider.dispose();
-		if (systemInstanceItemProvider != null)
+		}
+		if (systemInstanceItemProvider != null) {
 			systemInstanceItemProvider.dispose();
-		if (instanceReferenceValueItemProvider != null)
+		}
+		if (instanceReferenceValueItemProvider != null) {
 			instanceReferenceValueItemProvider.dispose();
+		}
 	}
 
 }

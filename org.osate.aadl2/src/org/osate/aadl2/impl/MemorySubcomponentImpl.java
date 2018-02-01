@@ -52,16 +52,15 @@ import org.osate.aadl2.SubcomponentType;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.osate.aadl2.impl.MemorySubcomponentImpl#getSubcomponentType <em>Subcomponent Type</em>}</li>
  *   <li>{@link org.osate.aadl2.impl.MemorySubcomponentImpl#getMemorySubcomponentType <em>Memory Subcomponent Type</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
-public class MemorySubcomponentImpl extends SubcomponentImpl implements
-		MemorySubcomponent {
+public class MemorySubcomponentImpl extends SubcomponentImpl implements MemorySubcomponent {
 	/**
 	 * The cached value of the '{@link #getMemorySubcomponentType() <em>Memory Subcomponent Type</em>}' reference.
 	 * <!-- begin-user-doc -->
@@ -99,9 +98,8 @@ public class MemorySubcomponentImpl extends SubcomponentImpl implements
 	@Override
 	public SubcomponentType getSubcomponentType() {
 		SubcomponentType subcomponentType = basicGetSubcomponentType();
-		return subcomponentType != null
-				&& ((EObject) subcomponentType).eIsProxy() ? (SubcomponentType) eResolveProxy((InternalEObject) subcomponentType)
-				: subcomponentType;
+		return subcomponentType != null && ((EObject) subcomponentType).eIsProxy()
+				? (SubcomponentType) eResolveProxy((InternalEObject) subcomponentType) : subcomponentType;
 	}
 
 	/**
@@ -122,18 +120,17 @@ public class MemorySubcomponentImpl extends SubcomponentImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public MemorySubcomponentType getMemorySubcomponentType() {
-		if (memorySubcomponentType != null
-				&& ((EObject) memorySubcomponentType).eIsProxy()) {
+		if (memorySubcomponentType != null && ((EObject) memorySubcomponentType).eIsProxy()) {
 			InternalEObject oldMemorySubcomponentType = (InternalEObject) memorySubcomponentType;
 			memorySubcomponentType = (MemorySubcomponentType) eResolveProxy(oldMemorySubcomponentType);
 			if (memorySubcomponentType != oldMemorySubcomponentType) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(
-							this,
-							Notification.RESOLVE,
-							Aadl2Package.MEMORY_SUBCOMPONENT__MEMORY_SUBCOMPONENT_TYPE,
-							oldMemorySubcomponentType, memorySubcomponentType));
+				if (eNotificationRequired()) {
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+							Aadl2Package.MEMORY_SUBCOMPONENT__MEMORY_SUBCOMPONENT_TYPE, oldMemorySubcomponentType,
+							memorySubcomponentType));
+				}
 			}
 		}
 		return memorySubcomponentType;
@@ -153,14 +150,15 @@ public class MemorySubcomponentImpl extends SubcomponentImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setMemorySubcomponentType(
-			MemorySubcomponentType newMemorySubcomponentType) {
+	@Override
+	public void setMemorySubcomponentType(MemorySubcomponentType newMemorySubcomponentType) {
 		MemorySubcomponentType oldMemorySubcomponentType = memorySubcomponentType;
 		memorySubcomponentType = newMemorySubcomponentType;
-		if (eNotificationRequired())
+		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					Aadl2Package.MEMORY_SUBCOMPONENT__MEMORY_SUBCOMPONENT_TYPE,
-					oldMemorySubcomponentType, memorySubcomponentType));
+					Aadl2Package.MEMORY_SUBCOMPONENT__MEMORY_SUBCOMPONENT_TYPE, oldMemorySubcomponentType,
+					memorySubcomponentType));
+		}
 	}
 
 	/**
@@ -172,8 +170,9 @@ public class MemorySubcomponentImpl extends SubcomponentImpl implements
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 		case Aadl2Package.MEMORY_SUBCOMPONENT__MEMORY_SUBCOMPONENT_TYPE:
-			if (resolve)
+			if (resolve) {
 				return getMemorySubcomponentType();
+			}
 			return basicGetMemorySubcomponentType();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -217,6 +216,8 @@ public class MemorySubcomponentImpl extends SubcomponentImpl implements
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+		case Aadl2Package.MEMORY_SUBCOMPONENT__SUBCOMPONENT_TYPE:
+			return isSetSubcomponentType();
 		case Aadl2Package.MEMORY_SUBCOMPONENT__MEMORY_SUBCOMPONENT_TYPE:
 			return memorySubcomponentType != null;
 		}
@@ -230,10 +231,10 @@ public class MemorySubcomponentImpl extends SubcomponentImpl implements
 	 */
 	@Override
 	public boolean isSetSubcomponentType() {
-		return super.isSetSubcomponentType()
-				|| eIsSet(Aadl2Package.MEMORY_SUBCOMPONENT__MEMORY_SUBCOMPONENT_TYPE);
+		return super.isSetSubcomponentType() || eIsSet(Aadl2Package.MEMORY_SUBCOMPONENT__MEMORY_SUBCOMPONENT_TYPE);
 	}
 
+	@Override
 	public ComponentCategory getCategory() {
 		return ComponentCategory.MEMORY;
 	}

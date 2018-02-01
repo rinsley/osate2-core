@@ -42,7 +42,6 @@ import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.UniqueEList;
 import org.osate.aadl2.BehavioredImplementation;
-import org.osate.aadl2.CallSpecification;
 import org.osate.aadl2.CalledSubprogram;
 import org.osate.aadl2.ComponentClassifier;
 import org.osate.aadl2.ComponentImplementation;
@@ -51,13 +50,12 @@ import org.osate.aadl2.Subcomponent;
 import org.osate.aadl2.SubprogramCall;
 import org.osate.aadl2.modelsupport.util.AadlUtil;
 
-
 /**
  * Traversal implementation that visits all the component implementations in the
  * subtree rooted at the given node in reverse containment order. That is, a
  * component implementation is visited before all the component implementations
  * that reference it.
- * 
+ *
  * @author aarong
  */
 final class BottomUpComponentImplTraversal extends AbstractTraversal {
@@ -71,8 +69,7 @@ final class BottomUpComponentImplTraversal extends AbstractTraversal {
 			final EList cil = new ForAllElement().processTopDownComponentImpl((ComponentImplementation) root);
 			processBottomUpComponentImpl(cil);
 		} else {
-			throw new IllegalArgumentException(
-					"Root node must be a ComponentImpl");
+			throw new IllegalArgumentException("Root node must be a ComponentImpl");
 		}
 	}
 
@@ -86,11 +83,10 @@ final class BottomUpComponentImplTraversal extends AbstractTraversal {
 		processBottomUpComponentImpl(AadlUtil.getAllComponentImpl());
 		return processingMethod.getResultList();
 	}
-	
+
 	@Override
 	public EList visitWorkspaceInstanceModels() {
-		throw new UnsupportedOperationException(
-				"Visit all the instance models in the workspace not supported.");
+		throw new UnsupportedOperationException("Visit all the instance models in the workspace not supported.");
 	}
 
 	private void processBottomUpComponentImpl(final EList<ComponentImplementation> cil) {
@@ -101,11 +97,11 @@ final class BottomUpComponentImplTraversal extends AbstractTraversal {
 			 * FIXME: verify that we traverse all subcomponents owned and inherited
 			 */
 			final EList<Subcomponent> subs = aobj.getOwnedSubcomponents();
-			final EList<CallSpecification> calls;
+			final EList<SubprogramCall> calls;
 			if (aobj instanceof BehavioredImplementation) {
-				calls = ((BehavioredImplementation)aobj).getCallSpecifications();
+				calls = ((BehavioredImplementation) aobj).getSubprogramCalls();
 			} else {
-				calls = new BasicEList<CallSpecification>();
+				calls = new BasicEList<SubprogramCall>();
 			}
 			// all component impls without subcomponent - they are the bottom
 			if (subs.isEmpty() && calls.isEmpty()) {
@@ -115,14 +111,16 @@ final class BottomUpComponentImplTraversal extends AbstractTraversal {
 				boolean foundnone = true;
 				for (Iterator<Subcomponent> it = subs.iterator(); foundnone && it.hasNext();) {
 					final Subcomponent sc = it.next();
-					if (sc.getAllClassifier() instanceof ComponentImplementation)
+					if (sc.getAllClassifier() instanceof ComponentImplementation) {
 						foundnone = false;
+					}
 				}
 				// now do the same for subprogram calls
-				for (Iterator<CallSpecification> iit = calls.iterator(); foundnone && iit.hasNext();) {
-					CallSpecification cs = iit.next();
-					if (cs instanceof SubprogramCall && ((SubprogramCall)cs).getCalledSubprogram() instanceof ComponentImplementation)
+				for (Iterator<SubprogramCall> iit = calls.iterator(); foundnone && iit.hasNext();) {
+					SubprogramCall sc = iit.next();
+					if (sc.getCalledSubprogram() instanceof ComponentImplementation) {
 						foundnone = false;
+					}
 				}
 				if (foundnone) {
 					leafNodes.add(aobj);
@@ -140,7 +138,7 @@ final class BottomUpComponentImplTraversal extends AbstractTraversal {
 	 * Working our way up the declaration hierarchy. process list of compoennt
 	 * impls and return list of component impl that have references to these
 	 * component impls in their subcomponents
-	 * 
+	 *
 	 * @param list
 	 *                 List of component impl to be processed
 	 * @param allci
@@ -148,7 +146,8 @@ final class BottomUpComponentImplTraversal extends AbstractTraversal {
 	 * @return list of component impls whose subcomponents reference the
 	 *             compoennt impls in the list
 	 */
-	private EList<ComponentImplementation> processUpComponentImpls(final EList<ComponentImplementation> list, final EList<ComponentImplementation> allci) {
+	private EList<ComponentImplementation> processUpComponentImpls(final EList<ComponentImplementation> list,
+			final EList<ComponentImplementation> allci) {
 		final EList<ComponentImplementation> encl = new UniqueEList<ComponentImplementation>();
 		for (Iterator<ComponentImplementation> it = list.iterator(); processingMethod.notCancelled() && it.hasNext();) {
 			final ComponentImplementation aobj = it.next();
@@ -161,7 +160,7 @@ final class BottomUpComponentImplTraversal extends AbstractTraversal {
 	/**
 	 * add component impls with usage references to the specified aobj
 	 * (Compopnent Impl)
-	 * 
+	 *
 	 * @param aobj
 	 *                 the component impl being referenced
 	 * @param encl
@@ -170,24 +169,26 @@ final class BottomUpComponentImplTraversal extends AbstractTraversal {
 	 * @param allci
 	 *                 The list of all component impls
 	 */
-	private void addUsageReferences(ComponentImplementation aobj, EList<ComponentImplementation> encl, EList<ComponentImplementation> allci) {
-		for (Iterator<ComponentImplementation> all = allci.iterator(); processingMethod.notCancelled() && all.hasNext();) {
+	private void addUsageReferences(ComponentImplementation aobj, EList<ComponentImplementation> encl,
+			EList<ComponentImplementation> allci) {
+		for (Iterator<ComponentImplementation> all = allci.iterator(); processingMethod.notCancelled()
+				&& all.hasNext();) {
 			final ComponentImplementation ci = all.next();
 			final EList<Subcomponent> sublist = ci.getAllSubcomponents();
 			addUsageReferencesSubcomponents(sublist, encl, aobj, ci);
-			
-			EList<CallSpecification> calls;
+
+			EList<SubprogramCall> calls;
 			if (ci instanceof BehavioredImplementation) {
-				calls = ((BehavioredImplementation)ci).getCallSpecifications();
+				calls = ((BehavioredImplementation) ci).getSubprogramCalls();
 			} else {
-				calls = new BasicEList<CallSpecification>();
+				calls = new BasicEList<SubprogramCall>();
 			}
-			addUsageReferencesCallSpecifications(calls, encl, aobj, ci);
+			addUsageReferencesSubprogramCalls(calls, encl, aobj, ci);
 		}
 	}
 
-	private void addUsageReferencesSubcomponents(
-			final EList<Subcomponent> sublist, EList<ComponentImplementation> encl, ComponentImplementation aobj, final ComponentImplementation ci) {
+	private void addUsageReferencesSubcomponents(final EList<Subcomponent> sublist, EList<ComponentImplementation> encl,
+			ComponentImplementation aobj, final ComponentImplementation ci) {
 		for (Iterator<Subcomponent> it = sublist.iterator(); it.hasNext();) {
 			final Subcomponent sc = it.next();
 			final ComponentClassifier cc = sc.getAllClassifier();
@@ -196,13 +197,13 @@ final class BottomUpComponentImplTraversal extends AbstractTraversal {
 			}
 		}
 	}
-	
-	private void addUsageReferencesCallSpecifications(
-			final EList<CallSpecification> calls, EList<ComponentImplementation> encl, ComponentImplementation aobj, final ComponentImplementation ci) {
-		for (Iterator<CallSpecification> it = calls.iterator(); it.hasNext();) {
-			final CallSpecification cspec = it.next();
-			if (cspec instanceof SubprogramCall) {
-				final CalledSubprogram csub = ((SubprogramCall)cspec).getCalledSubprogram();
+
+	private void addUsageReferencesSubprogramCalls(final EList<SubprogramCall> calls,
+			EList<ComponentImplementation> encl, ComponentImplementation aobj, final ComponentImplementation ci) {
+		for (Iterator<SubprogramCall> it = calls.iterator(); it.hasNext();) {
+			final SubprogramCall sc = it.next();
+			if (sc instanceof SubprogramCall) {
+				final CalledSubprogram csub = sc.getCalledSubprogram();
 				if (csub == aobj) {
 					encl.add(ci);
 				}

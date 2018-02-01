@@ -52,16 +52,15 @@ import org.osate.aadl2.SubcomponentType;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.osate.aadl2.impl.DeviceSubcomponentImpl#getSubcomponentType <em>Subcomponent Type</em>}</li>
  *   <li>{@link org.osate.aadl2.impl.DeviceSubcomponentImpl#getDeviceSubcomponentType <em>Device Subcomponent Type</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
-public class DeviceSubcomponentImpl extends SubcomponentImpl implements
-		DeviceSubcomponent {
+public class DeviceSubcomponentImpl extends SubcomponentImpl implements DeviceSubcomponent {
 	/**
 	 * The cached value of the '{@link #getDeviceSubcomponentType() <em>Device Subcomponent Type</em>}' reference.
 	 * <!-- begin-user-doc -->
@@ -99,9 +98,8 @@ public class DeviceSubcomponentImpl extends SubcomponentImpl implements
 	@Override
 	public SubcomponentType getSubcomponentType() {
 		SubcomponentType subcomponentType = basicGetSubcomponentType();
-		return subcomponentType != null
-				&& ((EObject) subcomponentType).eIsProxy() ? (SubcomponentType) eResolveProxy((InternalEObject) subcomponentType)
-				: subcomponentType;
+		return subcomponentType != null && ((EObject) subcomponentType).eIsProxy()
+				? (SubcomponentType) eResolveProxy((InternalEObject) subcomponentType) : subcomponentType;
 	}
 
 	/**
@@ -122,18 +120,17 @@ public class DeviceSubcomponentImpl extends SubcomponentImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public DeviceSubcomponentType getDeviceSubcomponentType() {
-		if (deviceSubcomponentType != null
-				&& ((EObject) deviceSubcomponentType).eIsProxy()) {
+		if (deviceSubcomponentType != null && ((EObject) deviceSubcomponentType).eIsProxy()) {
 			InternalEObject oldDeviceSubcomponentType = (InternalEObject) deviceSubcomponentType;
 			deviceSubcomponentType = (DeviceSubcomponentType) eResolveProxy(oldDeviceSubcomponentType);
 			if (deviceSubcomponentType != oldDeviceSubcomponentType) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(
-							this,
-							Notification.RESOLVE,
-							Aadl2Package.DEVICE_SUBCOMPONENT__DEVICE_SUBCOMPONENT_TYPE,
-							oldDeviceSubcomponentType, deviceSubcomponentType));
+				if (eNotificationRequired()) {
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
+							Aadl2Package.DEVICE_SUBCOMPONENT__DEVICE_SUBCOMPONENT_TYPE, oldDeviceSubcomponentType,
+							deviceSubcomponentType));
+				}
 			}
 		}
 		return deviceSubcomponentType;
@@ -153,14 +150,15 @@ public class DeviceSubcomponentImpl extends SubcomponentImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setDeviceSubcomponentType(
-			DeviceSubcomponentType newDeviceSubcomponentType) {
+	@Override
+	public void setDeviceSubcomponentType(DeviceSubcomponentType newDeviceSubcomponentType) {
 		DeviceSubcomponentType oldDeviceSubcomponentType = deviceSubcomponentType;
 		deviceSubcomponentType = newDeviceSubcomponentType;
-		if (eNotificationRequired())
+		if (eNotificationRequired()) {
 			eNotify(new ENotificationImpl(this, Notification.SET,
-					Aadl2Package.DEVICE_SUBCOMPONENT__DEVICE_SUBCOMPONENT_TYPE,
-					oldDeviceSubcomponentType, deviceSubcomponentType));
+					Aadl2Package.DEVICE_SUBCOMPONENT__DEVICE_SUBCOMPONENT_TYPE, oldDeviceSubcomponentType,
+					deviceSubcomponentType));
+		}
 	}
 
 	/**
@@ -172,8 +170,9 @@ public class DeviceSubcomponentImpl extends SubcomponentImpl implements
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 		case Aadl2Package.DEVICE_SUBCOMPONENT__DEVICE_SUBCOMPONENT_TYPE:
-			if (resolve)
+			if (resolve) {
 				return getDeviceSubcomponentType();
+			}
 			return basicGetDeviceSubcomponentType();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -217,6 +216,8 @@ public class DeviceSubcomponentImpl extends SubcomponentImpl implements
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+		case Aadl2Package.DEVICE_SUBCOMPONENT__SUBCOMPONENT_TYPE:
+			return isSetSubcomponentType();
 		case Aadl2Package.DEVICE_SUBCOMPONENT__DEVICE_SUBCOMPONENT_TYPE:
 			return deviceSubcomponentType != null;
 		}
@@ -230,10 +231,10 @@ public class DeviceSubcomponentImpl extends SubcomponentImpl implements
 	 */
 	@Override
 	public boolean isSetSubcomponentType() {
-		return super.isSetSubcomponentType()
-				|| eIsSet(Aadl2Package.DEVICE_SUBCOMPONENT__DEVICE_SUBCOMPONENT_TYPE);
+		return super.isSetSubcomponentType() || eIsSet(Aadl2Package.DEVICE_SUBCOMPONENT__DEVICE_SUBCOMPONENT_TYPE);
 	}
 
+	@Override
 	public ComponentCategory getCategory() {
 		return ComponentCategory.DEVICE;
 	}

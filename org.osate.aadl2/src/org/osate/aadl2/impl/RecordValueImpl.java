@@ -43,9 +43,14 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
+import org.osate.aadl2.Aadl2Factory;
 import org.osate.aadl2.Aadl2Package;
 import org.osate.aadl2.BasicPropertyAssociation;
+import org.osate.aadl2.PropertyExpression;
 import org.osate.aadl2.RecordValue;
+import org.osate.aadl2.properties.EvaluatedProperty;
+import org.osate.aadl2.properties.EvaluationContext;
+import org.osate.aadl2.properties.InvalidModelException;
 
 /**
  * <!-- begin-user-doc -->
@@ -53,10 +58,10 @@ import org.osate.aadl2.RecordValue;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.osate.aadl2.impl.RecordValueImpl#getOwnedFieldValues <em>Owned Field Value</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -95,11 +100,11 @@ public class RecordValueImpl extends PropertyValueImpl implements RecordValue {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<BasicPropertyAssociation> getOwnedFieldValues() {
 		if (ownedFieldValues == null) {
-			ownedFieldValues = new EObjectContainmentEList<BasicPropertyAssociation>(
-					BasicPropertyAssociation.class, this,
-					Aadl2Package.RECORD_VALUE__OWNED_FIELD_VALUE);
+			ownedFieldValues = new EObjectContainmentEList<BasicPropertyAssociation>(BasicPropertyAssociation.class,
+					this, Aadl2Package.RECORD_VALUE__OWNED_FIELD_VALUE);
 		}
 		return ownedFieldValues;
 	}
@@ -109,9 +114,10 @@ public class RecordValueImpl extends PropertyValueImpl implements RecordValue {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public BasicPropertyAssociation createOwnedFieldValue() {
-		BasicPropertyAssociation newOwnedFieldValue = (BasicPropertyAssociation) create(Aadl2Package.eINSTANCE
-				.getBasicPropertyAssociation());
+		BasicPropertyAssociation newOwnedFieldValue = (BasicPropertyAssociation) create(
+				Aadl2Package.eINSTANCE.getBasicPropertyAssociation());
 		getOwnedFieldValues().add(newOwnedFieldValue);
 		return newOwnedFieldValue;
 	}
@@ -122,12 +128,10 @@ public class RecordValueImpl extends PropertyValueImpl implements RecordValue {
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case Aadl2Package.RECORD_VALUE__OWNED_FIELD_VALUE:
-			return ((InternalEList<?>) getOwnedFieldValues()).basicRemove(
-					otherEnd, msgs);
+			return ((InternalEList<?>) getOwnedFieldValues()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -157,8 +161,7 @@ public class RecordValueImpl extends PropertyValueImpl implements RecordValue {
 		switch (featureID) {
 		case Aadl2Package.RECORD_VALUE__OWNED_FIELD_VALUE:
 			getOwnedFieldValues().clear();
-			getOwnedFieldValues().addAll(
-					(Collection<? extends BasicPropertyAssociation>) newValue);
+			getOwnedFieldValues().addAll((Collection<? extends BasicPropertyAssociation>) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -197,27 +200,58 @@ public class RecordValueImpl extends PropertyValueImpl implements RecordValue {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime
-				* result
-				+ ((ownedFieldValues == null) ? 0 : ownedFieldValues.hashCode());
+		result = prime * result + ((ownedFieldValues == null) ? 0 : ownedFieldValues.hashCode());
 		return result;
 	}
 
 	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
+	public boolean sameAs(PropertyExpression pv) {
+		if (this == pv) {
 			return true;
-		if (obj == null)
+		}
+		if (pv == null || getClass() != pv.getClass()) {
 			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		RecordValueImpl other = (RecordValueImpl) obj;
-		if (ownedFieldValues == null) {
-			if (other.ownedFieldValues != null)
-				return false;
-		} else if (!ownedFieldValues.equals(other.ownedFieldValues))
-			return false;
-		return true;
+		}
+
+		// TODO: implement comparicon for record values
+		return false;
+
+		// RecordValueImpl other = (RecordValueImpl) pv;
+		// if (ownedFieldValues == null) {
+		// if (other.ownedFieldValues != null) {
+		// return false;
+		// }
+		// } else if (!ownedFieldValues.equals(other.ownedFieldValues)) {
+		// return false;
+		// }
+		// return true;
+	}
+
+	/* (non-Javadoc)
+	 * @see org.osate.aadl2.impl.PropertyExpressionImpl#evaluate(org.osate.aadl2.properties.EvaluationContext, int)
+	 */
+	@Override
+	public EvaluatedProperty evaluate(EvaluationContext ctx, int depth) {
+		// evaluate each record field
+		RecordValue newVal = Aadl2Factory.eINSTANCE.createRecordValue();
+		for (BasicPropertyAssociation field : getOwnedFieldValues()) {
+			EvaluatedProperty fieldVal = field.getOwnedValue().evaluate(ctx, depth + 1);
+			String name = field.getProperty().getName();
+			if (fieldVal.isEmpty()) {
+				throw new InvalidModelException(this, "Field " + name + " has no value");
+			}
+			if (fieldVal.size() > 1) {
+				throw new InvalidModelException(this, "Field " + name + " has multiple values");
+			}
+			if (fieldVal.first().isModal()) {
+				throw new InvalidModelException(this, "Field " + name + ": value is modal");
+			}
+			BasicPropertyAssociation newField = newVal.createOwnedFieldValue();
+			newField.setProperty(field.getProperty());
+			PropertyExpression exp = fieldVal.first().getValue();
+			newField.setOwnedValue(exp);
+		}
+		return new EvaluatedProperty(newVal);
 	}
 
 } // RecordValueImpl

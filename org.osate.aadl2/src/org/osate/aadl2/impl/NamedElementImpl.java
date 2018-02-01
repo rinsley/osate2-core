@@ -40,12 +40,10 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.util.BasicEList;
-import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -85,17 +83,16 @@ import org.osate.aadl2.properties.PropertyNotPresentException;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.osate.aadl2.impl.NamedElementImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.osate.aadl2.impl.NamedElementImpl#getQualifiedName <em>Qualified Name</em>}</li>
  *   <li>{@link org.osate.aadl2.impl.NamedElementImpl#getOwnedPropertyAssociations <em>Owned Property Association</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
-public abstract class NamedElementImpl extends ElementImpl implements
-		NamedElement {
+public abstract class NamedElementImpl extends ElementImpl implements NamedElement {
 	/**
 	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -144,6 +141,7 @@ public abstract class NamedElementImpl extends ElementImpl implements
 	 * {@link Property} objects.
 	 */
 	private static ThreadLocal<LinkedList<Property>> lookupStack = new ThreadLocal<LinkedList<Property>>() {
+		@Override
 		protected LinkedList<Property> initialValue() {
 			return new LinkedList<Property>();
 		}
@@ -173,6 +171,7 @@ public abstract class NamedElementImpl extends ElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getName() {
 		return name;
 	}
@@ -182,12 +181,13 @@ public abstract class NamedElementImpl extends ElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setName(String newName) {
 		String oldName = name;
 		name = newName;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					Aadl2Package.NAMED_ELEMENT__NAME, oldName, name));
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, Notification.SET, Aadl2Package.NAMED_ELEMENT__NAME, oldName, name));
+		}
 	}
 
 	/**
@@ -195,6 +195,7 @@ public abstract class NamedElementImpl extends ElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
+	@Override
 	public String getQualifiedName() {
 		// DONE: implement this method to return the 'Qualified Name' attribute
 		return qualifiedName();
@@ -205,11 +206,11 @@ public abstract class NamedElementImpl extends ElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<PropertyAssociation> getOwnedPropertyAssociations() {
 		if (ownedPropertyAssociations == null) {
-			ownedPropertyAssociations = new EObjectContainmentEList<PropertyAssociation>(
-					PropertyAssociation.class, this,
-					Aadl2Package.NAMED_ELEMENT__OWNED_PROPERTY_ASSOCIATION);
+			ownedPropertyAssociations = new EObjectContainmentEList<PropertyAssociation>(PropertyAssociation.class,
+					this, Aadl2Package.NAMED_ELEMENT__OWNED_PROPERTY_ASSOCIATION);
 		}
 		return ownedPropertyAssociations;
 	}
@@ -219,9 +220,10 @@ public abstract class NamedElementImpl extends ElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public PropertyAssociation createOwnedPropertyAssociation() {
-		PropertyAssociation newOwnedPropertyAssociation = (PropertyAssociation) create(Aadl2Package.eINSTANCE
-				.getPropertyAssociation());
+		PropertyAssociation newOwnedPropertyAssociation = (PropertyAssociation) create(
+				Aadl2Package.eINSTANCE.getPropertyAssociation());
 		getOwnedPropertyAssociations().add(newOwnedPropertyAssociation);
 		return newOwnedPropertyAssociation;
 	}
@@ -231,28 +233,7 @@ public abstract class NamedElementImpl extends ElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public boolean has_no_qualified_name(DiagnosticChain diagnostics,
-			Map<Object, Object> context) {
-		return NamedElementOperations.has_no_qualified_name(this, diagnostics,
-				context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean has_qualified_name(DiagnosticChain diagnostics,
-			Map<Object, Object> context) {
-		return NamedElementOperations.has_qualified_name(this, diagnostics,
-				context);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+	@Override
 	public Namespace getNamespace() {
 		return NamedElementOperations.getNamespace(this);
 	}
@@ -262,33 +243,7 @@ public abstract class NamedElementImpl extends ElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Namespace> allNamespaces() {
-		return NamedElementOperations.allNamespaces(this);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean isDistinguishableFrom(NamedElement n, Namespace ns) {
-		return NamedElementOperations.isDistinguishableFrom(this, n, ns);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String separator() {
-		return NamedElementOperations.separator(this);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
+	@Override
 	public String qualifiedName() {
 		return NamedElementOperations.qualifiedName(this);
 	}
@@ -299,12 +254,10 @@ public abstract class NamedElementImpl extends ElementImpl implements
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case Aadl2Package.NAMED_ELEMENT__OWNED_PROPERTY_ASSOCIATION:
-			return ((InternalEList<?>) getOwnedPropertyAssociations())
-					.basicRemove(otherEnd, msgs);
+			return ((InternalEList<?>) getOwnedPropertyAssociations()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -341,8 +294,7 @@ public abstract class NamedElementImpl extends ElementImpl implements
 			return;
 		case Aadl2Package.NAMED_ELEMENT__OWNED_PROPERTY_ASSOCIATION:
 			getOwnedPropertyAssociations().clear();
-			getOwnedPropertyAssociations().addAll(
-					(Collection<? extends PropertyAssociation>) newValue);
+			getOwnedPropertyAssociations().addAll((Collection<? extends PropertyAssociation>) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -375,14 +327,12 @@ public abstract class NamedElementImpl extends ElementImpl implements
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 		case Aadl2Package.NAMED_ELEMENT__NAME:
-			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT
-					.equals(name);
+			return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
 		case Aadl2Package.NAMED_ELEMENT__QUALIFIED_NAME:
 			return QUALIFIED_NAME_EDEFAULT == null ? getQualifiedName() != null
 					: !QUALIFIED_NAME_EDEFAULT.equals(getQualifiedName());
 		case Aadl2Package.NAMED_ELEMENT__OWNED_PROPERTY_ASSOCIATION:
-			return ownedPropertyAssociations != null
-					&& !ownedPropertyAssociations.isEmpty();
+			return ownedPropertyAssociations != null && !ownedPropertyAssociations.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
@@ -394,8 +344,9 @@ public abstract class NamedElementImpl extends ElementImpl implements
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy())
+		if (eIsProxy()) {
 			return super.toString();
+		}
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (name: ");
@@ -404,94 +355,77 @@ public abstract class NamedElementImpl extends ElementImpl implements
 		return result.toString();
 	}
 
+	@Override
 	public boolean hasName() {
 		String name = getName();
 		return name != null && name.length() > 0;
+	}
+
+	@Override
+	public String getFullName() {
+		return getName();
 	}
 
 	/**
 	 * Retrieves the property value of a non-modal, single-valued property. Use
 	 * this method if you know the property can only have a single value and is
 	 * not modal
-	 * 
+	 *
 	 * @param property
 	 * 			  Property
 	 * @return PropertyValue, does not return null.
 	 * @exception InvalidModelException Thrown if the property value cannot
 	 * be retrieved because the model is incomplete or otherwise invalid.
-	 * @throws PropertyNotPresentException 
-	 * @throws PropertyIsModalException 
-	 * @throws IllegalStateException 
-	 * @throws IllegalArgumentException 
-	 * @throws PropertyDoesNotApplyToHolderException 
-	 * @throws PropertyIsListException 
+	 * @throws PropertyNotPresentException
+	 * @throws PropertyIsModalException
+	 * @throws IllegalStateException
+	 * @throws IllegalArgumentException
+	 * @throws PropertyDoesNotApplyToHolderException
+	 * @throws PropertyIsListException
 	 */
+	@Override
 	public PropertyExpression getSimplePropertyValue(Property property)
-			throws InvalidModelException, PropertyNotPresentException,
-			PropertyIsModalException, IllegalStateException,
-			IllegalArgumentException, PropertyDoesNotApplyToHolderException,
-			PropertyIsListException {
+			throws InvalidModelException, PropertyNotPresentException, PropertyIsModalException, IllegalStateException,
+			IllegalArgumentException, PropertyDoesNotApplyToHolderException, PropertyIsListException {
 
 		return getNonModalPropertyValue(property);
-		/*
-		 * FIX-JD
-		 * The following code has been commented because there is
-		 * no reason for not retrieving non-list values here.
-		 */
-
-		/* 
-		 * if (!property.isList()) {
-			return getNonModalPropertyValue(property);
-		} else {
-			throw new PropertyIsListException(this, property,
-					"A simple property lookup method was called for a list property."
-							+ "  This occurred when looking up Property "
-							+ property.getName() + " on NamedElement "
-							+ getName() + ".");
-		}*/
 	}
 
 	/**
 	 * Retrieves the property value (single or list) of a non-modal property.  Throws an exception
 	 * if its a modal value or undefined.
 	 * @param property Property
-	 * @return The property expression or null if the property has no value. 
+	 * @return The property expression or null if the property has no value.
 	 */
-	// XXX: [AADL 1 -> AADL 2] Added to make property lookup work.
+	@Override
 	public PropertyExpression getNonModalPropertyValue(final Property property)
-			throws InvalidModelException, PropertyNotPresentException,
-			PropertyIsModalException, IllegalStateException,
+			throws InvalidModelException, PropertyNotPresentException, PropertyIsModalException, IllegalStateException,
 			IllegalArgumentException, PropertyDoesNotApplyToHolderException {
 		PropertyAssociation pa = getPropertyValue(property).first();
 
 		if (pa == null) {
 			if (property.getDefaultValue() == null) {
-				throw new PropertyNotPresentException(this, property,
-						"No property association was found");
+				throw new PropertyNotPresentException(this, property, "No property association was found");
 			}
 			return property.getDefaultValue();
 		} else {
 			if (!pa.isModal()) {
 				// should always exist because it's not modal
 				if (pa.getOwnedValues().isEmpty()) {
-					throw new PropertyNotPresentException(this, property,
-							"Property association has no value (yet)");
+					throw new PropertyNotPresentException(this, property, "Property association has no value (yet)");
 				}
 				return pa.getOwnedValues().get(0).getOwnedValue();
 			} else {
 				// If we are an InstanceObject, get the value in the current SOM
 				if (this instanceof InstanceObject) {
-					final SystemInstance si = ((InstanceObject) this)
-							.getSystemInstance();
-					final SystemOperationMode som = si
-							.getCurrentSystemOperationMode();
+					final SystemInstance si = ((InstanceObject) this).getSystemInstance();
+					final SystemOperationMode som = si.getCurrentSystemOperationMode();
 
 					if (som != null) {
 						PropertyExpression defaultPE = null;
 						// find value in SOM
 						for (ModalPropertyValue mpv : pa.getOwnedValues()) {
-							if (mpv.getInModes() == null
-									|| mpv.getInModes().size() == 0) {
+							if (mpv.getInModes() == null || mpv.getInModes().size() == 0) {
 								defaultPE = mpv.getOwnedValue();
 							} else if (mpv.getInModes().contains(som)) {
 								return mpv.getOwnedValue();
@@ -504,22 +438,16 @@ public abstract class NamedElementImpl extends ElementImpl implements
 						// use global default
 						return property.getDefaultValue();
 					} else {
-						throw new PropertyIsModalException(
-								this,
-								property,
+						throw new PropertyIsModalException(this, property,
 								"Cannot use simple property lookup because the instance model has not been projected into a System Operation Mode."
-										+ "  This occurred when looking up Property "
-										+ property.getName()
+										+ "  This occurred when looking up Property " + property.getName()
 										+ " on NamedElement " + getName() + ".");
 					}
 				} else {
-					throw new PropertyIsModalException(
-							this,
-							property,
+					throw new PropertyIsModalException(this, property,
 							"A non-modal property lookup method was called for a modal property."
-									+ "  This occurred when looking up Property "
-									+ property.getName() + " on NamedElement "
-									+ getName() + ".");
+									+ "  This occurred when looking up Property " + property.getName()
+									+ " on NamedElement " + getName() + ".");
 				}
 			}
 		}
@@ -527,7 +455,7 @@ public abstract class NamedElementImpl extends ElementImpl implements
 
 	/**
 	 * Returns the property value for the property specified by property
-	 * 
+	 *
 	 * @param property
 	 * 			  The property to lookup
 	 * @return AadlModalPropertyValue
@@ -535,25 +463,22 @@ public abstract class NamedElementImpl extends ElementImpl implements
 	 * 				  Thrown if the lookup encounters a cycle of property
 	 * 				  reference dependencies.
 	 */
-	public PropertyAcc getPropertyValue(final Property property)
-			throws IllegalStateException, InvalidModelException,
+	@Override
+	public PropertyAcc getPropertyValue(final Property property) throws IllegalStateException, InvalidModelException,
 			PropertyDoesNotApplyToHolderException, IllegalArgumentException {
 		// Error if the property is not acceptable
 		if (property == null) {
-			throw new IllegalArgumentException(
-					"Property property cannot be null.");
+			throw new IllegalArgumentException("Property property cannot be null.");
 		}
 		if (!acceptsProperty(property)) {
 			throw new PropertyDoesNotApplyToHolderException(this, property,
-					"Property " + property.getName() + " does not apply to "
-							+ getClass().getName());
+					"Property " + property.getName() + " does not apply to " + getClass().getName());
 		}
 		// Check that we aren't already looking up this property
 		final LinkedList<Property> stack = lookupStack.get();
 		if (stack.contains(property)) {
 			throw new IllegalStateException(
-					"Encountered circular dependency on property \""
-							+ property.getName() + "\"");
+					"Encountered circular dependency on property \"" + property.getName() + "\"");
 		}
 		try {
 			stack.addFirst(property);
@@ -565,49 +490,51 @@ public abstract class NamedElementImpl extends ElementImpl implements
 		}
 	}
 
+	@Override
 	public boolean acceptsProperty(Property property) {
 
 		for (PropertyOwner appliesTo : property.getAppliesTos()) {
-			// for (MetaclassReference metaclassReference :
-			// property.getAppliesToMetaclasses())
-			try {
-				if (appliesTo instanceof MetaclassReference
-						&& ((MetaclassReference) appliesTo).getMetaclass()
-								.isSuperTypeOf(eClass())) {
+			if (Aadl2Package.eINSTANCE.getAbstract().isSuperTypeOf(eClass())) {
+				return true;
+			}
+			if (appliesTo instanceof MetaclassReference) {
+				MetaclassReference metaRef = (MetaclassReference) appliesTo;
+				if (metaRef.getMetaclass() != null && metaRef.getMetaclass().isSuperTypeOf(eClass())) {
 					return true;
 				}
-				if (appliesTo instanceof ClassifierValue) {
-					ClassifierValue cv = (ClassifierValue) appliesTo;
-					return true;
-				}
-			} catch (Exception e) {
-				e.printStackTrace();
-				return false;
+			}
+			if (appliesTo instanceof ClassifierValue) {
+				return true;
 			}
 		}
 		return false;
 	}
 
-	public void getPropertyValueInternal(final Property pn,
-			final PropertyAcc pas, final boolean fromInstanceSlaveCall)
+	/*
+	 * TODO-lw: check if fromInstanceSlaveCall is still needed and if it's correctly implemented
+	 * See https://github.com/osate/osate2-core/issues/875
+	 */
+	@Override
+	public void getPropertyValueInternal(final Property pn, final PropertyAcc pas, final boolean fromInstanceSlaveCall)
 			throws InvalidModelException {
+		if (!fromInstanceSlaveCall && getContainingClassifier() != null
+				&& pas.addLocalContained(this, getContainingClassifier())) {
+			return;
+		}
 		pas.addLocal(this);
 	}
 
-	public final PropertyAssociation setPropertyValue(final Property pd,
-			final List<? extends PropertyExpression> pes) {
+	@Override
+	public final PropertyAssociation setPropertyValue(final Property pd, final List<? extends PropertyExpression> pes) {
 		checkPropertyAssociation(pd, pes);
-		PropertyAssociation pa = Aadl2Factory.eINSTANCE
-				.createPropertyAssociation();
+		PropertyAssociation pa = Aadl2Factory.eINSTANCE.createPropertyAssociation();
 		pa.setProperty(pd);
 		ModalPropertyValue mpv = pa.createOwnedValue();
-		ListValue lv = (ListValue) mpv.createOwnedValue(Aadl2Package.eINSTANCE
-				.getListValue());
+		ListValue lv = (ListValue) mpv.createOwnedValue(Aadl2Package.eINSTANCE.getListValue());
 		lv.getOwnedListElements().addAll(pes);
 
 		if (this instanceof InstanceObject) {
-			final SystemInstance si = ((InstanceObject) this)
-					.getSystemInstance();
+			final SystemInstance si = ((InstanceObject) this).getSystemInstance();
 			final SystemOperationMode som = si.getCurrentSystemOperationMode();
 			if (som == null) {
 				// non-modal instance model
@@ -627,50 +554,45 @@ public abstract class NamedElementImpl extends ElementImpl implements
 	/**
 	 * Check that the proposed association is legal.
 	 */
-	// XXX: [AADL 1 -> AADL 2] Added to make property lookup work.
-	public void checkPropertyAssociation(final Property pd,
-			final Collection<? extends PropertyExpression> vals) {
+	@Override
+	public void checkPropertyAssociation(final Property pd, final Collection<? extends PropertyExpression> vals) {
 		// Check that the property applies to this element
 		if (!acceptsProperty(pd)) {
-			throw new IllegalArgumentException("Property " + pd.getName()
-					+ " does not apply to " + getName());
+			throw new IllegalArgumentException("Property " + pd.getName() + " does not apply to " + getName());
 		}
 
 		final boolean isList = pd.isList();
 		if (!isList) {
 			if (vals.size() == 0) {
 				throw new IllegalArgumentException(
-						"Cannot assign an empty list to the non-list property "
-								+ pd.getName());
+						"Cannot assign an empty list to the non-list property " + pd.getName());
 			} else if (vals.size() > 1) {
 				throw new IllegalArgumentException(
-						"Cannot assign a list of values to the non-list property "
-								+ pd.getName());
+						"Cannot assign a list of values to the non-list property " + pd.getName());
 			}
 		}
 
 		final PropertyType pt = (PropertyType) pd.getType();
-		if (pt == null)
+		if (pt == null) {
 			return;
-		// for (final Iterator<? extends PropertyExpression> i =
-		// vals.iterator(); i.hasNext();) {
-		// final PropertyExpression pv = i.next();
-		// final String msg = pt.containsValue(isList, pv);
-		// if (msg != PropertyType.VALUE_OKAY) {
-		// throw new IllegalArgumentException("Type mismatch: " + msg);
-		// }
-		// }
+			// for (final Iterator<? extends PropertyExpression> i =
+			// vals.iterator(); i.hasNext();) {
+			// final PropertyExpression pv = i.next();
+			// final String msg = pt.containsValue(isList, pv);
+			// if (msg != PropertyType.VALUE_OKAY) {
+			// throw new IllegalArgumentException("Type mismatch: " + msg);
+			// }
+			// }
+		}
 	}
 
-	// XXX: [AADL 1 -> AADL 2] Added to make property lookup work.
+	@Override
 	public final void removePropertyAssociations(final Property pd) {
 		final EList<PropertyAssociation> pal = getOwnedPropertyAssociations();
-		for (final Iterator<PropertyAssociation> it = pal.iterator(); it
-				.hasNext();) {
+		for (final Iterator<PropertyAssociation> it = pal.iterator(); it.hasNext();) {
 			final PropertyAssociation pa = it.next();
 			if (pa.getProperty() == pd) {
-				final EList<ContainedNamedElement> appliesTo = pa
-						.getAppliesTos();
+				final EList<ContainedNamedElement> appliesTo = pa.getAppliesTos();
 				// ignore contained property associations
 				if (appliesTo == null || appliesTo.isEmpty()) {
 					it.remove();
@@ -679,51 +601,47 @@ public abstract class NamedElementImpl extends ElementImpl implements
 		}
 	}
 
-	// XXX: [AADL 1 -> AADL 2] Added to make property lookup work.
-	public final void removePropertyAssociations(final Property pd,
-			final List<? extends Mode> modes) {
+	@Override
+	public final void removePropertyAssociations(final Property pd, final List<? extends Mode> modes) {
 		final EList<PropertyAssociation> pal = getOwnedPropertyAssociations();
-		for (final Iterator<PropertyAssociation> it = pal.iterator(); it
-				.hasNext();) {
+		for (final Iterator<PropertyAssociation> it = pal.iterator(); it.hasNext();) {
 			final PropertyAssociation pa = it.next();
 			if (pa.getProperty() == pd) {
-				final EList<ContainedNamedElement> appliesTo = pa
-						.getAppliesTos();
+				final EList<ContainedNamedElement> appliesTo = pa.getAppliesTos();
 				// ignore contained property associations
 				if (appliesTo == null || appliesTo.isEmpty()) {
-					for (Iterator<ModalPropertyValue> mpvi = pa
-							.getOwnedValues().iterator(); mpvi.hasNext();) {
+					for (Iterator<ModalPropertyValue> mpvi = pa.getOwnedValues().iterator(); mpvi.hasNext();) {
 						final ModalPropertyValue mpv = mpvi.next();
 						final EList<Mode> inModes = mpv.getInModes();
 						if (inModes != null && !inModes.isEmpty()) {
 							// Remove the given modes from the in modes clause
-							for (final Iterator<Mode> mi = inModes.iterator(); mi
-									.hasNext();) {
+							for (final Iterator<Mode> mi = inModes.iterator(); mi.hasNext();) {
 								final Mode mode = mi.next();
-								if (modes.contains(mode))
+								if (modes.contains(mode)) {
 									mi.remove();
+								}
 							}
 							// Remove the whole pa if we wiped out its in modes
 							// clause
-							if (inModes.isEmpty())
+							if (inModes.isEmpty()) {
 								mpvi.remove();
+							}
 						}
 					}
-					if (pa.getOwnedValues().isEmpty())
+					if (pa.getOwnedValues().isEmpty()) {
 						it.remove();
+					}
 				}
 			}
 		}
 	}
 
-	// XXX: [AADL 1 -> AADL 2] Added to make property lookup work.
-	public final PropertyAssociation setPropertyValue(final Property pd,
-			final List<? extends PropertyExpression> pvl,
+	@Override
+	public final PropertyAssociation setPropertyValue(final Property pd, final List<? extends PropertyExpression> pvl,
 			final List<? extends Mode> modes) {
 		checkPropertyAssociation(pd, pvl);
 		removePropertyAssociations(pd, modes);
-		final PropertyAssociation pa = Aadl2Factory.eINSTANCE
-				.createPropertyAssociation();
+		final PropertyAssociation pa = Aadl2Factory.eINSTANCE.createPropertyAssociation();
 		pa.setProperty(pd);
 		final ModalPropertyValue mpv = pa.createOwnedValue();
 		// mpv.setOwnedValue(pvl);
@@ -737,17 +655,16 @@ public abstract class NamedElementImpl extends ElementImpl implements
 	 * know that the property is defined as a LIST OF.  While this method can be used
 	 * on scalar properties, getSimplePropertyValue should be used if you know that it is
 	 * scalar.  If the property is scalar, a list of length 1 is returned.
-	 * 
+	 *
 	 * @param property PropertyDefinition
 	 * @return A list of PropertyValues.  This does not return null.
 	 */
-	public final List<PropertyExpression> getPropertyValueList(
-			final Property property) throws InvalidModelException,
-			IllegalArgumentException, PropertyNotPresentException,
-			PropertyIsModalException, IllegalStateException,
-			PropertyDoesNotApplyToHolderException {
+	@Override
+	public final List<PropertyExpression> getPropertyValueList(final Property property)
+			throws InvalidModelException, IllegalArgumentException, PropertyNotPresentException,
+			PropertyIsModalException, IllegalStateException, PropertyDoesNotApplyToHolderException {
 		try {
-			PropertyExpression pe = this.getNonModalPropertyValue(property);
+			PropertyExpression pe = getNonModalPropertyValue(property);
 			if (pe instanceof ListValue) {
 				return ((ListValue) pe).getOwnedListElements();
 			} else {
@@ -761,51 +678,51 @@ public abstract class NamedElementImpl extends ElementImpl implements
 		}
 	}
 
-	public final PropertyAssociation setPropertyValue(final Property pd,
-			final PropertyValue pv) {
-		this.checkPropertyAssociation(pd, Collections.singletonList(pv));
-		PropertyAssociation pa = Aadl2Factory.eINSTANCE
-				.createPropertyAssociation();
-		ModalPropertyValue mpv = Aadl2Factory.eINSTANCE
-				.createModalPropertyValue();
+	@Override
+	public final PropertyAssociation setPropertyValue(final Property pd, final PropertyValue pv) {
+		checkPropertyAssociation(pd, Collections.singletonList(pv));
+		PropertyAssociation pa = Aadl2Factory.eINSTANCE.createPropertyAssociation();
+		ModalPropertyValue mpv = Aadl2Factory.eINSTANCE.createModalPropertyValue();
 		mpv.setOwnedValue(pv);
 		pa.setProperty(pd);
 		pa.getOwnedValues().add(mpv);
 
 		if (this instanceof InstanceObject) {
-			final SystemInstance si = ((InstanceObject) this)
-					.getSystemInstance();
+			final SystemInstance si = ((InstanceObject) this).getSystemInstance();
 			final SystemOperationMode som = si.getCurrentSystemOperationMode();
-			if (som != null)
+			if (som != null) {
 				mpv.getInModes().add(som);
+			}
 			this.removePropertyAssociations(pd, Collections.singletonList(som));
 		} else {
 			this.removePropertyAssociations(pd);
 		}
 
-		this.getOwnedPropertyAssociations().add(pa);
+		getOwnedPropertyAssociations().add(pa);
 		return pa;
 	}
 
-	/* DB: Added for OCL to call this method instead of reimplementing the property lookup algo.
+	/*
+	 * DB: Added for OCL to call this method instead of reimplementing the property lookup algo.
 	 * (non-Javadoc)
+	 *
 	 * @see org.osate.aadl2.NamedElement#getPropertyValues(org.osate.aadl2.Property, java.lang.String)
 	 */
-	public EList<PropertyExpression> getPropertyValues(
-			final String propertySetName, final String propertyName)
-			throws InvalidModelException, IllegalArgumentException,
-			PropertyIsModalException, IllegalStateException,
+	@Override
+	public EList<PropertyExpression> getPropertyValues(final String propertySetName, final String propertyName)
+			throws InvalidModelException, IllegalArgumentException, PropertyIsModalException, IllegalStateException,
 			PropertyDoesNotApplyToHolderException {
-		return NamedElementOperations.getPropertyValues(this, propertySetName,
-				propertyName);
+		return NamedElementOperations.getPropertyValues(this, propertySetName, propertyName);
 	}
 
+	@Override
 	public boolean equals(Object arg0) {
 		/*
-		if (arg0 instanceof DataPortImpl)
-		{
-			System.out.println ("equals on " +  arg0);
-		}*/
+		 * if (arg0 instanceof DataPortImpl)
+		 * {
+		 * System.out.println ("equals on " + arg0);
+		 * }
+		 */
 		return (this == arg0);
 	}
 } // NamedElementImpl

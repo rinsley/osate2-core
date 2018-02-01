@@ -43,13 +43,10 @@ import org.osate.aadl2.SubprogramGroup;
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Subprogram Group</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */
-public abstract class SubprogramGroupImpl extends NamedElementImpl implements
-		SubprogramGroup {
+public abstract class SubprogramGroupImpl extends NamedElementImpl implements SubprogramGroup {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

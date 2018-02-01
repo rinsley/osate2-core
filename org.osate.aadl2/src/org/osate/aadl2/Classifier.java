@@ -35,9 +35,6 @@
  */
 package org.osate.aadl2;
 
-import java.util.Map;
-
-import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 
@@ -49,10 +46,16 @@ import org.eclipse.emf.ecore.EClass;
  * <!-- begin-model-doc -->
  * A classifier is a classification of instances - it describes a set of instances that have features in common.
  * A classifier can specify a generalization hierarchy by referencing its general classifiers.
+ * <p>From package AADLInfrastructure.</p>
+ * <p>From package AADLProperties::Associations.</p>
+ * <p>From package AADLConstructs::Extensibility.</p>
+ * <p>From package AADLConstructs::Templates.</p>
+ * <p>From package AADLDetails::NoneSupport.</p>
  * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.osate.aadl2.Classifier#getClassifierFeatures <em>Classifier Feature</em>}</li>
  *   <li>{@link org.osate.aadl2.Classifier#getInheritedMembers <em>Inherited Member</em>}</li>
@@ -65,7 +68,6 @@ import org.eclipse.emf.ecore.EClass;
  *   <li>{@link org.osate.aadl2.Classifier#isNoAnnexes <em>No Annexes</em>}</li>
  *   <li>{@link org.osate.aadl2.Classifier#isNoProperties <em>No Properties</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.osate.aadl2.Aadl2Package#getClassifier()
  * @model abstract="true"
@@ -78,15 +80,16 @@ public interface Classifier extends Namespace, Type {
 	 * It is bidirectional and its opposite is '{@link org.osate.aadl2.ClassifierFeature#getFeaturingClassifiers <em>Featuring Classifier</em>}'.
 	 * <p>
 	 * This feature subsets the following features:
+	 * </p>
 	 * <ul>
 	 *   <li>'{@link org.osate.aadl2.Namespace#getMembers() <em>Member</em>}'</li>
 	 * </ul>
-	 * </p>
 	 * This feature is a derived union.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Specifies each feature defined in the classifier.
+	 * <p>From package AADLInfrastructure.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Classifier Feature</em>' reference list.
 	 * @see org.osate.aadl2.Aadl2Package#getClassifier_ClassifierFeature()
@@ -101,14 +104,15 @@ public interface Classifier extends Namespace, Type {
 	 * The list contents are of type {@link org.osate.aadl2.NamedElement}.
 	 * <p>
 	 * This feature subsets the following features:
+	 * </p>
 	 * <ul>
 	 *   <li>'{@link org.osate.aadl2.Namespace#getMembers() <em>Member</em>}'</li>
 	 * </ul>
-	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Specifies all elements inherited by this classifier from the general classifiers.
+	 * <p>From package AADLInfrastructure.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Inherited Member</em>' reference list.
 	 * @see org.osate.aadl2.Aadl2Package#getClassifier_InheritedMember()
@@ -123,15 +127,16 @@ public interface Classifier extends Namespace, Type {
 	 * It is bidirectional and its opposite is '{@link org.osate.aadl2.Generalization#getSpecific <em>Specific</em>}'.
 	 * <p>
 	 * This feature subsets the following features:
+	 * </p>
 	 * <ul>
 	 *   <li>'{@link org.osate.aadl2.Element#getOwnedElements() <em>Owned Element</em>}'</li>
 	 * </ul>
-	 * </p>
 	 * This feature is a derived union.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Specifies the Generalization relationships for this Classifier. These Generalizations navigate to more general classifiers in the generalization hierarchy.
+	 * <p>From package AADLInfrastructure.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Generalization</em>' reference list.
 	 * @see org.osate.aadl2.Aadl2Package#getClassifier_Generalization()
@@ -149,6 +154,7 @@ public interface Classifier extends Namespace, Type {
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Specifies the more general classifiers in the generalization hierarchy for this Classifier.
+	 * <p>From package AADLInfrastructure.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>General</em>' reference list.
 	 * @see org.osate.aadl2.Aadl2Package#getClassifier_General()
@@ -162,16 +168,19 @@ public interface Classifier extends Namespace, Type {
 	 * The list contents are of type {@link org.osate.aadl2.Prototype}.
 	 * <p>
 	 * This feature subsets the following features:
+	 * </p>
 	 * <ul>
 	 *   <li>'{@link org.osate.aadl2.Namespace#getOwnedMembers() <em>Owned Member</em>}'</li>
 	 * </ul>
-	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Prototype</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * <p>From package AADLConstructs::Templates.</p>
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Prototype</em>' containment reference list.
 	 * @see org.osate.aadl2.Aadl2Package#getClassifier_OwnedPrototype()
 	 * @model containment="true" ordered="false"
@@ -199,6 +208,9 @@ public interface Classifier extends Namespace, Type {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * <p>From package AADLConstructs::Templates.</p>
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Prototype Binding</em>' containment reference list.
 	 * @see org.osate.aadl2.Aadl2Package#getClassifier_OwnedPrototypeBinding()
 	 * @model containment="true" ordered="false"
@@ -222,16 +234,19 @@ public interface Classifier extends Namespace, Type {
 	 * The list contents are of type {@link org.osate.aadl2.AnnexSubclause}.
 	 * <p>
 	 * This feature subsets the following features:
+	 * </p>
 	 * <ul>
 	 *   <li>'{@link org.osate.aadl2.Namespace#getOwnedMembers() <em>Owned Member</em>}'</li>
 	 * </ul>
-	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Annex Subclause</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * <p>From package AADLConstructs::Extensibility.</p>
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Annex Subclause</em>' containment reference list.
 	 * @see org.osate.aadl2.Aadl2Package#getClassifier_OwnedAnnexSubclause()
 	 * @model containment="true" ordered="false"
@@ -256,9 +271,9 @@ public interface Classifier extends Namespace, Type {
 	 * <!-- end-user-doc -->
 	 * @return The new {@link org.osate.aadl2.DefaultAnnexSubclause}.
 	 * @see #getOwnedAnnexSubclauses()
-	 * @generated
+	 * @generated NOT
 	 */
-	AnnexSubclause createOwnedAnnexSubclause();
+	DefaultAnnexSubclause createOwnedAnnexSubclause();
 
 	/**
 	 * Returns the value of the '<em><b>No Properties</b></em>' attribute.
@@ -268,6 +283,9 @@ public interface Classifier extends Namespace, Type {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * <p>From package AADLProperties::Associations.</p>
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>No Properties</em>' attribute.
 	 * @see #setNoProperties(boolean)
 	 * @see org.osate.aadl2.Aadl2Package#getClassifier_NoProperties()
@@ -294,6 +312,9 @@ public interface Classifier extends Namespace, Type {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * <p>From package AADLDetails::NoneSupport.</p>
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>No Prototypes</em>' attribute.
 	 * @see #setNoPrototypes(boolean)
 	 * @see org.osate.aadl2.Aadl2Package#getClassifier_NoPrototypes()
@@ -320,6 +341,9 @@ public interface Classifier extends Namespace, Type {
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * <p>From package AADLDetails::NoneSupport.</p>
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>No Annexes</em>' attribute.
 	 * @see #setNoAnnexes(boolean)
 	 * @see org.osate.aadl2.Aadl2Package#getClassifier_NoAnnexes()
@@ -339,136 +363,12 @@ public interface Classifier extends Namespace, Type {
 	void setNoAnnexes(boolean value);
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * Generalization hierarchies must be directed and acyclical. A classifier can not be both a transitively general and transitively specific classifier of the same classifier.
-	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
-	 * @param context The cache of context-specific information.
-	 * <!-- end-model-doc -->
-	 * @model annotation="http://www.eclipse.org/uml2/1.1.0/GenModel body='not self.allParents()->includes(self)'"
-	 * @generated
-	 */
-	boolean no_cycles_in_generalization(DiagnosticChain diagnostics,
-			Map<Object, Object> context);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * A classifier may only specialize classifiers of a valid type.
-	 * @param diagnostics The chain of diagnostics to which problems are to be appended.
-	 * @param context The cache of context-specific information.
-	 * <!-- end-model-doc -->
-	 * @model annotation="http://www.eclipse.org/uml2/1.1.0/GenModel body='self.parents()->forAll(c | self.maySpecializeType(c))'"
-	 * @generated
-	 */
-	boolean specialize_type(DiagnosticChain diagnostics,
-			Map<Object, Object> context);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The query allFeatures() gives all of the features in the namespace of the classifier. In general, through mechanisms such as inheritance, this will be a larger set than feature.
-	 * <!-- end-model-doc -->
-	 * @model ordered="false"
-	 *        annotation="http://www.eclipse.org/uml2/1.1.0/GenModel body='result = member->select(oclIsKindOf(Feature))'"
-	 * @generated
-	 */
-	EList<ClassifierFeature> allFeatures();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The inheritedMember association is derived by inheriting the inheritable members of the parents.
-	 * <!-- end-model-doc -->
-	 * @model ordered="false"
-	 *        annotation="http://www.eclipse.org/uml2/1.1.0/GenModel body='result = self.inherit(self.parents()->collect(p | p.inheritableMembers(self))'"
-	 * @generated
-	 */
-	EList<NamedElement> inheritedMember();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The query parents() gives all of the immediate ancestors of a generalized Classifier.
-	 * <!-- end-model-doc -->
-	 * @model ordered="false"
-	 *        annotation="http://www.eclipse.org/uml2/1.1.0/GenModel body='result = general'"
-	 * @generated
-	 */
-	EList<Classifier> parents();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The query allParents() gives all of the direct and indirect ancestors of a generalized Classifier.
-	 * <!-- end-model-doc -->
-	 * @model ordered="false"
-	 *        annotation="http://www.eclipse.org/uml2/1.1.0/GenModel body='result = self.parents()->union(self.parents()->collect(p | p.allParents())'"
-	 * @generated
-	 */
-	EList<Classifier> allParents();
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The query inheritableMembers() gives all of the members of a classifier that may be inherited in one of its descendants, subject to whatever visibility restrictions apply.
-	 * <!-- end-model-doc -->
-	 * @model ordered="false" cRequired="true" cOrdered="false"
-	 *        annotation="http://www.eclipse.org/uml2/1.1.0/GenModel body='result = member->select(m | c.hasVisibilityOf(m))'"
-	 * @generated
-	 */
-	EList<NamedElement> inheritableMembers(Classifier c);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The query hasVisibilityOf() determines whether a named element is visible in the classifier. By default all are visible. It is only called when the argument is something owned by a parent.
-	 * <!-- end-model-doc -->
-	 * @model dataType="org.osate.aadl2.Boolean" required="true" ordered="false" nRequired="true" nOrdered="false"
-	 *        annotation="http://www.eclipse.org/uml2/1.1.0/GenModel body='result = if (self.inheritedMember->includes (n)) then (n.visibility <> #private) else true'"
-	 * @generated
-	 */
-	boolean hasVisibilityOf(NamedElement n);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The query inherit() defines how to inherit a set of elements. Here the operation is defined to inherit them all. It is intended to be redefined in circumstances where inheritance is affected by redefinition.
-	 * <!-- end-model-doc -->
-	 * @model ordered="false" inhsMany="true" inhsOrdered="false"
-	 *        annotation="http://www.eclipse.org/uml2/1.1.0/GenModel body='result = inhs'"
-	 * @generated
-	 */
-	EList<NamedElement> inherit(EList<NamedElement> inhs);
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * The query maySpecializeType() determines whether this classifier may have a generalization relationship to classifiers of the specified type. By default a classifier may specialize classifiers of the same or a more general type. It is intended to be redefined by classifiers that have different specialization constraints.
-	 * <!-- end-model-doc -->
-	 * @model dataType="org.osate.aadl2.Boolean" required="true" ordered="false" cRequired="true" cOrdered="false"
-	 *        annotation="http://www.eclipse.org/uml2/1.1.0/GenModel body='result = self.oclIsKindOf(c.oclType)'"
-	 * @generated
-	 */
-	boolean maySpecializeType(Classifier c);
-
-	/**
 	 * Return a list of classifiers extended by this classifier including itself.
 	 * That is, if classifier <code>C</code> extends
 	 * classifier <code>B</code> that extends classifier <code>A</code>,
 	 * then the list will contain classifiers <code>C</code>, <code>B</code>, and <code>A</code>
 	 * in that order.
-	 * 
+	 *
 	 * <p>Although a well-formed model should not contain loops in the extension
 	 * hierarchy, they may arise from erroneous editors or through badly formed
 	 * AAXL files.  This method is safe to use even if a cycle exists.  In such
@@ -511,7 +411,7 @@ public interface Classifier extends Namespace, Type {
 	 * extends the other feature group type, or it extends a descendant of the
 	 * other feature group type. A feature group type type never descends from another
 	 * component type or implementation.
-	 * 
+	 *
 	 * @return Whether this classifier descends from the given classifier.
 	 */
 	// XXX: [AADL 1 -> AADL 2] Added to make property lookup work.
@@ -520,7 +420,7 @@ public interface Classifier extends Namespace, Type {
 	/**
 	 * Check whether the applies to classifiers in a property definition
 	 * describe this classifier.
-	 * 
+	 *
 	 * @param property
 	 * 			  The property definition
 	 * @return Whether this classifier is a descendant of one of
@@ -532,7 +432,7 @@ public interface Classifier extends Namespace, Type {
 	/**
 	 * Get all the property associations, including those from any ancestor
 	 * classifiers.
-	 * 
+	 *
 	 * @return A list of the property associations. Property associations from
 	 * 		   an ancestor component classifier will appear before those of any
 	 * 		   descendents.
@@ -541,14 +441,5 @@ public interface Classifier extends Namespace, Type {
 	EList<PropertyAssociation> getAllPropertyAssociations();
 
 	PrototypeBinding lookupPrototypeBinding(Prototype proto);
-
-	/*
-	 * retrieve all annex subclauses of a given name that belong to a Classifier.
-	 * The list contains the subclause (if any) of the classifier and the subclause of any classifier being extended.
-	 * Note that each classifier can only have one 
-	 */
-	EList<AnnexSubclause> getAllAnnexSubclauses();
-
-	EList<AnnexSubclause> getAllAnnexSubclauses(EClass eclass);
 
 } // Classifier

@@ -43,13 +43,10 @@ import org.osate.aadl2.PropertyValue;
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Property Value</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */
-public abstract class PropertyValueImpl extends PropertyExpressionImpl
-		implements PropertyValue {
+public abstract class PropertyValueImpl extends PropertyExpressionImpl implements PropertyValue {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

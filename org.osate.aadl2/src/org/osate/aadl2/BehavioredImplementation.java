@@ -42,13 +42,17 @@ import org.eclipse.emf.common.util.EList;
  * A representation of the model object '<em><b>Behaviored Implementation</b></em>'.
  * <!-- end-user-doc -->
  *
+ * <!-- begin-model-doc -->
+ * <p>From package AADLDetails::Calls.</p>
+ * <!-- end-model-doc -->
+ *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
- *   <li>{@link org.osate.aadl2.BehavioredImplementation#getCallSpecifications <em>Call Specification</em>}</li>
+ *   <li>{@link org.osate.aadl2.BehavioredImplementation#getSubprogramCalls <em>Subprogram Call</em>}</li>
  *   <li>{@link org.osate.aadl2.BehavioredImplementation#getOwnedSubprogramCallSequences <em>Owned Subprogram Call Sequence</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.osate.aadl2.Aadl2Package#getBehavioredImplementation()
  * @model abstract="true"
@@ -56,43 +60,49 @@ import org.eclipse.emf.common.util.EList;
  */
 public interface BehavioredImplementation extends ComponentImplementation {
 	/**
-	 * Returns the value of the '<em><b>Call Specification</b></em>' reference list.
-	 * The list contents are of type {@link org.osate.aadl2.CallSpecification}.
+	 * Returns the value of the '<em><b>Subprogram Call</b></em>' reference list.
+	 * The list contents are of type {@link org.osate.aadl2.SubprogramCall}.
 	 * <p>
 	 * This feature subsets the following features:
+	 * </p>
 	 * <ul>
 	 *   <li>'{@link org.osate.aadl2.Namespace#getMembers() <em>Member</em>}'</li>
 	 * </ul>
-	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Call Specification</em>' reference list isn't clear,
+	 * If the meaning of the '<em>Subprogram Call</em>' reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Call Specification</em>' reference list.
-	 * @see org.osate.aadl2.Aadl2Package#getBehavioredImplementation_CallSpecification()
+	 * <!-- begin-model-doc -->
+	 * <p>From package AADLDetails::Calls.</p>
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Subprogram Call</em>' reference list.
+	 * @see org.osate.aadl2.Aadl2Package#getBehavioredImplementation_SubprogramCall()
 	 * @model transient="true" volatile="true" derived="true" ordered="false"
 	 * @generated
 	 */
-	EList<CallSpecification> getCallSpecifications();
+	EList<SubprogramCall> getSubprogramCalls();
 
 	/**
 	 * Returns the value of the '<em><b>Owned Subprogram Call Sequence</b></em>' containment reference list.
 	 * The list contents are of type {@link org.osate.aadl2.SubprogramCallSequence}.
 	 * <p>
 	 * This feature subsets the following features:
+	 * </p>
 	 * <ul>
 	 *   <li>'{@link org.osate.aadl2.Classifier#getClassifierFeatures() <em>Classifier Feature</em>}'</li>
 	 *   <li>'{@link org.osate.aadl2.Namespace#getOwnedMembers() <em>Owned Member</em>}'</li>
 	 * </ul>
-	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Owned Subprogram Call Sequence</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * <p>From package AADLDetails::Calls.</p>
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Owned Subprogram Call Sequence</em>' containment reference list.
 	 * @see org.osate.aadl2.Aadl2Package#getBehavioredImplementation_OwnedSubprogramCallSequence()
 	 * @model containment="true" ordered="false"
@@ -115,10 +125,11 @@ public interface BehavioredImplementation extends ComponentImplementation {
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * Get all calls owned by owned call sequences.
+	 * <p>From package AADLDetails::Calls.</p>
 	 * <!-- end-model-doc -->
 	 * @model ordered="false"
 	 * @generated
 	 */
-	EList<CallSpecification> callSpecifications();
+	EList<SubprogramCall> subprogramCalls();
 
 } // BehavioredImplementation

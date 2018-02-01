@@ -50,15 +50,14 @@ import org.osate.aadl2.PrototypeBinding;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.osate.aadl2.impl.PrototypeBindingImpl#getFormal <em>Formal</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
-public abstract class PrototypeBindingImpl extends ElementImpl implements
-		PrototypeBinding {
+public abstract class PrototypeBindingImpl extends ElementImpl implements PrototypeBinding {
 	/**
 	 * The cached value of the '{@link #getFormal() <em>Formal</em>}' reference.
 	 * <!-- begin-user-doc -->
@@ -93,15 +92,16 @@ public abstract class PrototypeBindingImpl extends ElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Prototype getFormal() {
 		if (formal != null && ((EObject) formal).eIsProxy()) {
 			InternalEObject oldFormal = (InternalEObject) formal;
 			formal = (Prototype) eResolveProxy(oldFormal);
 			if (formal != oldFormal) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-							Aadl2Package.PROTOTYPE_BINDING__FORMAL, oldFormal,
-							formal));
+				if (eNotificationRequired()) {
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, Aadl2Package.PROTOTYPE_BINDING__FORMAL,
+							oldFormal, formal));
+				}
 			}
 		}
 		return formal;
@@ -121,12 +121,14 @@ public abstract class PrototypeBindingImpl extends ElementImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setFormal(Prototype newFormal) {
 		Prototype oldFormal = formal;
 		formal = newFormal;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					Aadl2Package.PROTOTYPE_BINDING__FORMAL, oldFormal, formal));
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, Notification.SET, Aadl2Package.PROTOTYPE_BINDING__FORMAL, oldFormal,
+					formal));
+		}
 	}
 
 	/**
@@ -138,8 +140,9 @@ public abstract class PrototypeBindingImpl extends ElementImpl implements
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 		case Aadl2Package.PROTOTYPE_BINDING__FORMAL:
-			if (resolve)
+			if (resolve) {
 				return getFormal();
+			}
 			return basicGetFormal();
 		}
 		return super.eGet(featureID, resolve, coreType);

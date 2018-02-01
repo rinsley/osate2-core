@@ -51,16 +51,15 @@ import org.osate.aadl2.TypeExtension;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.osate.aadl2.impl.TypeExtensionImpl#getGeneral <em>General</em>}</li>
  *   <li>{@link org.osate.aadl2.impl.TypeExtensionImpl#getExtended <em>Extended</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
-public class TypeExtensionImpl extends GeneralizationImpl implements
-		TypeExtension {
+public class TypeExtensionImpl extends GeneralizationImpl implements TypeExtension {
 	/**
 	 * The cached value of the '{@link #getExtended() <em>Extended</em>}' reference.
 	 * <!-- begin-user-doc -->
@@ -120,15 +119,16 @@ public class TypeExtensionImpl extends GeneralizationImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public ComponentType getExtended() {
 		if (extended != null && ((EObject) extended).eIsProxy()) {
 			InternalEObject oldExtended = (InternalEObject) extended;
 			extended = (ComponentType) eResolveProxy(oldExtended);
 			if (extended != oldExtended) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-							Aadl2Package.TYPE_EXTENSION__EXTENDED, oldExtended,
-							extended));
+				if (eNotificationRequired()) {
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, Aadl2Package.TYPE_EXTENSION__EXTENDED,
+							oldExtended, extended));
+				}
 			}
 		}
 		return extended;
@@ -148,13 +148,14 @@ public class TypeExtensionImpl extends GeneralizationImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setExtended(ComponentType newExtended) {
 		ComponentType oldExtended = extended;
 		extended = newExtended;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					Aadl2Package.TYPE_EXTENSION__EXTENDED, oldExtended,
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, Notification.SET, Aadl2Package.TYPE_EXTENSION__EXTENDED, oldExtended,
 					extended));
+		}
 	}
 
 	/**
@@ -166,8 +167,9 @@ public class TypeExtensionImpl extends GeneralizationImpl implements
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 		case Aadl2Package.TYPE_EXTENSION__EXTENDED:
-			if (resolve)
+			if (resolve) {
 				return getExtended();
+			}
 			return basicGetExtended();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -211,6 +213,8 @@ public class TypeExtensionImpl extends GeneralizationImpl implements
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+		case Aadl2Package.TYPE_EXTENSION__GENERAL:
+			return isSetGeneral();
 		case Aadl2Package.TYPE_EXTENSION__EXTENDED:
 			return extended != null;
 		}
@@ -224,7 +228,6 @@ public class TypeExtensionImpl extends GeneralizationImpl implements
 	 */
 	@Override
 	public boolean isSetGeneral() {
-		return super.isSetGeneral()
-				|| eIsSet(Aadl2Package.TYPE_EXTENSION__EXTENDED);
+		return super.isSetGeneral() || eIsSet(Aadl2Package.TYPE_EXTENSION__EXTENDED);
 	}
 } // TypeExtensionImpl

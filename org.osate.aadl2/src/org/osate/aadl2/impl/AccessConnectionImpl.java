@@ -48,15 +48,14 @@ import org.osate.aadl2.AccessConnection;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.osate.aadl2.impl.AccessConnectionImpl#getAccessCategory <em>Access Category</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
-public class AccessConnectionImpl extends ConnectionImpl implements
-		AccessConnection {
+public class AccessConnectionImpl extends ConnectionImpl implements AccessConnection {
 	/**
 	 * The default value of the '{@link #getAccessCategory() <em>Access Category</em>}' attribute.
 	 * <!-- begin-user-doc -->
@@ -101,6 +100,7 @@ public class AccessConnectionImpl extends ConnectionImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public AccessCategory getAccessCategory() {
 		return accessCategory;
 	}
@@ -110,14 +110,14 @@ public class AccessConnectionImpl extends ConnectionImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setAccessCategory(AccessCategory newAccessCategory) {
 		AccessCategory oldAccessCategory = accessCategory;
-		accessCategory = newAccessCategory == null ? ACCESS_CATEGORY_EDEFAULT
-				: newAccessCategory;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					Aadl2Package.ACCESS_CONNECTION__ACCESS_CATEGORY,
+		accessCategory = newAccessCategory == null ? ACCESS_CATEGORY_EDEFAULT : newAccessCategory;
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, Notification.SET, Aadl2Package.ACCESS_CONNECTION__ACCESS_CATEGORY,
 					oldAccessCategory, accessCategory));
+		}
 	}
 
 	/**
@@ -185,8 +185,9 @@ public class AccessConnectionImpl extends ConnectionImpl implements
 	 */
 	@Override
 	public String toString() {
-		if (eIsProxy())
+		if (eIsProxy()) {
 			return super.toString();
+		}
 
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (accessCategory: ");

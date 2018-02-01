@@ -53,10 +53,10 @@ import org.osate.aadl2.ReferenceType;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.osate.aadl2.impl.ReferenceTypeImpl#getNamedElementReferences <em>Named Element Reference</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -95,10 +95,10 @@ public class ReferenceTypeImpl extends NonListTypeImpl implements ReferenceType 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EList<MetaclassReference> getNamedElementReferences() {
 		if (namedElementReferences == null) {
-			namedElementReferences = new EObjectContainmentEList<MetaclassReference>(
-					MetaclassReference.class, this,
+			namedElementReferences = new EObjectContainmentEList<MetaclassReference>(MetaclassReference.class, this,
 					Aadl2Package.REFERENCE_TYPE__NAMED_ELEMENT_REFERENCE);
 		}
 		return namedElementReferences;
@@ -109,9 +109,10 @@ public class ReferenceTypeImpl extends NonListTypeImpl implements ReferenceType 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public MetaclassReference createNamedElementReference() {
-		MetaclassReference newNamedElementReference = (MetaclassReference) create(Aadl2Package.eINSTANCE
-				.getMetaclassReference());
+		MetaclassReference newNamedElementReference = (MetaclassReference) create(
+				Aadl2Package.eINSTANCE.getMetaclassReference());
 		getNamedElementReferences().add(newNamedElementReference);
 		return newNamedElementReference;
 	}
@@ -122,12 +123,10 @@ public class ReferenceTypeImpl extends NonListTypeImpl implements ReferenceType 
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case Aadl2Package.REFERENCE_TYPE__NAMED_ELEMENT_REFERENCE:
-			return ((InternalEList<?>) getNamedElementReferences())
-					.basicRemove(otherEnd, msgs);
+			return ((InternalEList<?>) getNamedElementReferences()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -157,8 +156,7 @@ public class ReferenceTypeImpl extends NonListTypeImpl implements ReferenceType 
 		switch (featureID) {
 		case Aadl2Package.REFERENCE_TYPE__NAMED_ELEMENT_REFERENCE:
 			getNamedElementReferences().clear();
-			getNamedElementReferences().addAll(
-					(Collection<? extends MetaclassReference>) newValue);
+			getNamedElementReferences().addAll((Collection<? extends MetaclassReference>) newValue);
 			return;
 		}
 		super.eSet(featureID, newValue);
@@ -188,8 +186,7 @@ public class ReferenceTypeImpl extends NonListTypeImpl implements ReferenceType 
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
 		case Aadl2Package.REFERENCE_TYPE__NAMED_ELEMENT_REFERENCE:
-			return namedElementReferences != null
-					&& !namedElementReferences.isEmpty();
+			return namedElementReferences != null && !namedElementReferences.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

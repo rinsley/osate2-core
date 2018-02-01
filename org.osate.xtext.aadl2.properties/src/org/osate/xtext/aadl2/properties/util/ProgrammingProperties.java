@@ -38,4 +38,8 @@ public final class ProgrammingProperties {
 	}
 
 	public static final String _NAME = "Programming_Properties";
+
+	public static final String SOURCE_NAME = "Source_Name";
+	public static final String SOURCE_TEXT = "Source_Text";
+	public static final String SOURCE_LANGUAGE = "Source_Language";
 }

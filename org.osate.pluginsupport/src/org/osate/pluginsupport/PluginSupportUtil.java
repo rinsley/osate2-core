@@ -36,6 +36,8 @@ package org.osate.pluginsupport;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.OptionalInt;
+import java.util.stream.IntStream;
 
 import org.eclipse.core.runtime.IConfigurationElement;
 import org.eclipse.core.runtime.IExtension;
@@ -46,34 +48,36 @@ import org.eclipse.emf.common.util.URI;
 
 /**
  * Utility methods
- * 
+ *
  * @author lwrage
  * @version $Id: PluginSupportUtil.java,v 1.2 2007-06-04 17:03:01 lwrage Exp $
  */
 public class PluginSupportUtil {
-
 	public static List<URI> getContributedAadl() {
 		ArrayList<URI> result = new ArrayList<URI>();
 		IExtensionRegistry extensionRegistry = Platform.getExtensionRegistry();
-		IExtensionPoint extensionPoint = extensionRegistry.getExtensionPoint(
-				PluginSupportPlugin.PLUGIN_ID,
+		IExtensionPoint extensionPoint = extensionRegistry.getExtensionPoint(PluginSupportPlugin.PLUGIN_ID,
 				PluginSupportPlugin.AADL_CONTRIBUTION_EXTENSION_ID);
 		IExtension[] exts = extensionPoint.getExtensions();
 
 		for (int i = 0; i < exts.length; i++) {
-			IConfigurationElement[] configElems = exts[i]
-					.getConfigurationElements();
+			IConfigurationElement[] configElems = exts[i].getConfigurationElements();
 
 			for (int j = 0; j < configElems.length; j++) {
 				String path = configElems[j].getAttribute("file");
-				String fullpath = configElems[j].getDeclaringExtension()
-						.getContributor().getName()
-						+ (path.charAt(0) == '/' ? "" : "/")
-						+ path;
-				
+				String fullpath = configElems[j].getDeclaringExtension().getContributor().getName()
+						+ (path.charAt(0) == '/' ? "" : "/") + path;
+
 				result.add(URI.createPlatformPluginURI(fullpath, false));
 			}
 		}
 		return result;
+	}
+	
+	public static OptionalInt getFirstSignificantIndex(URI uri) {
+		return IntStream.range(2, uri.segmentCount()).filter(index -> {
+			String segment = uri.segment(index);
+			return !(segment.startsWith("resource") || segment.startsWith("package") || segment.startsWith("propert"));
+		}).findFirst();
 	}
 }

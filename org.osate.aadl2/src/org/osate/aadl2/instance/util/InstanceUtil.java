@@ -48,6 +48,7 @@ import org.osate.aadl2.ComponentPrototype;
 import org.osate.aadl2.ComponentPrototypeActual;
 import org.osate.aadl2.ComponentPrototypeBinding;
 import org.osate.aadl2.ComponentType;
+import org.osate.aadl2.Connection;
 import org.osate.aadl2.FeatureGroup;
 import org.osate.aadl2.FeatureGroupPrototype;
 import org.osate.aadl2.FeatureGroupPrototypeActual;
@@ -61,10 +62,13 @@ import org.osate.aadl2.Prototype;
 import org.osate.aadl2.PrototypeBinding;
 import org.osate.aadl2.Subcomponent;
 import org.osate.aadl2.instance.ComponentInstance;
+import org.osate.aadl2.instance.ConnectionInstance;
+import org.osate.aadl2.instance.ConnectionReference;
 import org.osate.aadl2.instance.FeatureCategory;
 import org.osate.aadl2.instance.FeatureInstance;
 import org.osate.aadl2.instance.InstanceObject;
 import org.osate.aadl2.instance.SystemInstance;
+import org.osate.aadl2.instance.SystemOperationMode;
 
 /**
  * @author lwrage
@@ -77,18 +81,18 @@ public class InstanceUtil {
 	// TODO-LW: handle arrays
 	public static class InstantiatedClassifier {
 		/**
-		 * 
+		 *
 		 */
 		public Classifier classifier;
 		/**
-		 * 
+		 *
 		 */
 		public EList<PrototypeBinding> bindings;
 
 		InstantiatedClassifier() {
 		}
 
-		InstantiatedClassifier(Classifier classifier, EList<PrototypeBinding> bindings) {
+		public InstantiatedClassifier(Classifier classifier, EList<PrototypeBinding> bindings) {
 			this.classifier = classifier;
 			this.bindings = bindings;
 		}
@@ -99,7 +103,7 @@ public class InstanceUtil {
 	/**
 	 * Get the component type of a component instance. Resolve prototypes if
 	 * needed.
-	 * 
+	 *
 	 * @param ci the component instance
 	 * @param index the index of the instance object in an array
 	 * @param classifierCache an optional cache of known instantiated
@@ -111,7 +115,7 @@ public class InstanceUtil {
 		ComponentType type = null;
 
 		if (ci instanceof SystemInstance) {
-			type = ((SystemInstance) ci).getSystemImplementation().getType();
+			type = ((SystemInstance) ci).getComponentImplementation().getType();
 		} else {
 			final InstantiatedClassifier ic = getInstantiatedClassifier(ci, index, classifierCache);
 
@@ -133,7 +137,7 @@ public class InstanceUtil {
 	/**
 	 * Get the component implementation of a component instance. Resolve
 	 * prototypes if needed.
-	 * 
+	 *
 	 * @param ci the component instance
 	 * @param index the index of the instance object in an array
 	 * @param classifierCache an optional cache of known instantiated
@@ -144,7 +148,7 @@ public class InstanceUtil {
 			HashMap<InstanceObject, InstantiatedClassifier> classifierCache) {
 		ComponentImplementation impl = null;
 		if (ci instanceof SystemInstance) {
-			impl = ((SystemInstance) ci).getSystemImplementation();
+			impl = ((SystemInstance) ci).getComponentImplementation();
 		} else {
 			final InstantiatedClassifier ic = getInstantiatedClassifier(ci, index, classifierCache);
 
@@ -162,7 +166,7 @@ public class InstanceUtil {
 	/**
 	 * Get the component classifier of a component instance. Resolve
 	 * prototypes if needed.
-	 * 
+	 *
 	 * @param ci the component instance
 	 * @param index the index of the instance object in an array
 	 * @param classifierCache an optional cache of known instantiated
@@ -173,7 +177,7 @@ public class InstanceUtil {
 			HashMap<InstanceObject, InstantiatedClassifier> classifierCache) {
 		ComponentClassifier cc = null;
 		if (ci instanceof SystemInstance) {
-			cc = ((SystemInstance) ci).getSystemImplementation();
+			cc = ((SystemInstance) ci).getComponentImplementation();
 		} else {
 			final InstantiatedClassifier ic = getInstantiatedClassifier(ci, index, classifierCache);
 
@@ -187,7 +191,7 @@ public class InstanceUtil {
 	/**
 	 * Get the feature group classifier of a feature instance. Resolve
 	 * prototypes if needed.
-	 * 
+	 *
 	 * @param fi the feature instance
 	 * @param index the index of the instance object in an array
 	 * @param classifierCache an optional cache of known instantiated
@@ -210,7 +214,7 @@ public class InstanceUtil {
 	/**
 	 * Get the component or feature group classifier that is instantiated by an
 	 * instance object. Resolve prototypes if needed.
-	 * 
+	 *
 	 * @param iobj the instance object
 	 * @param index the index of the instance object in an array
 	 * @return the instantiated classifier together with bindings for anonymous
@@ -223,7 +227,7 @@ public class InstanceUtil {
 	/**
 	 * Get the component or feature group classifier that is instantiated by an
 	 * instance object. Resolve prototypes if needed.
-	 * 
+	 *
 	 * @param iobj the instance object
 	 * @param index the index of the instance object in an array
 	 * @param classifierCache an optional cache of known instantiated
@@ -242,7 +246,7 @@ public class InstanceUtil {
 			return ic;
 		}
 		if (iobj instanceof SystemInstance) {
-			ic = new InstantiatedClassifier(((SystemInstance) iobj).getSystemImplementation(), null);
+			ic = new InstantiatedClassifier(((SystemInstance) iobj).getComponentImplementation(), null);
 		}
 		if (ic == null) {
 			Classifier classifier = null;
@@ -277,15 +281,18 @@ public class InstanceUtil {
 							ic = new InstantiatedClassifier((ComponentClassifier) cpa.getSubcomponentType(),
 									cpa.getBindings());
 						} else {
-							ic = new InstantiatedClassifier(((ComponentPrototype) prototype).getConstrainingClassifier(), noBindings);
+							ic = new InstantiatedClassifier(
+									((ComponentPrototype) prototype).getConstrainingClassifier(), noBindings);
 						}
 					} else if (prototype instanceof FeatureGroupPrototype) {
-						FeatureGroupPrototypeActual fpa = resolveFeatureGroupPrototype(prototype, iobj, classifierCache);
+						FeatureGroupPrototypeActual fpa = resolveFeatureGroupPrototype(prototype, iobj,
+								classifierCache);
 
 						if (fpa != null) {
 							ic = new InstantiatedClassifier((FeatureGroupType) fpa.getFeatureType(), fpa.getBindings());
 						} else {
-							ic = new InstantiatedClassifier(((FeatureGroupPrototype) prototype).getConstrainingFeatureGroupType(), noBindings);
+							ic = new InstantiatedClassifier(
+									((FeatureGroupPrototype) prototype).getConstrainingFeatureGroupType(), noBindings);
 						}
 					}
 				}
@@ -301,7 +308,7 @@ public class InstanceUtil {
 
 	/**
 	 * Find the binding for a given component prototype.
-	 * 
+	 *
 	 * @param proto the prototype to resolve
 	 * @param context the context in which the prototype is used, e.g., a
 	 *            subcomponent instance
@@ -336,7 +343,7 @@ public class InstanceUtil {
 
 	/**
 	 * Find the binding for a given feature group prototype.
-	 * 
+	 *
 	 * @param proto the prototype to resolve
 	 * @param context the context in which the prototype is used, e.g., a
 	 *            subcomponent instance
@@ -368,7 +375,7 @@ public class InstanceUtil {
 
 	/**
 	 * Find the binding for a given feature prototype.
-	 * 
+	 *
 	 * @param proto the prototype to resolve
 	 * @param context the context in which the prototype is used, e.g., a
 	 *            subcomponent instance
@@ -395,7 +402,7 @@ public class InstanceUtil {
 
 	/**
 	 * Find the binding for a given prototype.
-	 * 
+	 *
 	 * @param proto the prototype to resolve
 	 * @param context the context in which the prototype is used, e.g., a
 	 *            subcomponent instance
@@ -411,7 +418,7 @@ public class InstanceUtil {
 
 		// prototype binding may be attached to parent (anonymous component classifier)
 		if (parent instanceof SystemInstance) {
-			ComponentImplementation impl = ((SystemInstance) parent).getSystemImplementation();
+			ComponentImplementation impl = ((SystemInstance) parent).getComponentImplementation();
 
 			if (impl == null) {
 				return null;
@@ -442,6 +449,54 @@ public class InstanceUtil {
 			}
 		}
 		return result;
+	}
+
+	public static final String NORMAL_SOM_NAME = "No Modes";
+
+	public static boolean isNoMode(SystemOperationMode som) {
+		return som.getName().equalsIgnoreCase(NORMAL_SOM_NAME) || som.getName().equalsIgnoreCase("NoModes");
+	}
+
+	/**
+	 * find connection instance with connection of name "name" in component instance
+	 * @param ci
+	 * @param name
+	 * @return
+	 */
+	public static ConnectionInstance findConnectionInstance(ComponentInstance ci, Connection conn) { // String name) {
+		for (ConnectionInstance ei : ci.getConnectionInstances()) {
+			for (ConnectionReference connref : ei.getConnectionReferences()) {
+//				Connection conn = connref.getConnection();
+				if (conn == connref.getConnection())// name.equalsIgnoreCase(conn.getName()))
+					return ei;
+			}
+		}
+		return null;
+	}
+
+	public static ComponentInstance findConnectionContext(ConnectionInstance conni, Connection conn) {
+		for (ConnectionReference connref : conni.getConnectionReferences()) {
+//			Connection conn = connref.getConnection();
+			if (conn == connref.getConnection())// name.equalsIgnoreCase(conn.getName()))
+				return connref.getContext();
+		}
+		return null;
+	}
+
+	/**
+	 * return cross connection of a connection instance
+	 * @param conni
+	 * @return Connection
+	 */
+	public static Connection getCrossConnection(ConnectionInstance conni) {
+		for (ConnectionReference connref : conni.getConnectionReferences()) {
+			Connection conn = connref.getConnection();
+			if (conn.getSource().getContext() instanceof Subcomponent
+					&& conn.getDestination().getContext() instanceof Subcomponent) {
+				return conn;
+			}
+		}
+		return null;
 	}
 
 }

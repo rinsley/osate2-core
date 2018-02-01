@@ -35,10 +35,7 @@
  */
 package org.osate.aadl2.impl;
 
-import java.util.Map;
-
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.util.DiagnosticChain;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -46,7 +43,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.osate.aadl2.Aadl2Package;
 import org.osate.aadl2.Prototype;
 import org.osate.aadl2.RefinableElement;
-import org.osate.aadl2.operations.PrototypeOperations;
 
 /**
  * <!-- begin-user-doc -->
@@ -54,16 +50,15 @@ import org.osate.aadl2.operations.PrototypeOperations;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.osate.aadl2.impl.PrototypeImpl#getRefinedElement <em>Refined Element</em>}</li>
  *   <li>{@link org.osate.aadl2.impl.PrototypeImpl#getRefined <em>Refined</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
-public abstract class PrototypeImpl extends StructuralFeatureImpl implements
-		Prototype {
+public abstract class PrototypeImpl extends StructuralFeatureImpl implements Prototype {
 
 	/**
 	 * The cached value of the '{@link #getRefined() <em>Refined</em>}' reference.
@@ -99,15 +94,16 @@ public abstract class PrototypeImpl extends StructuralFeatureImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public Prototype getRefined() {
 		if (refined != null && ((EObject) refined).eIsProxy()) {
 			InternalEObject oldRefined = (InternalEObject) refined;
 			refined = (Prototype) eResolveProxy(oldRefined);
 			if (refined != oldRefined) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE,
-							Aadl2Package.PROTOTYPE__REFINED, oldRefined,
-							refined));
+				if (eNotificationRequired()) {
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, Aadl2Package.PROTOTYPE__REFINED,
+							oldRefined, refined));
+				}
 			}
 		}
 		return refined;
@@ -127,23 +123,14 @@ public abstract class PrototypeImpl extends StructuralFeatureImpl implements
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public void setRefined(Prototype newRefined) {
 		Prototype oldRefined = refined;
 		refined = newRefined;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET,
-					Aadl2Package.PROTOTYPE__REFINED, oldRefined, refined));
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public boolean categoryConstraint(DiagnosticChain diagnostics,
-			Map<Object, Object> context) {
-		return PrototypeOperations.categoryConstraint(this, diagnostics,
-				context);
+		if (eNotificationRequired()) {
+			eNotify(new ENotificationImpl(this, Notification.SET, Aadl2Package.PROTOTYPE__REFINED, oldRefined,
+					refined));
+		}
 	}
 
 	/**
@@ -155,8 +142,9 @@ public abstract class PrototypeImpl extends StructuralFeatureImpl implements
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 		case Aadl2Package.PROTOTYPE__REFINED:
-			if (resolve)
+			if (resolve) {
 				return getRefined();
+			}
 			return basicGetRefined();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -200,6 +188,8 @@ public abstract class PrototypeImpl extends StructuralFeatureImpl implements
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+		case Aadl2Package.PROTOTYPE__REFINED_ELEMENT:
+			return isSetRefinedElement();
 		case Aadl2Package.PROTOTYPE__REFINED:
 			return refined != null;
 		}
@@ -214,8 +204,8 @@ public abstract class PrototypeImpl extends StructuralFeatureImpl implements
 	@Override
 	public RefinableElement getRefinedElement() {
 		RefinableElement refinedElement = basicGetRefinedElement();
-		return refinedElement != null && ((EObject) refinedElement).eIsProxy() ? (RefinableElement) eResolveProxy((InternalEObject) refinedElement)
-				: refinedElement;
+		return refinedElement != null && ((EObject) refinedElement).eIsProxy()
+				? (RefinableElement) eResolveProxy((InternalEObject) refinedElement) : refinedElement;
 	}
 
 	/**
@@ -238,8 +228,7 @@ public abstract class PrototypeImpl extends StructuralFeatureImpl implements
 	 */
 	@Override
 	public boolean isSetRefinedElement() {
-		return super.isSetRefinedElement()
-				|| eIsSet(Aadl2Package.PROTOTYPE__REFINED);
+		return super.isSetRefinedElement() || eIsSet(Aadl2Package.PROTOTYPE__REFINED);
 	}
 
 } // PrototypeImpl

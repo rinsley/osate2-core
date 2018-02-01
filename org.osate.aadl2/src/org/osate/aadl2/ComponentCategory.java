@@ -46,6 +46,9 @@ import org.eclipse.emf.common.util.Enumerator;
  * A representation of the literals of the enumeration '<em><b>Component Category</b></em>',
  * and utility methods for working with them.
  * <!-- end-user-doc -->
+ * <!-- begin-model-doc -->
+ * <p>From package AADLConstructs::Components.</p>
+ * <!-- end-model-doc -->
  * @see org.osate.aadl2.Aadl2Package#getComponentCategory()
  * @model
  * @generated
@@ -407,10 +410,9 @@ public enum ComponentCategory implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private static final ComponentCategory[] VALUES_ARRAY = new ComponentCategory[] {
-			ABSTRACT, BUS, DATA, DEVICE, MEMORY, PROCESS, PROCESSOR,
-			SUBPROGRAM, SUBPROGRAM_GROUP, SYSTEM, THREAD, THREAD_GROUP,
-			VIRTUAL_BUS, VIRTUAL_PROCESSOR, };
+	private static final ComponentCategory[] VALUES_ARRAY = new ComponentCategory[] { ABSTRACT, BUS, DATA, DEVICE,
+			MEMORY, PROCESS, PROCESSOR, SUBPROGRAM, SUBPROGRAM_GROUP, SYSTEM, THREAD, THREAD_GROUP, VIRTUAL_BUS,
+			VIRTUAL_PROCESSOR, };
 
 	/**
 	 * A public read-only list of all the '<em><b>Component Category</b></em>' enumerators.
@@ -418,13 +420,14 @@ public enum ComponentCategory implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final List<ComponentCategory> VALUES = Collections
-			.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<ComponentCategory> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
 	 * Returns the '<em><b>Component Category</b></em>' literal with the specified literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param literal the literal.
+	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
 	public static ComponentCategory get(String literal) {
@@ -441,6 +444,8 @@ public enum ComponentCategory implements Enumerator {
 	 * Returns the '<em><b>Component Category</b></em>' literal with the specified name.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param name the name.
+	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
 	public static ComponentCategory getByName(String name) {
@@ -457,6 +462,8 @@ public enum ComponentCategory implements Enumerator {
 	 * Returns the '<em><b>Component Category</b></em>' literal with the specified integer value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param value the integer value.
+	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
 	public static ComponentCategory get(int value) {
@@ -531,6 +538,7 @@ public enum ComponentCategory implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public int getValue() {
 		return value;
 	}
@@ -540,6 +548,7 @@ public enum ComponentCategory implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getName() {
 		return name;
 	}
@@ -549,6 +558,7 @@ public enum ComponentCategory implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getLiteral() {
 		return literal;
 	}

@@ -56,11 +56,11 @@ import org.osate.aadl2.UnitsType;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.osate.aadl2.impl.UnitsTypeImpl#getOwnedMembers <em>Owned Member</em>}</li>
  *   <li>{@link org.osate.aadl2.impl.UnitsTypeImpl#getOwnedLiterals <em>Owned Literal</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
@@ -95,24 +95,17 @@ public class UnitsTypeImpl extends EnumerationTypeImpl implements UnitsType {
 		if (cache != null) {
 			Resource eResource = eResource();
 			@SuppressWarnings("unchecked")
-			EList<NamedElement> ownedMembers = (EList<NamedElement>) cache.get(
-					eResource, this,
+			EList<NamedElement> ownedMembers = (EList<NamedElement>) cache.get(eResource, this,
 					Aadl2Package.eINSTANCE.getNamespace_OwnedMember());
 			if (ownedMembers == null) {
-				cache.put(
-						eResource,
-						this,
-						Aadl2Package.eINSTANCE.getNamespace_OwnedMember(),
-						ownedMembers = new DerivedUnionEObjectEList<NamedElement>(
-								NamedElement.class, this,
-								Aadl2Package.UNITS_TYPE__OWNED_MEMBER,
-								OWNED_MEMBER_ESUBSETS));
+				cache.put(eResource, this, Aadl2Package.eINSTANCE.getNamespace_OwnedMember(),
+						ownedMembers = new DerivedUnionEObjectEList<NamedElement>(NamedElement.class, this,
+								Aadl2Package.UNITS_TYPE__OWNED_MEMBER, OWNED_MEMBER_ESUBSETS));
 			}
 			return ownedMembers;
 		}
-		return new DerivedUnionEObjectEList<NamedElement>(NamedElement.class,
-				this, Aadl2Package.UNITS_TYPE__OWNED_MEMBER,
-				OWNED_MEMBER_ESUBSETS);
+		return new DerivedUnionEObjectEList<NamedElement>(NamedElement.class, this,
+				Aadl2Package.UNITS_TYPE__OWNED_MEMBER, OWNED_MEMBER_ESUBSETS);
 	}
 
 	/**
@@ -133,8 +126,7 @@ public class UnitsTypeImpl extends EnumerationTypeImpl implements UnitsType {
 	@Override
 	public EList<EnumerationLiteral> getOwnedLiterals() {
 		if (ownedLiterals == null) {
-			ownedLiterals = new EObjectContainmentEList<EnumerationLiteral>(
-					UnitLiteral.class, this,
+			ownedLiterals = new EObjectContainmentEList<EnumerationLiteral>(UnitLiteral.class, this,
 					Aadl2Package.UNITS_TYPE__OWNED_LITERAL);
 		}
 		return ownedLiterals;
@@ -145,9 +137,9 @@ public class UnitsTypeImpl extends EnumerationTypeImpl implements UnitsType {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public EnumerationLiteral createOwnedLiteral() {
-		UnitLiteral newOwnedLiteral = (UnitLiteral) create(Aadl2Package.eINSTANCE
-				.getUnitLiteral());
+		UnitLiteral newOwnedLiteral = (UnitLiteral) create(Aadl2Package.eINSTANCE.getUnitLiteral());
 		getOwnedLiterals().add(newOwnedLiteral);
 		return newOwnedLiteral;
 	}
@@ -167,14 +159,28 @@ public class UnitsTypeImpl extends EnumerationTypeImpl implements UnitsType {
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd,
-			int featureID, NotificationChain msgs) {
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 		case Aadl2Package.UNITS_TYPE__OWNED_LITERAL:
-			return ((InternalEList<?>) getOwnedLiterals()).basicRemove(
-					otherEnd, msgs);
+			return ((InternalEList<?>) getOwnedLiterals()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public boolean eIsSet(int featureID) {
+		switch (featureID) {
+		case Aadl2Package.UNITS_TYPE__OWNED_MEMBER:
+			return isSetOwnedMembers();
+		case Aadl2Package.UNITS_TYPE__OWNED_LITERAL:
+			return isSetOwnedLiterals();
+		}
+		return super.eIsSet(featureID);
 	}
 
 	/**
@@ -187,7 +193,9 @@ public class UnitsTypeImpl extends EnumerationTypeImpl implements UnitsType {
 		return super.isSetOwnedMembers() || isSetOwnedLiterals();
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 *
 	 * @see org.osate.aadl2.impl.EnumerationTypeImpl#findLiteral(java.lang.String)
 	 */
 	@Override

@@ -42,12 +42,7 @@ import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
-import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
-import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
-import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.osate.aadl2.Aadl2Factory;
 import org.osate.aadl2.Aadl2Package;
@@ -59,10 +54,7 @@ import org.osate.aadl2.SubprogramCallSequence;
  * <!-- end-user-doc -->
  * @generated
  */
-public class SubprogramCallSequenceItemProvider extends
-		BehavioralFeatureItemProvider implements IEditingDomainItemProvider,
-		IStructuredItemContentProvider, ITreeItemContentProvider,
-		IItemLabelProvider, IItemPropertySource {
+public class SubprogramCallSequenceItemProvider extends BehavioralFeatureItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -96,16 +88,12 @@ public class SubprogramCallSequenceItemProvider extends
 	 * @generated
 	 */
 	protected void addInModePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-						.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_ModalElement_inMode_feature"),
-				getString("_UI_PropertyDescriptor_description",
-						"_UI_ModalElement_inMode_feature",
-						"_UI_ModalElement_type"), Aadl2Package.eINSTANCE
-						.getModalElement_InMode(), true, false, true, null,
-				null, null));
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_ModalElement_inMode_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_ModalElement_inMode_feature",
+								"_UI_ModalElement_type"),
+						Aadl2Package.eINSTANCE.getModalElement_InMode(), true, false, true, null, null, null));
 	}
 
 	/**
@@ -117,12 +105,10 @@ public class SubprogramCallSequenceItemProvider extends
 	 * @generated
 	 */
 	@Override
-	public Collection<? extends EStructuralFeature> getChildrenFeatures(
-			Object object) {
+	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(Aadl2Package.eINSTANCE
-					.getSubprogramCallSequence_OwnedCallSpecification());
+			childrenFeatures.add(Aadl2Package.eINSTANCE.getSubprogramCallSequence_OwnedSubprogramCall());
 		}
 		return childrenFeatures;
 	}
@@ -148,10 +134,7 @@ public class SubprogramCallSequenceItemProvider extends
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(
-				object,
-				getResourceLocator().getImage(
-						"full/obj16/SubprogramCallSequence"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/SubprogramCallSequence"));
 	}
 
 	/**
@@ -179,9 +162,8 @@ public class SubprogramCallSequenceItemProvider extends
 		updateChildren(notification);
 
 		switch (notification.getFeatureID(SubprogramCallSequence.class)) {
-		case Aadl2Package.SUBPROGRAM_CALL_SEQUENCE__OWNED_CALL_SPECIFICATION:
-			fireNotifyChanged(new ViewerNotification(notification,
-					notification.getNotifier(), true, false));
+		case Aadl2Package.SUBPROGRAM_CALL_SEQUENCE__OWNED_SUBPROGRAM_CALL:
+			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 			return;
 		}
 		super.notifyChanged(notification);
@@ -195,17 +177,12 @@ public class SubprogramCallSequenceItemProvider extends
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(
-			Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
-		newChildDescriptors.add(createChildParameter(Aadl2Package.eINSTANCE
-				.getSubprogramCallSequence_OwnedCallSpecification(),
-				Aadl2Factory.eINSTANCE.createProcessorCall()));
-
-		newChildDescriptors.add(createChildParameter(Aadl2Package.eINSTANCE
-				.getSubprogramCallSequence_OwnedCallSpecification(),
-				Aadl2Factory.eINSTANCE.createSubprogramCall()));
+		newChildDescriptors
+				.add(createChildParameter(Aadl2Package.eINSTANCE.getSubprogramCallSequence_OwnedSubprogramCall(),
+						Aadl2Factory.eINSTANCE.createSubprogramCall()));
 	}
 
 }

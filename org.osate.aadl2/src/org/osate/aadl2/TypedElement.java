@@ -42,14 +42,15 @@ package org.osate.aadl2;
  *
  * <!-- begin-model-doc -->
  * A typed element has a type.
+ * <p>From package AADLInfrastructure.</p>
  * <!-- end-model-doc -->
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.osate.aadl2.TypedElement#getType <em>Type</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.osate.aadl2.Aadl2Package#getTypedElement()
  * @model abstract="true"
@@ -62,12 +63,12 @@ public interface TypedElement extends NamedElement {
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
 	 * The type of the TypedElement.
+	 * <p>From package AADLInfrastructure.</p>
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Type</em>' reference.
 	 * @see #setType(Type)
 	 * @see org.osate.aadl2.Aadl2Package#getTypedElement_Type()
 	 * @model ordered="false"
-	 *        annotation="http://www.topcased.org/documentation documentation='The type of the TypedElement.'"
 	 * @generated
 	 */
 	Type getType();

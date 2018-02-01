@@ -34,11 +34,32 @@
  */
 package org.osate.xtext.aadl2.ui;
 
+import org.eclipse.jface.text.contentassist.IContentAssistProcessor;
+import org.eclipse.ui.PlatformUI;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.eclipse.ui.views.contentoutline.IContentOutlinePage;
+import org.eclipse.xtext.parser.IEncodingProvider;
+import org.eclipse.xtext.resource.containers.IAllContainersState;
+import org.eclipse.xtext.ui.LanguageSpecific;
+import org.eclipse.xtext.ui.editor.IURIEditorOpener;
 import org.eclipse.xtext.ui.editor.autoedit.AbstractEditStrategyProvider;
-import org.eclipse.xtext.ui.editor.autoedit.DefaultAutoEditStrategyProvider;
+import org.eclipse.xtext.ui.editor.model.IResourceForEditorInputFactory;
+import org.eclipse.xtext.ui.editor.model.XtextDocumentProvider;
+import org.eclipse.xtext.ui.resource.IStorage2UriMapper;
+import org.eclipse.xtext.ui.shared.Access;
+import org.osate.xtext.aadl2.ui.containers.Aadl2ProjectsState;
+import org.osate.xtext.aadl2.ui.containers.Aadl2ProjectsStateHelper;
+import org.osate.xtext.aadl2.ui.contentassist.AnnexAwareContentAssistProcessor;
+import org.osate.xtext.aadl2.ui.editor.Aadl2LanguageSpecificURIEditorOpener;
+import org.osate.xtext.aadl2.ui.editor.Aadl2WorkspaceEncodingProvider;
+import org.osate.xtext.aadl2.ui.editor.model.Aadl2DocumentProvider;
+import org.osate.xtext.aadl2.ui.editor.model.Aadl2ResourceForEditorInputFactory;
+import org.osate.xtext.aadl2.ui.editor.occurrences.Aadl2OccurrenceComputer;
 import org.osate.xtext.aadl2.ui.outline.Aadl2OutlinePage;
+import org.osate.xtext.aadl2.ui.refactoring.impl.Aadl2RenameStrategy;
+import org.osate.xtext.aadl2.ui.resource.Aadl2Storage2UriMapper;
+
+import com.google.inject.Binder;
 
 /**
  * Use this class to register components to be used within the IDE.
@@ -47,15 +68,16 @@ public class Aadl2UiModule extends org.osate.xtext.aadl2.ui.AbstractAadl2UiModul
 	public Aadl2UiModule(AbstractUIPlugin plugin) {
 		super(plugin);
 	}
+
 	@Override
 	public Class<? extends IContentOutlinePage> bindIContentOutlinePage() {
-	return Aadl2OutlinePage.class;
+		return Aadl2OutlinePage.class;
 	}
+
 	// will need to add the same class to aadl2 and have it be an extension of the properties one.
 	public Class<? extends org.eclipse.xtext.linking.ILinkingDiagnosticMessageProvider> bindILinkingDiagnosticMessageProvider() {
 		return org.osate.xtext.aadl2.properties.ui.linking.PropertiesLinkingDiagnosticMessageProvider.class;
 	}
-
 
 	public Class<? extends org.eclipse.xtext.parser.antlr.ISyntaxErrorMessageProvider> bindISyntaxErrorMessageProvider() {
 		return org.osate.xtext.aadl2.ui.syntax.Aadl2SyntaxErrorMessageProvider.class;
@@ -67,8 +89,72 @@ public class Aadl2UiModule extends org.osate.xtext.aadl2.ui.AbstractAadl2UiModul
 
 	@Override
 	public Class<? extends AbstractEditStrategyProvider> bindAbstractEditStrategyProvider() {
-		return org.osate.xtext.aadl2.ui.editor.autoedit.Aadl2AutoEditStrategyPprovider.class;
+		return org.osate.xtext.aadl2.ui.editor.autoedit.Aadl2AutoEditStrategyProvider.class;
 	}
 
+	public Class<? extends org.eclipse.xtext.ui.editor.occurrences.IOccurrenceComputer> bindIOccurrenceComputer() {
+		return Aadl2OccurrenceComputer.class;
+	}
+
+	@SuppressWarnings("restriction")
+	@Override
+	public Class<? extends org.eclipse.xtext.ui.refactoring.IRenameStrategy> bindIRenameStrategy() {
+		return Aadl2RenameStrategy.class;
+	}
+
+	public Class<? extends org.eclipse.xtext.ui.editor.hyperlinking.HyperlinkHelper> bindHyperlinkHelper() {
+		return org.osate.xtext.aadl2.util.Aadl2HyperlinkHelper.class;
+	}
+
+	public Class<? extends org.eclipse.xtext.ui.editor.doubleClicking.AbstractWordAwareDoubleClickStrategy> bindLexerTokenAndCharacterPairAwareStrategy() {
+		return org.osate.xtext.aadl2.parsing.Aadl2TokenStrategy.class;
+	}
+
+	public Class<? extends org.eclipse.xtext.ui.editor.doubleClicking.DoubleClickStrategyProvider> bindDoubleClickStrategyProvider() {
+		return org.osate.xtext.aadl2.parsing.Aadl2DoubleClickStrategyProvider.class;
+	}
+
+	@Override
+	public com.google.inject.Provider<org.eclipse.xtext.resource.containers.IAllContainersState> provideIAllContainersState() {
+		return Access.<IAllContainersState> provider(Aadl2ProjectsState.class);
+	}
+
+	public Class<? extends Aadl2ProjectsStateHelper> bindWorkspaceProjectsStateHelper() {
+		return Aadl2ProjectsStateHelper.class;
+	}
+
+	@Override
+	public Class<? extends IContentAssistProcessor> bindIContentAssistProcessor() {
+		return AnnexAwareContentAssistProcessor.class;
+	}
+
+	public Class<? extends IStorage2UriMapper> bindIStorage2UriMapper() {
+		return Aadl2Storage2UriMapper.class;
+	}
+
+	@Override
+	public Class<? extends IResourceForEditorInputFactory> bindIResourceForEditorInputFactory() {
+		return Aadl2ResourceForEditorInputFactory.class;
+	}
+
+	@Override
+	public void configureLanguageSpecificURIEditorOpener(Binder binder) {
+		if (PlatformUI.isWorkbenchRunning()) {
+			binder.bind(IURIEditorOpener.class).annotatedWith(LanguageSpecific.class).to(Aadl2LanguageSpecificURIEditorOpener.class);
+		}
+	}
+
+	public Class<? extends XtextDocumentProvider> bindXtextDocumentProvider() {
+		return Aadl2DocumentProvider.class;
+	}
+
+// FIXME: Formatting doesn't work for classifier: no newline before, no indentation for end <name>
+//	public Class<? extends ITextEditComposer> bindITextEditComposer() {
+//		return FormattingTextEditComposer.class;
+//	}
+
+	public Class<? extends IEncodingProvider> bindIEncodingProvider() {
+		return Aadl2WorkspaceEncodingProvider.class;
+	}
 
 }

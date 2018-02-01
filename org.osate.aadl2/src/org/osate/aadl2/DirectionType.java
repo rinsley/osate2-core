@@ -46,6 +46,9 @@ import org.eclipse.emf.common.util.Enumerator;
  * A representation of the literals of the enumeration '<em><b>Direction Type</b></em>',
  * and utility methods for working with them.
  * <!-- end-user-doc -->
+ * <!-- begin-model-doc -->
+ * <p>From package AADLConstructs::Features.</p>
+ * <!-- end-model-doc -->
  * @see org.osate.aadl2.Aadl2Package#getDirectionType()
  * @model
  * @generated
@@ -132,8 +135,7 @@ public enum DirectionType implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private static final DirectionType[] VALUES_ARRAY = new DirectionType[] {
-			IN, OUT, IN_OUT, };
+	private static final DirectionType[] VALUES_ARRAY = new DirectionType[] { IN, OUT, IN_OUT, };
 
 	/**
 	 * A public read-only list of all the '<em><b>Direction Type</b></em>' enumerators.
@@ -141,13 +143,14 @@ public enum DirectionType implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public static final List<DirectionType> VALUES = Collections
-			.unmodifiableList(Arrays.asList(VALUES_ARRAY));
+	public static final List<DirectionType> VALUES = Collections.unmodifiableList(Arrays.asList(VALUES_ARRAY));
 
 	/**
 	 * Returns the '<em><b>Direction Type</b></em>' literal with the specified literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param literal the literal.
+	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
 	public static DirectionType get(String literal) {
@@ -164,6 +167,8 @@ public enum DirectionType implements Enumerator {
 	 * Returns the '<em><b>Direction Type</b></em>' literal with the specified name.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param name the name.
+	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
 	public static DirectionType getByName(String name) {
@@ -180,6 +185,8 @@ public enum DirectionType implements Enumerator {
 	 * Returns the '<em><b>Direction Type</b></em>' literal with the specified integer value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @param value the integer value.
+	 * @return the matching enumerator or <code>null</code>.
 	 * @generated
 	 */
 	public static DirectionType get(int value) {
@@ -232,6 +239,7 @@ public enum DirectionType implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public int getValue() {
 		return value;
 	}
@@ -241,6 +249,7 @@ public enum DirectionType implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getName() {
 		return name;
 	}
@@ -250,6 +259,7 @@ public enum DirectionType implements Enumerator {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
 	public String getLiteral() {
 		return literal;
 	}
@@ -269,21 +279,19 @@ public enum DirectionType implements Enumerator {
 	 * DirectionType is OUT or IN_OUT
 	 * @return boolean true if OUT or IN_OUT
 	 */
-	// XXX: [AADL 1 -> AADL 2] Added to make instantiation work.
 	public boolean outgoing() {
-		return this == OUT || this == IN_OUT;
+		return this != IN;
 	}
 
 	/**
 	 * DirectionType is IN or IN_OUT
 	 * @return boolean true if IN or IN_OUT
 	 */
-	// XXX: [AADL 1 -> AADL 2] Added to make instantiation work.
 	public boolean incoming() {
-		return this == IN || this == IN_OUT;
+		return this != OUT;
 	}
 
-	/** 
+	/**
 	 * Sets the port direction to be the opposite of the one specified
 	 * The original direction may be retrieved from a refinement ancestor
 	 * the value is set locally
@@ -291,12 +299,13 @@ public enum DirectionType implements Enumerator {
 	 */
 	public DirectionType getInverseDirection() {
 		DirectionType pd = this;
-		if (pd == DirectionType.IN)
+		if (pd == DirectionType.IN) {
 			return DirectionType.OUT;
-		else if (pd == DirectionType.OUT)
+		} else if (pd == DirectionType.OUT) {
 			return DirectionType.IN;
-		else
+		} else {
 			return pd;
+		}
 	}
 
 } // DirectionType

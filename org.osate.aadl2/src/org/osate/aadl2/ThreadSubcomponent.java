@@ -40,34 +40,40 @@ package org.osate.aadl2;
  * A representation of the model object '<em><b>Thread Subcomponent</b></em>'.
  * <!-- end-user-doc -->
  *
+ * <!-- begin-model-doc -->
+ * <p>From package AADLDetails::Components::Thread.</p>
+ * <!-- end-model-doc -->
+ *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.osate.aadl2.ThreadSubcomponent#getThreadSubcomponentType <em>Thread Subcomponent Type</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.osate.aadl2.Aadl2Package#getThreadSubcomponent()
  * @model
  * @generated
  */
-public interface ThreadSubcomponent extends Subcomponent,
-		org.osate.aadl2.Thread {
+public interface ThreadSubcomponent extends Subcomponent, org.osate.aadl2.Thread {
 
 	/**
 	 * Returns the value of the '<em><b>Thread Subcomponent Type</b></em>' reference.
 	 * <p>
 	 * This feature subsets the following features:
+	 * </p>
 	 * <ul>
 	 *   <li>'{@link org.osate.aadl2.Subcomponent#getSubcomponentType() <em>Subcomponent Type</em>}'</li>
 	 * </ul>
-	 * </p>
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Thread Subcomponent Type</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * <p>From package AADLDetails::Components::Thread.</p>
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Thread Subcomponent Type</em>' reference.
 	 * @see #setThreadSubcomponentType(ThreadSubcomponentType)
 	 * @see org.osate.aadl2.Aadl2Package#getThreadSubcomponent_ThreadSubcomponentType()

@@ -41,12 +41,7 @@ import java.util.List;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
-import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
-import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
-import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 import org.osate.aadl2.Aadl2Package;
@@ -58,9 +53,7 @@ import org.osate.aadl2.FeatureGroup;
  * <!-- end-user-doc -->
  * @generated
  */
-public class FeatureGroupItemProvider extends DirectedFeatureItemProvider
-		implements IEditingDomainItemProvider, IStructuredItemContentProvider,
-		ITreeItemContentProvider, IItemLabelProvider, IItemPropertySource {
+public class FeatureGroupItemProvider extends DirectedFeatureItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
@@ -97,16 +90,13 @@ public class FeatureGroupItemProvider extends DirectedFeatureItemProvider
 	 * @generated
 	 */
 	protected void addInversePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-						.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_FeatureGroup_inverse_feature"),
-				getString("_UI_PropertyDescriptor_description",
-						"_UI_FeatureGroup_inverse_feature",
-						"_UI_FeatureGroup_type"), Aadl2Package.eINSTANCE
-						.getFeatureGroup_Inverse(), true, false, false,
-				ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_FeatureGroup_inverse_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_FeatureGroup_inverse_feature",
+								"_UI_FeatureGroup_type"),
+						Aadl2Package.eINSTANCE.getFeatureGroup_Inverse(), true, false, false,
+						ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE, null, null));
 	}
 
 	/**
@@ -116,16 +106,12 @@ public class FeatureGroupItemProvider extends DirectedFeatureItemProvider
 	 * @generated
 	 */
 	protected void addFeatureTypePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-						.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_FeatureGroup_featureType_feature"),
-				getString("_UI_PropertyDescriptor_description",
-						"_UI_FeatureGroup_featureType_feature",
-						"_UI_FeatureGroup_type"), Aadl2Package.eINSTANCE
-						.getFeatureGroup_FeatureType(), true, false, true,
-				null, null, null));
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_FeatureGroup_featureType_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_FeatureGroup_featureType_feature",
+								"_UI_FeatureGroup_type"),
+						Aadl2Package.eINSTANCE.getFeatureGroup_FeatureType(), true, false, true, null, null, null));
 	}
 
 	/**
@@ -135,16 +121,13 @@ public class FeatureGroupItemProvider extends DirectedFeatureItemProvider
 	 * @generated
 	 */
 	protected void addFeatureGroupTypePropertyDescriptor(Object object) {
-		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-						.getRootAdapterFactory(),
-				getResourceLocator(),
-				getString("_UI_FeatureGroup_featureGroupType_feature"),
-				getString("_UI_PropertyDescriptor_description",
-						"_UI_FeatureGroup_featureGroupType_feature",
-						"_UI_FeatureGroup_type"), Aadl2Package.eINSTANCE
-						.getFeatureGroup_FeatureGroupType(), true, false, true,
-				null, null, null));
+		itemPropertyDescriptors
+				.add(createItemPropertyDescriptor(((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(),
+						getResourceLocator(), getString("_UI_FeatureGroup_featureGroupType_feature"),
+						getString("_UI_PropertyDescriptor_description", "_UI_FeatureGroup_featureGroupType_feature",
+								"_UI_FeatureGroup_type"),
+						Aadl2Package.eINSTANCE.getFeatureGroup_FeatureGroupType(), false, false, false, null, null,
+						null));
 	}
 
 	/**
@@ -155,15 +138,11 @@ public class FeatureGroupItemProvider extends DirectedFeatureItemProvider
 	 */
 	protected void addFeatureGroupPrototypePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add(createItemPropertyDescriptor(
-				((ComposeableAdapterFactory) adapterFactory)
-						.getRootAdapterFactory(),
-				getResourceLocator(),
+				((ComposeableAdapterFactory) adapterFactory).getRootAdapterFactory(), getResourceLocator(),
 				getString("_UI_FeatureGroup_featureGroupPrototype_feature"),
-				getString("_UI_PropertyDescriptor_description",
-						"_UI_FeatureGroup_featureGroupPrototype_feature",
-						"_UI_FeatureGroup_type"), Aadl2Package.eINSTANCE
-						.getFeatureGroup_FeatureGroupPrototype(), false, false,
-				false, null, null, null));
+				getString("_UI_PropertyDescriptor_description", "_UI_FeatureGroup_featureGroupPrototype_feature",
+						"_UI_FeatureGroup_type"),
+				Aadl2Package.eINSTANCE.getFeatureGroup_FeatureGroupPrototype(), false, false, false, null, null, null));
 	}
 
 	/**
@@ -174,8 +153,7 @@ public class FeatureGroupItemProvider extends DirectedFeatureItemProvider
 	 */
 	@Override
 	public Object getImage(Object object) {
-		return overlayImage(object,
-				getResourceLocator().getImage("full/obj16/FeatureGroup"));
+		return overlayImage(object, getResourceLocator().getImage("full/obj16/FeatureGroup"));
 	}
 
 	/**
@@ -204,8 +182,7 @@ public class FeatureGroupItemProvider extends DirectedFeatureItemProvider
 
 		switch (notification.getFeatureID(FeatureGroup.class)) {
 		case Aadl2Package.FEATURE_GROUP__INVERSE:
-			fireNotifyChanged(new ViewerNotification(notification,
-					notification.getNotifier(), false, true));
+			fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 			return;
 		}
 		super.notifyChanged(notification);
@@ -219,8 +196,7 @@ public class FeatureGroupItemProvider extends DirectedFeatureItemProvider
 	 * @generated
 	 */
 	@Override
-	protected void collectNewChildDescriptors(
-			Collection<Object> newChildDescriptors, Object object) {
+	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 	}
 
